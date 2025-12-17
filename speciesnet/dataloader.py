@@ -1,77 +1,154 @@
-from tqdm import tqdm
-from speciesnet.utils import BBox
-import pandas as pd
-import torch
-from torch.utils.data import Dataset, DataLoader
-from torchvision import transforms
-from PIL import Image, UnidentifiedImageError
-from sklearn.model_selection import train_test_split
-import torchvision.transforms as transforms
-import pandas as pd
+# dataloader.py
+
+from typing import Optional, List, Tuple
 import os
-import re
+from PIL import Image, UnidentifiedImageError, ImageFile
+
+import torch
+from torch.utils.data import Dataset
+from torchvision import transforms as T
+from torchvision.transforms import InterpolationMode
+from torchvision import io as tvio
+
+# tolerate partial/corrupt JPEGs (avoids slow exception paths)
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 class SpeciesImageDataset(Dataset):
-    def __init__(self, df, image_dir, classifier, top4_only=False):
+    def __init__(
+        self,
+        df,
+        image_dir,
+        classifier=None,
+        backbone: str = "resnet18",
+        top_n_species: Optional[int] = None,
+        include_species: Optional[List[str]] = None,
+        augment: bool = True,
+        use_color_jitter: bool = False,     # <- off by default (speed)
+        read_backend: str = "pil",          # "pil" or "torch"
+        size: int = 256                     # 224/256 are much faster than 384
+    ):
         self.image_dir = image_dir
         self.classifier = classifier
-        
-        self.transform = transforms.Compose([
-            transforms.RandomHorizontalFlip(),
-            transforms.RandomRotation(10),
-            transforms.ColorJitter(brightness=0.1, contrast=0.1),
-            transforms.Normalize(
-                mean=[0.485, 0.456, 0.406],
-                std=[0.229, 0.224, 0.225]
-            )
-        ])
+        self.backbone = str(backbone).lower()
+        self.read_backend = read_backend
+        self.size = int(size)
 
-        if top4_only:
-            top4_species = (
-                df['species'].value_counts()
-                .nlargest(4)
-                .index.tolist()
-            )
-            self.df = df[df['species'].isin(top4_species)].reset_index(drop=True)
+        df = df.reset_index(drop=True).copy()
+        df["species"] = df["species"].astype(str).str.strip().str.lower()
 
-            # Remap species labels to 0–3
-            self.label_map = {species: idx for idx, species in enumerate(top4_species)}
+        if include_species is not None:
+            classes = [s.strip().lower() for s in include_species]
+            df = df[df["species"].isin(classes)].reset_index(drop=True)
         else:
-            self.df = df.reset_index(drop=True)
-            self.label_map = None  # Use ground_truth_index
+            classes = sorted(df["species"].unique())
 
-    def __len__(self):
-        return len(self.df)
+        self.classes = classes
+        self.class_to_idx = {s: i for i, s in enumerate(self.classes)}
+        df["ground_truth_index"] = df["species"].map(self.class_to_idx).astype(int)
 
-    def __getitem__(self, idx):
-        row = self.df.iloc[idx]
-        img_path = os.path.join(self.image_dir, row['filename'])
-        img = Image.open(img_path).convert("RGB")
+        # Pre-cache columns to avoid df.iloc (noticeably faster)
+        self._filenames = df["filename"].tolist()
+        self._labels = df["ground_truth_index"].tolist()
+        # Optional: fast bbox access if present
+        self._bboxes = df["bbox"].tolist() if "bbox" in df.columns else None
 
-        # Get bbox if available
-        bboxes = None
-        if 'bbox' in row and isinstance(row['bbox'], (list, tuple)) and len(row['bbox']) == 4:
-            bbox = BBox(*row['bbox'])
-            bboxes = [bbox]
-
-        preprocessed = self.classifier.preprocess(img, bboxes=bboxes)
-
-        # === DEBUG: visualize the preprocessed (cropped + resized) image ===
-        if idx == 0:
-            import matplotlib.pyplot as plt
-            plt.imshow(preprocessed.arr)
-            plt.title(f"{row['filename']} | BBox: {row['bbox']}")
-            plt.axis("off")
-            plt.show()
-
-        # Convert to tensor, normalize
-        img_tensor = torch.tensor(preprocessed.arr).permute(2, 0, 1).float() / 255.0
-        img_tensor = self.transform(img_tensor)
-
-        # Remap label if needed
-        if self.label_map:
-            label = self.label_map[row['species']]
+        # Build transforms
+        if self.backbone == "resnet18":
+            # Cheaper resize path (bilinear + no antialias)
+            base = [
+                T.Resize((self.size, self.size), interpolation=InterpolationMode.BILINEAR, antialias=False),
+                T.ToTensor(),
+                T.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+            ]
+            aug = [T.RandomHorizontalFlip(), T.RandomRotation(10)]
+            if use_color_jitter:
+                aug.append(T.ColorJitter(brightness=0.1, contrast=0.1))
+            self.transform = T.Compose((aug + base) if augment else base)
+        elif self.backbone == "speciesnet":
+            # SpeciesNet handles preprocess itself
+            self.transform = None
         else:
-            label = int(row["ground_truth_index"])
+            raise ValueError("backbone must be 'resnet18' or 'speciesnet'")
 
-        return img_tensor, label
+    def __len__(self) -> int:
+        return len(self._filenames)
+
+    def _load_image_pil(self, path: str) -> Image.Image:
+        if not os.path.exists(path) or os.path.getsize(path) == 0:
+            raise UnidentifiedImageError(f"Missing/zero-byte: {path}")
+        try:
+            return Image.open(path).convert("RGB")
+        except Exception as e:
+            raise UnidentifiedImageError(f"Unreadable: {path} ({e})")
+
+    def _load_image_torch(self, path: str) -> torch.Tensor:
+        # Returns CHW uint8 tensor [3,H,W] without PIL; faster in many cases.
+        if not os.path.exists(path) or os.path.getsize(path) == 0:
+            raise UnidentifiedImageError(f"Missing/zero-byte: {path}")
+        try:
+            img = tvio.read_image(path)  # uint8 [C,H,W]
+            if img.ndim != 3 or img.size(0) != 3:
+                # force RGB if odd mode
+                # fallback to PIL to convert (rare)
+                pil = self._load_image_pil(path)
+                return T.ToTensor()(pil) * 255.0
+            return img
+        except Exception as e:
+            raise UnidentifiedImageError(f"Unreadable: {path} ({e})")
+
+    def __getitem__(self, idx: int):
+        fname = self._filenames[idx]
+        label = int(self._labels[idx])
+        path = os.path.join(self.image_dir, fname)
+
+        try:
+            if self.backbone == "resnet18":
+                if self.read_backend == "torch":
+                    # torch backend path
+                    img = self._load_image_torch(path)    # uint8 [C,H,W]
+                    # Resize with tensor ops (slightly faster than PIL for big batches)
+                    img = T.functional.resize(
+                        img, [self.size, self.size], interpolation=InterpolationMode.BILINEAR, antialias=False
+                    )
+                    # Convert to float in [0,1] then normalize
+                    img = img.float().div_(255.0)
+                    img = T.functional.normalize(img, [0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+                    # Lightweight aug on tensors (only HFlip; rotation/jitter stay on PIL path)
+                    # If you want tensor-only aug, switch to torchvision.transforms.v2
+                    return img, label
+                else:
+                    # PIL path (keeps your existing pipeline)
+                    img = self._load_image_pil(path)
+                    img = self.transform(img)  # -> [3, size, size]
+                    return img, label
+
+            # speciesnet path
+            if self.classifier is None or not hasattr(self.classifier, "preprocess"):
+                raise RuntimeError("SpeciesNet backbone requires classifier.preprocess")
+
+            bboxes = None
+            if self._bboxes is not None:
+                bb = self._bboxes[idx]
+                if isinstance(bb, (list, tuple)) and len(bb) == 4:
+                    try:
+                        from speciesnet.utils import BBox
+                        bboxes = [BBox(*bb)]
+                    except Exception:
+                        bboxes = None
+
+            pre = self.classifier.preprocess(self._load_image_pil(path), bboxes=bboxes)
+            arr = torch.as_tensor(pre.arr).permute(2, 0, 1).float().div_(255.0)
+            return arr, label
+
+        except UnidentifiedImageError:
+            return None
+
+
+def collate_keep_good(batch: List[Optional[Tuple[torch.Tensor, int]]]):
+    good = [b for b in batch if b is not None]
+    if not good:
+        return torch.empty(0), torch.empty(0, dtype=torch.long)
+    imgs, labels = zip(*good)
+    # ensure contiguous float32 (faster on GPU later); labels long
+    imgs = [img.contiguous() if img.is_floating_point() else img.float().contiguous() for img in imgs]
+    return torch.stack(imgs, dim=0), torch.tensor(labels, dtype=torch.long)
