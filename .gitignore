@@ -29,3 +29,7 @@ notebooks/all_image_links_*.json
 notebooks/archive_jsons/.ipynb_checkpoints/
 notebooks/all_image_links_2018_2019_1_with_datetime.json
 notebooks/all_image_links_2016_2017_with_datetime.json
+notebooks/graphs/
+speciesnet/last_epoch_predictions_*.json
+speciesnet/last_model_state_*.pkl
+*WLD_S6_report_species*.csv
