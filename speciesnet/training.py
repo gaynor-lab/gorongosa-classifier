@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 import importlib.util
 from dataloader import SpeciesImageDataset, collate_keep_good
-
+from datetime import datetime
 import torch
 import torch.nn as nn
 import pandas as pd
@@ -19,6 +19,13 @@ from tqdm import tqdm
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
 from torch.utils.data import DataLoader
 import wandb
+
+# training.py (right after imports)
+torch.backends.cudnn.benchmark = True
+try:
+    torch.set_float32_matmul_precision("high")  # PyTorch 2.x
+except Exception:
+    pass
 
 # ────────────────────────────────────────────────────────────────────────────────
 # Project root & sys.path
@@ -195,6 +202,23 @@ else:
 for col in ("species", "site"):
     filtered_all_df[col] = filtered_all_df[col].astype(str).str.strip().str.lower()
 
+
+def is_good(path):
+    try:
+        return os.path.getsize(path) > 0
+    except Exception:
+        return False
+
+def filter_bad_files(df, image_dir):
+    paths = df["filename"].apply(lambda f: os.path.join(image_dir, f))
+    mask = paths.apply(is_good)
+    bad = df[~mask]
+    good = df[mask].reset_index(drop=True)
+    print(f"[precheck] kept {len(good)} | dropped {len(bad)} bad/empty files")
+    return good
+
+filtered_all_df = filter_bad_files(filtered_all_df, image_dir)
+    
 # ────────────────────────────────────────────────────────────────────────────────
 # Split (instance or sitewise)
 # ────────────────────────────────────────────────────────────────────────────────
@@ -292,15 +316,20 @@ criterion = nn.CrossEntropyLoss(label_smoothing=float(config.label_smoothing)).t
 optimizer = torch.optim.Adam(model.parameters(), lr=float(config.lr), weight_decay=float(config.weight_decay))
 
 pin = torch.cuda.is_available()
-train_loader = DataLoader(train_dataset, batch_size=int(config.batch_size),
-                          shuffle=True, num_workers=0, pin_memory=pin,
-                          collate_fn=collate_keep_good)
-val_loader   = DataLoader(val_dataset, batch_size=int(config.batch_size),
-                          shuffle=False, num_workers=0, pin_memory=pin,
-                          collate_fn=collate_keep_good)
-hold_loader  = DataLoader(hold_dataset, batch_size=int(config.batch_size),
-                          shuffle=False, num_workers=0, pin_memory=pin,
-                          collate_fn=collate_keep_good)
+# training.py (where you build loaders)
+
+common_loader_kw = dict(
+    batch_size=int(config.batch_size),
+    pin_memory=True,                # pinned host -> faster H2D
+    num_workers=8,                  # try 4–8; tune by CPU cores / disk
+    persistent_workers=True,        # keep workers alive
+    prefetch_factor=4               # each worker prefetches N batches
+)
+
+train_loader = DataLoader(train_dataset, shuffle=True,  collate_fn=collate_keep_good, **common_loader_kw)
+val_loader   = DataLoader(val_dataset,   shuffle=False, collate_fn=collate_keep_good, **common_loader_kw)
+hold_loader  = DataLoader(hold_dataset,  shuffle=False, collate_fn=collate_keep_good, **common_loader_kw)
+
 
 with torch.no_grad():
     dummy = torch.randn(2, 3, 224, 224).to(device)
@@ -326,7 +355,7 @@ for epoch in range(num_epochs):
     train_loss = 0.0
     train_preds, train_trues = [], []
 
-    for x_batch, y_batch in tqdm(train_loader, desc="Training"):
+    for x_batch, y_batch, names in tqdm(train_loader, desc="Training"):
         # Skip empty batches produced by collate_keep_good
         if x_batch.numel() == 0:
             continue
@@ -349,6 +378,7 @@ for epoch in range(num_epochs):
             p_np  = preds.detach().cpu().numpy()
             for i in range(len(y_np)):
                 train_prob_rows.append({
+                    "filename": str(names[i]),
                     "true_idx": int(y_np[i]),
                     "pred_idx": int(p_np[i]),
                     "true_label": allowed_species[int(y_np[i])],
@@ -369,7 +399,7 @@ for epoch in range(num_epochs):
     val_loss = 0.0
     val_preds, val_trues = [], []
     with torch.no_grad():
-        for x_batch, y_batch in tqdm(val_loader, desc="Validating"):
+        for x_batch, y_batch, names in tqdm(val_loader, desc="Validating"):
             # Skip empty batches
             if x_batch.numel() == 0:
                 continue
@@ -387,6 +417,7 @@ for epoch in range(num_epochs):
                 p_np  = preds.cpu().numpy()
                 for i in range(len(y_np)):
                     val_prob_rows.append({
+                        "filename": str(names[i]),
                         "true_idx": int(y_np[i]),
                         "pred_idx": int(p_np[i]),
                         "true_label": allowed_species[int(y_np[i])],
@@ -406,7 +437,7 @@ for epoch in range(num_epochs):
     hold_loss = 0.0
     hold_preds, hold_trues = [], []
     with torch.no_grad():
-        for x_batch, y_batch in tqdm(hold_loader, desc="Holdout"):
+        for x_batch, y_batch, names in tqdm(hold_loader, desc="Holdout"):
             # Skip empty batches
             if x_batch.numel() == 0:
                 continue
@@ -424,6 +455,7 @@ for epoch in range(num_epochs):
                 p_np  = preds.cpu().numpy()
                 for i in range(len(y_np)):
                     hold_prob_rows.append({
+                        "filename": str(names[i]),
                         "true_idx": int(y_np[i]),
                         "pred_idx": int(p_np[i]),
                         "true_label": allowed_species[int(y_np[i])],
@@ -510,4 +542,26 @@ if bool(config.save_probs_json):
         for p in saved_files: art.add_file(p)
         wandb.log_artifact(art)
 
+        
+# ────────────────────────────────────────────────────────────────────────────────
+# Save LAST model (safest: state_dict pickle)
+# ────────────────────────────────────────────────────────────────────────────────
+
+ckpt_dir = Path(speciesnet_dir)
+ckpt_dir.mkdir(parents=True, exist_ok=True)
+
+stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+last_ckpt = ckpt_dir / f"last_model_state_{config.backbone}_{stamp}.pkl"
+
+payload = {
+    "epoch": num_epochs,                      # last epoch index (1-based in your logs)
+    "model_state": model.state_dict(),        # weights only (recommended)
+    "optimizer_state": optimizer.state_dict(),# optional; useful if you resume
+    "class_names": allowed_species,           # to map indices later
+    "config": dict(config),                   # for reproducibility
+}
+torch.save(payload, last_ckpt)
+print(f"[save] Wrote last model state to: {last_ckpt}")
+        
+        
 wandb.finish()

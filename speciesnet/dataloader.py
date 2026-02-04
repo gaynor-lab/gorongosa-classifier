@@ -25,7 +25,7 @@ class SpeciesImageDataset(Dataset):
         augment: bool = True,
         use_color_jitter: bool = False,     # <- off by default (speed)
         read_backend: str = "pil",          # "pil" or "torch"
-        size: int = 256                     # 224/256 are much faster than 384
+        size: int = 224                     # 224/256 are much faster than 384
     ):
         self.image_dir = image_dir
         self.classifier = classifier
@@ -96,6 +96,7 @@ class SpeciesImageDataset(Dataset):
         except Exception as e:
             raise UnidentifiedImageError(f"Unreadable: {path} ({e})")
 
+    # --- inside SpeciesImageDataset.__getitem__ ---
     def __getitem__(self, idx: int):
         fname = self._filenames[idx]
         label = int(self._labels[idx])
@@ -104,23 +105,19 @@ class SpeciesImageDataset(Dataset):
         try:
             if self.backbone == "resnet18":
                 if self.read_backend == "torch":
-                    # torch backend path
-                    img = self._load_image_torch(path)    # uint8 [C,H,W]
-                    # Resize with tensor ops (slightly faster than PIL for big batches)
+                    img = self._load_image_torch(path)         # [C,H,W] uint8
                     img = T.functional.resize(
-                        img, [self.size, self.size], interpolation=InterpolationMode.BILINEAR, antialias=False
+                        img, [self.size, self.size],
+                        interpolation=InterpolationMode.BILINEAR, antialias=False
                     )
-                    # Convert to float in [0,1] then normalize
                     img = img.float().div_(255.0)
-                    img = T.functional.normalize(img, [0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-                    # Lightweight aug on tensors (only HFlip; rotation/jitter stay on PIL path)
-                    # If you want tensor-only aug, switch to torchvision.transforms.v2
-                    return img, label
+                    img = T.functional.normalize(img, [0.485, 0.456, 0.406],
+                                                      [0.229, 0.224, 0.225])
+                    return img, label, fname                   # <- add fname
                 else:
-                    # PIL path (keeps your existing pipeline)
                     img = self._load_image_pil(path)
-                    img = self.transform(img)  # -> [3, size, size]
-                    return img, label
+                    img = self.transform(img)
+                    return img, label, fname                   # <- add fname
 
             # speciesnet path
             if self.classifier is None or not hasattr(self.classifier, "preprocess"):
@@ -138,17 +135,65 @@ class SpeciesImageDataset(Dataset):
 
             pre = self.classifier.preprocess(self._load_image_pil(path), bboxes=bboxes)
             arr = torch.as_tensor(pre.arr).permute(2, 0, 1).float().div_(255.0)
-            return arr, label
+            return arr, label, fname                            # <- add fname
 
         except UnidentifiedImageError:
             return None
 
 
-def collate_keep_good(batch: List[Optional[Tuple[torch.Tensor, int]]]):
+
+def collate_keep_good(batch):
+    """
+    Supports items of shape:
+      (img, label)                or
+      (img, label, filename)
+
+    - Drops None items (bad/corrupt samples).
+    - Converts uint8 -> float32/255 only when needed.
+    - Ensures 4D NCHW float32 contiguous batch.
+    - Returns filenames list if provided, else [].
+    """
+    # Drop bad samples
     good = [b for b in batch if b is not None]
     if not good:
-        return torch.empty(0), torch.empty(0, dtype=torch.long)
-    imgs, labels = zip(*good)
-    # ensure contiguous float32 (faster on GPU later); labels long
-    imgs = [img.contiguous() if img.is_floating_point() else img.float().contiguous() for img in imgs]
-    return torch.stack(imgs, dim=0), torch.tensor(labels, dtype=torch.long)
+        # keep return arity stable: (imgs, labels, names)
+        return torch.empty(0), torch.empty(0, dtype=torch.long), []
+
+    # Unpack with/without filenames
+    if len(good[0]) == 3:
+        imgs, labels, names = zip(*good)
+    else:
+        imgs, labels = zip(*good)
+        names = [None] * len(imgs)
+
+    proc = []
+    for img in imgs:
+        if not torch.is_tensor(img):
+            raise TypeError(f"Expected torch.Tensor, got {type(img)}")
+
+        # Require CHW
+        if img.ndim != 3:
+            raise RuntimeError(f"Expected 3D CHW image, got shape {tuple(img.shape)}")
+
+        # Convert only if uint8; avoid double-dividing already-normalized float tensors
+        if img.dtype == torch.uint8:
+            img = img.float().div_(255.0)
+        elif not img.is_floating_point():
+            img = img.float()
+
+        proc.append(img.contiguous())
+
+    # Stack -> NCHW
+    batch_imgs = torch.stack(proc, dim=0)  # [N, C, H, W]
+    batch_labels = torch.tensor(labels, dtype=torch.long)
+    names = list(names)
+
+    # Optional: channels_last is valid only for 4D tensors
+    try:
+        batch_imgs = batch_imgs.contiguous(memory_format=torch.channels_last)
+    except Exception:
+        pass  # silently skip if not supported
+
+    return batch_imgs, batch_labels, names
+
+
