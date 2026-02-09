@@ -1,0 +1,2517 @@
+filename,site,true_class_from_name,pred_class_idx,pred_class_label,pred_conf
+2016 10 28 03 59 49_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5961498618125916
+2016 07 18 04 08 09_h03_antelope.jpg,h03,antelope,4,bushbuck,0.4566001296043396
+01050120_g12_antelope.jpg,g12,antelope,4,bushbuck,0.5838050842285156
+12120579_g12_antelope.jpg,g12,antelope,4,bushbuck,0.5293482542037964
+EK001431_f01_antelope.jpg,f01,antelope,7,genet,0.8758205771446228
+03220655_g08_antelope.jpg,g08,antelope,4,bushbuck,0.40916091203689575
+2016 10 21 08 24 11_h07_antelope.jpg,h07,antelope,2,warthog,0.6028419733047485
+04190399_f11_antelope.jpg,f11,antelope,4,bushbuck,0.6225436925888062
+2016 10 26 01 04 34_k08_antelope.jpg,k08,antelope,4,bushbuck,0.994215190410614
+2016 10 19 08 13 16_l05_antelope.jpg,l05,antelope,2,warthog,0.4479755461215973
+EK000275_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9859005808830261
+08250782_l11_antelope.jpg,l11,antelope,4,bushbuck,0.77778559923172
+08230188_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5520696640014648
+09230189_e08_antelope.jpg,e08,antelope,9,wildebeest,0.4770753085613251
+01170027_i10_antelope.jpg,i10,antelope,0,waterbuck,0.9822235107421875
+EK007978_01_f07_antelope.jpg,f07,antelope,0,waterbuck,0.38437849283218384
+2016 08 03 04 21 03_h09_antelope.jpg,h09,antelope,2,warthog,0.8402090668678284
+2016 07 28 17 29 30_g06_antelope.jpg,g06,antelope,2,warthog,0.9683222770690918
+06070658_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9904851317405701
+2016 09 02 22 52 16_m10_antelope.jpg,m10,antelope,4,bushbuck,0.32075583934783936
+EK004962_f07_antelope.jpg,f07,antelope,2,warthog,0.3514786660671234
+EK009752_h05_antelope.jpg,h05,antelope,2,warthog,0.61896812915802
+01200545_c08_antelope.jpg,c08,antelope,5,oribi,0.688295841217041
+2016 10 26 22 38 52_h05_antelope.jpg,h05,antelope,3,impala,0.6791073083877563
+01180026_l11_antelope.jpg,l11,antelope,2,warthog,0.3368232548236847
+2016 08 07 17 49 41_f11_antelope.jpg,f11,antelope,8,nyala,0.8461492657661438
+2016 10 28 18 24 09_e06_antelope.jpg,e06,antelope,2,warthog,0.5540211200714111
+2016 10 17 22 20 46_d05_antelope.jpg,d05,antelope,8,nyala,0.389615923166275
+EK000908_02_h05_antelope.jpg,h05,antelope,3,impala,0.5546022057533264
+2016 08 08 00 37 06_k10_antelope.jpg,k10,antelope,4,bushbuck,0.49691569805145264
+10290309_a10_antelope.jpg,a10,antelope,1,baboon,0.7338626384735107
+11060230_f01_antelope.jpg,f01,antelope,0,waterbuck,0.3756708800792694
+06020636_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9649561643600464
+EK009023_01_j03_antelope.jpg,j03,antelope,8,nyala,0.32511377334594727
+02280991_j07_antelope.jpg,j07,antelope,0,waterbuck,0.844276487827301
+09240110_f05_antelope.jpg,f05,antelope,5,oribi,0.5134373307228088
+2016 09 11 20 19 13_c08_antelope.jpg,c08,antelope,4,bushbuck,0.49310293793678284
+08120574_k08_antelope.jpg,k08,antelope,2,warthog,0.9124981164932251
+04130978_g08_antelope.jpg,g08,antelope,0,waterbuck,0.7918201684951782
+2016 08 06 19 53 54_i10_antelope.jpg,i10,antelope,2,warthog,0.37835589051246643
+2016 10 11 07 21 24_g02_antelope.jpg,g02,antelope,1,baboon,0.7288725972175598
+2016 07 13 21 43 57_k06_antelope.jpg,k06,antelope,2,warthog,0.7918297052383423
+EK004166_f07_antelope.jpg,f07,antelope,2,warthog,0.8372558355331421
+08180238_k12_antelope.jpg,k12,antelope,1,baboon,0.8000777363777161
+2016 10 29 11 15 25_e02_antelope.jpg,e02,antelope,4,bushbuck,0.8461010456085205
+04100704_d07_antelope.jpg,d07,antelope,5,oribi,0.5531274676322937
+11270816_l11_antelope.jpg,l11,antelope,2,warthog,0.9949032068252563
+2016 08 08 00 34 03_k10_antelope.jpg,k10,antelope,6,elephant,0.39086440205574036
+A_EK004159_k06_antelope.jpg,k06,antelope,2,warthog,0.9546111226081848
+03200167_h03_antelope.jpg,h03,antelope,0,waterbuck,0.22727668285369873
+08040469_c06_antelope.jpg,c06,antelope,4,bushbuck,0.928472101688385
+EK006064_h05_antelope.jpg,h05,antelope,2,warthog,0.45640742778778076
+EK004180_02_j03_antelope.jpg,j03,antelope,4,bushbuck,0.877452552318573
+EK004235_03_f07_antelope.jpg,f07,antelope,1,baboon,0.3381243348121643
+04290462_f11_antelope.jpg,f11,antelope,3,impala,0.47500261664390564
+EK001911_e06_antelope.jpg,e06,antelope,23,buffalo,0.23202764987945557
+EK000323_f01_antelope.jpg,f01,antelope,5,oribi,0.8174397349357605
+01160109_m08_antelope.jpg,m08,antelope,2,warthog,0.393502414226532
+2016 09 26 03 07 48_d05_antelope.jpg,d05,antelope,0,waterbuck,0.7672913670539856
+02020425_m08_antelope.jpg,m08,antelope,4,bushbuck,0.8895413279533386
+EK004565_k06_antelope.jpg,k06,antelope,1,baboon,0.8661847710609436
+2016 07 22 21 01 17_f07_antelope.jpg,f07,antelope,0,waterbuck,0.40277814865112305
+03220656_g08_antelope.jpg,g08,antelope,4,bushbuck,0.4805580675601959
+EK009274_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9630407691001892
+2016 10 13 06 43 24_m10_antelope.jpg,m10,antelope,1,baboon,0.9935178756713867
+2016 10 26 04 11 32_f01_antelope.jpg,f01,antelope,0,waterbuck,0.729011058807373
+11140129_d05_antelope.jpg,d05,antelope,2,warthog,0.9621798396110535
+2016 08 29 09 17 06_k06_antelope.jpg,k06,antelope,1,baboon,0.9155183434486389
+2016 08 31 05 20 07_d07_antelope.jpg,d07,antelope,4,bushbuck,0.7977984547615051
+05250538_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9981541037559509
+02020943_i04_antelope.jpg,i04,antelope,4,bushbuck,0.33595022559165955
+06050229_h03_antelope.jpg,h03,antelope,7,genet,0.266171395778656
+2016 09 02 00 27 48_e06_antelope.jpg,e06,antelope,2,warthog,0.6471279859542847
+12200043_l05_antelope.jpg,l05,antelope,2,warthog,0.9466155767440796
+09200565_h03_antelope.jpg,h03,antelope,1,baboon,0.5280233025550842
+EK002712_02_j13_antelope.jpg,j13,antelope,1,baboon,0.8346251845359802
+01130080_g12_antelope.jpg,g12,antelope,4,bushbuck,0.8052700161933899
+05250010_f11_antelope.jpg,f11,antelope,3,impala,0.41234660148620605
+07140751_e02_antelope.jpg,e02,antelope,2,warthog,0.43771132826805115
+2016 07 21 10 36 01_m08_antelope.jpg,m08,antelope,0,waterbuck,0.9969497323036194
+2016 11 04 02 45 25_i06_antelope.jpg,i06,antelope,0,waterbuck,0.8528660535812378
+EK000220_g10_antelope.jpg,g10,antelope,8,nyala,0.7841256260871887
+06020741_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9821797609329224
+2016 08 27 22 05 44_l07_antelope.jpg,l07,antelope,4,bushbuck,0.6092517375946045
+2016 10 29 11 14 39_e02_antelope.jpg,e02,antelope,0,waterbuck,0.44564446806907654
+04220034_h03_antelope.jpg,h03,antelope,5,oribi,0.37431633472442627
+12010603_d07_antelope.jpg,d07,antelope,2,warthog,0.9065706729888916
+08170051_e08_antelope.jpg,e08,antelope,0,waterbuck,0.32709801197052
+11190279_d07_antelope.jpg,d07,antelope,6,elephant,0.948593020439148
+2016 07 20 22 00 49_c06_antelope.jpg,c06,antelope,4,bushbuck,0.6062641739845276
+EK000112_h11_antelope.jpg,h11,antelope,4,bushbuck,0.6985101103782654
+EK008182_h05_antelope.jpg,h05,antelope,0,waterbuck,0.48136746883392334
+03130540_h03_antelope.jpg,h03,antelope,0,waterbuck,0.9954612851142883
+06250094_c08_antelope.jpg,c08,antelope,6,elephant,0.3889194428920746
+EK000343_b07_antelope.jpg,b07,antelope,9,wildebeest,0.5179842710494995
+12010605_d07_antelope.jpg,d07,antelope,4,bushbuck,0.6956603527069092
+2016 07 07 19 17 50_f01_antelope.jpg,f01,antelope,0,waterbuck,0.9924531579017639
+EK007030_i08_antelope.jpg,i08,antelope,5,oribi,0.21937663853168488
+EK002221_f03_antelope.jpg,f03,antelope,3,impala,0.6881238222122192
+2016 08 16 18 24 01_k06_antelope.jpg,k06,antelope,4,bushbuck,0.989402174949646
+2016 11 03 17 39 25_h07_antelope.jpg,h07,antelope,2,warthog,0.8893720507621765
+EK000483_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5852617621421814
+08090044_h07_antelope.jpg,h07,antelope,4,bushbuck,0.5575509667396545
+EK000090_h11_antelope.jpg,h11,antelope,4,bushbuck,0.39359113574028015
+03240747_g08_antelope.jpg,g08,antelope,0,waterbuck,0.7687700390815735
+2016 10 27 21 34 07_e06_antelope.jpg,e06,antelope,4,bushbuck,0.5247865319252014
+11110492_k10_antelope.jpg,k10,antelope,4,bushbuck,0.7258227467536926
+EK000086_h05_antelope.jpg,h05,antelope,0,waterbuck,0.9249680042266846
+03240748_g08_antelope.jpg,g08,antelope,0,waterbuck,0.5537638664245605
+2016 07 10 04 43 27_f11_antelope.jpg,f11,antelope,4,bushbuck,0.2967928647994995
+12210001_d07_antelope.jpg,d07,antelope,2,warthog,0.3555794358253479
+05200485_b09_antelope.jpg,b09,antelope,0,waterbuck,0.922946572303772
+07150701_d07_antelope.jpg,d07,antelope,0,waterbuck,0.9081931710243225
+2016 08 17 08 42 20_f07_antelope.jpg,f07,antelope,0,waterbuck,0.3033002018928528
+2016 11 02 20 48 41_g12_antelope.jpg,g12,antelope,2,warthog,0.5825438499450684
+EK000316_e06_antelope.jpg,e06,antelope,8,nyala,0.5860906839370728
+03280861_c08_antelope.jpg,c08,antelope,2,warthog,0.9634969234466553
+12020410_b07_antelope.jpg,b07,antelope,2,warthog,0.7790272831916809
+10240536_i04_antelope.jpg,i04,antelope,0,waterbuck,0.9877954721450806
+06260999_l11_antelope.jpg,l11,antelope,4,bushbuck,0.9887091517448425
+2016 10 17 07 39 39_h07_antelope.jpg,h07,antelope,2,warthog,0.5488775968551636
+07310369_b07_antelope.jpg,b07,antelope,0,waterbuck,0.5913923382759094
+EK000238_j13_antelope.jpg,j13,antelope,0,waterbuck,0.40427666902542114
+2016 07 29 10 32 08_k04_antelope.jpg,k04,antelope,2,warthog,0.8907858729362488
+10170069_l05_antelope.jpg,l05,antelope,6,elephant,0.401257187128067
+08190516_a10_antelope.jpg,a10,antelope,1,baboon,0.6146216988563538
+08230764_g08_antelope.jpg,g08,antelope,1,baboon,0.5826770067214966
+EK008104_01_h05_antelope.jpg,h05,antelope,3,impala,0.3940719962120056
+EK001819_03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.48902827501296997
+06030743_g08_antelope.jpg,g08,antelope,3,impala,0.56840980052948
+EK000280_j03_antelope.jpg,j03,antelope,4,bushbuck,0.5249348282814026
+05030664_e08_antelope.jpg,e08,antelope,3,impala,0.43050703406333923
+12140257_c08_antelope.jpg,c08,antelope,4,bushbuck,0.5103446245193481
+EK006731_e06_antelope.jpg,e06,antelope,2,warthog,0.32436347007751465
+EK001066_h11_antelope.jpg,h11,antelope,4,bushbuck,0.9896935820579529
+08010674_g08_antelope.jpg,g08,antelope,2,warthog,0.8917363286018372
+B_EK003816_02_k06_antelope.jpg,k06,antelope,2,warthog,0.6500515341758728
+06240426_f05_antelope.jpg,f05,antelope,2,warthog,0.3537389039993286
+2016 10 21 02 58 35_f01_antelope.jpg,f01,antelope,0,waterbuck,0.6646369695663452
+2016 10 30 01 12 51_e02_antelope.jpg,e02,antelope,6,elephant,0.3170913755893707
+EK006934_01_f07_antelope.jpg,f07,antelope,7,genet,0.6630033850669861
+04190406_f11_antelope.jpg,f11,antelope,0,waterbuck,0.6707342267036438
+EK005132_01_j03_antelope.jpg,j03,antelope,0,waterbuck,0.998925507068634
+04100702_d07_antelope.jpg,d07,antelope,4,bushbuck,0.9917569756507874
+EK000485_h11_antelope.jpg,h11,antelope,6,elephant,0.6103842854499817
+02200966_g06_antelope.jpg,g06,antelope,7,genet,0.3993346691131592
+EK001299_j13_antelope.jpg,j13,antelope,0,waterbuck,0.3686981201171875
+06120218_f05_antelope.jpg,f05,antelope,2,warthog,0.8415862917900085
+2016 07 26 17 28 56_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9503621459007263
+EK002573_e06_antelope.jpg,e06,antelope,2,warthog,0.4519132375717163
+EK000751_j03_antelope.jpg,j03,antelope,0,waterbuck,0.8687291145324707
+EK001300_j13_antelope.jpg,j13,antelope,0,waterbuck,0.4608514606952667
+EK002105_03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.6790244579315186
+2016 08 28 00 24 49_e08_antelope.jpg,e08,antelope,3,impala,0.9594494104385376
+10170068_l05_antelope.jpg,l05,antelope,4,bushbuck,0.8221141695976257
+EK001014_f01_antelope.jpg,f01,antelope,0,waterbuck,0.8581745624542236
+EK000144_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5067740678787231
+2016 07 20 12 42 31_f03_antelope.jpg,f03,antelope,2,warthog,0.9798230528831482
+EK006461_h05_antelope.jpg,h05,antelope,0,waterbuck,0.47457441687583923
+08040416_g08_antelope.jpg,g08,antelope,3,impala,0.9947928786277771
+2016 10 06 17 49 15_e04_antelope.jpg,e04,antelope,0,waterbuck,0.7302464246749878
+11120499_k10_antelope.jpg,k10,antelope,4,bushbuck,0.970228910446167
+2016 09 22 01 10 07_f01_antelope.jpg,f01,antelope,0,waterbuck,0.7023903131484985
+EK001093_k06_antelope.jpg,k06,antelope,3,impala,0.5947169065475464
+2016 07 14 18 04 16_c06_antelope.jpg,c06,antelope,4,bushbuck,0.9664719104766846
+2016 10 26 17 48 33_e06_antelope.jpg,e06,antelope,2,warthog,0.90129554271698
+2016 10 31 06 49 39_h07_antelope.jpg,h07,antelope,1,baboon,0.8767129778862
+03290124_k10_antelope.jpg,k10,antelope,1,baboon,0.9771495461463928
+2016 10 21 17 52 13_e04_antelope.jpg,e04,antelope,0,waterbuck,0.9734689593315125
+2016 09 24 04 30 41_b09_antelope.jpg,b09,antelope,3,impala,0.25947296619415283
+05280915_f09_antelope.jpg,f09,antelope,0,waterbuck,0.62758469581604
+2016 07 15 05 44 54_c06_antelope.jpg,c06,antelope,4,bushbuck,0.4209415316581726
+2016 10 22 00 05 54_e04_antelope.jpg,e04,antelope,0,waterbuck,0.9985287189483643
+EK000172_h05_antelope.jpg,h05,antelope,0,waterbuck,0.638757050037384
+2016 10 26 05 17 59_c06_antelope.jpg,c06,antelope,3,impala,0.5295528769493103
+EK001156_e06_antelope.jpg,e06,antelope,4,bushbuck,0.6989033818244934
+03130539_h03_antelope.jpg,h03,antelope,2,warthog,0.7997452616691589
+EK002762_h05_antelope.jpg,h05,antelope,0,waterbuck,0.3691527545452118
+EK002981_j13_antelope.jpg,j13,antelope,1,baboon,0.987432599067688
+EK007784_j03_antelope.jpg,j03,antelope,5,oribi,0.9645848870277405
+EK003424_e04_antelope.jpg,e04,antelope,0,waterbuck,0.49793049693107605
+2016 07 20 22 03 38_c06_antelope.jpg,c06,antelope,4,bushbuck,0.8111131191253662
+2016 10 13 21 28 56_j09_antelope.jpg,j09,antelope,4,bushbuck,0.9733890891075134
+EK000071_b07_antelope.jpg,b07,antelope,4,bushbuck,0.7066331505775452
+2016 08 15 02 29 56_i12_antelope.jpg,i12,antelope,4,bushbuck,0.26218292117118835
+02270977_j07_antelope.jpg,j07,antelope,4,bushbuck,0.9469738602638245
+2016 08 17 21 50 10_i14_antelope.jpg,i14,antelope,4,bushbuck,0.8475748300552368
+EK000752_e04_antelope.jpg,e04,antelope,3,impala,0.9812387228012085
+2016 10 29 17 58 49_e08_antelope.jpg,e08,antelope,10,reedbuck,0.7535828351974487
+2016 06 29 07 30 11_f03_antelope.jpg,f03,antelope,2,warthog,0.41066765785217285
+EK000254_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9979079961776733
+EK005451_e04_antelope.jpg,e04,antelope,1,baboon,0.5400132536888123
+2016 07 31 17 20 17_k06_antelope.jpg,k06,antelope,1,baboon,0.9757223725318909
+12260924_f09_antelope.jpg,f09,antelope,4,bushbuck,0.9917556047439575
+2016 08 23 10 29 59_k04_antelope.jpg,k04,antelope,2,warthog,0.7320679426193237
+EK000702_e06_antelope.jpg,e06,antelope,2,warthog,0.7234645485877991
+01180162_d05_antelope.jpg,d05,antelope,0,waterbuck,0.8196658492088318
+B_EK004198_02_k06_antelope.jpg,k06,antelope,2,warthog,0.7646992802619934
+2016 09 01 00 01 07_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9879063367843628
+EK002620_b07_antelope.jpg,b07,antelope,4,bushbuck,0.6190709471702576
+03270772_g08_antelope.jpg,g08,antelope,2,warthog,0.7268849015235901
+04100786_h03_antelope.jpg,h03,antelope,3,impala,0.3029485046863556
+EK001150_e06_antelope.jpg,e06,antelope,2,warthog,0.8428066372871399
+07140737_e02_antelope.jpg,e02,antelope,0,waterbuck,0.25604650378227234
+B_EK007526_02_k06_antelope.jpg,k06,antelope,4,bushbuck,0.7136637568473816
+2016 09 17 01 21 41_l07_antelope.jpg,l07,antelope,4,bushbuck,0.7390981912612915
+2016 10 25 02 23 31_e06_antelope.jpg,e06,antelope,2,warthog,0.9384298920631409
+01290014_b07_antelope.jpg,b07,antelope,2,warthog,0.5263913869857788
+EK005261_f07_antelope.jpg,f07,antelope,5,oribi,0.3833843767642975
+A_EK006533_k06_antelope.jpg,k06,antelope,2,warthog,0.6337324976921082
+2016 10 29 11 13 50_e02_antelope.jpg,e02,antelope,2,warthog,0.5637876391410828
+2016 10 13 23 55 00_b07_antelope.jpg,b07,antelope,3,impala,0.6376293301582336
+2016 10 21 19 50 45_k06_antelope.jpg,k06,antelope,2,warthog,0.994239091873169
+EK001131_f07_antelope.jpg,f07,antelope,2,warthog,0.6051401495933533
+EK000344_h11_antelope.jpg,h11,antelope,0,waterbuck,0.9583355188369751
+EK000057_f01_antelope.jpg,f01,antelope,7,genet,0.7150043845176697
+2016 10 22 18 30 21_d05_antelope.jpg,d05,antelope,8,nyala,0.44841453433036804
+2016 08 30 00 54 08_d07_antelope.jpg,d07,antelope,4,bushbuck,0.8810110092163086
+EK009268_i08_antelope.jpg,i08,antelope,4,bushbuck,0.918243408203125
+2016 09 13 07 10 49_h03_antelope.jpg,h03,antelope,3,impala,0.9270286560058594
+03220654_g08_antelope.jpg,g08,antelope,4,bushbuck,0.875499427318573
+10290804_k10_antelope.jpg,k10,antelope,4,bushbuck,0.5898383855819702
+04150412_k10_antelope.jpg,k10,antelope,4,bushbuck,0.9532917737960815
+2016 11 06 20 44 17_a10_antelope.jpg,a10,antelope,4,bushbuck,0.32926416397094727
+2016 08 28 00 24 50_e08_antelope.jpg,e08,antelope,0,waterbuck,0.4899020195007324
+2016 08 08 00 33 04_k10_antelope.jpg,k10,antelope,4,bushbuck,0.2948256731033325
+09010011_m10_antelope.jpg,m10,antelope,4,bushbuck,0.9778643250465393
+2016 07 29 19 49 29_e06_antelope.jpg,e06,antelope,2,warthog,0.8776720762252808
+01020869_m08_antelope.jpg,m08,antelope,2,warthog,0.5822755694389343
+02020122_e02_antelope.jpg,e02,antelope,5,oribi,0.6655941605567932
+EK002833_f03_antelope.jpg,f03,antelope,8,nyala,0.6079725027084351
+2016 10 03 03 51 45_g04_antelope.jpg,g04,antelope,4,bushbuck,0.9916356801986694
+03300608_e08_antelope.jpg,e08,antelope,4,bushbuck,0.9976531863212585
+2016 11 07 00 41 42_i10_antelope.jpg,i10,antelope,2,warthog,0.8058157563209534
+EK005882_h05_antelope.jpg,h05,antelope,1,baboon,0.3739323914051056
+05210733_e08_antelope.jpg,e08,antelope,2,warthog,0.5135704278945923
+EK000484_f01_antelope.jpg,f01,antelope,0,waterbuck,0.20285600423812866
+04150411_k10_antelope.jpg,k10,antelope,4,bushbuck,0.9582089781761169
+2016 11 02 20 48 40_g12_antelope.jpg,g12,antelope,2,warthog,0.6251906156539917
+EK001936_j13_antelope.jpg,j13,antelope,2,warthog,0.9969643950462341
+2016 09 24 04 30 40_b09_antelope.jpg,b09,antelope,0,waterbuck,0.31463223695755005
+EK002128_01_h05_antelope.jpg,h05,antelope,4,bushbuck,0.33373668789863586
+EK000968_02_h05_antelope.jpg,h05,antelope,3,impala,0.6861938238143921
+2016 07 05 18 24 07_e06_antelope.jpg,e06,antelope,2,warthog,0.9686910510063171
+04190404_f11_antelope.jpg,f11,antelope,0,waterbuck,0.47014978528022766
+04210539_h03_antelope.jpg,h03,antelope,11,civet,0.505423367023468
+10160168_d07_antelope.jpg,d07,antelope,4,bushbuck,0.35762056708335876
+2016 10 10 15 52 27_g06_antelope.jpg,g06,antelope,2,warthog,0.6017685532569885
+2016 09 22 02 38 41_j13_antelope.jpg,j13,antelope,4,bushbuck,0.32002583146095276
+09010863_e10_antelope.jpg,e10,antelope,25,hartebeest,0.4813033938407898
+2016 10 21 08 34 36_h07_antelope.jpg,h07,antelope,2,warthog,0.5948735475540161
+09060596_e02_antelope.jpg,e02,antelope,1,baboon,0.48726341128349304
+12250069_h03_antelope.jpg,h03,antelope,6,elephant,0.9874043464660645
+EK002690_f07_antelope.jpg,f07,antelope,0,waterbuck,0.29711881279945374
+08040410_g08_antelope.jpg,g08,antelope,6,elephant,0.7473033666610718
+2016 10 15 10 52 01_e02_antelope.jpg,e02,antelope,4,bushbuck,0.97378009557724
+EK005917_01_j03_antelope.jpg,j03,antelope,0,waterbuck,0.7883181571960449
+06240377_g08_antelope.jpg,g08,antelope,4,bushbuck,0.6788093447685242
+02130773_c08_antelope.jpg,c08,antelope,5,oribi,0.4398219585418701
+EK007667_f07_antelope.jpg,f07,antelope,2,warthog,0.5579675436019897
+02120750_k04_antelope.jpg,k04,antelope,2,warthog,0.7591019868850708
+07220811_f05_antelope.jpg,f05,antelope,2,warthog,0.7050830125808716
+2016 09 26 17 37 33_c06_antelope.jpg,c06,antelope,2,warthog,0.8330574631690979
+02190971_k04_antelope.jpg,k04,antelope,1,baboon,0.8245449662208557
+2016 10 06 18 13 18_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9857963919639587
+EK008839_01_j13_antelope.jpg,j13,antelope,4,bushbuck,0.36907660961151123
+2016 10 22 19 44 14_f07_antelope.jpg,f07,antelope,2,warthog,0.4206841289997101
+03040713_h03_antelope.jpg,h03,antelope,0,waterbuck,0.5257787704467773
+11120845_e02_antelope.jpg,e02,antelope,4,bushbuck,0.9445902109146118
+EK000456_e06_antelope.jpg,e06,antelope,0,waterbuck,0.34810394048690796
+10250554_j07_antelope.jpg,j07,antelope,0,waterbuck,0.561653196811676
+07150212_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9980584979057312
+10150292_j07_antelope.jpg,j07,antelope,4,bushbuck,0.9958068132400513
+EK002227_k06_antelope.jpg,k06,antelope,1,baboon,0.8558735251426697
+03260854_c08_antelope.jpg,c08,antelope,2,warthog,0.8688762784004211
+2016 08 30 00 54 42_d07_antelope.jpg,d07,antelope,4,bushbuck,0.9290391802787781
+01030370_d07_antelope.jpg,d07,antelope,2,warthog,0.9842632412910461
+2016 10 29 11 12 21_e02_antelope.jpg,e02,antelope,4,bushbuck,0.7161997556686401
+2016 07 19 00 20 01_f11_antelope.jpg,f11,antelope,4,bushbuck,0.3995054364204407
+2016 09 10 03 47 55_a10_antelope.jpg,a10,antelope,4,bushbuck,0.5533113479614258
+EK006656_k06_antelope.jpg,k06,antelope,2,warthog,0.9580406546592712
+10250555_j07_antelope.jpg,j07,antelope,0,waterbuck,0.38090670108795166
+2016 07 29 05 51 05_l05_antelope.jpg,l05,antelope,0,waterbuck,0.9146741032600403
+EK000455_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9751197695732117
+04200043_d07_antelope.jpg,d07,antelope,0,waterbuck,0.6707528829574585
+2016 08 06 10 39 41_j03_antelope.jpg,j03,antelope,0,waterbuck,0.3933049142360687
+06070659_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9759871959686279
+2016 09 03 09 50 51_g04_antelope.jpg,g04,antelope,2,warthog,0.60285884141922
+07130195_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9439505338668823
+01060779_h03_antelope.jpg,h03,antelope,0,waterbuck,0.7330324649810791
+EK000744_h05_antelope.jpg,h05,antelope,1,baboon,0.9695296287536621
+2016 10 26 17 42 31_e06_antelope.jpg,e06,antelope,2,warthog,0.8790208101272583
+EK009025_01_h05_antelope.jpg,h05,antelope,0,waterbuck,0.39207223057746887
+03270771_g08_antelope.jpg,g08,antelope,0,waterbuck,0.44375675916671753
+2016 10 18 03 37 41_h05_antelope.jpg,h05,antelope,0,waterbuck,0.8895865082740784
+EK000808_h05_antelope.jpg,h05,antelope,3,impala,0.7430046796798706
+2016 08 02 17 20 13_d07_antelope.jpg,d07,antelope,5,oribi,0.6069594621658325
+EK002511_k06_antelope.jpg,k06,antelope,2,warthog,0.9066612720489502
+2016 09 07 04 56 40_e06_antelope.jpg,e06,antelope,2,warthog,0.5798279643058777
+12180938_f05_antelope.jpg,f05,antelope,5,oribi,0.44337186217308044
+01050816_b09_antelope.jpg,b09,antelope,1,baboon,0.5178784132003784
+2016 10 11 22 20 30_i08_antelope.jpg,i08,antelope,2,warthog,0.7344480156898499
+2016 07 27 18 49 32_f01_antelope.jpg,f01,antelope,5,oribi,0.76310133934021
+2016 10 29 07 51 55_d07_antelope.jpg,d07,antelope,1,baboon,0.4711911082267761
+2016 10 28 17 16 02_e06_antelope.jpg,e06,antelope,1,baboon,0.8325257897377014
+2016 08 16 18 42 02_d05_antelope.jpg,d05,antelope,7,genet,0.3905901610851288
+11100555_d07_antelope.jpg,d07,antelope,4,bushbuck,0.7992347478866577
+03220657_g08_antelope.jpg,g08,antelope,0,waterbuck,0.7944575548171997
+EK006725_h05_antelope.jpg,h05,antelope,0,waterbuck,0.3898860514163971
+07030048_k04_antelope.jpg,k04,antelope,6,elephant,0.8026753067970276
+2016 10 22 18 28 05_d05_antelope.jpg,d05,antelope,2,warthog,0.45635539293289185
+06120017_e02_antelope.jpg,e02,antelope,4,bushbuck,0.4860367178916931
+EK003259_03_f07_antelope.jpg,f07,antelope,1,baboon,0.4776405394077301
+08180666_l11_antelope.jpg,l11,antelope,2,warthog,0.9738910794258118
+2016 07 18 08 10 21_k04_antelope.jpg,k04,antelope,2,warthog,0.8976055979728699
+EK000750_e04_antelope.jpg,e04,antelope,3,impala,0.8460960388183594
+EK000718_f01_antelope.jpg,f01,antelope,0,waterbuck,0.48499947786331177
+2016 10 13 06 43 25_m10_antelope.jpg,m10,antelope,1,baboon,0.5832824110984802
+02160889_e10_antelope.jpg,e10,antelope,0,waterbuck,0.857097327709198
+12180121_l13_antelope.jpg,l13,antelope,0,waterbuck,0.6680887937545776
+EK005596_03_f07_antelope.jpg,f07,antelope,1,baboon,0.7633959054946899
+EK005367_g10_antelope.jpg,g10,antelope,2,warthog,0.7227111458778381
+EK005165_k06_antelope.jpg,k06,antelope,0,waterbuck,0.9467040300369263
+04030209_d07_antelope.jpg,d07,antelope,4,bushbuck,0.6837003231048584
+01110999_h03_antelope.jpg,h03,antelope,0,waterbuck,0.48700717091560364
+2016 09 09 05 44 43_c08_antelope.jpg,c08,antelope,2,warthog,0.7658997774124146
+EK008180_h05_antelope.jpg,h05,antelope,2,warthog,0.9571634531021118
+11210332_d07_antelope.jpg,d07,antelope,2,warthog,0.9929314851760864
+EK003156_e04_antelope.jpg,e04,antelope,5,oribi,0.374754399061203
+EK004566_k06_antelope.jpg,k06,antelope,1,baboon,0.42184796929359436
+2016 10 06 18 13 17_i08_antelope.jpg,i08,antelope,4,bushbuck,0.8358047604560852
+EK004961_f07_antelope.jpg,f07,antelope,3,impala,0.2197868376970291
+EK001818_h05_antelope.jpg,h05,antelope,0,waterbuck,0.28362762928009033
+04280723_f01_antelope.jpg,f01,antelope,4,bushbuck,0.589426577091217
+09120528_f01_antelope.jpg,f01,antelope,1,baboon,0.987191915512085
+01290456_g06_antelope.jpg,g06,antelope,3,impala,0.6482911705970764
+EK002411_i08_antelope.jpg,i08,antelope,4,bushbuck,0.8195415735244751
+06040825_i04_antelope.jpg,i04,antelope,4,bushbuck,0.9528721570968628
+2016 08 30 01 28 31_k06_antelope.jpg,k06,antelope,2,warthog,0.5417196750640869
+B_EK003817_02_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9560167193412781
+2016 08 22 17 08 57_f03_antelope.jpg,f03,antelope,3,impala,0.9528642296791077
+2016 07 19 04 14 06_k06_antelope.jpg,k06,antelope,2,warthog,0.5220842957496643
+EK000281_j03_antelope.jpg,j03,antelope,0,waterbuck,0.7500665783882141
+12200044_l05_antelope.jpg,l05,antelope,2,warthog,0.9483469724655151
+2016 11 02 04 25 55_e06_antelope.jpg,e06,antelope,1,baboon,0.6823335289955139
+2016 07 29 03 52 53_l07_antelope.jpg,l07,antelope,4,bushbuck,0.8490001559257507
+2016 11 10 22 35 26_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9985425472259521
+EK002856_e04_antelope.jpg,e04,antelope,3,impala,0.4037865102291107
+EK002619_b07_antelope.jpg,b07,antelope,4,bushbuck,0.4483089745044708
+2016 10 25 00 23 09_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5694389939308167
+2016 10 31 04 25 45_e06_antelope.jpg,e06,antelope,2,warthog,0.7121732831001282
+02270555_h03_antelope.jpg,h03,antelope,0,waterbuck,0.8502110242843628
+07180553_e10_antelope.jpg,e10,antelope,1,baboon,0.9483006596565247
+EK001108_01_h05_antelope.jpg,h05,antelope,3,impala,0.8720303773880005
+04280064_c08_antelope.jpg,c08,antelope,4,bushbuck,0.574315071105957
+08040415_g08_antelope.jpg,g08,antelope,3,impala,0.9935210347175598
+C_EK001762_03_k06_antelope.jpg,k06,antelope,2,warthog,0.5712024569511414
+2016 07 12 19 08 40_c06_antelope.jpg,c06,antelope,4,bushbuck,0.5083258748054504
+09090913_f05_antelope.jpg,f05,antelope,2,warthog,0.8079989552497864
+2016 08 07 09 58 45_h03_antelope.jpg,h03,antelope,2,warthog,0.6921123266220093
+2016 11 03 19 49 58_h03_antelope.jpg,h03,antelope,11,civet,0.8417949676513672
+2016 08 07 17 49 40_f11_antelope.jpg,f11,antelope,3,impala,0.5597932934761047
+2016 10 15 10 48 50_e02_antelope.jpg,e02,antelope,0,waterbuck,0.7420366406440735
+2016 10 10 23 07 11_b07_antelope.jpg,b07,antelope,2,warthog,0.3388075530529022
+2016 11 04 08 12 08_e02_antelope.jpg,e02,antelope,5,oribi,0.9584053754806519
+2016 07 26 19 40 04_i08_antelope.jpg,i08,antelope,8,nyala,0.4791100323200226
+2016 08 30 05 28 12_m10_antelope.jpg,m10,antelope,4,bushbuck,0.8973897099494934
+05250011_f11_antelope.jpg,f11,antelope,4,bushbuck,0.5655071139335632
+EK000089_h11_antelope.jpg,h11,antelope,4,bushbuck,0.3570103347301483
+EK005135_01_j03_antelope.jpg,j03,antelope,0,waterbuck,0.674166738986969
+2016 10 05 23 19 51_k06_antelope.jpg,k06,antelope,2,warthog,0.8558752536773682
+2016 08 08 00 36 06_k10_antelope.jpg,k10,antelope,0,waterbuck,0.8558866381645203
+EK006638_h05_antelope.jpg,h05,antelope,0,waterbuck,0.3311172425746918
+08240756_l11_antelope.jpg,l11,antelope,2,warthog,0.7708579897880554
+B_EK005410_02_k06_antelope.jpg,k06,antelope,0,waterbuck,0.6921408176422119
+07220812_f05_antelope.jpg,f05,antelope,2,warthog,0.7483125329017639
+EK001419_04_h05_antelope.jpg,h05,antelope,3,impala,0.446180135011673
+2016 07 29 17 34 53_a10_antelope.jpg,a10,antelope,1,baboon,0.4927787482738495
+07220809_f05_antelope.jpg,f05,antelope,2,warthog,0.5833700299263
+2016 09 07 05 02 30_l05_antelope.jpg,l05,antelope,4,bushbuck,0.9090567827224731
+03040710_h03_antelope.jpg,h03,antelope,0,waterbuck,0.7172564268112183
+06200085_i12_antelope.jpg,i12,antelope,2,warthog,0.33914461731910706
+06040826_i04_antelope.jpg,i04,antelope,4,bushbuck,0.9398760199546814
+09120526_f01_antelope.jpg,f01,antelope,1,baboon,0.9734975695610046
+2016 09 07 23 35 53_e06_antelope.jpg,e06,antelope,2,warthog,0.6600469946861267
+B_EK008112_02_k06_antelope.jpg,k06,antelope,0,waterbuck,0.7923182249069214
+2016 08 26 04 49 15_d07_antelope.jpg,d07,antelope,4,bushbuck,0.6311177611351013
+A_EK005656_k06_antelope.jpg,k06,antelope,2,warthog,0.9627693295478821
+02080888_h03_antelope.jpg,h03,antelope,6,elephant,0.8154596090316772
+2016 10 15 10 56 34_e02_antelope.jpg,e02,antelope,0,waterbuck,0.6304952502250671
+07150211_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9986866116523743
+10290805_k10_antelope.jpg,k10,antelope,4,bushbuck,0.8890711665153503
+EK000455_e06_antelope.jpg,e06,antelope,0,waterbuck,0.29040971398353577
+2016 08 30 23 45 53_h05_antelope.jpg,h05,antelope,3,impala,0.4186592400074005
+2016 09 05 23 08 33_a06_antelope.jpg,a06,antelope,4,bushbuck,0.9739887714385986
+2016 08 30 01 14 27_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9483641386032104
+2016 07 18 18 37 47_a06_antelope.jpg,a06,antelope,0,waterbuck,0.6649495363235474
+EK001432_f01_antelope.jpg,f01,antelope,7,genet,0.7135058641433716
+EK009181_h05_antelope.jpg,h05,antelope,3,impala,0.7174752354621887
+04130350_j07_antelope.jpg,j07,antelope,0,waterbuck,0.847476601600647
+2016 07 31 21 19 06_h07_antelope.jpg,h07,antelope,4,bushbuck,0.44559445977211
+2016 10 13 21 28 55_j09_antelope.jpg,j09,antelope,4,bushbuck,0.9972724318504333
+02080889_h03_antelope.jpg,h03,antelope,6,elephant,0.6444018483161926
+05230015_e10_antelope.jpg,e10,antelope,0,waterbuck,0.8540425300598145
+2016 08 30 01 09 31_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9960804581642151
+02090284_k04_antelope.jpg,k04,antelope,0,waterbuck,0.6878966689109802
+EK006659_i08_antelope.jpg,i08,antelope,0,waterbuck,0.7398369312286377
+02210960_k10_antelope.jpg,k10,antelope,1,baboon,0.5315083861351013
+EK008729_03_h05_antelope.jpg,h05,antelope,23,buffalo,0.3864150941371918
+2016 07 17 09 08 44_f05_antelope.jpg,f05,antelope,2,warthog,0.5810751914978027
+A_EK004669_k06_antelope.jpg,k06,antelope,2,warthog,0.6405526995658875
+02200918_e10_antelope.jpg,e10,antelope,0,waterbuck,0.6302815675735474
+10160705_i12_antelope.jpg,i12,antelope,2,warthog,0.4082612991333008
+04040502_h03_antelope.jpg,h03,antelope,3,impala,0.5230984687805176
+EK006589_f07_antelope.jpg,f07,antelope,1,baboon,0.8457056879997253
+EK007902_03_h05_antelope.jpg,h05,antelope,0,waterbuck,0.5299121141433716
+EK009398_01_f07_antelope.jpg,f07,antelope,2,warthog,0.47062888741493225
+2016 09 01 02 27 40_e06_antelope.jpg,e06,antelope,2,warthog,0.717491090297699
+05060182_d07_antelope.jpg,d07,antelope,0,waterbuck,0.6534894108772278
+2016 07 20 17 55 26_l13_antelope.jpg,l13,antelope,4,bushbuck,0.3211062550544739
+01010034_m08_antelope.jpg,m08,antelope,4,bushbuck,0.6148865818977356
+EK001149_f01_antelope.jpg,f01,antelope,0,waterbuck,0.7073302865028381
+2016 08 08 00 38 23_k10_antelope.jpg,k10,antelope,0,waterbuck,0.9706897735595703
+EK001874_j13_antelope.jpg,j13,antelope,4,bushbuck,0.38658368587493896
+2016 08 25 22 33 40_f01_antelope.jpg,f01,antelope,0,waterbuck,0.9545845985412598
+07310277_f11_antelope.jpg,f11,antelope,0,waterbuck,0.9946126937866211
+11150213_d07_antelope.jpg,d07,antelope,2,warthog,0.9408443570137024
+2016 07 10 23 51 38_k04_antelope.jpg,k04,antelope,4,bushbuck,0.7289521098136902
+2016 08 08 00 40 08_b07_antelope.jpg,b07,antelope,2,warthog,0.6005784869194031
+12090055_e02_antelope.jpg,e02,antelope,4,bushbuck,0.9669430255889893
+EK002555_b07_antelope.jpg,b07,antelope,4,bushbuck,0.7605273127555847
+EK009272_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9799827337265015
+EK000253_e04_antelope.jpg,e04,antelope,4,bushbuck,0.4295327067375183
+2016 09 05 23 08 32_a06_antelope.jpg,a06,antelope,4,bushbuck,0.9886265397071838
+07180556_e10_antelope.jpg,e10,antelope,4,bushbuck,0.5702807903289795
+2016 09 06 21 20 10_f01_antelope.jpg,f01,antelope,4,bushbuck,0.9179827570915222
+EK004382_b07_antelope.jpg,b07,antelope,0,waterbuck,0.8945227265357971
+11050709_f11_antelope.jpg,f11,antelope,4,bushbuck,0.8122180700302124
+08070547_k04_antelope.jpg,k04,antelope,0,waterbuck,0.6623547673225403
+06220267_i04_antelope.jpg,i04,antelope,2,warthog,0.9368336200714111
+EK003313_h05_antelope.jpg,h05,antelope,2,warthog,0.29317232966423035
+02230426_h03_antelope.jpg,h03,antelope,0,waterbuck,0.4150409996509552
+EK003365_h05_antelope.jpg,h05,antelope,0,waterbuck,0.7633634209632874
+11210036_g08_antelope.jpg,g08,antelope,0,waterbuck,0.8524158596992493
+03150334_f01_antelope.jpg,f01,antelope,5,oribi,0.6750208735466003
+EK001110_01_h05_antelope.jpg,h05,antelope,6,elephant,0.8970205783843994
+A_EK004670_k06_antelope.jpg,k06,antelope,2,warthog,0.6779844164848328
+EK004995_f07_antelope.jpg,f07,antelope,0,waterbuck,0.977990984916687
+03020479_h03_antelope.jpg,h03,antelope,3,impala,0.6544584035873413
+B_EK000140_02_k06_antelope.jpg,k06,antelope,2,warthog,0.8704231977462769
+EK002912_h05_antelope.jpg,h05,antelope,0,waterbuck,0.2705953121185303
+06260022_k12_antelope.jpg,k12,antelope,1,baboon,0.8765615224838257
+02160247_h03_antelope.jpg,h03,antelope,0,waterbuck,0.6161672472953796
+2016 08 02 21 45 11_d03_antelope.jpg,d03,antelope,2,warthog,0.9389163255691528
+EK008643_j09_antelope.jpg,j09,antelope,4,bushbuck,0.6186692118644714
+11120848_e02_antelope.jpg,e02,antelope,6,elephant,0.25013354420661926
+05230014_e10_antelope.jpg,e10,antelope,0,waterbuck,0.9184991717338562
+2016 10 27 21 34 49_e06_antelope.jpg,e06,antelope,0,waterbuck,0.9875232577323914
+EK000705_02_h05_antelope.jpg,h05,antelope,11,civet,0.26891544461250305
+05310865_h07_antelope.jpg,h07,antelope,2,warthog,0.4555429220199585
+2016 08 23 12 19 18_k04_antelope.jpg,k04,antelope,2,warthog,0.5819976329803467
+01020243_m08_antelope.jpg,m08,antelope,4,bushbuck,0.9791527390480042
+2016 09 01 04 17 59_f01_antelope.jpg,f01,antelope,0,waterbuck,0.6018548011779785
+2016 07 14 05 13 27_e08_antelope.jpg,e08,antelope,4,bushbuck,0.938255250453949
+05070251_h03_antelope.jpg,h03,antelope,2,warthog,0.6168471574783325
+03050767_f01_antelope.jpg,f01,antelope,0,waterbuck,0.7574599981307983
+2016 08 23 03 32 10_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9616455435752869
+EK000237_j13_antelope.jpg,j13,antelope,0,waterbuck,0.4866698682308197
+2016 08 23 12 19 19_k04_antelope.jpg,k04,antelope,2,warthog,0.790747880935669
+2016 11 01 10 13 24_d07_antelope.jpg,d07,antelope,1,baboon,0.98135906457901
+EK000886_02_h05_antelope.jpg,h05,antelope,1,baboon,0.7907085418701172
+2016 09 20 03 10 52_e10_antelope.jpg,e10,antelope,2,warthog,0.8865988254547119
+2016 08 10 23 18 19_k08_antelope.jpg,k08,antelope,0,waterbuck,0.5312992930412292
+2016 08 08 00 34 32_k10_antelope.jpg,k10,antelope,0,waterbuck,0.9038543701171875
+2016 08 19 03 38 35_h07_antelope.jpg,h07,antelope,8,nyala,0.8962936997413635
+2016 10 22 18 29 10_d05_antelope.jpg,d05,antelope,4,bushbuck,0.9865865707397461
+EK001409_i08_antelope.jpg,i08,antelope,4,bushbuck,0.985116720199585
+01180163_d05_antelope.jpg,d05,antelope,0,waterbuck,0.850684642791748
+04210504_j07_antelope.jpg,j07,antelope,0,waterbuck,0.5318414568901062
+01190306_g06_antelope.jpg,g06,antelope,0,waterbuck,0.7731126546859741
+2016 07 14 20 48 09_i04_antelope.jpg,i04,antelope,4,bushbuck,0.816229522228241
+09270950_e10_antelope.jpg,e10,antelope,0,waterbuck,0.7693125009536743
+04280057_c08_antelope.jpg,c08,antelope,0,waterbuck,0.6995937824249268
+07220805_f05_antelope.jpg,f05,antelope,2,warthog,0.5040213465690613
+2016 08 02 17 20 14_d07_antelope.jpg,d07,antelope,3,impala,0.5687206387519836
+2016 08 18 18 42 03_f11_antelope.jpg,f11,antelope,4,bushbuck,0.9240512847900391
+02200917_e10_antelope.jpg,e10,antelope,0,waterbuck,0.8017992377281189
+EK007017_03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.33703529834747314
+EK007783_j03_antelope.jpg,j03,antelope,5,oribi,0.9369570016860962
+04180639_e08_antelope.jpg,e08,antelope,0,waterbuck,0.7253246903419495
+01180081_i10_antelope.jpg,i10,antelope,2,warthog,0.9735338091850281
+2016 11 07 00 43 37_i10_antelope.jpg,i10,antelope,2,warthog,0.9716637134552002
+2016 07 19 17 53 05_k06_antelope.jpg,k06,antelope,2,warthog,0.6599698662757874
+05110454_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9636617302894592
+05140465_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9948556423187256
+EK001238_h11_antelope.jpg,h11,antelope,1,baboon,0.5656996965408325
+2016 11 03 19 49 59_h03_antelope.jpg,h03,antelope,7,genet,0.32422491908073425
+2016 08 10 05 49 03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.4609968662261963
+EK002621_b07_antelope.jpg,b07,antelope,4,bushbuck,0.9375908970832825
+EK009899_j03_antelope.jpg,j03,antelope,0,waterbuck,0.7727726697921753
+2016 10 11 22 20 29_i08_antelope.jpg,i08,antelope,2,warthog,0.7666013836860657
+05210735_e08_antelope.jpg,e08,antelope,4,bushbuck,0.5146374702453613
+02070509_d07_antelope.jpg,d07,antelope,2,warthog,0.896145761013031
+03060162_f11_antelope.jpg,f11,antelope,4,bushbuck,0.995441198348999
+2016 08 07 20 35 34_l05_antelope.jpg,l05,antelope,4,bushbuck,0.9985499978065491
+10270177_h03_antelope.jpg,h03,antelope,4,bushbuck,0.9591625332832336
+EK004667_03_f07_antelope.jpg,f07,antelope,3,impala,0.39372432231903076
+04290791_g06_antelope.jpg,g06,antelope,7,genet,0.4745216965675354
+2016 10 21 21 17 42_k06_antelope.jpg,k06,antelope,2,warthog,0.960648775100708
+B_EK004426_02_k06_antelope.jpg,k06,antelope,2,warthog,0.7363326549530029
+04130017_h03_antelope.jpg,h03,antelope,2,warthog,0.651817798614502
+2016 10 11 09 59 05_l05_antelope.jpg,l05,antelope,2,warthog,0.5906350016593933
+06260023_k12_antelope.jpg,k12,antelope,1,baboon,0.837952196598053
+12240492_l05_antelope.jpg,l05,antelope,2,warthog,0.788864016532898
+2016 08 29 18 27 12_j03_antelope.jpg,j03,antelope,0,waterbuck,0.9449463486671448
+08160723_k04_antelope.jpg,k04,antelope,0,waterbuck,0.9894990921020508
+A_EK005653_k06_antelope.jpg,k06,antelope,2,warthog,0.9631089568138123
+03160701_h09_antelope.jpg,h09,antelope,0,waterbuck,0.5354241132736206
+2016 09 23 03 16 29_e08_antelope.jpg,e08,antelope,9,wildebeest,0.4770753085613251
+EK004029_b07_antelope.jpg,b07,antelope,0,waterbuck,0.47235020995140076
+2016 07 18 18 37 48_a06_antelope.jpg,a06,antelope,0,waterbuck,0.5609563589096069
+03290123_k10_antelope.jpg,k10,antelope,4,bushbuck,0.8578401803970337
+2016 10 21 19 50 46_k06_antelope.jpg,k06,antelope,2,warthog,0.9991592168807983
+2016 10 25 04 39 49_l13_antelope.jpg,l13,antelope,0,waterbuck,0.8412854671478271
+06300952_k04_antelope.jpg,k04,antelope,4,bushbuck,0.47976481914520264
+EK008099_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9238308072090149
+02210961_k10_antelope.jpg,k10,antelope,1,baboon,0.6305708885192871
+2016 10 08 00 36 01_k08_antelope.jpg,k08,antelope,23,buffalo,0.5344622731208801
+C_EK002240_03_k06_antelope.jpg,k06,antelope,2,warthog,0.8452503085136414
+2016 10 21 08 22 19_h07_antelope.jpg,h07,antelope,2,warthog,0.6424961090087891
+07150702_d07_antelope.jpg,d07,antelope,6,elephant,0.4192366600036621
+EK001801_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9726907014846802
+EK007073_h05_antelope.jpg,h05,antelope,0,waterbuck,0.4679231345653534
+04140210_c08_antelope.jpg,c08,antelope,3,impala,0.8427722454071045
+EK005168_h05_antelope.jpg,h05,antelope,2,warthog,0.7319579124450684
+07230359_l11_antelope.jpg,l11,antelope,4,bushbuck,0.8173628449440002
+EK000411_j13_antelope.jpg,j13,antelope,0,waterbuck,0.4898431599140167
+12200734_d05_antelope.jpg,d05,antelope,2,warthog,0.9882535934448242
+01010342_k12_antelope.jpg,k12,antelope,1,baboon,0.7997802495956421
+11300765_f01_antelope.jpg,f01,antelope,4,bushbuck,0.9574089050292969
+02210844_i04_antelope.jpg,i04,antelope,2,warthog,0.8591107130050659
+A_EK005805_k06_antelope.jpg,k06,antelope,2,warthog,0.8647103905677795
+07220808_f05_antelope.jpg,f05,antelope,2,warthog,0.69066321849823
+07080257_d03_antelope.jpg,d03,antelope,4,bushbuck,0.2414170801639557
+EK002466_j13_antelope.jpg,j13,antelope,7,genet,0.6367868185043335
+06040759_g08_antelope.jpg,g08,antelope,4,bushbuck,0.865985631942749
+02160891_e10_antelope.jpg,e10,antelope,0,waterbuck,0.7271280884742737
+EK000441_b07_antelope.jpg,b07,antelope,5,oribi,0.4143086075782776
+01030369_d07_antelope.jpg,d07,antelope,2,warthog,0.9999440908432007
+2016 10 05 07 38 48_a10_antelope.jpg,a10,antelope,2,warthog,0.854524552822113
+2016 08 22 22 16 28_l05_antelope.jpg,l05,antelope,4,bushbuck,0.7472097277641296
+EK002794_j13_antelope.jpg,j13,antelope,7,genet,0.5132313966751099
+2016 10 31 20 37 08_m10_antelope.jpg,m10,antelope,4,bushbuck,0.9713870286941528
+2016 10 18 21 25 09_h05_antelope.jpg,h05,antelope,0,waterbuck,0.5774906873703003
+2016 08 08 00 35 32_k10_antelope.jpg,k10,antelope,0,waterbuck,0.990146815776825
+07220802_f05_antelope.jpg,f05,antelope,2,warthog,0.502274751663208
+2016 10 06 10 09 40_i08_antelope.jpg,i08,antelope,1,baboon,0.9569851160049438
+11210189_g12_antelope.jpg,g12,antelope,4,bushbuck,0.9958494901657104
+EK007967_j09_antelope.jpg,j09,antelope,4,bushbuck,0.6095166802406311
+EK000345_h11_antelope.jpg,h11,antelope,0,waterbuck,0.9556605815887451
+01060652_b07_antelope.jpg,b07,antelope,0,waterbuck,0.5289196372032166
+09090914_f05_antelope.jpg,f05,antelope,2,warthog,0.8658151030540466
+2016 08 26 09 43 04_i08_antelope.jpg,i08,antelope,2,warthog,0.8977890610694885
+2016 08 17 19 19 53_b07_antelope.jpg,b07,antelope,9,wildebeest,0.6668515801429749
+2016 08 30 00 56 28_d07_antelope.jpg,d07,antelope,4,bushbuck,0.9255200028419495
+2016 08 13 22 42 29_d05_antelope.jpg,d05,antelope,4,bushbuck,0.6372372508049011
+EK002759_h05_antelope.jpg,h05,antelope,0,waterbuck,0.7131428718566895
+EK001803_f01_antelope.jpg,f01,antelope,7,genet,0.5685286521911621
+11080434_m10_antelope.jpg,m10,antelope,6,elephant,0.6921011805534363
+07260100_i04_antelope.jpg,i04,antelope,0,waterbuck,0.6747651696205139
+EK001155_e06_antelope.jpg,e06,antelope,4,bushbuck,0.4351767599582672
+EK004179_02_j03_antelope.jpg,j03,antelope,4,bushbuck,0.8448630571365356
+11240186_l11_antelope.jpg,l11,antelope,6,elephant,0.3675307333469391
+11200568_i04_antelope.jpg,i04,antelope,1,baboon,0.3860090374946594
+11130156_d07_antelope.jpg,d07,antelope,2,warthog,0.8964526057243347
+2016 10 12 22 08 37_f01_antelope.jpg,f01,antelope,0,waterbuck,0.6597959399223328
+01230696_k04_antelope.jpg,k04,antelope,1,baboon,0.7897960543632507
+2016 09 03 09 50 50_g04_antelope.jpg,g04,antelope,2,warthog,0.6972588300704956
+EK002268_h05_antelope.jpg,h05,antelope,0,waterbuck,0.7250598669052124
+07140752_e02_antelope.jpg,e02,antelope,2,warthog,0.6489120721817017
+EK000868_h05_antelope.jpg,h05,antelope,3,impala,0.5752305388450623
+EK001111_01_h05_antelope.jpg,h05,antelope,0,waterbuck,0.5389418005943298
+02050684_j07_antelope.jpg,j07,antelope,4,bushbuck,0.7109031081199646
+04060706_h03_antelope.jpg,h03,antelope,0,waterbuck,0.7832599878311157
+09090919_e02_antelope.jpg,e02,antelope,0,waterbuck,0.694474995136261
+01070789_g06_antelope.jpg,g06,antelope,4,bushbuck,0.8688634634017944
+2016 08 21 05 29 43_j09_antelope.jpg,j09,antelope,4,bushbuck,0.33828580379486084
+2016 09 24 17 02 14_f11_antelope.jpg,f11,antelope,2,warthog,0.8833928108215332
+EK006590_f07_antelope.jpg,f07,antelope,1,baboon,0.6688022017478943
+2016 08 04 19 50 04_d05_antelope.jpg,d05,antelope,2,warthog,0.445620596408844
+03060927_h03_antelope.jpg,h03,antelope,3,impala,0.985700249671936
+12110104_k10_antelope.jpg,k10,antelope,2,warthog,0.9397140145301819
+2016 10 12 11 49 22_c08_antelope.jpg,c08,antelope,5,oribi,0.7463893294334412
+2016 07 24 17 01 33_k10_antelope.jpg,k10,antelope,2,warthog,0.6518585681915283
+EK000749_e04_antelope.jpg,e04,antelope,3,impala,0.9974668025970459
+03010011_d07_antelope.jpg,d07,antelope,2,warthog,0.7503007054328918
+2016 09 16 22 52 31_h09_antelope.jpg,h09,antelope,2,warthog,0.5773029327392578
+2016 10 16 12 05 12_e02_antelope.jpg,e02,antelope,4,bushbuck,0.6931970119476318
+EK000111_h11_antelope.jpg,h11,antelope,4,bushbuck,0.7468706369400024
+06200086_i12_antelope.jpg,i12,antelope,1,baboon,0.7432219386100769
+2016 10 22 18 30 55_d05_antelope.jpg,d05,antelope,4,bushbuck,0.9789884090423584
+EK004162_k06_antelope.jpg,k06,antelope,2,warthog,0.8959964513778687
+EK000401_f01_antelope.jpg,f01,antelope,4,bushbuck,0.967743992805481
+06220530_h07_antelope.jpg,h07,antelope,4,bushbuck,0.634663999080658
+03210707_l07_antelope.jpg,l07,antelope,4,bushbuck,0.6818068623542786
+2016 08 30 01 09 32_k06_antelope.jpg,k06,antelope,4,bushbuck,0.8612101674079895
+2016 08 01 18 03 13_a08_antelope.jpg,a08,antelope,7,genet,0.29400935769081116
+2016 10 03 05 46 57_f11_antelope.jpg,f11,antelope,4,bushbuck,0.47403061389923096
+2016 07 08 19 40 49_f01_antelope.jpg,f01,antelope,0,waterbuck,0.9949272871017456
+07220793_f05_antelope.jpg,f05,antelope,2,warthog,0.7107879519462585
+02260547_h03_antelope.jpg,h03,antelope,5,oribi,0.5636157989501953
+11160025_c08_antelope.jpg,c08,antelope,4,bushbuck,0.6177577972412109
+2016 08 10 01 39 28_e06_antelope.jpg,e06,antelope,2,warthog,0.5984463095664978
+06110317_e08_antelope.jpg,e08,antelope,4,bushbuck,0.8578766584396362
+2016 11 02 01 09 25_e06_antelope.jpg,e06,antelope,2,warthog,0.5638468861579895
+EK000104_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9985160231590271
+2016 09 14 21 05 56_f03_antelope.jpg,f03,antelope,0,waterbuck,0.9589061737060547
+04190401_f11_antelope.jpg,f11,antelope,4,bushbuck,0.9786198735237122
+2016 08 18 01 50 52_f01_antelope.jpg,f01,antelope,0,waterbuck,0.8092473149299622
+01180024_l11_antelope.jpg,l11,antelope,1,baboon,0.616595983505249
+07180554_e10_antelope.jpg,e10,antelope,1,baboon,0.9568563103675842
+04200758_h09_antelope.jpg,h09,antelope,0,waterbuck,0.998504638671875
+2016 10 11 21 42 04_e10_antelope.jpg,e10,antelope,4,bushbuck,0.9927048087120056
+11140935_e02_antelope.jpg,e02,antelope,5,oribi,0.483620822429657
+2016 07 08 01 03 34_e06_antelope.jpg,e06,antelope,2,warthog,0.9645242094993591
+2016 10 21 08 22 18_h07_antelope.jpg,h07,antelope,2,warthog,0.7224414944648743
+EK006732_e06_antelope.jpg,e06,antelope,4,bushbuck,0.40853118896484375
+07040227_g04_antelope.jpg,g04,antelope,2,warthog,0.5178447365760803
+EK000984_02_j13_antelope.jpg,j13,antelope,1,baboon,0.5579202175140381
+EK000967_e04_antelope.jpg,e04,antelope,2,warthog,0.6723150014877319
+2016 11 01 02 00 05_e06_antelope.jpg,e06,antelope,2,warthog,0.7791874408721924
+2016 10 10 14 47 39_k08_antelope.jpg,k08,antelope,6,elephant,0.9999997615814209
+07220806_f05_antelope.jpg,f05,antelope,2,warthog,0.6370160579681396
+02230802_l07_antelope.jpg,l07,antelope,2,warthog,0.8587628602981567
+EK008172_01_i08_antelope.jpg,i08,antelope,6,elephant,0.9532597661018372
+04270620_h07_antelope.jpg,h07,antelope,0,waterbuck,0.45704886317253113
+2016 07 20 22 00 50_c06_antelope.jpg,c06,antelope,4,bushbuck,0.9511591196060181
+2016 06 25 22 42 15_d07_antelope.jpg,d07,antelope,2,warthog,0.9457107186317444
+EK008105_01_h05_antelope.jpg,h05,antelope,3,impala,0.8460482358932495
+2016 10 28 20 45 19_l05_antelope.jpg,l05,antelope,4,bushbuck,0.4352428615093231
+09200564_h03_antelope.jpg,h03,antelope,1,baboon,0.466215044260025
+EK000423_h11_antelope.jpg,h11,antelope,0,waterbuck,0.31579628586769104
+2016 07 20 22 02 33_c06_antelope.jpg,c06,antelope,4,bushbuck,0.9323745369911194
+01260100_h03_antelope.jpg,h03,antelope,3,impala,0.6808527708053589
+2016 08 23 03 30 01_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9921518564224243
+2016 08 15 02 30 32_i12_antelope.jpg,i12,antelope,23,buffalo,0.22777843475341797
+EK002129_01_h05_antelope.jpg,h05,antelope,0,waterbuck,0.5414705872535706
+08090043_h07_antelope.jpg,h07,antelope,4,bushbuck,0.514383852481842
+02090287_k04_antelope.jpg,k04,antelope,3,impala,0.49826133251190186
+2016 08 08 00 37 05_k10_antelope.jpg,k10,antelope,0,waterbuck,0.6307932734489441
+02030034_g06_antelope.jpg,g06,antelope,4,bushbuck,0.8095204830169678
+EK008755_h05_antelope.jpg,h05,antelope,0,waterbuck,0.7542142868041992
+06260255_e02_antelope.jpg,e02,antelope,8,nyala,0.3733846843242645
+07220801_f05_antelope.jpg,f05,antelope,2,warthog,0.48047515749931335
+2016 07 19 04 11 42_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9475628137588501
+2016 10 21 01 19 29_f01_antelope.jpg,f01,antelope,0,waterbuck,0.7995014190673828
+2016 10 27 21 14 48_f11_antelope.jpg,f11,antelope,2,warthog,0.42570874094963074
+EK002578_02_h05_antelope.jpg,h05,antelope,2,warthog,0.7655338644981384
+09060595_e02_antelope.jpg,e02,antelope,2,warthog,0.5175032615661621
+2016 08 02 11 50 42_k04_antelope.jpg,k04,antelope,2,warthog,0.8026314377784729
+2016 09 07 23 35 52_e06_antelope.jpg,e06,antelope,2,warthog,0.5455144643783569
+2016 07 29 19 49 28_e06_antelope.jpg,e06,antelope,2,warthog,0.6992717385292053
+EK000983_02_j13_antelope.jpg,j13,antelope,3,impala,0.7467908263206482
+2016 07 19 17 53 04_k06_antelope.jpg,k06,antelope,2,warthog,0.6624882221221924
+EK000253_i08_antelope.jpg,i08,antelope,4,bushbuck,0.998451828956604
+10170368_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9379253387451172
+2016 09 06 20 48 11_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9999551773071289
+2016 08 26 09 43 05_i08_antelope.jpg,i08,antelope,2,warthog,0.8936645984649658
+EK000233_k06_antelope.jpg,k06,antelope,2,warthog,0.5830560922622681
+2016 10 11 21 42 03_e10_antelope.jpg,e10,antelope,4,bushbuck,0.8574092388153076
+2016 10 28 20 59 48_f07_antelope.jpg,f07,antelope,2,warthog,0.3512960374355316
+09110872_a10_antelope.jpg,a10,antelope,2,warthog,0.6216998100280762
+2016 09 26 04 11 45_e08_antelope.jpg,e08,antelope,0,waterbuck,0.281859427690506
+2016 09 01 00 08 38_k06_antelope.jpg,k06,antelope,2,warthog,0.802253246307373
+EK008179_h05_antelope.jpg,h05,antelope,2,warthog,0.7469091415405273
+2016 10 21 20 45 19_k06_antelope.jpg,k06,antelope,2,warthog,0.990886926651001
+2016 07 19 05 19 55_a10_antelope.jpg,a10,antelope,4,bushbuck,0.5944404006004333
+EK000968_e04_antelope.jpg,e04,antelope,2,warthog,0.3995247185230255
+06220529_h07_antelope.jpg,h07,antelope,4,bushbuck,0.8636045455932617
+2016 11 02 08 30 00_e02_antelope.jpg,e02,antelope,2,warthog,0.4892898201942444
+EK000912_02_h05_antelope.jpg,h05,antelope,3,impala,0.7478827238082886
+2016 07 05 18 23 09_e06_antelope.jpg,e06,antelope,2,warthog,0.9426732659339905
+2016 10 31 06 49 40_h07_antelope.jpg,h07,antelope,1,baboon,0.8636354804039001
+01060778_h03_antelope.jpg,h03,antelope,0,waterbuck,0.7656099796295166
+04210543_h03_antelope.jpg,h03,antelope,11,civet,0.3634783625602722
+05290765_h09_antelope.jpg,h09,antelope,4,bushbuck,0.4063652753829956
+EK004384_b07_antelope.jpg,b07,antelope,0,waterbuck,0.7688500285148621
+EK002556_b07_antelope.jpg,b07,antelope,4,bushbuck,0.9126025438308716
+EK004167_03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.299397349357605
+04200536_h03_antelope.jpg,h03,antelope,11,civet,0.5686801075935364
+2016 10 08 20 55 50_e02_antelope.jpg,e02,antelope,4,bushbuck,0.4905553162097931
+07220810_f05_antelope.jpg,f05,antelope,2,warthog,0.5721178650856018
+04110944_h03_antelope.jpg,h03,antelope,4,bushbuck,0.8709830641746521
+09120529_f01_antelope.jpg,f01,antelope,1,baboon,0.9941351413726807
+EK001628_e04_antelope.jpg,e04,antelope,0,waterbuck,0.4903565049171448
+2016 08 08 00 37 43_k10_antelope.jpg,k10,antelope,0,waterbuck,0.8660701513290405
+03220650_g08_antelope.jpg,g08,antelope,4,bushbuck,0.8157422542572021
+04130351_j07_antelope.jpg,j07,antelope,0,waterbuck,0.22183746099472046
+2016 10 22 01 33 22_f01_antelope.jpg,f01,antelope,0,waterbuck,0.6553767919540405
+2016 08 02 12 59 36_h07_antelope.jpg,h07,antelope,1,baboon,0.6128827333450317
+01140088_g12_antelope.jpg,g12,antelope,0,waterbuck,0.6600831151008606
+01280301_e02_antelope.jpg,e02,antelope,4,bushbuck,0.555060863494873
+02240014_h09_antelope.jpg,h09,antelope,0,waterbuck,0.6876610517501831
+2016 10 01 21 13 03_k06_antelope.jpg,k06,antelope,4,bushbuck,0.894672155380249
+2016 09 06 20 48 12_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9999359846115112
+EK000497_e04_antelope.jpg,e04,antelope,3,impala,0.8259236216545105
+EK000056_f01_antelope.jpg,f01,antelope,7,genet,0.8382182121276855
+12130462_l11_antelope.jpg,l11,antelope,2,warthog,0.6608559489250183
+04080732_h03_antelope.jpg,h03,antelope,11,civet,0.1801542192697525
+2016 10 28 03 59 48_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5000250935554504
+2016 08 30 00 54 09_d07_antelope.jpg,d07,antelope,4,bushbuck,0.6152632236480713
+08170605_i04_antelope.jpg,i04,antelope,4,bushbuck,0.7680897116661072
+07250266_l05_antelope.jpg,l05,antelope,3,impala,0.9752184748649597
+01280942_i10_antelope.jpg,i10,antelope,0,waterbuck,0.6999577879905701
+2016 10 29 23 41 18_f01_antelope.jpg,f01,antelope,0,waterbuck,0.6636063456535339
+2016 10 13 20 37 18_b07_antelope.jpg,b07,antelope,9,wildebeest,0.3554735779762268
+2016 10 20 04 00 05_d05_antelope.jpg,d05,antelope,2,warthog,0.5071148872375488
+EK002834_f03_antelope.jpg,f03,antelope,8,nyala,0.9307543635368347
+12050639_d07_antelope.jpg,d07,antelope,2,warthog,0.9994789958000183
+2016 10 15 10 51 21_e02_antelope.jpg,e02,antelope,0,waterbuck,0.2869536280632019
+2016 09 30 10 01 57_e06_antelope.jpg,e06,antelope,2,warthog,0.5171568393707275
+2016 10 10 23 07 12_b07_antelope.jpg,b07,antelope,0,waterbuck,0.41805198788642883
+2016 10 30 22 01 05_h05_antelope.jpg,h05,antelope,0,waterbuck,0.8527690172195435
+05020703_k12_antelope.jpg,k12,antelope,6,elephant,0.8321757912635803
+03300122_g04_antelope.jpg,g04,antelope,0,waterbuck,0.32722237706184387
+2016 09 02 00 27 47_e06_antelope.jpg,e06,antelope,2,warthog,0.47507745027542114
+07200069_h03_antelope.jpg,h03,antelope,3,impala,0.8630185723304749
+2016 07 16 20 32 20_h09_antelope.jpg,h09,antelope,4,bushbuck,0.9312907457351685
+2016 07 26 17 28 57_k06_antelope.jpg,k06,antelope,1,baboon,0.614704430103302
+EK004163_k06_antelope.jpg,k06,antelope,2,warthog,0.4619404077529907
+12010156_i04_antelope.jpg,i04,antelope,2,warthog,0.5224523544311523
+08080529_k10_antelope.jpg,k10,antelope,0,waterbuck,0.47796037793159485
+01010035_m08_antelope.jpg,m08,antelope,4,bushbuck,0.7238169312477112
+2016 11 05 21 43 13_j09_antelope.jpg,j09,antelope,10,reedbuck,0.40971243381500244
+03250807_h03_antelope.jpg,h03,antelope,3,impala,0.3614685833454132
+EK008838_01_j13_antelope.jpg,j13,antelope,4,bushbuck,0.3114362359046936
+06260021_k12_antelope.jpg,k12,antelope,1,baboon,0.8828839659690857
+EK001031_j13_antelope.jpg,j13,antelope,0,waterbuck,0.6595200300216675
+2016 07 26 06 22 01_b09_antelope.jpg,b09,antelope,1,baboon,0.9061570763587952
+2016 10 11 09 52 05_k08_antelope.jpg,k08,antelope,25,hartebeest,0.9669351577758789
+06040066_g06_antelope.jpg,g06,antelope,4,bushbuck,0.7930783629417419
+2016 10 21 21 18 28_k06_antelope.jpg,k06,antelope,2,warthog,0.9998525381088257
+2016 10 25 02 23 30_e06_antelope.jpg,e06,antelope,2,warthog,0.9455697536468506
+03100568_e08_antelope.jpg,e08,antelope,4,bushbuck,0.9536921977996826
+C_EK000174_03_k06_antelope.jpg,k06,antelope,2,warthog,0.9424574375152588
+2016 08 16 19 50 28_e08_antelope.jpg,e08,antelope,0,waterbuck,0.9282822012901306
+2016 08 02 09 17 54_i08_antelope.jpg,i08,antelope,1,baboon,0.933513879776001
+EK007018_03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.4648837447166443
+EK000686_b07_antelope.jpg,b07,antelope,0,waterbuck,0.9965007305145264
+2016 07 20 22 03 06_c06_antelope.jpg,c06,antelope,4,bushbuck,0.81302410364151
+2016 09 10 05 24 31_k06_antelope.jpg,k06,antelope,1,baboon,0.8395533561706543
+2016 10 10 12 48 38_f03_antelope.jpg,f03,antelope,2,warthog,0.7599892020225525
+EK009026_01_h05_antelope.jpg,h05,antelope,3,impala,0.5033666491508484
+01120474_h09_antelope.jpg,h09,antelope,0,waterbuck,0.7928505539894104
+04080147_l07_antelope.jpg,l07,antelope,2,warthog,0.5487330555915833
+11150311_a10_antelope.jpg,a10,antelope,4,bushbuck,0.7471271753311157
+2016 08 29 12 31 23_a06_antelope.jpg,a06,antelope,1,baboon,0.41569069027900696
+EK002911_h05_antelope.jpg,h05,antelope,2,warthog,0.42050474882125854
+11180506_f01_antelope.jpg,f01,antelope,6,elephant,0.255042165517807
+12020409_g12_antelope.jpg,g12,antelope,4,bushbuck,0.5407045483589172
+01180029_i10_antelope.jpg,i10,antelope,0,waterbuck,0.6897556781768799
+03260853_c08_antelope.jpg,c08,antelope,4,bushbuck,0.6654539704322815
+07020695_a10_antelope.jpg,a10,antelope,8,nyala,0.5112932324409485
+C_EK000138_03_k06_antelope.jpg,k06,antelope,2,warthog,0.6749219298362732
+2016 10 30 21 22 53_h05_antelope.jpg,h05,antelope,0,waterbuck,0.9348955154418945
+EK000420_h11_antelope.jpg,h11,antelope,7,genet,0.7978549003601074
+EK000419_h11_antelope.jpg,h11,antelope,4,bushbuck,0.8609200716018677
+2016 11 02 04 25 54_e06_antelope.jpg,e06,antelope,1,baboon,0.555321216583252
+EK003812_f03_antelope.jpg,f03,antelope,2,warthog,0.6795682907104492
+EK008181_h05_antelope.jpg,h05,antelope,2,warthog,0.5938564538955688
+05140937_f11_antelope.jpg,f11,antelope,11,civet,0.5432250499725342
+2016 08 30 00 54 43_d07_antelope.jpg,d07,antelope,4,bushbuck,0.8365263342857361
+10270178_h03_antelope.jpg,h03,antelope,4,bushbuck,0.9532759189605713
+2016 09 16 21 48 57_e02_antelope.jpg,e02,antelope,0,waterbuck,0.3187728524208069
+08090517_d07_antelope.jpg,d07,antelope,0,waterbuck,0.3563513159751892
+2016 08 25 22 33 39_f01_antelope.jpg,f01,antelope,0,waterbuck,0.9373209476470947
+2016 09 26 21 57 49_g12_antelope.jpg,g12,antelope,4,bushbuck,0.259060263633728
+03300610_e08_antelope.jpg,e08,antelope,4,bushbuck,0.8884602189064026
+EK005248_03_h05_antelope.jpg,h05,antelope,2,warthog,0.6682823896408081
+07240390_k10_antelope.jpg,k10,antelope,4,bushbuck,0.9920427203178406
+EK002557_b07_antelope.jpg,b07,antelope,0,waterbuck,0.2934591472148895
+01090079_d05_antelope.jpg,d05,antelope,0,waterbuck,0.884105920791626
+EK009403_j09_antelope.jpg,j09,antelope,0,waterbuck,0.5373372435569763
+2016 08 22 22 16 29_l05_antelope.jpg,l05,antelope,0,waterbuck,0.24418886005878448
+2016 10 13 21 30 11_j09_antelope.jpg,j09,antelope,4,bushbuck,0.7969863414764404
+2016 08 08 06 26 30_f11_antelope.jpg,f11,antelope,0,waterbuck,0.4397943317890167
+2016 10 29 11 15 23_e02_antelope.jpg,e02,antelope,2,warthog,0.6365140080451965
+2016 08 15 02 23 23_i12_antelope.jpg,i12,antelope,4,bushbuck,0.3794330358505249
+A_EK003945_k06_antelope.jpg,k06,antelope,2,warthog,0.8578723073005676
+2016 08 02 21 20 16_l07_antelope.jpg,l07,antelope,4,bushbuck,0.8444475531578064
+04130973_g08_antelope.jpg,g08,antelope,2,warthog,0.9983007311820984
+2016 10 27 21 34 48_e06_antelope.jpg,e06,antelope,0,waterbuck,0.9784529805183411
+2016 10 22 18 28 37_d05_antelope.jpg,d05,antelope,8,nyala,0.5793792009353638
+07310278_f11_antelope.jpg,f11,antelope,0,waterbuck,0.9943760633468628
+02070507_d07_antelope.jpg,d07,antelope,2,warthog,0.3602105677127838
+EK009027_01_h05_antelope.jpg,h05,antelope,3,impala,0.4299505949020386
+08040405_g08_antelope.jpg,g08,antelope,4,bushbuck,0.4479265809059143
+06230975_l11_antelope.jpg,l11,antelope,4,bushbuck,0.9952806830406189
+EK009751_h05_antelope.jpg,h05,antelope,3,impala,0.632407009601593
+EK001148_e06_antelope.jpg,e06,antelope,4,bushbuck,0.9949883818626404
+2016 08 30 23 44 27_h05_antelope.jpg,h05,antelope,3,impala,0.41654425859451294
+01210382_i04_antelope.jpg,i04,antelope,4,bushbuck,0.6033697724342346
+2016 10 09 00 55 37_h05_antelope.jpg,h05,antelope,0,waterbuck,0.8038550019264221
+02200965_g06_antelope.jpg,g06,antelope,7,genet,0.38456419110298157
+01180887_b07_antelope.jpg,b07,antelope,2,warthog,0.7356478571891785
+06150636_f05_antelope.jpg,f05,antelope,2,warthog,0.7957860827445984
+EK001149_e06_antelope.jpg,e06,antelope,2,warthog,0.8749019503593445
+03220569_f01_antelope.jpg,f01,antelope,6,elephant,0.5704304575920105
+04130975_g08_antelope.jpg,g08,antelope,4,bushbuck,0.6894444227218628
+2016 08 25 20 57 10_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9998286962509155
+09120527_f01_antelope.jpg,f01,antelope,1,baboon,0.9983441829681396
+09270161_k08_antelope.jpg,k08,antelope,1,baboon,0.6950028538703918
+2016 10 31 20 45 15_l05_antelope.jpg,l05,antelope,2,warthog,0.7849047780036926
+2016 08 08 06 26 29_f11_antelope.jpg,f11,antelope,2,warthog,0.34069034457206726
+EK002559_b07_antelope.jpg,b07,antelope,4,bushbuck,0.7479549050331116
+2016 10 29 23 47 50_l05_antelope.jpg,l05,antelope,4,bushbuck,0.8242719173431396
+2016 10 05 23 19 50_k06_antelope.jpg,k06,antelope,2,warthog,0.9628958702087402
+07030063_l05_antelope.jpg,l05,antelope,8,nyala,0.4989713132381439
+2016 07 26 18 47 37_e10_antelope.jpg,e10,antelope,2,warthog,0.6389040350914001
+11110737_i06_antelope.jpg,i06,antelope,4,bushbuck,0.5892956256866455
+EK000275_j03_antelope.jpg,j03,antelope,0,waterbuck,0.7988590598106384
+C_EK000502_03_k06_antelope.jpg,k06,antelope,0,waterbuck,0.5955682396888733
+04010289_k10_antelope.jpg,k10,antelope,0,waterbuck,0.5654085874557495
+05070252_h03_antelope.jpg,h03,antelope,2,warthog,0.6703284978866577
+2016 07 22 08 14 45_j03_antelope.jpg,j03,antelope,1,baboon,0.3569992780685425
+12150342_k04_antelope.jpg,k04,antelope,4,bushbuck,0.8746013641357422
+04280446_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9955463409423828
+01140083_g12_antelope.jpg,g12,antelope,0,waterbuck,0.6453202962875366
+01010550_c08_antelope.jpg,c08,antelope,4,bushbuck,0.8693020343780518
+EK001349_f01_antelope.jpg,f01,antelope,0,waterbuck,0.3819868862628937
+2016 10 25 04 39 48_l13_antelope.jpg,l13,antelope,0,waterbuck,0.57423996925354
+2016 10 29 23 41 17_f01_antelope.jpg,f01,antelope,0,waterbuck,0.38961124420166016
+2016 07 14 20 48 08_i04_antelope.jpg,i04,antelope,0,waterbuck,0.6964230537414551
+EK000315_e06_antelope.jpg,e06,antelope,8,nyala,0.5146805047988892
+EK001130_f07_antelope.jpg,f07,antelope,2,warthog,0.5035601258277893
+EK003260_03_f07_antelope.jpg,f07,antelope,1,baboon,0.4959314465522766
+01090901_g08_antelope.jpg,g08,antelope,10,reedbuck,0.3928903341293335
+B_EK000141_02_k06_antelope.jpg,k06,antelope,2,warthog,0.7793436646461487
+04050559_h03_antelope.jpg,h03,antelope,6,elephant,0.6865079402923584
+05140936_f11_antelope.jpg,f11,antelope,11,civet,0.5018029808998108
+2016 09 29 11 27 29_k06_antelope.jpg,k06,antelope,1,baboon,0.9579378366470337
+11140011_c08_antelope.jpg,c08,antelope,4,bushbuck,0.9907792806625366
+2016 08 13 01 50 15_e06_antelope.jpg,e06,antelope,4,bushbuck,0.9557340741157532
+2016 10 21 21 19 28_k06_antelope.jpg,k06,antelope,2,warthog,0.9997621178627014
+EK001353_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5439612865447998
+2016 08 30 01 12 10_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9850876927375793
+05200484_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9865309596061707
+12310164_m10_antelope.jpg,m10,antelope,4,bushbuck,0.9151780605316162
+EK006662_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9789655804634094
+2016 07 10 04 08 16_h03_antelope.jpg,h03,antelope,5,oribi,0.4648933410644531
+EK002771_04_h05_antelope.jpg,h05,antelope,3,impala,0.5720555782318115
+EK005085_03_f07_antelope.jpg,f07,antelope,1,baboon,0.5203462243080139
+2016 08 02 12 59 35_h07_antelope.jpg,h07,antelope,1,baboon,0.989815354347229
+09120531_f01_antelope.jpg,f01,antelope,1,baboon,0.9962814450263977
+EK004337_b07_antelope.jpg,b07,antelope,4,bushbuck,0.37235698103904724
+B_EK005389_02_k06_antelope.jpg,k06,antelope,2,warthog,0.9609899520874023
+01290511_e08_antelope.jpg,e08,antelope,1,baboon,0.24916179478168488
+11190803_h07_antelope.jpg,h07,antelope,2,warthog,0.7925487160682678
+2016 09 07 08 14 44_d07_antelope.jpg,d07,antelope,1,baboon,0.6443570852279663
+04280447_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9963887929916382
+04210538_h03_antelope.jpg,h03,antelope,11,civet,0.39822816848754883
+07230360_l11_antelope.jpg,l11,antelope,4,bushbuck,0.7281323671340942
+04140164_d07_antelope.jpg,d07,antelope,2,warthog,0.6750023365020752
+02070777_j05_antelope.jpg,j05,antelope,14,mongoose_slender,0.884804368019104
+EK003278_03_f07_antelope.jpg,f07,antelope,3,impala,0.42543378472328186
+02200510_h03_antelope.jpg,h03,antelope,3,impala,0.46404385566711426
+04190039_d07_antelope.jpg,d07,antelope,2,warthog,0.9083242416381836
+10040800_m10_antelope.jpg,m10,antelope,2,warthog,0.5088252425193787
+09170475_m10_antelope.jpg,m10,antelope,2,warthog,0.6487558484077454
+2016 08 30 00 58 02_d07_antelope.jpg,d07,antelope,2,warthog,0.5089824795722961
+2016 10 31 05 45 04_h07_antelope.jpg,h07,antelope,2,warthog,0.7892918586730957
+04080297_j07_antelope.jpg,j07,antelope,0,waterbuck,0.5180302858352661
+06240987_l11_antelope.jpg,l11,antelope,4,bushbuck,0.992456316947937
+03180087_i04_antelope.jpg,i04,antelope,4,bushbuck,0.8432044982910156
+EK002442_01_j03_antelope.jpg,j03,antelope,4,bushbuck,0.7887108325958252
+04250399_h03_antelope.jpg,h03,antelope,0,waterbuck,0.89411860704422
+03260951_h03_antelope.jpg,h03,antelope,4,bushbuck,0.5090568661689758
+01180814_b07_antelope.jpg,b07,antelope,4,bushbuck,0.6377743482589722
+EK001158_f01_antelope.jpg,f01,antelope,0,waterbuck,0.7677853107452393
+01050116_g12_antelope.jpg,g12,antelope,4,bushbuck,0.7797554731369019
+EK002222_f03_antelope.jpg,f03,antelope,3,impala,0.5499072074890137
+2016 08 08 00 36 05_k10_antelope.jpg,k10,antelope,0,waterbuck,0.8633894324302673
+03040646_f01_antelope.jpg,f01,antelope,3,impala,0.9947180151939392
+2016 08 08 00 33 34_k10_antelope.jpg,k10,antelope,6,elephant,0.7069200873374939
+EK008866_j09_antelope.jpg,j09,antelope,0,waterbuck,0.6104955673217773
+2016 08 20 19 35 31_e10_antelope.jpg,e10,antelope,4,bushbuck,0.6265820264816284
+08230189_f01_antelope.jpg,f01,antelope,6,elephant,0.39521822333335876
+02270976_j07_antelope.jpg,j07,antelope,4,bushbuck,0.940453052520752
+EK000017_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5465630888938904
+11110341_f01_antelope.jpg,f01,antelope,0,waterbuck,0.9998319149017334
+2016 08 02 21 45 10_d03_antelope.jpg,d03,antelope,2,warthog,0.8666698336601257
+03080944_f01_antelope.jpg,f01,antelope,5,oribi,0.6243982911109924
+2016 10 21 17 52 12_e04_antelope.jpg,e04,antelope,0,waterbuck,0.9971591234207153
+04290461_f11_antelope.jpg,f11,antelope,4,bushbuck,0.5372065305709839
+2016 10 12 22 08 38_f01_antelope.jpg,f01,antelope,0,waterbuck,0.6057624816894531
+11080518_e02_antelope.jpg,e02,antelope,4,bushbuck,0.8889572620391846
+EK000424_h11_antelope.jpg,h11,antelope,6,elephant,0.8025700449943542
+EK001415_02_h05_antelope.jpg,h05,antelope,1,baboon,0.5600938200950623
+2016 08 23 03 30 00_k06_antelope.jpg,k06,antelope,4,bushbuck,0.99683678150177
+03220649_g08_antelope.jpg,g08,antelope,4,bushbuck,0.8689582943916321
+2016 10 14 21 20 19_k06_antelope.jpg,k06,antelope,2,warthog,0.9988204836845398
+2016 09 14 21 05 55_f03_antelope.jpg,f03,antelope,0,waterbuck,0.927093505859375
+2016 10 30 22 01 04_h05_antelope.jpg,h05,antelope,0,waterbuck,0.9435065388679504
+2016 08 08 00 38 22_k10_antelope.jpg,k10,antelope,0,waterbuck,0.9902200102806091
+2016 08 25 01 57 26_l09_antelope.jpg,l09,antelope,4,bushbuck,0.9924525618553162
+07130735_e02_antelope.jpg,e02,antelope,0,waterbuck,0.4727940559387207
+05210487_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9982268214225769
+2016 09 26 19 00 59_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9992375373840332
+01300028_b07_antelope.jpg,b07,antelope,2,warthog,0.7737972736358643
+2016 10 21 21 32 29_k06_antelope.jpg,k06,antelope,2,warthog,0.988351047039032
+2016 11 07 00 41 41_i10_antelope.jpg,i10,antelope,2,warthog,0.9436245560646057
+08040407_g08_antelope.jpg,g08,antelope,6,elephant,0.5349557399749756
+09250024_g08_antelope.jpg,g08,antelope,0,waterbuck,0.6620271801948547
+07270087_e02_antelope.jpg,e02,antelope,4,bushbuck,0.6897850632667542
+01210383_i04_antelope.jpg,i04,antelope,0,waterbuck,0.31511005759239197
+2016 08 30 01 10 50_k06_antelope.jpg,k06,antelope,4,bushbuck,0.734673798084259
+12040406_d05_antelope.jpg,d05,antelope,4,bushbuck,0.8907051086425781
+2016 10 22 18 30 56_d05_antelope.jpg,d05,antelope,4,bushbuck,0.787406861782074
+EK000942_i08_antelope.jpg,i08,antelope,4,bushbuck,0.4692310690879822
+B_EK009023_02_k06_antelope.jpg,k06,antelope,1,baboon,0.5133888721466064
+03040714_h03_antelope.jpg,h03,antelope,0,waterbuck,0.6211808323860168
+EK005247_03_h05_antelope.jpg,h05,antelope,2,warthog,0.7215268015861511
+04260598_l13_antelope.jpg,l13,antelope,4,bushbuck,0.9355173110961914
+EK002761_h05_antelope.jpg,h05,antelope,3,impala,0.5595593452453613
+03220568_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5980642437934875
+02220791_l07_antelope.jpg,l07,antelope,2,warthog,0.6640685796737671
+2016 10 17 21 05 50_e04_antelope.jpg,e04,antelope,0,waterbuck,0.9838109612464905
+EK008173_01_i08_antelope.jpg,i08,antelope,0,waterbuck,0.5027628540992737
+04120343_d05_antelope.jpg,d05,antelope,4,bushbuck,0.7646252512931824
+2016 10 26 04 11 33_f01_antelope.jpg,f01,antelope,0,waterbuck,0.6041214466094971
+04070295_j07_antelope.jpg,j07,antelope,0,waterbuck,0.972870409488678
+2016 08 16 14 34 57_l07_antelope.jpg,l07,antelope,1,baboon,0.5749015212059021
+2016 10 06 17 49 16_e04_antelope.jpg,e04,antelope,0,waterbuck,0.857999861240387
+2016 10 17 21 05 49_e04_antelope.jpg,e04,antelope,0,waterbuck,0.9882064461708069
+2016 08 08 00 36 35_k10_antelope.jpg,k10,antelope,0,waterbuck,0.604301929473877
+02260546_h03_antelope.jpg,h03,antelope,6,elephant,0.8014854788780212
+08220875_e02_antelope.jpg,e02,antelope,1,baboon,0.5990135073661804
+EK008896_03_h05_antelope.jpg,h05,antelope,2,warthog,0.4567298889160156
+11300766_f01_antelope.jpg,f01,antelope,6,elephant,0.7602299451828003
+EK005881_h05_antelope.jpg,h05,antelope,2,warthog,0.43546202778816223
+EK005262_f07_antelope.jpg,f07,antelope,4,bushbuck,0.696562647819519
+2016 08 30 00 58 03_d07_antelope.jpg,d07,antelope,2,warthog,0.6960992217063904
+2016 07 30 16 38 40_i14_antelope.jpg,i14,antelope,1,baboon,0.8362454175949097
+12110762_f05_antelope.jpg,f05,antelope,0,waterbuck,0.9159448742866516
+11140131_g04_antelope.jpg,g04,antelope,5,oribi,0.5272351503372192
+2016 08 30 00 56 59_d07_antelope.jpg,d07,antelope,2,warthog,0.7996249794960022
+07310695_h03_antelope.jpg,h03,antelope,5,oribi,0.7966270446777344
+09090912_f05_antelope.jpg,f05,antelope,2,warthog,0.8757318258285522
+04260597_l13_antelope.jpg,l13,antelope,4,bushbuck,0.6659833192825317
+12100355_l07_antelope.jpg,l07,antelope,4,bushbuck,0.24003846943378448
+04200399_b05_antelope.jpg,b05,antelope,4,bushbuck,0.41537681221961975
+12170920_h03_antelope.jpg,h03,antelope,3,impala,0.633939802646637
+02230959_h09_antelope.jpg,h09,antelope,6,elephant,0.6919270753860474
+2016 07 31 19 06 19_f11_antelope.jpg,f11,antelope,4,bushbuck,0.973097026348114
+2016 11 05 21 43 12_j09_antelope.jpg,j09,antelope,8,nyala,0.6594823598861694
+08160724_k04_antelope.jpg,k04,antelope,0,waterbuck,0.9929250478744507
+03220653_g08_antelope.jpg,g08,antelope,4,bushbuck,0.8867886066436768
+06050228_h03_antelope.jpg,h03,antelope,7,genet,0.36892789602279663
+05310705_g08_antelope.jpg,g08,antelope,2,warthog,0.5901995301246643
+EK006287_04_h05_antelope.jpg,h05,antelope,3,impala,0.9471419453620911
+2016 10 03 03 51 46_g04_antelope.jpg,g04,antelope,4,bushbuck,0.9328200221061707
+EK000014_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5852724313735962
+2016 10 01 19 27 00_l07_antelope.jpg,l07,antelope,4,bushbuck,0.49329739809036255
+2016 09 08 04 21 19_e10_antelope.jpg,e10,antelope,2,warthog,0.5244233012199402
+2016 07 15 05 44 53_c06_antelope.jpg,c06,antelope,4,bushbuck,0.8640589118003845
+EK000575_02_j13_antelope.jpg,j13,antelope,4,bushbuck,0.6113950610160828
+2016 10 29 11 14 38_e02_antelope.jpg,e02,antelope,2,warthog,0.6311196684837341
+08040411_g08_antelope.jpg,g08,antelope,4,bushbuck,0.6357137560844421
+09110886_e10_antelope.jpg,e10,antelope,0,waterbuck,0.9423771500587463
+2016 11 06 20 44 16_a10_antelope.jpg,a10,antelope,4,bushbuck,0.6689364910125732
+2016 08 23 03 41 19_h05_antelope.jpg,h05,antelope,3,impala,0.9682111144065857
+2016 10 19 21 54 47_e06_antelope.jpg,e06,antelope,2,warthog,0.7036272287368774
+04270619_h07_antelope.jpg,h07,antelope,4,bushbuck,0.43938714265823364
+2016 10 05 01 07 52_h05_antelope.jpg,h05,antelope,2,warthog,0.256271630525589
+EK001033_h05_antelope.jpg,h05,antelope,0,waterbuck,0.565667450428009
+2016 09 11 07 45 31_g02_antelope.jpg,g02,antelope,1,baboon,0.7806656956672668
+2016 08 30 01 11 24_k06_antelope.jpg,k06,antelope,4,bushbuck,0.878046452999115
+03160691_h03_antelope.jpg,h03,antelope,0,waterbuck,0.7523852586746216
+2016 10 21 21 18 29_k06_antelope.jpg,k06,antelope,2,warthog,0.9996656179428101
+05190255_b09_antelope.jpg,b09,antelope,2,warthog,0.48035740852355957
+03220664_g08_antelope.jpg,g08,antelope,0,waterbuck,0.7893363833427429
+2016 10 21 01 19 28_f01_antelope.jpg,f01,antelope,0,waterbuck,0.7483514547348022
+06040760_g08_antelope.jpg,g08,antelope,4,bushbuck,0.48693734407424927
+EK001389_04_f07_antelope.jpg,f07,antelope,3,impala,0.2299993485212326
+06300951_k04_antelope.jpg,k04,antelope,6,elephant,0.3880334794521332
+09110873_a10_antelope.jpg,a10,antelope,2,warthog,0.8713430762290955
+03140254_f01_antelope.jpg,f01,antelope,4,bushbuck,0.6628221273422241
+2016 10 24 18 53 40_f11_antelope.jpg,f11,antelope,4,bushbuck,0.9183837175369263
+EK002466_04_h05_antelope.jpg,h05,antelope,3,impala,0.5648602247238159
+2016 08 01 18 02 32_a08_antelope.jpg,a08,antelope,4,bushbuck,0.31571462750434875
+01290512_e08_antelope.jpg,e08,antelope,2,warthog,0.7845131754875183
+06230152_e02_antelope.jpg,e02,antelope,1,baboon,0.4325076639652252
+EK003688_f07_antelope.jpg,f07,antelope,1,baboon,0.5063189268112183
+04060283_j07_antelope.jpg,j07,antelope,0,waterbuck,0.8288024663925171
+2016 09 26 21 57 48_g12_antelope.jpg,g12,antelope,0,waterbuck,0.7093348503112793
+EK003157_e04_antelope.jpg,e04,antelope,5,oribi,0.30433139204978943
+02240825_h03_antelope.jpg,h03,antelope,2,warthog,0.920776903629303
+EK001257_e04_antelope.jpg,e04,antelope,4,bushbuck,0.8520046472549438
+EK002558_b07_antelope.jpg,b07,antelope,0,waterbuck,0.6505992412567139
+03160573_e08_antelope.jpg,e08,antelope,5,oribi,0.9240474104881287
+03060163_f11_antelope.jpg,f11,antelope,0,waterbuck,0.9084461331367493
+04190405_f11_antelope.jpg,f11,antelope,6,elephant,0.8977755904197693
+2016 06 30 06 47 03_d07_antelope.jpg,d07,antelope,1,baboon,0.4969595670700073
+EK002553_b07_antelope.jpg,b07,antelope,4,bushbuck,0.5806880593299866
+2016 09 26 03 13 39_l07_antelope.jpg,l07,antelope,0,waterbuck,0.9981739521026611
+2016 10 22 03 16 35_e08_antelope.jpg,e08,antelope,6,elephant,0.5402219295501709
+2016 10 22 03 16 34_e08_antelope.jpg,e08,antelope,4,bushbuck,0.9208743572235107
+2016 09 29 20 21 57_m10_antelope.jpg,m10,antelope,4,bushbuck,0.7373373508453369
+2016 08 13 04 25 48_m10_antelope.jpg,m10,antelope,0,waterbuck,0.9844151139259338
+2016 08 30 00 55 57_d07_antelope.jpg,d07,antelope,2,warthog,0.5761661529541016
+02020426_m08_antelope.jpg,m08,antelope,4,bushbuck,0.9898790121078491
+01110998_h03_antelope.jpg,h03,antelope,0,waterbuck,0.5400195121765137
+10300089_f01_antelope.jpg,f01,antelope,0,waterbuck,0.48464909195899963
+2016 10 11 07 21 23_g02_antelope.jpg,g02,antelope,21,duiker_red,0.5706545114517212
+2016 07 06 20 00 28_e06_antelope.jpg,e06,antelope,2,warthog,0.7863650918006897
+05140264_i06_antelope.jpg,i06,antelope,0,waterbuck,0.9662586450576782
+2016 08 01 12 08 58_f05_antelope.jpg,f05,antelope,1,baboon,0.5366825461387634
+2016 10 15 10 58 58_e02_antelope.jpg,e02,antelope,2,warthog,0.8751168251037598
+EK001935_j13_antelope.jpg,j13,antelope,2,warthog,0.9908432960510254
+2016 10 25 12 50 54_f03_antelope.jpg,f03,antelope,2,warthog,0.9205191135406494
+11130017_b05_antelope.jpg,b05,antelope,2,warthog,0.9999880790710449
+04050558_h03_antelope.jpg,h03,antelope,6,elephant,0.6419652104377747
+03060928_h03_antelope.jpg,h03,antelope,2,warthog,0.865967869758606
+2016 08 13 01 50 16_e06_antelope.jpg,e06,antelope,2,warthog,0.9420185089111328
+06150634_f05_antelope.jpg,f05,antelope,2,warthog,0.6685019135475159
+2016 11 02 13 23 47_e06_antelope.jpg,e06,antelope,2,warthog,0.46208488941192627
+EK000645_03_h05_antelope.jpg,h05,antelope,3,impala,0.3807271718978882
+2016 11 09 08 29 46_h07_antelope.jpg,h07,antelope,2,warthog,0.4558033347129822
+04120342_d05_antelope.jpg,d05,antelope,4,bushbuck,0.6900519132614136
+2016 10 21 22 47 47_k06_antelope.jpg,k06,antelope,2,warthog,0.9655706882476807
+2016 10 19 22 52 44_g04_antelope.jpg,g04,antelope,4,bushbuck,0.30680957436561584
+08030292_l05_antelope.jpg,l05,antelope,4,bushbuck,0.956257164478302
+2016 08 22 16 19 06_k06_antelope.jpg,k06,antelope,2,warthog,0.4371487498283386
+01290455_g06_antelope.jpg,g06,antelope,4,bushbuck,0.9035593271255493
+EK002195_f07_antelope.jpg,f07,antelope,0,waterbuck,0.6040886640548706
+06030742_g08_antelope.jpg,g08,antelope,0,waterbuck,0.5522208213806152
+11150025_h09_antelope.jpg,h09,antelope,1,baboon,0.8099363446235657
+01050117_g12_antelope.jpg,g12,antelope,4,bushbuck,0.8467264771461487
+12170387_j05_antelope.jpg,j05,antelope,1,baboon,0.3186095654964447
+06260017_i10_antelope.jpg,i10,antelope,0,waterbuck,0.5850578546524048
+A_EK003540_k06_antelope.jpg,k06,antelope,2,warthog,0.9365984201431274
+2016 07 17 02 04 23_d07_antelope.jpg,d07,antelope,4,bushbuck,0.78116774559021
+EK000867_h05_antelope.jpg,h05,antelope,2,warthog,0.5758639574050903
+03040717_h03_antelope.jpg,h03,antelope,0,waterbuck,0.6653309464454651
+08250781_l11_antelope.jpg,l11,antelope,4,bushbuck,0.48948630690574646
+01130082_g12_antelope.jpg,g12,antelope,4,bushbuck,0.7939103245735168
+2016 10 15 10 48 51_e02_antelope.jpg,e02,antelope,4,bushbuck,0.4252600371837616
+11170427_k04_antelope.jpg,k04,antelope,0,waterbuck,0.7482326626777649
+2016 10 22 18 28 04_d05_antelope.jpg,d05,antelope,2,warthog,0.4091590344905853
+EK000807_h05_antelope.jpg,h05,antelope,3,impala,0.5449163317680359
+2016 07 10 23 51 39_k04_antelope.jpg,k04,antelope,4,bushbuck,0.9836464524269104
+01080077_d05_antelope.jpg,d05,antelope,0,waterbuck,0.7201828360557556
+A_EK005654_k06_antelope.jpg,k06,antelope,2,warthog,0.9750105738639832
+01090078_d05_antelope.jpg,d05,antelope,0,waterbuck,0.6292212009429932
+11160294_i04_antelope.jpg,i04,antelope,4,bushbuck,0.44070035219192505
+EK001208_e04_antelope.jpg,e04,antelope,23,buffalo,0.24537931382656097
+07260101_i04_antelope.jpg,i04,antelope,0,waterbuck,0.9059303402900696
+2016 10 19 19 06 14_b07_antelope.jpg,b07,antelope,2,warthog,0.6384674310684204
+03090033_f01_antelope.jpg,f01,antelope,3,impala,0.7619814872741699
+2016 08 01 18 03 14_a08_antelope.jpg,a08,antelope,8,nyala,0.9340930581092834
+EK001157_f01_antelope.jpg,f01,antelope,0,waterbuck,0.7225005626678467
+2016 09 17 21 06 58_h05_antelope.jpg,h05,antelope,2,warthog,0.39884111285209656
+2016 07 29 17 44 24_d05_antelope.jpg,d05,antelope,2,warthog,0.7756748795509338
+EK002855_e04_antelope.jpg,e04,antelope,3,impala,0.868861973285675
+03110838_l11_antelope.jpg,l11,antelope,4,bushbuck,0.5166870951652527
+2016 10 19 08 13 15_l05_antelope.jpg,l05,antelope,2,warthog,0.874047577381134
+EK002269_h05_antelope.jpg,h05,antelope,0,waterbuck,0.5175979137420654
+2016 09 16 00 09 41_f01_antelope.jpg,f01,antelope,0,waterbuck,0.8320407271385193
+EK008098_k06_antelope.jpg,k06,antelope,4,bushbuck,0.7342624664306641
+2016 10 22 18 28 36_d05_antelope.jpg,d05,antelope,4,bushbuck,0.5462169051170349
+06060834_h09_antelope.jpg,h09,antelope,6,elephant,0.3710967004299164
+2016 07 05 18 23 08_e06_antelope.jpg,e06,antelope,2,warthog,0.661104142665863
+2016 10 30 21 22 54_h05_antelope.jpg,h05,antelope,0,waterbuck,0.8977092504501343
+2016 09 11 07 54 24_l07_antelope.jpg,l07,antelope,5,oribi,0.7619984149932861
+EK003476_k06_antelope.jpg,k06,antelope,0,waterbuck,0.8168209195137024
+EK009273_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9099369645118713
+EK000282_j03_antelope.jpg,j03,antelope,0,waterbuck,0.7721947431564331
+10240535_i04_antelope.jpg,i04,antelope,0,waterbuck,0.5883030295372009
+09090920_e02_antelope.jpg,e02,antelope,1,baboon,0.6059906482696533
+04020054_l11_antelope.jpg,l11,antelope,4,bushbuck,0.6345210671424866
+07010126_g08_antelope.jpg,g08,antelope,3,impala,0.948080837726593
+03060165_f11_antelope.jpg,f11,antelope,4,bushbuck,0.7844572067260742
+EK006661_i08_antelope.jpg,i08,antelope,4,bushbuck,0.8637643456459045
+05030157_k08_antelope.jpg,k08,antelope,2,warthog,0.5704867839813232
+EK000498_e04_antelope.jpg,e04,antelope,0,waterbuck,0.5897167921066284
+2016 10 10 18 01 47_l05_antelope.jpg,l05,antelope,0,waterbuck,0.9916437268257141
+06040761_g08_antelope.jpg,g08,antelope,4,bushbuck,0.5480957627296448
+05180777_g06_antelope.jpg,g06,antelope,2,warthog,0.842621922492981
+11080794_i12_antelope.jpg,i12,antelope,4,bushbuck,0.5966284871101379
+04190403_f11_antelope.jpg,f11,antelope,6,elephant,0.9538347125053406
+EK001034_j13_antelope.jpg,j13,antelope,0,waterbuck,0.4812135398387909
+12110499_d05_antelope.jpg,d05,antelope,2,warthog,0.8753008246421814
+EK000267_g10_antelope.jpg,g10,antelope,4,bushbuck,0.5127677321434021
+09280592_f11_antelope.jpg,f11,antelope,2,warthog,0.4868983328342438
+EK000685_b07_antelope.jpg,b07,antelope,0,waterbuck,0.9962453246116638
+01020242_m08_antelope.jpg,m08,antelope,4,bushbuck,0.9760733842849731
+08040408_g08_antelope.jpg,g08,antelope,6,elephant,0.5279002785682678
+2016 08 23 03 32 56_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9616432189941406
+2016 10 19 22 04 57_e06_antelope.jpg,e06,antelope,2,warthog,0.5863820314407349
+04250398_h03_antelope.jpg,h03,antelope,0,waterbuck,0.9582856297492981
+2016 09 25 03 01 07_a10_antelope.jpg,a10,antelope,4,bushbuck,0.9994901418685913
+EK009270_i08_antelope.jpg,i08,antelope,4,bushbuck,0.6383154988288879
+07150806_e02_antelope.jpg,e02,antelope,0,waterbuck,0.4766238331794739
+EK002618_b07_antelope.jpg,b07,antelope,4,bushbuck,0.9183861613273621
+04210962_g04_antelope.jpg,g04,antelope,4,bushbuck,0.6835185289382935
+01120055_h03_antelope.jpg,h03,antelope,3,impala,0.6903204321861267
+2016 08 15 02 23 22_i12_antelope.jpg,i12,antelope,4,bushbuck,0.5351338386535645
+EK000218_f03_antelope.jpg,f03,antelope,1,baboon,0.5782340168952942
+11180037_a08_antelope.jpg,a08,antelope,6,elephant,0.6392082571983337
+02050685_j07_antelope.jpg,j07,antelope,0,waterbuck,0.5630607604980469
+2016 07 27 18 49 33_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5207498669624329
+09280594_f11_antelope.jpg,f11,antelope,2,warthog,0.48420730233192444
+04070296_j07_antelope.jpg,j07,antelope,0,waterbuck,0.9807975888252258
+2016 08 16 18 22 34_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9507002234458923
+EK000171_h05_antelope.jpg,h05,antelope,0,waterbuck,0.4151962995529175
+2016 08 26 04 49 48_d07_antelope.jpg,d07,antelope,4,bushbuck,0.9221625328063965
+2016 08 22 16 19 05_k06_antelope.jpg,k06,antelope,2,warthog,0.450886994600296
+2016 07 27 17 04 44_i14_antelope.jpg,i14,antelope,1,baboon,0.9201970100402832
+2016 08 10 05 49 02_f07_antelope.jpg,f07,antelope,0,waterbuck,0.6762089729309082
+EK005916_01_j03_antelope.jpg,j03,antelope,0,waterbuck,0.7893511056900024
+05310704_g08_antelope.jpg,g08,antelope,2,warthog,0.41438817977905273
+08170604_i04_antelope.jpg,i04,antelope,0,waterbuck,0.6449819803237915
+2016 07 26 17 11 07_d05_antelope.jpg,d05,antelope,5,oribi,0.28393635153770447
+12190846_g06_antelope.jpg,g06,antelope,6,elephant,0.36949965357780457
+EK000309_h05_antelope.jpg,h05,antelope,5,oribi,0.4035518169403076
+04210610_e10_antelope.jpg,e10,antelope,4,bushbuck,0.3460453748703003
+12290860_d05_antelope.jpg,d05,antelope,1,baboon,0.7654570937156677
+EK000087_h11_antelope.jpg,h11,antelope,4,bushbuck,0.36274227499961853
+2016 10 12 20 24 28_e08_antelope.jpg,e08,antelope,4,bushbuck,0.9926034808158875
+2016 10 30 22 47 16_j03_antelope.jpg,j03,antelope,6,elephant,0.5619835257530212
+04230423_f11_antelope.jpg,f11,antelope,25,hartebeest,0.9255477786064148
+EK002831_f03_antelope.jpg,f03,antelope,4,bushbuck,0.8570283651351929
+12130625_d05_antelope.jpg,d05,antelope,5,oribi,0.9900746941566467
+02210843_i04_antelope.jpg,i04,antelope,2,warthog,0.8697528839111328
+2016 07 24 17 01 34_k10_antelope.jpg,k10,antelope,2,warthog,0.8542464375495911
+10160706_i12_antelope.jpg,i12,antelope,2,warthog,0.5228965282440186
+11120559_l11_antelope.jpg,l11,antelope,2,warthog,0.6214794516563416
+2016 07 29 20 58 41_i14_antelope.jpg,i14,antelope,7,genet,0.19903677701950073
+01020870_m08_antelope.jpg,m08,antelope,2,warthog,0.7232197523117065
+09130257_k04_antelope.jpg,k04,antelope,0,waterbuck,0.3322991728782654
+01120480_h09_antelope.jpg,h09,antelope,0,waterbuck,0.9515637159347534
+2016 10 16 12 05 13_e02_antelope.jpg,e02,antelope,4,bushbuck,0.49877384305000305
+2016 08 07 19 15 37_m08_antelope.jpg,m08,antelope,4,bushbuck,0.7601650357246399
+EK001683_01_f07_antelope.jpg,f07,antelope,2,warthog,0.20796841382980347
+06150633_f05_antelope.jpg,f05,antelope,2,warthog,0.7272063493728638
+2016 09 12 20 23 20_l07_antelope.jpg,l07,antelope,4,bushbuck,0.9913460612297058
+2016 06 30 06 47 02_d07_antelope.jpg,d07,antelope,5,oribi,0.3926768898963928
+2016 09 20 23 36 18_k08_antelope.jpg,k08,antelope,4,bushbuck,0.7497982382774353
+2016 09 26 04 40 40_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5569115877151489
+01180082_i10_antelope.jpg,i10,antelope,2,warthog,0.939836323261261
+2016 07 26 19 40 03_i08_antelope.jpg,i08,antelope,10,reedbuck,0.9904649257659912
+09040554_l05_antelope.jpg,l05,antelope,4,bushbuck,0.9051563739776611
+03180911_l11_antelope.jpg,l11,antelope,4,bushbuck,0.6732622385025024
+2016 10 05 01 07 51_h05_antelope.jpg,h05,antelope,0,waterbuck,0.2661559581756592
+EK002281_02_h05_antelope.jpg,h05,antelope,2,warthog,0.6306737065315247
+04020053_l11_antelope.jpg,l11,antelope,4,bushbuck,0.6261706352233887
+03040712_h03_antelope.jpg,h03,antelope,24,hippopotamus,0.45439061522483826
+2016 08 14 21 24 49_b05_antelope.jpg,b05,antelope,0,waterbuck,0.2470974326133728
+2016 08 14 21 24 48_b05_antelope.jpg,b05,antelope,4,bushbuck,0.42723801732063293
+07030049_k04_antelope.jpg,k04,antelope,6,elephant,0.7633615732192993
+12060674_g08_antelope.jpg,g08,antelope,4,bushbuck,0.5130954384803772
+2016 08 21 20 53 32_i14_antelope.jpg,i14,antelope,4,bushbuck,0.7588981986045837
+2016 07 27 17 04 45_i14_antelope.jpg,i14,antelope,1,baboon,0.9427376985549927
+2016 07 10 04 43 26_f11_antelope.jpg,f11,antelope,4,bushbuck,0.2511475086212158
+08200748_g08_antelope.jpg,g08,antelope,6,elephant,0.6251535415649414
+2016 08 31 05 20 08_d07_antelope.jpg,d07,antelope,4,bushbuck,0.9670155048370361
+04150413_k10_antelope.jpg,k10,antelope,0,waterbuck,0.3353910744190216
+11230658_h03_antelope.jpg,h03,antelope,3,impala,0.5050088167190552
+2016 09 15 21 21 10_i08_antelope.jpg,i08,antelope,2,warthog,0.6366497874259949
+02090490_j11_antelope.jpg,j11,antelope,1,baboon,0.9815296530723572
+01130077_g12_antelope.jpg,g12,antelope,4,bushbuck,0.8335729241371155
+04280724_f01_antelope.jpg,f01,antelope,0,waterbuck,0.8427876234054565
+2016 07 23 06 04 31_h07_antelope.jpg,h07,antelope,10,reedbuck,0.5694064497947693
+01050115_g12_antelope.jpg,g12,antelope,4,bushbuck,0.8750994801521301
+04110622_e08_antelope.jpg,e08,antelope,10,reedbuck,0.41064396500587463
+2016 10 21 08 31 50_h07_antelope.jpg,h07,antelope,2,warthog,0.6760338544845581
+05110455_b09_antelope.jpg,b09,antelope,0,waterbuck,0.972881019115448
+2016 08 29 09 14 40_k06_antelope.jpg,k06,antelope,1,baboon,0.9901008009910583
+EK006637_h05_antelope.jpg,h05,antelope,0,waterbuck,0.4759017527103424
+EK001691_f03_antelope.jpg,f03,antelope,4,bushbuck,0.7956551909446716
+2016 09 26 04 11 44_e08_antelope.jpg,e08,antelope,4,bushbuck,0.9999359846115112
+EK000709_f01_antelope.jpg,f01,antelope,4,bushbuck,0.9198171496391296
+06110318_e08_antelope.jpg,e08,antelope,4,bushbuck,0.768375039100647
+04050166_i12_antelope.jpg,i12,antelope,6,elephant,0.5765954256057739
+05080685_d07_antelope.jpg,d07,antelope,2,warthog,0.9891934990882874
+EK000324_f01_antelope.jpg,f01,antelope,5,oribi,0.6993065476417542
+2016 10 21 21 33 41_k06_antelope.jpg,k06,antelope,2,warthog,0.9998440742492676
+01180030_i10_antelope.jpg,i10,antelope,0,waterbuck,0.7197291254997253
+06090471_j07_antelope.jpg,j07,antelope,0,waterbuck,0.2509411871433258
+2016 10 09 05 16 57_i06_antelope.jpg,i06,antelope,5,oribi,0.9814903736114502
+08090516_d07_antelope.jpg,d07,antelope,0,waterbuck,0.479665070772171
+EK004238_03_f07_antelope.jpg,f07,antelope,2,warthog,0.4815351366996765
+08080528_k10_antelope.jpg,k10,antelope,0,waterbuck,0.798080563545227
+EK006660_i08_antelope.jpg,i08,antelope,0,waterbuck,0.39185091853141785
+11180027_e02_antelope.jpg,e02,antelope,4,bushbuck,0.9756242036819458
+A_EK005655_k06_antelope.jpg,k06,antelope,2,warthog,0.9501917362213135
+08040414_g08_antelope.jpg,g08,antelope,4,bushbuck,0.6337619423866272
+2016 10 10 18 01 48_l05_antelope.jpg,l05,antelope,0,waterbuck,0.9424776434898376
+2016 07 22 17 47 31_c06_antelope.jpg,c06,antelope,2,warthog,0.6749406456947327
+08040404_g08_antelope.jpg,g08,antelope,3,impala,0.9306522607803345
+04280055_c08_antelope.jpg,c08,antelope,0,waterbuck,0.661864161491394
+EK000258_02_f03_antelope.jpg,f03,antelope,0,waterbuck,0.8943296074867249
+12180122_l13_antelope.jpg,l13,antelope,0,waterbuck,0.9034594893455505
+03270860_c08_antelope.jpg,c08,antelope,2,warthog,0.5912635922431946
+2016 09 26 03 07 49_d05_antelope.jpg,d05,antelope,6,elephant,0.6978985667228699
+2016 10 13 20 37 17_b07_antelope.jpg,b07,antelope,2,warthog,0.2883872091770172
+EK001659_b07_antelope.jpg,b07,antelope,0,waterbuck,0.7910000681877136
+EK000710_f01_antelope.jpg,f01,antelope,5,oribi,0.9358903765678406
+EK004389_h05_antelope.jpg,h05,antelope,0,waterbuck,0.9263277053833008
+01280300_e02_antelope.jpg,e02,antelope,11,civet,0.4865841269493103
+2016 11 03 03 36 36_e02_antelope.jpg,e02,antelope,4,bushbuck,0.39762812852859497
+02220926_i04_antelope.jpg,i04,antelope,0,waterbuck,0.2746133804321289
+06260024_k12_antelope.jpg,k12,antelope,8,nyala,0.41619670391082764
+07220795_f05_antelope.jpg,f05,antelope,2,warthog,0.6211426258087158
+EK000486_h11_antelope.jpg,h11,antelope,0,waterbuck,0.6154916882514954
+EK001817_h05_antelope.jpg,h05,antelope,0,waterbuck,0.36900484561920166
+06270862_k04_antelope.jpg,k04,antelope,6,elephant,0.27258092164993286
+2016 10 11 09 52 06_k08_antelope.jpg,k08,antelope,25,hartebeest,0.7605060935020447
+01180886_b07_antelope.jpg,b07,antelope,3,impala,0.7458231449127197
+12040797_i06_antelope.jpg,i06,antelope,10,reedbuck,0.7832129597663879
+EK001734_f01_antelope.jpg,f01,antelope,2,warthog,0.9701536297798157
+02200915_e10_antelope.jpg,e10,antelope,0,waterbuck,0.9715544581413269
+09280591_f11_antelope.jpg,f11,antelope,4,bushbuck,0.488344669342041
+12110645_h03_antelope.jpg,h03,antelope,4,bushbuck,0.49993443489074707
+2016 10 21 22 07 59_k06_antelope.jpg,k06,antelope,2,warthog,0.9854553937911987
+2016 10 15 10 52 31_e02_antelope.jpg,e02,antelope,21,duiker_red,0.31336769461631775
+12150481_d03_antelope.jpg,d03,antelope,1,baboon,0.6046279668807983
+08040470_c06_antelope.jpg,c06,antelope,4,bushbuck,0.7441117167472839
+2016 07 08 19 40 48_f01_antelope.jpg,f01,antelope,0,waterbuck,0.9283379316329956
+2016 07 31 17 20 16_k06_antelope.jpg,k06,antelope,1,baboon,0.609704315662384
+EK001412_03_f07_antelope.jpg,f07,antelope,4,bushbuck,0.4080806076526642
+11120498_k10_antelope.jpg,k10,antelope,4,bushbuck,0.9954344630241394
+03080943_f01_antelope.jpg,f01,antelope,3,impala,0.6776598691940308
+08220874_e02_antelope.jpg,e02,antelope,1,baboon,0.5395530462265015
+02130772_c08_antelope.jpg,c08,antelope,2,warthog,0.6753366589546204
+2016 11 01 02 00 04_e06_antelope.jpg,e06,antelope,2,warthog,0.6079970598220825
+EK002471_j13_antelope.jpg,j13,antelope,7,genet,0.666542649269104
+11130109_g04_antelope.jpg,g04,antelope,6,elephant,0.37873783707618713
+01120481_h09_antelope.jpg,h09,antelope,0,waterbuck,0.4736732244491577
+01180027_l11_antelope.jpg,l11,antelope,2,warthog,0.3777487576007843
+2016 10 21 21 33 40_k06_antelope.jpg,k06,antelope,2,warthog,0.999992847442627
+2016 08 16 18 22 33_k06_antelope.jpg,k06,antelope,4,bushbuck,0.5007798671722412
+11180505_f01_antelope.jpg,f01,antelope,2,warthog,0.5602887868881226
+12070350_g04_antelope.jpg,g04,antelope,2,warthog,0.48131224513053894
+EK000219_g10_antelope.jpg,g10,antelope,8,nyala,0.4502926468849182
+11200856_e02_antelope.jpg,e02,antelope,0,waterbuck,0.334032267332077
+EK004236_03_f07_antelope.jpg,f07,antelope,1,baboon,0.41028282046318054
+2016 08 30 00 56 27_d07_antelope.jpg,d07,antelope,4,bushbuck,0.9243103265762329
+2016 10 28 18 24 10_e06_antelope.jpg,e06,antelope,4,bushbuck,0.7194669842720032
+2016 08 30 00 56 58_d07_antelope.jpg,d07,antelope,4,bushbuck,0.5186523795127869
+EK008865_j09_antelope.jpg,j09,antelope,4,bushbuck,0.509070873260498
+07050142_l11_antelope.jpg,l11,antelope,6,elephant,0.5400144457817078
+01120111_d05_antelope.jpg,d05,antelope,2,warthog,0.4637684226036072
+2016 09 15 21 22 22_i08_antelope.jpg,i08,antelope,2,warthog,0.847752034664154
+08010286_l05_antelope.jpg,l05,antelope,4,bushbuck,0.9691438674926758
+2016 10 10 14 47 38_k08_antelope.jpg,k08,antelope,6,elephant,0.9999376535415649
+2016 08 08 00 35 02_k10_antelope.jpg,k10,antelope,0,waterbuck,0.5605332851409912
+2016 10 20 00 23 44_c08_antelope.jpg,c08,antelope,2,warthog,0.4588736295700073
+12310163_m10_antelope.jpg,m10,antelope,4,bushbuck,0.7868294715881348
+01050815_b09_antelope.jpg,b09,antelope,1,baboon,0.7553196549415588
+02020121_e02_antelope.jpg,e02,antelope,5,oribi,0.5944186449050903
+2016 10 28 23 52 34_e06_antelope.jpg,e06,antelope,2,warthog,0.5316517949104309
+EK007668_f07_antelope.jpg,f07,antelope,2,warthog,0.5215643048286438
+08230763_g08_antelope.jpg,g08,antelope,1,baboon,0.39448854327201843
+EK002443_01_j03_antelope.jpg,j03,antelope,4,bushbuck,0.5599833130836487
+08290764_k08_antelope.jpg,k08,antelope,2,warthog,0.7917771339416504
+2016 08 08 00 33 33_k10_antelope.jpg,k10,antelope,6,elephant,0.8541895151138306
+09240111_f05_antelope.jpg,f05,antelope,2,warthog,0.46467363834381104
+01010033_m08_antelope.jpg,m08,antelope,4,bushbuck,0.5451050996780396
+03260949_h03_antelope.jpg,h03,antelope,0,waterbuck,0.7204074859619141
+B_EK008217_02_k06_antelope.jpg,k06,antelope,2,warthog,0.6321770548820496
+2016 07 05 18 24 06_e06_antelope.jpg,e06,antelope,2,warthog,0.9338222146034241
+2016 10 10 21 51 46_k08_antelope.jpg,k08,antelope,4,bushbuck,0.9191634058952332
+EK004996_f07_antelope.jpg,f07,antelope,1,baboon,0.7969366908073425
+01170028_i10_antelope.jpg,i10,antelope,4,bushbuck,0.5552799105644226
+2016 07 29 20 58 42_i14_antelope.jpg,i14,antelope,4,bushbuck,0.9628746509552002
+11080792_i12_antelope.jpg,i12,antelope,4,bushbuck,0.24120476841926575
+EK007968_j09_antelope.jpg,j09,antelope,4,bushbuck,0.6874977350234985
+2016 08 04 19 50 03_d05_antelope.jpg,d05,antelope,2,warthog,0.5115622282028198
+03220658_g08_antelope.jpg,g08,antelope,0,waterbuck,0.8851677179336548
+EK009539_h05_antelope.jpg,h05,antelope,0,waterbuck,0.5604671239852905
+08040406_g08_antelope.jpg,g08,antelope,4,bushbuck,0.5288978815078735
+B_EK004199_02_k06_antelope.jpg,k06,antelope,2,warthog,0.6840583086013794
+03240837_d07_antelope.jpg,d07,antelope,11,civet,0.25311142206192017
+06230151_e02_antelope.jpg,e02,antelope,1,baboon,0.7802695035934448
+2016 09 07 05 02 31_l05_antelope.jpg,l05,antelope,4,bushbuck,0.9725563526153564
+07020942_h07_antelope.jpg,h07,antelope,4,bushbuck,0.5075785517692566
+01090902_g08_antelope.jpg,g08,antelope,4,bushbuck,0.36909642815589905
+EK005153_h05_antelope.jpg,h05,antelope,2,warthog,0.667898952960968
+2016 07 20 12 42 32_f03_antelope.jpg,f03,antelope,2,warthog,0.920578122138977
+01050118_g12_antelope.jpg,g12,antelope,4,bushbuck,0.8432981371879578
+2016 08 23 03 31 30_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9716401696205139
+2016 09 23 03 16 30_e08_antelope.jpg,e08,antelope,0,waterbuck,0.4929104745388031
+2016 10 10 21 21 31_e06_antelope.jpg,e06,antelope,4,bushbuck,0.36201491951942444
+EK002737_b07_antelope.jpg,b07,antelope,0,waterbuck,0.9463748335838318
+EK001032_h05_antelope.jpg,h05,antelope,0,waterbuck,0.38761454820632935
+11080548_g02_antelope.jpg,g02,antelope,4,bushbuck,0.9021000862121582
+11150131_d05_antelope.jpg,d05,antelope,2,warthog,0.9923102855682373
+2016 10 21 02 58 36_f01_antelope.jpg,f01,antelope,0,waterbuck,0.7230611443519592
+11210331_d07_antelope.jpg,d07,antelope,2,warthog,0.9951469302177429
+2016 08 30 23 44 28_h05_antelope.jpg,h05,antelope,3,impala,0.5475037097930908
+11150593_g08_antelope.jpg,g08,antelope,0,waterbuck,0.9822215437889099
+EK000085_h05_antelope.jpg,h05,antelope,13,mongoose_white_tailed,0.25848183035850525
+01220290_g12_antelope.jpg,g12,antelope,4,bushbuck,0.9897124767303467
+06130876_k08_antelope.jpg,k08,antelope,6,elephant,0.8105154633522034
+08010673_g08_antelope.jpg,g08,antelope,2,warthog,0.7676650881767273
+2016 10 18 21 22 48_f11_antelope.jpg,f11,antelope,0,waterbuck,0.7695033550262451
+04130976_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9002007246017456
+2016 10 01 21 14 20_k06_antelope.jpg,k06,antelope,0,waterbuck,0.38773593306541443
+2016 10 07 23 53 35_f07_antelope.jpg,f07,antelope,7,genet,0.29866838455200195
+2016 10 24 18 53 41_f11_antelope.jpg,f11,antelope,4,bushbuck,0.987379252910614
+EK000141_h05_antelope.jpg,h05,antelope,0,waterbuck,0.21647436916828156
+07050141_l11_antelope.jpg,l11,antelope,4,bushbuck,0.9614224433898926
+2016 10 21 08 35 15_h07_antelope.jpg,h07,antelope,2,warthog,0.6759002208709717
+EK007029_i08_antelope.jpg,i08,antelope,4,bushbuck,0.8896562457084656
+07220633_a10_antelope.jpg,a10,antelope,4,bushbuck,0.5041820406913757
+2016 09 22 16 15 58_k08_antelope.jpg,k08,antelope,3,impala,0.6626559495925903
+2016 10 21 08 35 16_h07_antelope.jpg,h07,antelope,2,warthog,0.6657401919364929
+EK001627_e04_antelope.jpg,e04,antelope,0,waterbuck,0.4005199372768402
+10290310_a10_antelope.jpg,a10,antelope,1,baboon,0.8105523586273193
+12040798_i06_antelope.jpg,i06,antelope,10,reedbuck,0.9683303236961365
+EK004512_b07_antelope.jpg,b07,antelope,0,waterbuck,0.8560167551040649
+08240755_l11_antelope.jpg,l11,antelope,2,warthog,0.8068698644638062
+02020109_l07_antelope.jpg,l07,antelope,2,warthog,0.9909080266952515
+EK005452_e04_antelope.jpg,e04,antelope,2,warthog,0.5056697726249695
+04010290_k10_antelope.jpg,k10,antelope,8,nyala,0.3686428368091583
+09250025_g08_antelope.jpg,g08,antelope,0,waterbuck,0.5147159099578857
+EK004354_02_h05_antelope.jpg,h05,antelope,2,warthog,0.34558525681495667
+EK003916_03_f07_antelope.jpg,f07,antelope,2,warthog,0.22520950436592102
+04210542_h03_antelope.jpg,h03,antelope,2,warthog,0.6526931524276733
+EK004532_b07_antelope.jpg,b07,antelope,7,genet,0.610019862651825
+EK001733_f01_antelope.jpg,f01,antelope,2,warthog,0.9659140706062317
+2016 11 10 22 35 32_b07_antelope.jpg,b07,antelope,2,warthog,0.5145232081413269
+2016 08 15 20 30 53_e06_antelope.jpg,e06,antelope,4,bushbuck,0.9158070683479309
+2016 10 12 11 48 13_c08_antelope.jpg,c08,antelope,2,warthog,0.5360294580459595
+2016 10 18 21 22 49_f11_antelope.jpg,f11,antelope,4,bushbuck,0.39014002680778503
+2016 07 10 23 40 52_a06_antelope.jpg,a06,antelope,4,bushbuck,0.6576786637306213
+11150312_a10_antelope.jpg,a10,antelope,4,bushbuck,0.8962668776512146
+EK007665_f07_antelope.jpg,f07,antelope,3,impala,0.5934550166130066
+2016 06 25 22 42 16_d07_antelope.jpg,d07,antelope,2,warthog,0.6610197424888611
+EK001009_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5003054141998291
+04160020_g08_antelope.jpg,g08,antelope,0,waterbuck,0.9523181915283203
+2016 09 16 22 52 30_h09_antelope.jpg,h09,antelope,0,waterbuck,0.9904961585998535
+2016 09 15 21 21 11_i08_antelope.jpg,i08,antelope,2,warthog,0.5678481459617615
+2016 07 29 03 52 54_l07_antelope.jpg,l07,antelope,4,bushbuck,0.8947131037712097
+08080530_k10_antelope.jpg,k10,antelope,0,waterbuck,0.8265557885169983
+2016 10 31 20 45 14_l05_antelope.jpg,l05,antelope,2,warthog,0.8845376968383789
+2016 10 06 00 17 38_k06_antelope.jpg,k06,antelope,2,warthog,0.8659170866012573
+2016 10 28 17 16 01_e06_antelope.jpg,e06,antelope,8,nyala,0.7259961366653442
+06020740_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9877641797065735
+EK000764_j13_antelope.jpg,j13,antelope,4,bushbuck,0.6521157026290894
+2016 09 10 05 24 32_k06_antelope.jpg,k06,antelope,2,warthog,0.5495421886444092
+05300767_h09_antelope.jpg,h09,antelope,0,waterbuck,0.7845125794410706
+2016 10 20 04 10 18_d05_antelope.jpg,d05,antelope,0,waterbuck,0.40165460109710693
+2016 10 17 19 04 40_e06_antelope.jpg,e06,antelope,4,bushbuck,0.622560977935791
+A_EK007865_k06_antelope.jpg,k06,antelope,2,warthog,0.952518105506897
+EK005618_03_f07_antelope.jpg,f07,antelope,4,bushbuck,0.808602511882782
+02030033_g06_antelope.jpg,g06,antelope,3,impala,0.5303505659103394
+11170428_k04_antelope.jpg,k04,antelope,0,waterbuck,0.4472675621509552
+EK000690_h05_antelope.jpg,h05,antelope,5,oribi,0.6507858633995056
+2016 08 29 18 27 11_j03_antelope.jpg,j03,antelope,0,waterbuck,0.9821029901504517
+2016 11 07 21 13 13_b07_antelope.jpg,b07,antelope,2,warthog,0.5468295812606812
+EK003314_h05_antelope.jpg,h05,antelope,2,warthog,0.38122522830963135
+EK001774_f01_antelope.jpg,f01,antelope,7,genet,0.29184490442276
+06060833_h09_antelope.jpg,h09,antelope,6,elephant,0.9996201992034912
+09200536_e08_antelope.jpg,e08,antelope,0,waterbuck,0.6519859433174133
+02160890_e10_antelope.jpg,e10,antelope,0,waterbuck,0.9127746224403381
+07250265_l05_antelope.jpg,l05,antelope,4,bushbuck,0.9982116222381592
+2016 10 24 03 37 54_f01_antelope.jpg,f01,antelope,0,waterbuck,0.7741209268569946
+EK001033_j13_antelope.jpg,j13,antelope,0,waterbuck,0.5075463056564331
+EK002282_02_h05_antelope.jpg,h05,antelope,2,warthog,0.6412688493728638
+07220796_f05_antelope.jpg,f05,antelope,2,warthog,0.6359525918960571
+EK000840_e06_antelope.jpg,e06,antelope,4,bushbuck,0.856393575668335
+EK001682_01_f07_antelope.jpg,f07,antelope,3,impala,0.2540738880634308
+EK000254_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5817966461181641
+04020439_h03_antelope.jpg,h03,antelope,0,waterbuck,0.4440358877182007
+EK001152_e06_antelope.jpg,e06,antelope,4,bushbuck,0.9395080208778381
+2016 09 13 00 56 28_f01_antelope.jpg,f01,antelope,0,waterbuck,0.8055981993675232
+2016 10 12 11 49 21_c08_antelope.jpg,c08,antelope,5,oribi,0.5474665760993958
+EK002107_03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.5048784017562866
+01010341_k12_antelope.jpg,k12,antelope,1,baboon,0.8780293464660645
+EK000254_e04_antelope.jpg,e04,antelope,4,bushbuck,0.4702782928943634
+04090782_h03_antelope.jpg,h03,antelope,3,impala,0.49934670329093933
+EK004455_h05_antelope.jpg,h05,antelope,2,warthog,0.3002834618091583
+2016 11 04 00 33 31_g06_antelope.jpg,g06,antelope,4,bushbuck,0.9345695972442627
+2016 10 25 00 23 08_f01_antelope.jpg,f01,antelope,0,waterbuck,0.38596510887145996
+EK000257_02_f03_antelope.jpg,f03,antelope,0,waterbuck,0.7411335706710815
+2016 10 21 21 32 28_k06_antelope.jpg,k06,antelope,2,warthog,0.9698965549468994
+09120530_f01_antelope.jpg,f01,antelope,1,baboon,0.985218346118927
+01190611_k04_antelope.jpg,k04,antelope,1,baboon,0.762439489364624
+02270554_h03_antelope.jpg,h03,antelope,0,waterbuck,0.5428373217582703
+11060229_f01_antelope.jpg,f01,antelope,0,waterbuck,0.9908117055892944
+EK001065_h11_antelope.jpg,h11,antelope,4,bushbuck,0.9921026825904846
+2016 09 02 22 52 15_m10_antelope.jpg,m10,antelope,4,bushbuck,0.7763336896896362
+07270086_e02_antelope.jpg,e02,antelope,4,bushbuck,0.7714499831199646
+2016 11 01 16 32 55_g12_antelope.jpg,g12,antelope,8,nyala,0.6534087657928467
+2016 10 15 10 51 20_e02_antelope.jpg,e02,antelope,4,bushbuck,0.41559281945228577
+12100051_h07_antelope.jpg,h07,antelope,4,bushbuck,0.9985589385032654
+EK007300_k06_antelope.jpg,k06,antelope,4,bushbuck,0.8821678161621094
+EK003124_03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.4465455412864685
+2016 09 01 00 01 06_k06_antelope.jpg,k06,antelope,0,waterbuck,0.5067387223243713
+EK002622_b07_antelope.jpg,b07,antelope,4,bushbuck,0.9143574833869934
+07220792_f05_antelope.jpg,f05,antelope,2,warthog,0.6907452344894409
+2016 08 21 20 53 30_i14_antelope.jpg,i14,antelope,0,waterbuck,0.30914247035980225
+02260544_h03_antelope.jpg,h03,antelope,4,bushbuck,0.7534472942352295
+04020438_h03_antelope.jpg,h03,antelope,0,waterbuck,0.7306011915206909
+02050995_h03_antelope.jpg,h03,antelope,4,bushbuck,0.5120376944541931
+07220799_f05_antelope.jpg,f05,antelope,2,warthog,0.5452316403388977
+11180395_h07_antelope.jpg,h07,antelope,2,warthog,0.9206886887550354
+03150634_j07_antelope.jpg,j07,antelope,0,waterbuck,0.7099090218544006
+08010285_l05_antelope.jpg,l05,antelope,4,bushbuck,0.6205431818962097
+07300323_m10_antelope.jpg,m10,antelope,0,waterbuck,0.3770788013935089
+01310030_l07_antelope.jpg,l07,antelope,1,baboon,0.8167849779129028
+11130016_b05_antelope.jpg,b05,antelope,2,warthog,0.9155561923980713
+11110736_i06_antelope.jpg,i06,antelope,0,waterbuck,0.40474873781204224
+2016 08 30 01 11 25_k06_antelope.jpg,k06,antelope,4,bushbuck,0.5105034708976746
+10120982_b07_antelope.jpg,b07,antelope,1,baboon,0.3618911802768707
+2016 10 29 17 50 55_e06_antelope.jpg,e06,antelope,4,bushbuck,0.44080850481987
+EK000253_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5449817180633545
+2016 09 03 19 17 44_a10_antelope.jpg,a10,antelope,4,bushbuck,0.5860278010368347
+2016 08 02 09 18 42_i08_antelope.jpg,i08,antelope,1,baboon,0.8922337889671326
+11180396_h07_antelope.jpg,h07,antelope,2,warthog,0.956561267375946
+2016 11 04 00 33 30_g06_antelope.jpg,g06,antelope,2,warthog,0.4028870463371277
+05210734_e08_antelope.jpg,e08,antelope,2,warthog,0.5149367451667786
+2016 09 26 03 13 40_l07_antelope.jpg,l07,antelope,0,waterbuck,0.3974910378456116
+2016 08 08 00 34 33_k10_antelope.jpg,k10,antelope,0,waterbuck,0.9444833397865295
+01070790_g06_antelope.jpg,g06,antelope,4,bushbuck,0.9202736616134644
+EK004383_b07_antelope.jpg,b07,antelope,0,waterbuck,0.6162137389183044
+2016 10 19 01 51 26_e06_antelope.jpg,e06,antelope,0,waterbuck,0.9341434240341187
+2016 10 19 01 51 27_e06_antelope.jpg,e06,antelope,2,warthog,0.828572690486908
+2016 10 21 04 36 44_e06_antelope.jpg,e06,antelope,1,baboon,0.8718386888504028
+10120981_b07_antelope.jpg,b07,antelope,1,baboon,0.8555650115013123
+EK006456_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9212942719459534
+03050768_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5139585137367249
+04200535_h03_antelope.jpg,h03,antelope,0,waterbuck,0.41038694977760315
+2016 06 29 07 30 10_f03_antelope.jpg,f03,antelope,1,baboon,0.9509069323539734
+2016 10 22 01 28 36_k08_antelope.jpg,k08,antelope,0,waterbuck,0.8691205382347107
+EK003811_f03_antelope.jpg,f03,antelope,3,impala,0.9105809926986694
+03200458_b07_antelope.jpg,b07,antelope,0,waterbuck,0.728355884552002
+06230976_l11_antelope.jpg,l11,antelope,4,bushbuck,0.9998030066490173
+2016 10 17 07 39 38_h07_antelope.jpg,h07,antelope,2,warthog,0.8580613136291504
+04130347_j07_antelope.jpg,j07,antelope,0,waterbuck,0.6640889048576355
+EK001354_f01_antelope.jpg,f01,antelope,7,genet,0.6455769538879395
+EK004457_b07_antelope.jpg,b07,antelope,4,bushbuck,0.49709397554397583
+04280053_c08_antelope.jpg,c08,antelope,0,waterbuck,0.4842727780342102
+07080258_d03_antelope.jpg,d03,antelope,4,bushbuck,0.9169723391532898
+01290013_b07_antelope.jpg,b07,antelope,0,waterbuck,0.8033336997032166
+2016 09 10 03 47 56_a10_antelope.jpg,a10,antelope,3,impala,0.6935985088348389
+2016 09 16 00 09 40_f01_antelope.jpg,f01,antelope,0,waterbuck,0.8209229111671448
+2016 09 02 05 19 08_d07_antelope.jpg,d07,antelope,2,warthog,0.7290191650390625
+EK009404_j09_antelope.jpg,j09,antelope,0,waterbuck,0.8528432250022888
+EK002554_b07_antelope.jpg,b07,antelope,4,bushbuck,0.5563086271286011
+06220268_i04_antelope.jpg,i04,antelope,2,warthog,0.8736878037452698
+2016 07 29 10 32 09_k04_antelope.jpg,k04,antelope,2,warthog,0.8580334782600403
+EK004962_02_e04_antelope.jpg,e04,antelope,0,waterbuck,0.3751979470252991
+12090051_e02_antelope.jpg,e02,antelope,4,bushbuck,0.736357569694519
+EK001153_e06_antelope.jpg,e06,antelope,4,bushbuck,0.9531326293945312
+02090285_k04_antelope.jpg,k04,antelope,0,waterbuck,0.4846925139427185
+2016 10 21 20 45 20_k06_antelope.jpg,k06,antelope,2,warthog,0.9738360047340393
+2016 11 07 21 13 12_b07_antelope.jpg,b07,antelope,2,warthog,0.5597059726715088
+EK000205_g10_antelope.jpg,g10,antelope,0,waterbuck,0.5297601222991943
+01260383_j11_antelope.jpg,j11,antelope,4,bushbuck,0.5860481858253479
+2016 10 31 05 45 05_h07_antelope.jpg,h07,antelope,2,warthog,0.7105866074562073
+2016 10 05 07 38 47_a10_antelope.jpg,a10,antelope,2,warthog,0.8947938084602356
+2016 10 21 22 47 48_k06_antelope.jpg,k06,antelope,2,warthog,0.9114716649055481
+03270770_g08_antelope.jpg,g08,antelope,2,warthog,0.40185046195983887
+10100800_k04_antelope.jpg,k04,antelope,0,waterbuck,0.561838686466217
+09170476_m10_antelope.jpg,m10,antelope,2,warthog,0.6062679886817932
+07220791_f05_antelope.jpg,f05,antelope,2,warthog,0.7168136835098267
+EK005167_h05_antelope.jpg,h05,antelope,1,baboon,0.4970574676990509
+03180088_i04_antelope.jpg,i04,antelope,4,bushbuck,0.3333837687969208
+EK004017_04_h05_antelope.jpg,h05,antelope,3,impala,0.9988610744476318
+2016 10 10 12 48 39_f03_antelope.jpg,f03,antelope,2,warthog,0.49357086420059204
+2016 09 01 02 27 41_e06_antelope.jpg,e06,antelope,2,warthog,0.6905640959739685
+EK001490_h05_antelope.jpg,h05,antelope,0,waterbuck,0.5292657613754272
+04130381_j07_antelope.jpg,j07,antelope,4,bushbuck,0.9861775636672974
+2016 10 14 07 37 06_l05_antelope.jpg,l05,antelope,2,warthog,0.48852992057800293
+02240826_h03_antelope.jpg,h03,antelope,2,warthog,0.9552106261253357
+05240404_i06_antelope.jpg,i06,antelope,6,elephant,0.4504883289337158
+11130015_b05_antelope.jpg,b05,antelope,2,warthog,0.997099757194519
+EK004660_e04_antelope.jpg,e04,antelope,3,impala,0.61934494972229
+EK004237_03_f07_antelope.jpg,f07,antelope,1,baboon,0.4836061894893646
+01010385_e02_antelope.jpg,e02,antelope,2,warthog,0.8091744780540466
+06070660_b09_antelope.jpg,b09,antelope,4,bushbuck,0.9992479681968689
+12060425_d05_antelope.jpg,d05,antelope,2,warthog,0.9474053978919983
+02070508_d07_antelope.jpg,d07,antelope,2,warthog,0.6360559463500977
+EK002770_04_h05_antelope.jpg,h05,antelope,2,warthog,0.5669431090354919
+02260545_h03_antelope.jpg,h03,antelope,3,impala,0.7343884706497192
+EK005747_h05_antelope.jpg,h05,antelope,4,bushbuck,0.8759942054748535
+2016 08 29 09 15 59_k06_antelope.jpg,k06,antelope,1,baboon,0.9874972105026245
+2016 08 30 04 44 40_d07_antelope.jpg,d07,antelope,4,bushbuck,0.9516109228134155
+05010879_h03_antelope.jpg,h03,antelope,11,civet,0.2751729488372803
+08170052_e08_antelope.jpg,e08,antelope,6,elephant,0.45657455921173096
+2016 10 21 17 30 12_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9151264429092407
+2016 10 27 15 40 05_h07_antelope.jpg,h07,antelope,2,warthog,0.4310305416584015
+2016 07 20 21 52 31_i08_antelope.jpg,i08,antelope,4,bushbuck,0.6496414542198181
+EK004588_j03_antelope.jpg,j03,antelope,0,waterbuck,0.9967159032821655
+05030031_h03_antelope.jpg,h03,antelope,3,impala,0.7378348112106323
+EK001629_f07_antelope.jpg,f07,antelope,2,warthog,0.8592924475669861
+2016 11 10 22 35 27_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9990319013595581
+03220651_g08_antelope.jpg,g08,antelope,0,waterbuck,0.9147515296936035
+11130110_g04_antelope.jpg,g04,antelope,6,elephant,0.44327616691589355
+06240378_g08_antelope.jpg,g08,antelope,4,bushbuck,0.8419000506401062
+EK005193_e04_antelope.jpg,e04,antelope,3,impala,0.6841298937797546
+06150741_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9984431862831116
+2016 07 10 04 08 15_h03_antelope.jpg,h03,antelope,0,waterbuck,0.8699390292167664
+12110644_h03_antelope.jpg,h03,antelope,4,bushbuck,0.9936150312423706
+2016 08 15 17 11 51_l05_antelope.jpg,l05,antelope,2,warthog,0.9174407124519348
+11180348_i04_antelope.jpg,i04,antelope,4,bushbuck,0.6900002956390381
+2016 08 15 02 30 31_i12_antelope.jpg,i12,antelope,4,bushbuck,0.31726914644241333
+2016 10 15 10 56 33_e02_antelope.jpg,e02,antelope,0,waterbuck,0.8211580514907837
+EK009269_i08_antelope.jpg,i08,antelope,4,bushbuck,0.824954628944397
+2016 09 19 21 26 43_e02_antelope.jpg,e02,antelope,4,bushbuck,0.8286804556846619
+2016 10 01 21 13 04_k06_antelope.jpg,k06,antelope,4,bushbuck,0.7294813990592957
+EK004164_f07_antelope.jpg,f07,antelope,2,warthog,0.7206169962882996
+EK005198_k06_antelope.jpg,k06,antelope,1,baboon,0.6221758723258972
+12170909_d07_antelope.jpg,d07,antelope,2,warthog,0.5481311678886414
+10100802_k04_antelope.jpg,k04,antelope,6,elephant,0.7088220119476318
+EK002465_j13_antelope.jpg,j13,antelope,7,genet,0.5582068562507629
+12070349_g04_antelope.jpg,g04,antelope,2,warthog,0.39166316390037537
+07310328_m10_antelope.jpg,m10,antelope,2,warthog,0.5026195049285889
+2016 07 18 04 08 10_h03_antelope.jpg,h03,antelope,4,bushbuck,0.9456924796104431
+EK000055_f01_antelope.jpg,f01,antelope,0,waterbuck,0.769891083240509
+03020478_h03_antelope.jpg,h03,antelope,24,hippopotamus,0.4860645532608032
+11080549_g02_antelope.jpg,g02,antelope,4,bushbuck,0.4609217941761017
+EK000402_f01_antelope.jpg,f01,antelope,4,bushbuck,0.9917964935302734
+EK001802_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9958772659301758
+2016 09 28 22 54 38_l05_antelope.jpg,l05,antelope,2,warthog,0.9159979820251465
+02160248_h03_antelope.jpg,h03,antelope,0,waterbuck,0.728768527507782
+06130448_h07_antelope.jpg,h07,antelope,2,warthog,0.6075614094734192
+07220804_f05_antelope.jpg,f05,antelope,1,baboon,0.4679957628250122
+04190402_f11_antelope.jpg,f11,antelope,4,bushbuck,0.5135781168937683
+EK000298_j13_antelope.jpg,j13,antelope,1,baboon,0.785656213760376
+EK006970_03_h05_antelope.jpg,h05,antelope,2,warthog,0.25832176208496094
+2016 08 03 04 21 02_h09_antelope.jpg,h09,antelope,10,reedbuck,0.6284279823303223
+2016 08 03 20 08 47_h11_antelope.jpg,h11,antelope,4,bushbuck,0.44544747471809387
+EK002473_j13_antelope.jpg,j13,antelope,7,genet,0.6370910406112671
+03060929_h03_antelope.jpg,h03,antelope,2,warthog,0.8660097122192383
+2016 07 31 17 50 55_l11_antelope.jpg,l11,antelope,6,elephant,0.4246053099632263
+613_g08_antelope.jpg,g08,antelope,1,baboon,0.6754471659660339
+06080748_j07_antelope.jpg,j07,antelope,0,waterbuck,0.7953967452049255
+2016 07 15 14 00 14_j07_antelope.jpg,j07,antelope,2,warthog,0.3267376124858856
+2016 07 21 02 23 56_f01_antelope.jpg,f01,antelope,0,waterbuck,0.9946052432060242
+03280862_c08_antelope.jpg,c08,antelope,2,warthog,0.9749157428741455
+04050165_i12_antelope.jpg,i12,antelope,6,elephant,0.9993566870689392
+11010538_h03_antelope.jpg,h03,antelope,5,oribi,0.8229090571403503
+09290222_a10_antelope.jpg,a10,antelope,2,warthog,0.6855988502502441
+EK002510_k06_antelope.jpg,k06,antelope,2,warthog,0.6347735524177551
+03010010_d07_antelope.jpg,d07,antelope,2,warthog,0.9860956072807312
+11110342_f01_antelope.jpg,f01,antelope,0,waterbuck,0.9307278394699097
+12130184_b09_antelope.jpg,b09,antelope,4,bushbuck,0.329777330160141
+EK002412_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9763443470001221
+2016 07 08 13 06 56_d05_antelope.jpg,d05,antelope,1,baboon,0.6035937070846558
+2016 09 01 02 26 16_e06_antelope.jpg,e06,antelope,2,warthog,0.7121984362602234
+2016 10 08 00 36 02_k08_antelope.jpg,k08,antelope,0,waterbuck,0.8628761768341064
+06130447_h07_antelope.jpg,h07,antelope,6,elephant,0.977132260799408
+12090057_e02_antelope.jpg,e02,antelope,0,waterbuck,0.20619362592697144
+EK005136_01_j03_antelope.jpg,j03,antelope,0,waterbuck,0.7944824695587158
+2016 08 30 01 12 09_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9941847920417786
+2016 09 22 16 15 57_k08_antelope.jpg,k08,antelope,25,hartebeest,0.981492817401886
+2016 08 30 01 27 02_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9988774657249451
+EK000310_h05_antelope.jpg,h05,antelope,0,waterbuck,0.69902104139328
+06080749_j07_antelope.jpg,j07,antelope,2,warthog,0.8664035797119141
+11140796_g02_antelope.jpg,g02,antelope,2,warthog,0.6272630095481873
+09230190_e08_antelope.jpg,e08,antelope,0,waterbuck,0.4929104745388031
+2016 10 17 02 04 49_h05_antelope.jpg,h05,antelope,3,impala,0.8414638042449951
+07220794_f05_antelope.jpg,f05,antelope,2,warthog,0.6001596450805664
+04080734_h03_antelope.jpg,h03,antelope,7,genet,0.28704938292503357
+EK007428_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9965296387672424
+01060653_b07_antelope.jpg,b07,antelope,2,warthog,0.47190162539482117
+EK006989_03_f07_antelope.jpg,f07,antelope,4,bushbuck,0.6179825067520142
+EK007901_03_h05_antelope.jpg,h05,antelope,6,elephant,0.7422544360160828
+EK004381_b07_antelope.jpg,b07,antelope,0,waterbuck,0.8348957300186157
+2016 10 27 21 14 47_f11_antelope.jpg,f11,antelope,4,bushbuck,0.7191213369369507
+2016 07 20 21 52 30_i08_antelope.jpg,i08,antelope,0,waterbuck,0.33699312806129456
+EK008059_h05_antelope.jpg,h05,antelope,2,warthog,0.8634612560272217
+04230424_f11_antelope.jpg,f11,antelope,25,hartebeest,0.9921730756759644
+EK002196_f07_antelope.jpg,f07,antelope,0,waterbuck,0.43675634264945984
+EK000965_e04_antelope.jpg,e04,antelope,2,warthog,0.6616823673248291
+01260384_j11_antelope.jpg,j11,antelope,1,baboon,0.9894150495529175
+2016 08 10 01 39 29_e06_antelope.jpg,e06,antelope,4,bushbuck,0.5366328954696655
+11270817_l11_antelope.jpg,l11,antelope,2,warthog,0.9973286390304565
+02220925_i04_antelope.jpg,i04,antelope,0,waterbuck,0.43679091334342957
+EK004028_b07_antelope.jpg,b07,antelope,0,waterbuck,0.7032012939453125
+EK005608_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9824517369270325
+2016 10 24 03 37 53_f01_antelope.jpg,f01,antelope,0,waterbuck,0.7028040289878845
+11190280_d07_antelope.jpg,d07,antelope,2,warthog,0.6339971423149109
+04280054_c08_antelope.jpg,c08,antelope,0,waterbuck,0.7626788020133972
+2016 10 21 08 24 12_h07_antelope.jpg,h07,antelope,2,warthog,0.6610068082809448
+08190517_a10_antelope.jpg,a10,antelope,1,baboon,0.46809306740760803
+01010551_c08_antelope.jpg,c08,antelope,4,bushbuck,0.7273983359336853
+2016 10 22 01 33 21_f01_antelope.jpg,f01,antelope,0,waterbuck,0.7112399339675903
+EK006455_i08_antelope.jpg,i08,antelope,4,bushbuck,0.6342982053756714
+2016 07 22 21 01 16_f07_antelope.jpg,f07,antelope,19,bushpig,0.3998229205608368
+11070009_e10_antelope.jpg,e10,antelope,6,elephant,0.3192991316318512
+EK001873_j13_antelope.jpg,j13,antelope,0,waterbuck,0.3315325081348419
+2016 10 27 15 40 04_h07_antelope.jpg,h07,antelope,2,warthog,0.4713236093521118
+EK001151_e06_antelope.jpg,e06,antelope,4,bushbuck,0.8027980923652649
+01150086_m08_antelope.jpg,m08,antelope,0,waterbuck,0.6731876134872437
+01130079_g12_antelope.jpg,g12,antelope,4,bushbuck,0.8126636743545532
+EK000752_j03_antelope.jpg,j03,antelope,0,waterbuck,0.8626624345779419
+2016 08 08 00 40 09_b07_antelope.jpg,b07,antelope,3,impala,0.9166440963745117
+02210511_h03_antelope.jpg,h03,antelope,0,waterbuck,0.31669074296951294
+12010606_d07_antelope.jpg,d07,antelope,2,warthog,0.5637626051902771
+2016 08 29 09 13 42_k06_antelope.jpg,k06,antelope,1,baboon,0.9529103636741638
+03040715_h03_antelope.jpg,h03,antelope,0,waterbuck,0.6379907727241516
+EK007074_h05_antelope.jpg,h05,antelope,0,waterbuck,0.18373315036296844
+EK005194_e04_antelope.jpg,e04,antelope,3,impala,0.6693392395973206
+EK004016_04_h05_antelope.jpg,h05,antelope,3,impala,0.9991552829742432
+2016 08 08 00 35 33_k10_antelope.jpg,k10,antelope,0,waterbuck,0.9700867533683777
+2016 09 21 21 31 06_e06_antelope.jpg,e06,antelope,3,impala,0.409210205078125
+11230661_h03_antelope.jpg,h03,antelope,0,waterbuck,0.6103445887565613
+EK001030_i08_antelope.jpg,i08,antelope,8,nyala,0.6464673280715942
+03040716_h03_antelope.jpg,h03,antelope,0,waterbuck,0.787016749382019
+EK004511_b07_antelope.jpg,b07,antelope,0,waterbuck,0.9161582589149475
+03220663_g08_antelope.jpg,g08,antelope,0,waterbuck,0.5387725830078125
+04130977_g08_antelope.jpg,g08,antelope,4,bushbuck,0.5239441990852356
+2016 07 29 17 44 25_d05_antelope.jpg,d05,antelope,2,warthog,0.43432384729385376
+12300017_b09_antelope.jpg,b09,antelope,1,baboon,0.8942989110946655
+2016 07 19 04 14 07_k06_antelope.jpg,k06,antelope,2,warthog,0.7417356967926025
+2016 08 02 21 20 17_l07_antelope.jpg,l07,antelope,4,bushbuck,0.5144180655479431
+12250068_h03_antelope.jpg,h03,antelope,6,elephant,0.8860730528831482
+2016 09 26 19 00 55_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9985431432723999
+03060925_h03_antelope.jpg,h03,antelope,3,impala,0.955780565738678
+11080517_e02_antelope.jpg,e02,antelope,4,bushbuck,0.6616992950439453
+2016 10 20 12 28 36_l05_antelope.jpg,l05,antelope,2,warthog,0.5232833027839661
+B_EK007527_02_k06_antelope.jpg,k06,antelope,1,baboon,0.9491288065910339
+EK001206_e06_antelope.jpg,e06,antelope,2,warthog,0.9250378608703613
+EK005410_g10_antelope.jpg,g10,antelope,4,bushbuck,0.8101959228515625
+EK000868_j13_antelope.jpg,j13,antelope,4,bushbuck,0.9534189701080322
+2016 10 21 22 08 00_k06_antelope.jpg,k06,antelope,2,warthog,0.9981274008750916
+09010012_m10_antelope.jpg,m10,antelope,2,warthog,0.5986405611038208
+C_EK000501_03_k06_antelope.jpg,k06,antelope,0,waterbuck,0.639836847782135
+EK001420_04_h05_antelope.jpg,h05,antelope,3,impala,0.5540711283683777
+01140084_g12_antelope.jpg,g12,antelope,4,bushbuck,0.6533631682395935
+2016 08 25 01 57 25_l09_antelope.jpg,l09,antelope,4,bushbuck,0.9956308603286743
+2016 10 29 07 51 56_d07_antelope.jpg,d07,antelope,1,baboon,0.8979120850563049
+2016 08 07 05 09 13_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5381438136100769
+06060261_h03_antelope.jpg,h03,antelope,0,waterbuck,0.7581883668899536
+2016 08 30 01 14 26_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9252110123634338
+05310864_h07_antelope.jpg,h07,antelope,2,warthog,0.3846626877784729
+EK000576_02_j13_antelope.jpg,j13,antelope,3,impala,0.4089111089706421
+EK000911_02_h05_antelope.jpg,h05,antelope,2,warthog,0.6098867654800415
+12010155_i04_antelope.jpg,i04,antelope,5,oribi,0.682674765586853
+08010671_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9948654770851135
+2016 07 25 09 16 49_l07_antelope.jpg,l07,antelope,1,baboon,0.9918141961097717
+11120846_e02_antelope.jpg,e02,antelope,4,bushbuck,0.894429087638855
+08100542_g08_antelope.jpg,g08,antelope,3,impala,0.4857076406478882
+EK001742_02_h05_antelope.jpg,h05,antelope,2,warthog,0.7237188816070557
+EK004165_f07_antelope.jpg,f07,antelope,2,warthog,0.8832562565803528
+04130974_g08_antelope.jpg,g08,antelope,2,warthog,0.9980688691139221
+2016 09 12 20 23 21_l07_antelope.jpg,l07,antelope,4,bushbuck,0.4406527578830719
+EK000072_b07_antelope.jpg,b07,antelope,4,bushbuck,0.2482701987028122
+EK000251_f01_antelope.jpg,f01,antelope,5,oribi,0.9868822693824768
+04130348_j07_antelope.jpg,j07,antelope,0,waterbuck,0.6651931405067444
+EK001820_03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.5571476817131042
+2016 10 08 21 02 02_e02_antelope.jpg,e02,antelope,4,bushbuck,0.2997015714645386
+EK004353_02_h05_antelope.jpg,h05,antelope,2,warthog,0.29153838753700256
+2016 08 01 12 08 57_f05_antelope.jpg,f05,antelope,1,baboon,0.4997478127479553
+EK004023_f07_antelope.jpg,f07,antelope,3,impala,0.5504873394966125
+EK001067_h11_antelope.jpg,h11,antelope,4,bushbuck,0.9989631175994873
+EK001517_03_h05_antelope.jpg,h05,antelope,2,warthog,0.8693612217903137
+2016 09 18 23 36 32_l07_antelope.jpg,l07,antelope,4,bushbuck,0.5611498355865479
+05210486_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9970431923866272
+B_EK005411_02_k06_antelope.jpg,k06,antelope,4,bushbuck,0.959926962852478
+2016 09 03 19 17 43_a10_antelope.jpg,a10,antelope,4,bushbuck,0.7925870418548584
+2016 08 29 13 05 43_a06_antelope.jpg,a06,antelope,2,warthog,0.7920793294906616
+03250808_h03_antelope.jpg,h03,antelope,11,civet,0.44515275955200195
+2016 10 01 19 27 01_l07_antelope.jpg,l07,antelope,4,bushbuck,0.47004076838493347
+614_g08_antelope.jpg,g08,antelope,1,baboon,0.8865590691566467
+04080731_h03_antelope.jpg,h03,antelope,2,warthog,0.2261607050895691
+10160167_d07_antelope.jpg,d07,antelope,22,duiker,0.3776153326034546
+11050710_f11_antelope.jpg,f11,antelope,4,bushbuck,0.826148271560669
+2016 09 02 05 19 09_d07_antelope.jpg,d07,antelope,2,warthog,0.8603779673576355
+2016 08 23 03 32 11_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9951149225234985
+01120056_h03_antelope.jpg,h03,antelope,3,impala,0.5068315267562866
+2016 08 31 00 59 29_l07_antelope.jpg,l07,antelope,4,bushbuck,0.3387152850627899
+11010537_h03_antelope.jpg,h03,antelope,5,oribi,0.6901623606681824
+2016 09 29 11 27 30_k06_antelope.jpg,k06,antelope,1,baboon,0.8404156565666199
+2016 10 20 04 10 19_d05_antelope.jpg,d05,antelope,8,nyala,0.4560808837413788
+EK008895_03_h05_antelope.jpg,h05,antelope,23,buffalo,0.23439712822437286
+EK006286_04_h05_antelope.jpg,h05,antelope,3,impala,0.4385305643081665
+EK006935_01_f07_antelope.jpg,f07,antelope,0,waterbuck,0.3722776770591736
+EK009267_i08_antelope.jpg,i08,antelope,4,bushbuck,0.81767338514328
+10080482_k04_antelope.jpg,k04,antelope,0,waterbuck,0.7097640633583069
+06100842_l11_antelope.jpg,l11,antelope,1,baboon,0.6924353837966919
+2016 09 01 00 08 39_k06_antelope.jpg,k06,antelope,2,warthog,0.9132976531982422
+EK005366_g10_antelope.jpg,g10,antelope,2,warthog,0.28648948669433594
+EK007431_k06_antelope.jpg,k06,antelope,2,warthog,0.7334954142570496
+EK005457_03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.35923802852630615
+EK008756_h05_antelope.jpg,h05,antelope,2,warthog,0.4023422300815582
+2016 10 29 04 01 34_e02_antelope.jpg,e02,antelope,4,bushbuck,0.811781644821167
+12130461_l11_antelope.jpg,l11,antelope,2,warthog,0.8330600261688232
+04210963_g04_antelope.jpg,g04,antelope,4,bushbuck,0.7991014122962952
+EK000993_h05_antelope.jpg,h05,antelope,3,impala,0.4611288607120514
+2016 10 06 10 09 41_i08_antelope.jpg,i08,antelope,1,baboon,0.9610872864723206
+2016 10 06 00 17 39_k06_antelope.jpg,k06,antelope,2,warthog,0.8111273646354675
+03060164_f11_antelope.jpg,f11,antelope,4,bushbuck,0.6533240079879761
+2016 10 21 04 36 45_e06_antelope.jpg,e06,antelope,1,baboon,0.8723882436752319
+08100539_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9576218128204346
+04290790_g06_antelope.jpg,g06,antelope,0,waterbuck,0.9770022630691528
+2016 10 26 04 12 22_k08_antelope.jpg,k08,antelope,4,bushbuck,0.7913914918899536
+2016 08 17 08 42 21_f07_antelope.jpg,f07,antelope,2,warthog,0.31664639711380005
+EK000456_i08_antelope.jpg,i08,antelope,2,warthog,0.8313245177268982
+2016 10 13 20 32 29_b07_antelope.jpg,b07,antelope,5,oribi,0.990702748298645
+2016 10 27 15 40 53_h07_antelope.jpg,h07,antelope,2,warthog,0.5754666924476624
+EK001804_f01_antelope.jpg,f01,antelope,7,genet,0.31112709641456604
+2016 10 01 21 14 19_k06_antelope.jpg,k06,antelope,0,waterbuck,0.4437379240989685
+12010158_i04_antelope.jpg,i04,antelope,4,bushbuck,0.8745240569114685
+10020822_c06_antelope.jpg,c06,antelope,4,bushbuck,0.9989582300186157
+11100049_d05_antelope.jpg,d05,antelope,2,warthog,0.8852835893630981
+11240177_e02_antelope.jpg,e02,antelope,4,bushbuck,0.9475875496864319
+01130058_l07_antelope.jpg,l07,antelope,4,bushbuck,0.91057288646698
+2016 07 26 06 22 54_b09_antelope.jpg,b09,antelope,5,oribi,0.9608799815177917
+04260650_k08_antelope.jpg,k08,antelope,2,warthog,0.6911163926124573
+2016 07 26 18 05 38_f01_antelope.jpg,f01,antelope,0,waterbuck,0.9210130572319031
+11080793_i12_antelope.jpg,i12,antelope,4,bushbuck,0.6782061457633972
+04030170_b07_antelope.jpg,b07,antelope,4,bushbuck,0.4146665036678314
+06120320_e08_antelope.jpg,e08,antelope,4,bushbuck,0.9319083094596863
+11280907_i04_antelope.jpg,i04,antelope,0,waterbuck,0.48315006494522095
+EK000914_j13_antelope.jpg,j13,antelope,0,waterbuck,0.29013198614120483
+08030291_l05_antelope.jpg,l05,antelope,2,warthog,0.3067401945590973
+2016 10 10 21 21 32_e06_antelope.jpg,e06,antelope,4,bushbuck,0.7714194655418396
+2016 08 16 18 23 18_k06_antelope.jpg,k06,antelope,4,bushbuck,0.5966485738754272
+11080435_m10_antelope.jpg,m10,antelope,0,waterbuck,0.534358024597168
+06060642_b09_antelope.jpg,b09,antelope,2,warthog,0.7094036936759949
+A_EK007866_k06_antelope.jpg,k06,antelope,2,warthog,0.6590057015419006
+08070548_k04_antelope.jpg,k04,antelope,4,bushbuck,0.7853043079376221
+2016 09 29 20 21 56_m10_antelope.jpg,m10,antelope,4,bushbuck,0.6790871620178223
+2016 10 11 09 59 06_l05_antelope.jpg,l05,antelope,2,warthog,0.6127896904945374
+2016 07 19 05 19 54_a10_antelope.jpg,a10,antelope,4,bushbuck,0.8794425129890442
+2016 08 15 17 11 50_l05_antelope.jpg,l05,antelope,4,bushbuck,0.8777090907096863
+04280056_c08_antelope.jpg,c08,antelope,0,waterbuck,0.8196126222610474
+05030156_k08_antelope.jpg,k08,antelope,2,warthog,0.915868878364563
+EK003078_k06_antelope.jpg,k06,antelope,1,baboon,0.7272460460662842
+11180026_e02_antelope.jpg,e02,antelope,4,bushbuck,0.7479831576347351
+EK008753_h05_antelope.jpg,h05,antelope,2,warthog,0.24759343266487122
+EK000706_02_h05_antelope.jpg,h05,antelope,0,waterbuck,0.30223771929740906
+02210512_h03_antelope.jpg,h03,antelope,4,bushbuck,0.3742707371711731
+11230660_h03_antelope.jpg,h03,antelope,0,waterbuck,0.7954657673835754
+03240836_d07_antelope.jpg,d07,antelope,0,waterbuck,0.22029487788677216
+EK003425_e04_antelope.jpg,e04,antelope,0,waterbuck,0.6811982989311218
+2016 07 26 17 59 22_l09_antelope.jpg,l09,antelope,4,bushbuck,0.9959575533866882
+2016 08 08 00 35 03_k10_antelope.jpg,k10,antelope,0,waterbuck,0.7940988540649414
+2016 08 15 02 29 57_i12_antelope.jpg,i12,antelope,4,bushbuck,0.8722286224365234
+A_EK006534_k06_antelope.jpg,k06,antelope,2,warthog,0.8296737670898438
+07020941_h07_antelope.jpg,h07,antelope,2,warthog,0.5894253849983215
+08180237_k12_antelope.jpg,k12,antelope,4,bushbuck,0.929635226726532
+2016 10 20 04 00 06_d05_antelope.jpg,d05,antelope,8,nyala,0.26642608642578125
+2016 08 22 17 08 56_f03_antelope.jpg,f03,antelope,3,impala,0.616643488407135
+2016 08 11 18 56 59_k06_antelope.jpg,k06,antelope,4,bushbuck,0.7402850985527039
+EK000013_f01_antelope.jpg,f01,antelope,2,warthog,0.27459394931793213
+05030663_e08_antelope.jpg,e08,antelope,0,waterbuck,0.5900107622146606
+08030305_l05_antelope.jpg,l05,antelope,4,bushbuck,0.9450058341026306
+2016 10 21 10 32 53_g04_antelope.jpg,g04,antelope,2,warthog,0.8184703588485718
+04130382_j07_antelope.jpg,j07,antelope,4,bushbuck,0.37542852759361267
+04130349_j07_antelope.jpg,j07,antelope,0,waterbuck,0.9396610856056213
+08040412_g08_antelope.jpg,g08,antelope,4,bushbuck,0.6879734992980957
+02190689_i10_antelope.jpg,i10,antelope,0,waterbuck,0.5529061555862427
+04280065_c08_antelope.jpg,c08,antelope,0,waterbuck,0.8239607214927673
+EK000297_j13_antelope.jpg,j13,antelope,1,baboon,0.9367618560791016
+2016 09 09 05 44 44_c08_antelope.jpg,c08,antelope,2,warthog,0.5751431584358215
+EK002577_02_h05_antelope.jpg,h05,antelope,2,warthog,0.7485142350196838
+EK008644_j09_antelope.jpg,j09,antelope,4,bushbuck,0.9330877065658569
+02020942_i04_antelope.jpg,i04,antelope,0,waterbuck,0.9509423971176147
+2016 11 10 22 35 31_b07_antelope.jpg,b07,antelope,2,warthog,0.651954174041748
+05250009_f11_antelope.jpg,f11,antelope,5,oribi,0.3835785984992981
+2016 07 21 10 37 15_m08_antelope.jpg,m08,antelope,0,waterbuck,0.9896062016487122
+EK005086_03_f07_antelope.jpg,f07,antelope,3,impala,0.6146606206893921
+06150635_f05_antelope.jpg,f05,antelope,2,warthog,0.8626391887664795
+04110943_h03_antelope.jpg,h03,antelope,4,bushbuck,0.9619589447975159
+05190254_b09_antelope.jpg,b09,antelope,3,impala,0.9678711295127869
+10170369_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9379386305809021
+09200535_e08_antelope.jpg,e08,antelope,6,elephant,0.5227335095405579
+2016 08 13 22 42 30_d05_antelope.jpg,d05,antelope,2,warthog,0.6071423888206482
+12140771_e02_antelope.jpg,e02,antelope,4,bushbuck,0.9142512083053589
+06240427_f05_antelope.jpg,f05,antelope,6,elephant,0.3601776957511902
+2016 09 05 17 30 19_k06_antelope.jpg,k06,antelope,1,baboon,0.9691108465194702
+2016 09 26 17 37 34_c06_antelope.jpg,c06,antelope,2,warthog,0.8165678977966309
+06260256_e02_antelope.jpg,e02,antelope,3,impala,0.317583292722702
+EK000326_f01_antelope.jpg,f01,antelope,4,bushbuck,0.9951940178871155
+EK002574_e06_antelope.jpg,e06,antelope,0,waterbuck,0.4951969087123871
+2016 08 14 20 57 40_e08_antelope.jpg,e08,antelope,0,waterbuck,0.9723829627037048
+11110493_k10_antelope.jpg,k10,antelope,4,bushbuck,0.9128010869026184
+11220093_b09_antelope.jpg,b09,antelope,1,baboon,0.4720611572265625
+12040421_b07_antelope.jpg,b07,antelope,2,warthog,0.8476552367210388
+2016 08 08 00 33 03_k10_antelope.jpg,k10,antelope,4,bushbuck,0.32146263122558594
+EK004163_f07_antelope.jpg,f07,antelope,2,warthog,0.5867651104927063
+06070662_b09_antelope.jpg,b09,antelope,0,waterbuck,0.699008047580719
+2016 10 17 19 04 41_e06_antelope.jpg,e06,antelope,2,warthog,0.9467101097106934
+EK006969_03_h05_antelope.jpg,h05,antelope,2,warthog,0.3292142450809479
+A_EK008845_k06_antelope.jpg,k06,antelope,2,warthog,0.9758895635604858
+01260101_h03_antelope.jpg,h03,antelope,0,waterbuck,0.5459983348846436
+08040409_g08_antelope.jpg,g08,antelope,6,elephant,0.6177027821540833
+EK001130_k06_antelope.jpg,k06,antelope,2,warthog,0.9272062182426453
+2016 08 03 20 08 48_h11_antelope.jpg,h11,antelope,4,bushbuck,0.4236763119697571
+12010157_i04_antelope.jpg,i04,antelope,5,oribi,0.7349154949188232
+EK002228_k06_antelope.jpg,k06,antelope,1,baboon,0.8775284886360168
+EK000270_g10_antelope.jpg,g10,antelope,0,waterbuck,0.729631781578064
+2016 09 25 03 01 06_a10_antelope.jpg,a10,antelope,4,bushbuck,0.39164984226226807
+02210295_h03_antelope.jpg,h03,antelope,2,warthog,0.3084307909011841
+2016 08 21 01 55 19_l05_antelope.jpg,l05,antelope,2,warthog,0.7732642292976379
+2016 11 07 00 42 32_i10_antelope.jpg,i10,antelope,2,warthog,0.9261345267295837
+2016 10 20 13 15 21_e02_antelope.jpg,e02,antelope,4,bushbuck,0.49379613995552063
+04100701_d07_antelope.jpg,d07,antelope,4,bushbuck,0.5087502002716064
+2016 10 13 21 29 33_j09_antelope.jpg,j09,antelope,4,bushbuck,0.929171621799469
+2016 08 11 19 11 24_e06_antelope.jpg,e06,antelope,2,warthog,0.9694634079933167
+01130081_g12_antelope.jpg,g12,antelope,4,bushbuck,0.7471346855163574
+06070663_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9780200719833374
+2016 09 01 04 18 00_f01_antelope.jpg,f01,antelope,0,waterbuck,0.7235255837440491
+EK002475_j13_antelope.jpg,j13,antelope,7,genet,0.8061918616294861
+05030032_h03_antelope.jpg,h03,antelope,3,impala,0.40304094552993774
+EK000671_j13_antelope.jpg,j13,antelope,0,waterbuck,0.3948328197002411
+12090053_e02_antelope.jpg,e02,antelope,4,bushbuck,0.3638993203639984
+03060161_f11_antelope.jpg,f11,antelope,4,bushbuck,0.9897571802139282
+2016 07 31 17 50 54_l11_antelope.jpg,l11,antelope,0,waterbuck,0.7931466698646545
+06240988_l11_antelope.jpg,l11,antelope,4,bushbuck,0.9985002279281616
+2016 07 30 16 38 39_i14_antelope.jpg,i14,antelope,2,warthog,0.438271701335907
+2016 07 09 23 38 50_e06_antelope.jpg,e06,antelope,0,waterbuck,0.9165669679641724
+07140738_e02_antelope.jpg,e02,antelope,4,bushbuck,0.44587767124176025
+2016 11 03 17 39 26_h07_antelope.jpg,h07,antelope,2,warthog,0.8371530175209045
+2016 10 03 05 46 58_f11_antelope.jpg,f11,antelope,1,baboon,0.7074751853942871
+09040553_l05_antelope.jpg,l05,antelope,2,warthog,0.8896169066429138
+2016 10 13 20 32 30_b07_antelope.jpg,b07,antelope,5,oribi,0.9981358051300049
+2016 09 13 00 56 27_f01_antelope.jpg,f01,antelope,0,waterbuck,0.88393235206604
+04130979_g08_antelope.jpg,g08,antelope,2,warthog,0.9729861617088318
+2016 10 21 21 19 27_k06_antelope.jpg,k06,antelope,2,warthog,0.9970683455467224
+2016 07 14 05 13 28_e08_antelope.jpg,e08,antelope,10,reedbuck,0.9702343940734863
+EK000058_f01_antelope.jpg,f01,antelope,5,oribi,0.5857729911804199
+EK003123_03_f07_antelope.jpg,f07,antelope,4,bushbuck,0.7802748084068298
+07020132_g08_antelope.jpg,g08,antelope,2,warthog,0.7061395645141602
+2016 08 29 09 16 00_k06_antelope.jpg,k06,antelope,1,baboon,0.9914215207099915
+2016 07 19 04 11 43_k06_antelope.jpg,k06,antelope,4,bushbuck,0.8850902318954468
+2016 11 07 00 42 33_i10_antelope.jpg,i10,antelope,2,warthog,0.8081521987915039
+2016 10 31 20 37 09_m10_antelope.jpg,m10,antelope,4,bushbuck,0.2535597085952759
+2016 08 20 17 36 22_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9706774353981018
+2016 10 19 21 54 48_e06_antelope.jpg,e06,antelope,4,bushbuck,0.43683871626853943
+02270978_j07_antelope.jpg,j07,antelope,0,waterbuck,0.6649704575538635
+03150635_j07_antelope.jpg,j07,antelope,6,elephant,0.45535513758659363
+2016 08 29 13 05 41_a06_antelope.jpg,a06,antelope,1,baboon,0.9832214117050171
+2016 08 07 05 09 12_f01_antelope.jpg,f01,antelope,0,waterbuck,0.8100447654724121
+06050641_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9846936464309692
+2016 08 20 17 47 43_j13_antelope.jpg,j13,antelope,2,warthog,0.5049993991851807
+12240491_l05_antelope.jpg,l05,antelope,2,warthog,0.5878458023071289
+EK004531_b07_antelope.jpg,b07,antelope,2,warthog,0.4595862030982971
+2016 08 17 19 19 54_b07_antelope.jpg,b07,antelope,11,civet,0.22071172297000885
+EK000325_f01_antelope.jpg,f01,antelope,5,oribi,0.6303601264953613
+2016 10 05 11 41 12_h07_antelope.jpg,h07,antelope,2,warthog,0.6249735951423645
+11130018_b05_antelope.jpg,b05,antelope,2,warthog,0.9979263544082642
+11190804_h07_antelope.jpg,h07,antelope,2,warthog,0.7797443270683289
+2016 09 18 23 36 31_l07_antelope.jpg,l07,antelope,4,bushbuck,0.9565489292144775
+EK000064_f01_antelope.jpg,f01,antelope,5,oribi,0.6691904067993164
+2016 08 25 20 57 11_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9993138313293457
+02090726_g12_antelope.jpg,g12,antelope,4,bushbuck,0.7549881935119629
+03300121_g04_antelope.jpg,g04,antelope,0,waterbuck,0.5237944722175598
+EK008754_h05_antelope.jpg,h05,antelope,0,waterbuck,0.3914669156074524
+2016 07 17 02 04 24_d07_antelope.jpg,d07,antelope,5,oribi,0.8771250247955322
+07220798_f05_antelope.jpg,f05,antelope,2,warthog,0.7364891767501831
+2016 10 13 21 29 32_j09_antelope.jpg,j09,antelope,4,bushbuck,0.9223644137382507
+2016 07 22 02 17 41_j03_antelope.jpg,j03,antelope,0,waterbuck,0.998745322227478
+10110047_g04_antelope.jpg,g04,antelope,4,bushbuck,0.3306649625301361
+02270979_j07_antelope.jpg,j07,antelope,4,bushbuck,0.8611463308334351
+EK000268_g10_antelope.jpg,g10,antelope,4,bushbuck,0.9222661256790161
+2016 10 21 17 30 13_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9142104983329773
+2016 10 11 09 55 02_l05_antelope.jpg,l05,antelope,2,warthog,0.5888215899467468
+01030723_g06_antelope.jpg,g06,antelope,0,waterbuck,0.7923914790153503
+2016 08 16 18 24 44_k06_antelope.jpg,k06,antelope,2,warthog,0.6371297836303711
+2016 11 07 00 43 38_i10_antelope.jpg,i10,antelope,2,warthog,0.8831929564476013
+2016 09 30 23 49 15_f01_antelope.jpg,f01,antelope,0,waterbuck,0.8046285510063171
+EK000076_f01_antelope.jpg,f01,antelope,2,warthog,0.6677926182746887
+2016 08 16 14 34 58_l07_antelope.jpg,l07,antelope,4,bushbuck,0.48490291833877563
+06050640_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9916679263114929
+02110531_e08_antelope.jpg,e08,antelope,4,bushbuck,0.9701759815216064
+EK002689_f07_antelope.jpg,f07,antelope,7,genet,0.26657530665397644
+05030158_k08_antelope.jpg,k08,antelope,4,bushbuck,0.9552678465843201
+EK000689_h05_antelope.jpg,h05,antelope,0,waterbuck,0.4419422447681427
+2016 09 06 21 20 11_f01_antelope.jpg,f01,antelope,4,bushbuck,0.9755497574806213
+2016 08 27 22 05 43_l07_antelope.jpg,l07,antelope,4,bushbuck,0.3765830993652344
+2016 10 28 20 59 47_f07_antelope.jpg,f07,antelope,7,genet,0.2513326406478882
+03160692_h03_antelope.jpg,h03,antelope,0,waterbuck,0.7883192896842957
+02190970_k04_antelope.jpg,k04,antelope,2,warthog,0.6827501058578491
+06050202_e10_antelope.jpg,e10,antelope,0,waterbuck,0.7842325568199158
+08010672_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9818199872970581
+11180258_d07_antelope.jpg,d07,antelope,2,warthog,0.9190701842308044
+EK002108_03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.7294620871543884
+07130196_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9325082302093506
+C_EK001761_03_k06_antelope.jpg,k06,antelope,4,bushbuck,0.950871467590332
+04080298_j07_antelope.jpg,j07,antelope,0,waterbuck,0.8755999207496643
+2016 08 06 10 39 40_j03_antelope.jpg,j03,antelope,4,bushbuck,0.3569610118865967
+2016 07 17 09 08 42_f05_antelope.jpg,f05,antelope,0,waterbuck,0.6511843204498291
+2016 10 29 11 12 22_e02_antelope.jpg,e02,antelope,4,bushbuck,0.676429033279419
+10150293_j07_antelope.jpg,j07,antelope,4,bushbuck,0.9697529077529907
+2016 09 05 17 30 20_k06_antelope.jpg,k06,antelope,1,baboon,0.9662142992019653
+2016 09 07 08 14 43_d07_antelope.jpg,d07,antelope,1,baboon,0.639878511428833
+EK000377_b07_antelope.jpg,b07,antelope,2,warthog,0.20525243878364563
+2016 08 30 05 28 11_m10_antelope.jpg,m10,antelope,2,warthog,0.8118231892585754
+2016 10 15 10 55 31_e02_antelope.jpg,e02,antelope,21,duiker_red,0.8724068403244019
+2016 08 30 00 55 23_d07_antelope.jpg,d07,antelope,4,bushbuck,0.8740600943565369
+EK005134_01_j03_antelope.jpg,j03,antelope,0,waterbuck,0.7184692621231079
+05270572_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9976305961608887
+10110046_g04_antelope.jpg,g04,antelope,0,waterbuck,0.47285664081573486
+2016 10 19 19 06 15_b07_antelope.jpg,b07,antelope,2,warthog,0.6703004837036133
+11180257_d07_antelope.jpg,d07,antelope,2,warthog,0.9761181473731995
+2016 08 30 00 57 29_d07_antelope.jpg,d07,antelope,2,warthog,0.9132745862007141
+2016 07 18 08 10 22_k04_antelope.jpg,k04,antelope,2,warthog,0.940131664276123
+EK002218_02_h05_antelope.jpg,h05,antelope,2,warthog,0.9282993078231812
+2016 10 19 22 04 56_e06_antelope.jpg,e06,antelope,2,warthog,0.5973986387252808
+06150740_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9956823587417603
+EK003366_h05_antelope.jpg,h05,antelope,2,warthog,0.6634619832038879
+06210162_k08_antelope.jpg,k08,antelope,0,waterbuck,0.7423740029335022
+2016 09 08 03 58 32_d07_antelope.jpg,d07,antelope,2,warthog,0.8863039612770081
+EK001154_e06_antelope.jpg,e06,antelope,4,bushbuck,0.8423174023628235
+EK003691_g10_antelope.jpg,g10,antelope,2,warthog,0.749984085559845
+2016 10 29 04 01 33_e02_antelope.jpg,e02,antelope,6,elephant,0.7845665812492371
+2016 11 03 22 54 37_f01_antelope.jpg,f01,antelope,0,waterbuck,0.682200014591217
+11190153_j05_antelope.jpg,j05,antelope,4,bushbuck,0.9982792139053345
+EK000088_h11_antelope.jpg,h11,antelope,2,warthog,0.31383222341537476
+04110623_e08_antelope.jpg,e08,antelope,5,oribi,0.8444339036941528
+2016 08 08 00 34 04_k10_antelope.jpg,k10,antelope,6,elephant,0.39086440205574036
+11240185_l11_antelope.jpg,l11,antelope,4,bushbuck,0.595221996307373
+EK000279_j03_antelope.jpg,j03,antelope,0,waterbuck,0.8356730341911316
+2016 11 03 22 54 38_f01_antelope.jpg,f01,antelope,0,waterbuck,0.7000607252120972
+06090470_j07_antelope.jpg,j07,antelope,1,baboon,0.8342286348342896
+2016 10 18 03 37 40_h05_antelope.jpg,h05,antelope,0,waterbuck,0.9320615530014038
+EK001258_e04_antelope.jpg,e04,antelope,4,bushbuck,0.6459720730781555
+2016 11 03 03 36 37_e02_antelope.jpg,e02,antelope,6,elephant,0.4552854895591736
+2016 07 06 20 00 29_e06_antelope.jpg,e06,antelope,2,warthog,0.9443643093109131
+05040039_h03_antelope.jpg,h03,antelope,0,waterbuck,0.9761645793914795
+EK009024_01_h05_antelope.jpg,h05,antelope,0,waterbuck,0.5814104080200195
+2016 11 09 08 29 45_h07_antelope.jpg,h07,antelope,2,warthog,0.5883792638778687
+2016 08 06 19 53 55_i10_antelope.jpg,i10,antelope,4,bushbuck,0.7773482203483582
+EK000277_j03_antelope.jpg,j03,antelope,0,waterbuck,0.5534791946411133
+2016 07 09 23 38 51_e06_antelope.jpg,e06,antelope,3,impala,0.5126458406448364
+11150214_d07_antelope.jpg,d07,antelope,2,warthog,0.9258308410644531
+2016 08 30 00 57 30_d07_antelope.jpg,d07,antelope,2,warthog,0.6944718360900879
+04300752_h03_antelope.jpg,h03,antelope,0,waterbuck,0.5074496865272522
+EK002617_b07_antelope.jpg,b07,antelope,4,bushbuck,0.7970374822616577
+2016 09 07 04 56 39_e06_antelope.jpg,e06,antelope,2,warthog,0.6528704166412354
+EK000067_f01_antelope.jpg,f01,antelope,5,oribi,0.9831116795539856
+EK000751_e04_antelope.jpg,e04,antelope,3,impala,0.9931102991104126
+04060284_j07_antelope.jpg,j07,antelope,0,waterbuck,0.66978520154953
+2016 10 13 23 55 01_b07_antelope.jpg,b07,antelope,2,warthog,0.3776875436306
+EK006990_03_f07_antelope.jpg,f07,antelope,4,bushbuck,0.34801697731018066
+01280941_i10_antelope.jpg,i10,antelope,0,waterbuck,0.6996528506278992
+10100801_k04_antelope.jpg,k04,antelope,6,elephant,0.7592975497245789
+EK008645_03_h05_antelope.jpg,h05,antelope,3,impala,0.22045853734016418
+2016 10 26 17 42 32_e06_antelope.jpg,e06,antelope,2,warthog,0.9537007808685303
+08290136_e02_antelope.jpg,e02,antelope,4,bushbuck,0.8600084185600281
+EK004168_03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.2661992013454437
+11120558_l11_antelope.jpg,l11,antelope,2,warthog,0.6798326373100281
+2016 10 13 21 01 50_f11_antelope.jpg,f11,antelope,4,bushbuck,0.501432478427887
+2016 08 21 01 55 18_l05_antelope.jpg,l05,antelope,0,waterbuck,0.7333139181137085
+03160576_e08_antelope.jpg,e08,antelope,5,oribi,0.6378514170646667
+2016 10 14 21 20 20_k06_antelope.jpg,k06,antelope,2,warthog,0.7102331519126892
+EK001773_f01_antelope.jpg,f01,antelope,7,genet,0.4069288969039917
+EK001692_f03_antelope.jpg,f03,antelope,4,bushbuck,0.9212336540222168
+09130256_k04_antelope.jpg,k04,antelope,1,baboon,0.9767316579818726
+08080392_f11_antelope.jpg,f11,antelope,4,bushbuck,0.5203984379768372
+2016 08 01 18 02 33_a08_antelope.jpg,a08,antelope,0,waterbuck,0.5524758696556091
+03270769_g08_antelope.jpg,g08,antelope,2,warthog,0.4740659296512604
+EK000672_j13_antelope.jpg,j13,antelope,0,waterbuck,0.2652254104614258
+EK009399_01_f07_antelope.jpg,f07,antelope,2,warthog,0.488695353269577
+2016 07 31 21 19 05_h07_antelope.jpg,h07,antelope,4,bushbuck,0.9972879886627197
+2016 07 08 13 06 57_d05_antelope.jpg,d05,antelope,1,baboon,0.616885781288147
+EK000018_f01_antelope.jpg,f01,antelope,0,waterbuck,0.40925389528274536
+08090041_h07_antelope.jpg,h07,antelope,2,warthog,0.4889081120491028
+03300609_e08_antelope.jpg,e08,antelope,4,bushbuck,0.9927945733070374
+2016 10 15 10 52 00_e02_antelope.jpg,e02,antelope,4,bushbuck,0.9903674125671387
+2016 10 17 22 20 47_d05_antelope.jpg,d05,antelope,4,bushbuck,0.30294153094291687
+03260950_h03_antelope.jpg,h03,antelope,0,waterbuck,0.6151807904243469
+2016 08 29 09 17 07_k06_antelope.jpg,k06,antelope,1,baboon,0.9745919108390808
+EK001010_f01_antelope.jpg,f01,antelope,0,waterbuck,0.8304653763771057
+11150313_a10_antelope.jpg,a10,antelope,4,bushbuck,0.5072649121284485
+2016 10 21 08 34 37_h07_antelope.jpg,h07,antelope,2,warthog,0.6122906804084778
+11180394_h07_antelope.jpg,h07,antelope,2,warthog,0.9374982714653015
+2016 10 18 21 25 10_h05_antelope.jpg,h05,antelope,0,waterbuck,0.4508936107158661
+12050696_a10_antelope.jpg,a10,antelope,8,nyala,0.9257863163948059
+2016 10 21 10 32 54_g04_antelope.jpg,g04,antelope,2,warthog,0.4372466206550598
+07030064_l05_antelope.jpg,l05,antelope,4,bushbuck,0.39773884415626526
+07010316_m10_antelope.jpg,m10,antelope,1,baboon,0.4539104402065277
+EK009161_01_f03_antelope.jpg,f03,antelope,2,warthog,0.5924077033996582
+EK008489_h05_antelope.jpg,h05,antelope,0,waterbuck,0.5172216892242432
+2016 09 30 23 49 14_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5923916101455688
+04300753_h03_antelope.jpg,h03,antelope,0,waterbuck,0.6126394867897034
+2016 10 29 11 13 51_e02_antelope.jpg,e02,antelope,1,baboon,0.34109389781951904
+EK001416_02_h05_antelope.jpg,h05,antelope,2,warthog,0.46200641989707947
+2016 08 07 20 35 35_l05_antelope.jpg,l05,antelope,2,warthog,0.3639660179615021
+2016 10 13 21 01 49_f11_antelope.jpg,f11,antelope,4,bushbuck,0.5840332508087158
+2016 09 22 02 38 42_j13_antelope.jpg,j13,antelope,4,bushbuck,0.261522114276886
+06260018_i10_antelope.jpg,i10,antelope,0,waterbuck,0.4765455722808838
+2016 07 26 18 05 39_f01_antelope.jpg,f01,antelope,0,waterbuck,0.9113798141479492
+EK001875_j13_antelope.jpg,j13,antelope,0,waterbuck,0.3205071687698364
+EK001741_02_h05_antelope.jpg,h05,antelope,2,warthog,0.4729662537574768
+02240013_h09_antelope.jpg,h09,antelope,0,waterbuck,0.8162631988525391
+EK002659_04_h05_antelope.jpg,h05,antelope,2,warthog,0.5295647382736206
+02070776_j05_antelope.jpg,j05,antelope,14,mongoose_slender,0.4843236207962036
+08030306_l05_antelope.jpg,l05,antelope,4,bushbuck,0.919872522354126
+2016 10 14 07 37 05_l05_antelope.jpg,l05,antelope,2,warthog,0.5231746435165405
+2016 10 21 21 17 41_k06_antelope.jpg,k06,antelope,2,warthog,0.962723433971405
+07040228_g04_antelope.jpg,g04,antelope,0,waterbuck,0.4966985583305359
+07020696_a10_antelope.jpg,a10,antelope,1,baboon,0.7778770923614502
+12020410_g12_antelope.jpg,g12,antelope,4,bushbuck,0.9536197781562805
+EK000717_f01_antelope.jpg,f01,antelope,4,bushbuck,0.882577121257782
+03140255_f01_antelope.jpg,f01,antelope,0,waterbuck,0.8164299726486206
+03150383_i12_antelope.jpg,i12,antelope,2,warthog,0.7217324376106262
+EK002738_b07_antelope.jpg,b07,antelope,0,waterbuck,0.9677417278289795
+EK002711_02_j13_antelope.jpg,j13,antelope,1,baboon,0.5055990815162659
+EK008730_03_h05_antelope.jpg,h05,antelope,2,warthog,0.481924444437027
+EK006063_h05_antelope.jpg,h05,antelope,0,waterbuck,0.36848247051239014
+2016 08 11 18 56 58_k06_antelope.jpg,k06,antelope,2,warthog,0.733025074005127
+2016 08 20 17 36 23_k06_antelope.jpg,k06,antelope,1,baboon,0.4480944573879242
+2016 07 15 14 00 13_j07_antelope.jpg,j07,antelope,6,elephant,0.8379773497581482
+02210294_h03_antelope.jpg,h03,antelope,0,waterbuck,0.6533428430557251
+2016 08 16 18 42 01_d05_antelope.jpg,d05,antelope,6,elephant,0.2139768749475479
+09010864_e10_antelope.jpg,e10,antelope,8,nyala,0.5955509543418884
+05310596_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9848828911781311
+EK000969_e04_antelope.jpg,e04,antelope,2,warthog,0.4879215657711029
+12050695_a10_antelope.jpg,a10,antelope,8,nyala,0.8565932512283325
+04210503_j07_antelope.jpg,j07,antelope,0,waterbuck,0.9885600209236145
+2016 10 10 21 51 47_k08_antelope.jpg,k08,antelope,4,bushbuck,0.9202789068222046
+10290283_h03_antelope.jpg,h03,antelope,4,bushbuck,0.987316370010376
+05060181_d07_antelope.jpg,d07,antelope,0,waterbuck,0.4889111816883087
+EK003277_03_f07_antelope.jpg,f07,antelope,3,impala,0.38469305634498596
+2016 08 02 05 43 31_f11_antelope.jpg,f11,antelope,2,warthog,0.5387340188026428
+2016 08 11 18 57 32_k06_antelope.jpg,k06,antelope,0,waterbuck,0.5031152963638306
+02190688_i10_antelope.jpg,i10,antelope,0,waterbuck,0.5643594861030579
+2016 08 18 18 42 04_f11_antelope.jpg,f11,antelope,4,bushbuck,0.5145455598831177
+EK002793_j13_antelope.jpg,j13,antelope,7,genet,0.7236640453338623
+04270037_d07_antelope.jpg,d07,antelope,0,waterbuck,0.8077836036682129
+02200916_e10_antelope.jpg,e10,antelope,0,waterbuck,0.93747478723526
+2016 08 30 04 44 41_d07_antelope.jpg,d07,antelope,4,bushbuck,0.9750033617019653
+10080481_k04_antelope.jpg,k04,antelope,0,waterbuck,0.9399142861366272
+2016 08 04 12 17 01_m08_antelope.jpg,m08,antelope,1,baboon,0.5857861042022705
+09270162_k08_antelope.jpg,k08,antelope,1,baboon,0.5714802742004395
+EK000016_f01_antelope.jpg,f01,antelope,0,waterbuck,0.6155250072479248
+05250012_f11_antelope.jpg,f11,antelope,4,bushbuck,0.8632318377494812
+2016 10 12 20 24 27_e08_antelope.jpg,e08,antelope,4,bushbuck,0.9615593552589417
+12130626_d05_antelope.jpg,d05,antelope,2,warthog,0.8499945402145386
+EK005609_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9414465427398682
+EK000143_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5147287249565125
+12090052_e02_antelope.jpg,e02,antelope,4,bushbuck,0.9743189811706543
+2016 08 14 20 57 41_e08_antelope.jpg,e08,antelope,10,reedbuck,0.9266343116760254
+2016 08 29 09 14 41_k06_antelope.jpg,k06,antelope,1,baboon,0.9941442608833313
+2016 10 05 11 41 13_h07_antelope.jpg,h07,antelope,2,warthog,0.6001659035682678
+2016 10 29 17 50 56_e06_antelope.jpg,e06,antelope,4,bushbuck,0.5155490040779114
+2016 07 23 06 04 32_h07_antelope.jpg,h07,antelope,1,baboon,0.6253411769866943
+2016 08 29 12 31 22_a06_antelope.jpg,a06,antelope,2,warthog,0.8610755801200867
+01180815_b07_antelope.jpg,b07,antelope,4,bushbuck,0.4716830849647522
+03220652_g08_antelope.jpg,g08,antelope,0,waterbuck,0.6487553715705872
+04130352_j07_antelope.jpg,j07,antelope,0,waterbuck,0.7240383625030518
+2016 10 15 10 58 59_e02_antelope.jpg,e02,antelope,2,warthog,0.9700960516929626
+2016 08 30 00 55 58_d07_antelope.jpg,d07,antelope,4,bushbuck,0.8332664370536804
+03040711_h03_antelope.jpg,h03,antelope,0,waterbuck,0.7555713057518005
+2016 10 21 21 30 55_k06_antelope.jpg,k06,antelope,2,warthog,0.9963977336883545
+EK005411_g10_antelope.jpg,g10,antelope,4,bushbuck,0.8100412487983704
+EK005207_04_h05_antelope.jpg,h05,antelope,2,warthog,0.5803588032722473
+12150343_k04_antelope.jpg,k04,antelope,4,bushbuck,0.8848908543586731
+03060166_f11_antelope.jpg,f11,antelope,4,bushbuck,0.7131718397140503
+04190400_f11_antelope.jpg,f11,antelope,4,bushbuck,0.7269312143325806
+2016 10 21 08 31 49_h07_antelope.jpg,h07,antelope,2,warthog,0.7083338499069214
+2016 09 08 04 21 18_e10_antelope.jpg,e10,antelope,2,warthog,0.5119873285293579
+2016 07 22 04 49 14_l05_antelope.jpg,l05,antelope,4,bushbuck,0.899725615978241
+2016 10 07 23 53 36_f07_antelope.jpg,f07,antelope,0,waterbuck,0.2371516227722168
+12290859_d05_antelope.jpg,d05,antelope,1,baboon,0.5179196000099182
+07220807_f05_antelope.jpg,f05,antelope,2,warthog,0.6172064542770386
+EK002467_04_h05_antelope.jpg,h05,antelope,3,impala,0.596571147441864
+EK001660_b07_antelope.jpg,b07,antelope,0,waterbuck,0.7273154854774475
+2016 08 10 23 18 20_k08_antelope.jpg,k08,antelope,4,bushbuck,0.9118608236312866
+04040503_h03_antelope.jpg,h03,antelope,3,impala,0.6273206472396851
+2016 08 07 09 58 44_h03_antelope.jpg,h03,antelope,2,warthog,0.7760162949562073
+12130183_b09_antelope.jpg,b09,antelope,2,warthog,0.2767116129398346
+01140085_g12_antelope.jpg,g12,antelope,0,waterbuck,0.5913514494895935
+04150414_k10_antelope.jpg,k10,antelope,4,bushbuck,0.6191189289093018
+EK000273_j03_antelope.jpg,j03,antelope,0,waterbuck,0.6226929426193237
+EK006462_h05_antelope.jpg,h05,antelope,2,warthog,0.3822847008705139
+08190794_e02_antelope.jpg,e02,antelope,5,oribi,0.8503296971321106
+01010036_02_m08_antelope.jpg,m08,antelope,4,bushbuck,0.7830551266670227
+01300027_b07_antelope.jpg,b07,antelope,2,warthog,0.7392663359642029
+04160021_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9557074308395386
+2016 08 23 03 41 18_h05_antelope.jpg,h05,antelope,5,oribi,0.5137754678726196
+EK000825_j13_antelope.jpg,j13,antelope,5,oribi,0.9747843146324158
+02070506_d07_antelope.jpg,d07,antelope,1,baboon,0.5387907028198242
+2016 07 26 17 11 08_d05_antelope.jpg,d05,antelope,2,warthog,0.3248755633831024
+03060924_h03_antelope.jpg,h03,antelope,0,waterbuck,0.4263307452201843
+EK000346_h11_antelope.jpg,h11,antelope,0,waterbuck,0.8780792355537415
+EK007430_k06_antelope.jpg,k06,antelope,2,warthog,0.8002224564552307
+EK001129_k06_antelope.jpg,k06,antelope,2,warthog,0.8166288137435913
+06250093_c08_antelope.jpg,c08,antelope,6,elephant,0.36357301473617554
+EK000763_j13_antelope.jpg,j13,antelope,4,bushbuck,0.5244074463844299
+EK000015_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5788894891738892
+EK000478_h05_antelope.jpg,h05,antelope,0,waterbuck,0.6117163300514221
+2016 08 20 19 35 30_e10_antelope.jpg,e10,antelope,0,waterbuck,0.8515251874923706
+EK000646_03_h05_antelope.jpg,h05,antelope,3,impala,0.32982343435287476
+03270859_c08_antelope.jpg,c08,antelope,2,warthog,0.621562659740448
+EK003915_03_f07_antelope.jpg,f07,antelope,2,warthog,0.6322851777076721
+2016 09 11 20 19 14_c08_antelope.jpg,c08,antelope,4,bushbuck,0.8426852226257324
+2016 07 20 22 03 07_c06_antelope.jpg,c06,antelope,4,bushbuck,0.8926017880439758
+10040799_m10_antelope.jpg,m10,antelope,4,bushbuck,0.8975399732589722
+EK002184_f07_antelope.jpg,f07,antelope,5,oribi,0.6111339330673218
+08220736_l11_antelope.jpg,l11,antelope,4,bushbuck,0.773962140083313
+C_EK000137_03_k06_antelope.jpg,k06,antelope,2,warthog,0.7763940691947937
+2016 11 02 08 29 59_e02_antelope.jpg,e02,antelope,2,warthog,0.6129409670829773
+2016 07 14 18 04 17_c06_antelope.jpg,c06,antelope,4,bushbuck,0.882164478302002
+2016 10 26 05 17 58_c06_antelope.jpg,c06,antelope,5,oribi,0.4916691184043884
+2016 09 21 21 31 07_e06_antelope.jpg,e06,antelope,0,waterbuck,0.8981227874755859
+06120018_e02_antelope.jpg,e02,antelope,0,waterbuck,0.2734105587005615
+03200457_b07_antelope.jpg,b07,antelope,5,oribi,0.5947354435920715
+2016 09 17 01 21 40_l07_antelope.jpg,l07,antelope,4,bushbuck,0.4767584502696991
+2016 10 11 09 55 03_l05_antelope.jpg,l05,antelope,2,warthog,0.5167540907859802
+2016 08 30 01 28 32_k06_antelope.jpg,k06,antelope,2,warthog,0.5708863735198975
+2016 10 10 15 52 28_g06_antelope.jpg,g06,antelope,2,warthog,0.63667231798172
+2016 08 16 18 24 45_k06_antelope.jpg,k06,antelope,2,warthog,0.6421517133712769
+2016 08 04 12 17 53_m08_antelope.jpg,m08,antelope,1,baboon,0.5829237103462219
+06120319_e08_antelope.jpg,e08,antelope,4,bushbuck,0.9756953120231628
+06040067_g06_antelope.jpg,g06,antelope,4,bushbuck,0.9544568061828613
+EK007979_01_f07_antelope.jpg,f07,antelope,7,genet,0.2792782783508301
+08290135_e02_antelope.jpg,e02,antelope,4,bushbuck,0.9949865341186523
+2016 08 12 18 56 05_f11_antelope.jpg,f11,antelope,4,bushbuck,0.977135419845581
+12190847_g06_antelope.jpg,g06,antelope,0,waterbuck,0.9826816916465759
+EK000209_f01_antelope.jpg,f01,antelope,2,warthog,0.530144214630127
+EK004458_b07_antelope.jpg,b07,antelope,4,bushbuck,0.49402350187301636
+EK000252_f01_antelope.jpg,f01,antelope,5,oribi,0.9576945304870605
+EK001132_f07_antelope.jpg,f07,antelope,2,warthog,0.49666786193847656
+02090286_k04_antelope.jpg,k04,antelope,3,impala,0.6366630792617798
+A_EK004160_k06_antelope.jpg,k06,antelope,2,warthog,0.951040506362915
+2016 08 30 01 27 03_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9943089485168457
+2016 10 17 20 38 52_e06_antelope.jpg,e06,antelope,4,bushbuck,0.7560791969299316
+2016 09 08 03 58 33_d07_antelope.jpg,d07,antelope,2,warthog,0.7335929870605469
+01080076_d05_antelope.jpg,d05,antelope,0,waterbuck,0.4910637438297272
+05250007_f11_antelope.jpg,f11,antelope,4,bushbuck,0.921592652797699
+09090915_f05_antelope.jpg,f05,antelope,2,warthog,0.8232333064079285
+2016 09 17 21 06 57_h05_antelope.jpg,h05,antelope,2,warthog,0.4610188603401184
+01010548_c08_antelope.jpg,c08,antelope,7,genet,0.38428986072540283
+EK002474_j13_antelope.jpg,j13,antelope,7,genet,0.5268576145172119
+01010384_e02_antelope.jpg,e02,antelope,2,warthog,0.7499491572380066
+EK003687_f07_antelope.jpg,f07,antelope,5,oribi,0.9834466576576233
+2016 08 02 11 50 43_k04_antelope.jpg,k04,antelope,2,warthog,0.8464779257774353
+2016 10 17 20 38 53_e06_antelope.jpg,e06,antelope,4,bushbuck,0.58694988489151
+EK000328_f01_antelope.jpg,f01,antelope,4,bushbuck,0.6209096312522888
+03150118_j07_antelope.jpg,j07,antelope,1,baboon,0.702708899974823
+2016 07 21 02 23 57_f01_antelope.jpg,f01,antelope,0,waterbuck,0.9712620973587036
+EK001013_f01_antelope.jpg,f01,antelope,0,waterbuck,0.584337592124939
+2016 10 21 15 57 55_d03_antelope.jpg,d03,antelope,2,warthog,0.9188908934593201
+07200068_h03_antelope.jpg,h03,antelope,3,impala,0.787875771522522
+07240391_k10_antelope.jpg,k10,antelope,4,bushbuck,0.9976902008056641
+EK002472_j13_antelope.jpg,j13,antelope,7,genet,0.5338089466094971
+2016 10 26 22 38 53_h05_antelope.jpg,h05,antelope,3,impala,0.9551990628242493
+04080733_h03_antelope.jpg,h03,antelope,2,warthog,0.4763976037502289
+EK007301_k06_antelope.jpg,k06,antelope,0,waterbuck,0.7332158088684082
+EK001411_03_f07_antelope.jpg,f07,antelope,5,oribi,0.7426418662071228
+11210190_g12_antelope.jpg,g12,antelope,4,bushbuck,0.9911331534385681
+2016 10 21 08 33 19_h07_antelope.jpg,h07,antelope,2,warthog,0.6310639381408691
+EK005133_01_j03_antelope.jpg,j03,antelope,0,waterbuck,0.9979141354560852
+2016 07 29 05 51 06_l05_antelope.jpg,l05,antelope,0,waterbuck,0.9301774501800537
+2016 07 18 08 11 01_k04_antelope.jpg,k04,antelope,2,warthog,0.6537571549415588
+10100799_k04_antelope.jpg,k04,antelope,3,impala,0.7700004577636719
+03150384_i12_antelope.jpg,i12,antelope,1,baboon,0.7223995923995972
+EK001147_e06_antelope.jpg,e06,antelope,4,bushbuck,0.8353963494300842
+07010125_g08_antelope.jpg,g08,antelope,3,impala,0.7680979371070862
+11150592_g08_antelope.jpg,g08,antelope,0,waterbuck,0.9930675029754639
+EK000068_f01_antelope.jpg,f01,antelope,5,oribi,0.9391736388206482
+12060675_g08_antelope.jpg,g08,antelope,4,bushbuck,0.48565369844436646
+2016 08 30 01 10 13_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9245413541793823
+11050005_e08_antelope.jpg,e08,antelope,6,elephant,0.7441057562828064
+10300090_f01_antelope.jpg,f01,antelope,4,bushbuck,0.42288723587989807
+05030155_k08_antelope.jpg,k08,antelope,2,warthog,0.9088106155395508
+2016 10 22 19 44 15_f07_antelope.jpg,f07,antelope,0,waterbuck,0.5575555562973022
+2016 09 24 17 02 15_f11_antelope.jpg,f11,antelope,2,warthog,0.6633263230323792
+2016 08 30 00 55 22_d07_antelope.jpg,d07,antelope,4,bushbuck,0.9531012177467346
+03060926_h03_antelope.jpg,h03,antelope,3,impala,0.9728937149047852
+11240176_e02_antelope.jpg,e02,antelope,4,bushbuck,0.9394333362579346
+05030662_e08_antelope.jpg,e08,antelope,4,bushbuck,0.9468705058097839
+2016 08 23 10 30 00_k04_antelope.jpg,k04,antelope,2,warthog,0.8180286288261414
+2016 09 26 04 40 41_f01_antelope.jpg,f01,antelope,0,waterbuck,0.7253562211990356
+2016 08 30 01 10 14_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9833812713623047
+2016 07 26 17 59 23_l09_antelope.jpg,l09,antelope,4,bushbuck,0.993744432926178
+2016 09 14 20 54 59_l07_antelope.jpg,l07,antelope,4,bushbuck,0.9018648862838745
+2016 07 26 18 47 36_e10_antelope.jpg,e10,antelope,4,bushbuck,0.9290921688079834
+12040420_b07_antelope.jpg,b07,antelope,0,waterbuck,0.30074015259742737
+07310329_m10_antelope.jpg,m10,antelope,2,warthog,0.8343782424926758
+03200166_h03_antelope.jpg,h03,antelope,3,impala,0.9627854228019714
+03160574_e08_antelope.jpg,e08,antelope,4,bushbuck,0.4699839949607849
+12300018_b09_antelope.jpg,b09,antelope,1,baboon,0.7150259613990784
+2016 09 11 07 54 25_l07_antelope.jpg,l07,antelope,2,warthog,0.8153951168060303
+EK002658_04_h05_antelope.jpg,h05,antelope,2,warthog,0.3858318328857422
+A_EK005806_k06_antelope.jpg,k06,antelope,2,warthog,0.8250247836112976
+2016 08 20 17 47 42_j13_antelope.jpg,j13,antelope,2,warthog,0.5454503893852234
+2016 10 20 00 23 45_c08_antelope.jpg,c08,antelope,4,bushbuck,0.9792591333389282
+B_EK009022_02_k06_antelope.jpg,k06,antelope,2,warthog,0.6400494575500488
+2016 07 20 22 03 39_c06_antelope.jpg,c06,antelope,6,elephant,0.8726759552955627
+06130875_k08_antelope.jpg,k08,antelope,0,waterbuck,0.9767990708351135
+2016 08 08 00 37 42_k10_antelope.jpg,k10,antelope,0,waterbuck,0.865297257900238
+02200509_h03_antelope.jpg,h03,antelope,3,impala,0.46081286668777466
+EK009900_j03_antelope.jpg,j03,antelope,0,waterbuck,0.8428186774253845
+11200857_e02_antelope.jpg,e02,antelope,2,warthog,0.3389740288257599
+01130078_g12_antelope.jpg,g12,antelope,4,bushbuck,0.8717324137687683
+2016 09 11 07 45 32_g02_antelope.jpg,g02,antelope,1,baboon,0.7014204263687134
+04090781_h03_antelope.jpg,h03,antelope,3,impala,0.6744932532310486
+11150134_g06_antelope.jpg,g06,antelope,2,warthog,0.9133973121643066
+2016 11 01 10 13 25_d07_antelope.jpg,d07,antelope,1,baboon,0.9925565719604492
+06270861_k04_antelope.jpg,k04,antelope,6,elephant,0.33967503905296326
+2016 08 29 09 13 41_k06_antelope.jpg,k06,antelope,1,baboon,0.9203858971595764
+2016 10 15 10 55 30_e02_antelope.jpg,e02,antelope,0,waterbuck,0.7186383008956909
+2016 08 23 03 32 55_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9023146033287048
+2016 10 30 01 12 50_e02_antelope.jpg,e02,antelope,4,bushbuck,0.6307827234268188
+2016 11 02 13 23 48_e06_antelope.jpg,e06,antelope,2,warthog,0.7301512360572815
+EK000743_h05_antelope.jpg,h05,antelope,1,baboon,0.92304527759552
+06040758_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9188918471336365
+2016 08 12 18 56 04_f11_antelope.jpg,f11,antelope,4,bushbuck,0.576465368270874
+03270773_g08_antelope.jpg,g08,antelope,6,elephant,0.8115163445472717
+EK001209_e04_antelope.jpg,e04,antelope,4,bushbuck,0.3524189591407776
+EK004587_j03_antelope.jpg,j03,antelope,0,waterbuck,0.9915968775749207
+EK009171_01_f07_antelope.jpg,f07,antelope,7,genet,0.2827328145503998
+2016 08 11 18 57 33_k06_antelope.jpg,k06,antelope,0,waterbuck,0.6518791317939758
+07010315_m10_antelope.jpg,m10,antelope,1,baboon,0.5623325109481812
+EK001388_04_f07_antelope.jpg,f07,antelope,3,impala,0.3178686499595642
+2016 09 01 01 34 35_e02_antelope.jpg,e02,antelope,5,oribi,0.3776313066482544
+2016 10 14 19 46 32_k06_antelope.jpg,k06,antelope,2,warthog,0.9993075132369995
+EK009182_h05_antelope.jpg,h05,antelope,3,impala,0.3195415139198303
+2016 09 22 01 10 08_f01_antelope.jpg,f01,antelope,2,warthog,0.8180781602859497
+EK001109_01_h05_antelope.jpg,h05,antelope,3,impala,0.6189929842948914
+2016 07 25 04 31 57_l05_antelope.jpg,l05,antelope,0,waterbuck,0.2809912860393524
+04130980_g08_antelope.jpg,g08,antelope,0,waterbuck,0.4091362953186035
+EK000276_j03_antelope.jpg,j03,antelope,0,waterbuck,0.8360610008239746
+04220035_h03_antelope.jpg,h03,antelope,5,oribi,0.846469521522522
+2016 11 01 16 32 56_g12_antelope.jpg,g12,antelope,0,waterbuck,0.8676552176475525
+06070661_b09_antelope.jpg,b09,antelope,4,bushbuck,0.8355138897895813
+04200537_h03_antelope.jpg,h03,antelope,11,civet,0.5972522497177124
+04060707_h03_antelope.jpg,h03,antelope,0,waterbuck,0.769260823726654
+EK009540_h05_antelope.jpg,h05,antelope,0,waterbuck,0.4777984023094177
+08200747_g08_antelope.jpg,g08,antelope,6,elephant,0.45820844173431396
+02120751_k04_antelope.jpg,k04,antelope,2,warthog,0.9623540043830872
+03160575_e08_antelope.jpg,e08,antelope,4,bushbuck,0.9382015466690063
+12120529_b05_antelope.jpg,b05,antelope,3,impala,0.8058552145957947
+03260952_h03_antelope.jpg,h03,antelope,0,waterbuck,0.6301238536834717
+2016 09 28 22 54 39_l05_antelope.jpg,l05,antelope,2,warthog,0.7228723764419556
+2016 10 20 12 28 37_l05_antelope.jpg,l05,antelope,2,warthog,0.8134572505950928
+2016 10 31 04 25 44_e06_antelope.jpg,e06,antelope,2,warthog,0.7082544565200806
+12190715_d05_antelope.jpg,d05,antelope,0,waterbuck,0.4042758047580719
+2016 08 02 09 17 53_i08_antelope.jpg,i08,antelope,1,baboon,0.9386296272277832
+EK001912_e06_antelope.jpg,e06,antelope,2,warthog,0.3558371067047119
+EK008060_h05_antelope.jpg,h05,antelope,2,warthog,0.8882638812065125
+2016 07 19 00 20 02_f11_antelope.jpg,f11,antelope,4,bushbuck,0.4339616000652313
+12140359_j05_antelope.jpg,j05,antelope,4,bushbuck,0.6676124334335327
+C_EK000173_03_k06_antelope.jpg,k06,antelope,2,warthog,0.8763377070426941
+06040869_d07_antelope.jpg,d07,antelope,5,oribi,0.930526077747345
+2016 10 09 05 16 58_i06_antelope.jpg,i06,antelope,1,baboon,0.4742535352706909
+2016 08 18 01 50 53_f01_antelope.jpg,f01,antelope,0,waterbuck,0.9337939620018005
+11200569_i04_antelope.jpg,i04,antelope,0,waterbuck,0.5985903739929199
+2016 10 28 20 45 18_l05_antelope.jpg,l05,antelope,4,bushbuck,0.8938091397285461
+01010549_c08_antelope.jpg,c08,antelope,4,bushbuck,0.9102821946144104
+2016 09 14 20 55 00_l07_antelope.jpg,l07,antelope,4,bushbuck,0.9002124667167664
+EK004390_h05_antelope.jpg,h05,antelope,0,waterbuck,0.5490662455558777
+2016 07 18 08 11 02_k04_antelope.jpg,k04,antelope,2,warthog,0.8412872552871704
+2016 07 13 21 43 58_k06_antelope.jpg,k06,antelope,2,warthog,0.6939834356307983
+09280593_f11_antelope.jpg,f11,antelope,2,warthog,0.6568679213523865
+EK001410_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9911184906959534
+2016 10 19 22 52 45_g04_antelope.jpg,g04,antelope,4,bushbuck,0.40264230966567993
+EK004027_b07_antelope.jpg,b07,antelope,0,waterbuck,0.6810014247894287
+2016 11 04 02 45 26_i06_antelope.jpg,i06,antelope,0,waterbuck,0.680957555770874
+03270774_g08_antelope.jpg,g08,antelope,0,waterbuck,0.9640166759490967
+07310694_h03_antelope.jpg,h03,antelope,5,oribi,0.7419525980949402
+EK007309_k06_antelope.jpg,k06,antelope,2,warthog,0.6954392790794373
+2016 09 20 23 36 19_k08_antelope.jpg,k08,antelope,4,bushbuck,0.8994104862213135
+2016 07 21 10 36 43_m08_antelope.jpg,m08,antelope,0,waterbuck,0.9963541030883789
+11180393_h07_antelope.jpg,h07,antelope,2,warthog,0.901420533657074
+10290284_h03_antelope.jpg,h03,antelope,4,bushbuck,0.9915071725845337
+08180665_l11_antelope.jpg,l11,antelope,2,warthog,0.9699522852897644
+04110621_e08_antelope.jpg,e08,antelope,10,reedbuck,0.3016592562198639
+01110929_l11_antelope.jpg,l11,antelope,8,nyala,0.8128872513771057
+2016 07 29 10 31 35_k04_antelope.jpg,k04,antelope,2,warthog,0.8213078379631042
+03090032_f01_antelope.jpg,f01,antelope,2,warthog,0.5469132661819458
+2016 07 20 22 02 34_c06_antelope.jpg,c06,antelope,4,bushbuck,0.7460383772850037
+B_EK008113_02_k06_antelope.jpg,k06,antelope,2,warthog,0.9047030210494995
+04030171_b07_antelope.jpg,b07,antelope,2,warthog,0.7761858105659485
+A_EK003946_k06_antelope.jpg,k06,antelope,2,warthog,0.858837902545929
+12010604_d07_antelope.jpg,d07,antelope,2,warthog,0.3673359155654907
+02160892_e10_antelope.jpg,e10,antelope,0,waterbuck,0.5779212713241577
+11160295_i04_antelope.jpg,i04,antelope,4,bushbuck,0.6327246427536011
+2016 08 23 03 31 29_k06_antelope.jpg,k06,antelope,4,bushbuck,0.984534740447998
+02280990_j07_antelope.jpg,j07,antelope,0,waterbuck,0.7995684742927551
+10160982_h03_antelope.jpg,h03,antelope,0,waterbuck,0.7425410747528076
+03180910_l11_antelope.jpg,l11,antelope,4,bushbuck,0.9743295311927795
+2016 10 15 10 52 32_e02_antelope.jpg,e02,antelope,0,waterbuck,0.46707066893577576
+08100541_g08_antelope.jpg,g08,antelope,4,bushbuck,0.4898335337638855
+A_EK003539_k06_antelope.jpg,k06,antelope,2,warthog,0.9635158777236938
+11230659_h03_antelope.jpg,h03,antelope,3,impala,0.49724555015563965
+08100540_g08_antelope.jpg,g08,antelope,4,bushbuck,0.9906595945358276
+2016 10 22 18 30 22_d05_antelope.jpg,d05,antelope,4,bushbuck,0.46571803092956543
+12170921_h03_antelope.jpg,h03,antelope,3,impala,0.6435262560844421
+2016 10 27 11 19 46_e06_antelope.jpg,e06,antelope,2,warthog,0.6300464272499084
+EK007666_f07_antelope.jpg,f07,antelope,1,baboon,0.468342125415802
+04020322_f11_antelope.jpg,f11,antelope,4,bushbuck,0.9549548625946045
+11140797_g02_antelope.jpg,g02,antelope,2,warthog,0.2766175866127014
+08220735_l11_antelope.jpg,l11,antelope,4,bushbuck,0.5643643736839294
+EK000140_h05_antelope.jpg,h05,antelope,12,mongoose_marsh,0.18853047490119934
+2016 08 19 03 38 36_h07_antelope.jpg,h07,antelope,10,reedbuck,0.6659743189811707
+04100703_d07_antelope.jpg,d07,antelope,4,bushbuck,0.594660758972168
+2016 08 16 19 50 27_e08_antelope.jpg,e08,antelope,0,waterbuck,0.8760390877723694
+08080391_f11_antelope.jpg,f11,antelope,4,bushbuck,0.9994632601737976
+07020131_g08_antelope.jpg,g08,antelope,2,warthog,0.7254188060760498
+EK005595_03_f07_antelope.jpg,f07,antelope,1,baboon,0.7844051718711853
+01220291_g12_antelope.jpg,g12,antelope,4,bushbuck,0.9882327914237976
+2016 10 20 13 15 22_e02_antelope.jpg,e02,antelope,0,waterbuck,0.5004024505615234
+01050119_g12_antelope.jpg,g12,antelope,4,bushbuck,0.7597543001174927
+EK005458_03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.5100968480110168
+2016 09 30 10 01 56_e06_antelope.jpg,e06,antelope,2,warthog,0.6130958795547485
+EK009271_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9802528619766235
+EK005137_01_j03_antelope.jpg,j03,antelope,0,waterbuck,0.7830408811569214
+EK000269_g10_antelope.jpg,g10,antelope,0,waterbuck,0.6042892932891846
+2016 10 26 01 04 33_k08_antelope.jpg,k08,antelope,4,bushbuck,0.9982665181159973
+07130736_e02_antelope.jpg,e02,antelope,0,waterbuck,0.7565557956695557
+2016 10 19 01 50 48_e06_antelope.jpg,e06,antelope,4,bushbuck,0.6918215751647949
+01160108_m08_antelope.jpg,m08,antelope,0,waterbuck,0.9984110593795776
+2016 07 12 19 08 41_c06_antelope.jpg,c06,antelope,4,bushbuck,0.8082605600357056
+2016 10 08 21 02 01_e02_antelope.jpg,e02,antelope,6,elephant,0.23954026401042938
+06150563_h07_antelope.jpg,h07,antelope,4,bushbuck,0.9743135571479797
+2016 07 22 02 17 42_j03_antelope.jpg,j03,antelope,0,waterbuck,0.9317991733551025
+B_EK004427_02_k06_antelope.jpg,k06,antelope,4,bushbuck,0.3285301625728607
+11240039_e10_antelope.jpg,e10,antelope,4,bushbuck,0.9992209672927856
+EK001032_j13_antelope.jpg,j13,antelope,0,waterbuck,0.8967747688293457
+EK000206_g10_antelope.jpg,g10,antelope,1,baboon,0.8457280993461609
+04270038_d07_antelope.jpg,d07,antelope,0,waterbuck,0.7255465388298035
+EK005206_04_h05_antelope.jpg,h05,antelope,2,warthog,0.6162334084510803
+2016 07 22 04 49 15_l05_antelope.jpg,l05,antelope,4,bushbuck,0.4733014702796936
+2016 10 28 23 52 33_e06_antelope.jpg,e06,antelope,2,warthog,0.5561692714691162
+06090917_d07_antelope.jpg,d07,antelope,2,warthog,0.9320851564407349
+EK008646_03_h05_antelope.jpg,h05,antelope,2,warthog,0.4123879671096802
+EK001237_h11_antelope.jpg,h11,antelope,22,duiker,0.3409281373023987
+2016 10 12 11 48 15_c08_antelope.jpg,c08,antelope,5,oribi,0.6888156533241272
+07080153_c08_antelope.jpg,c08,antelope,2,warthog,0.652656078338623
+07310370_b07_antelope.jpg,b07,antelope,0,waterbuck,0.7789160013198853
+EK000278_j03_antelope.jpg,j03,antelope,0,waterbuck,0.5371849536895752
+2016 11 04 08 12 09_e02_antelope.jpg,e02,antelope,5,oribi,0.9098067879676819
+EK000907_02_h05_antelope.jpg,h05,antelope,3,impala,0.5265423059463501
+2016 08 02 09 18 43_i08_antelope.jpg,i08,antelope,1,baboon,0.8524848818778992
+08190795_e02_antelope.jpg,e02,antelope,3,impala,0.6639569997787476
+08090042_h07_antelope.jpg,h07,antelope,4,bushbuck,0.5127096772193909
+10050098_d07_antelope.jpg,d07,antelope,4,bushbuck,0.47344112396240234
+2016 08 12 17 12 13_f11_antelope.jpg,f11,antelope,2,warthog,0.4492344558238983
+EK000276_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9856374859809875
+EK000274_j03_antelope.jpg,j03,antelope,0,waterbuck,0.378571480512619
+07080154_c08_antelope.jpg,c08,antelope,2,warthog,0.4886828660964966
+2016 10 13 21 30 10_j09_antelope.jpg,j09,antelope,4,bushbuck,0.7753083109855652
+2016 07 25 09 16 50_l07_antelope.jpg,l07,antelope,1,baboon,0.9887990355491638
+05140464_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9942975640296936
+2016 10 21 15 57 56_d03_antelope.jpg,d03,antelope,2,warthog,0.5202183127403259
+2016 10 09 00 55 36_h05_antelope.jpg,h05,antelope,3,impala,0.4445364773273468
+07220803_f05_antelope.jpg,f05,antelope,1,baboon,0.5700318813323975
+2016 08 12 17 12 12_f11_antelope.jpg,f11,antelope,4,bushbuck,0.4401160180568695
+04020321_f11_antelope.jpg,f11,antelope,4,bushbuck,0.9488226175308228
+2016 10 27 11 19 45_e06_antelope.jpg,e06,antelope,2,warthog,0.7890815734863281
+02050994_h03_antelope.jpg,h03,antelope,0,waterbuck,0.39207708835601807
+EK002982_j13_antelope.jpg,j13,antelope,1,baboon,0.9997456669807434
+2016 08 07 19 15 01_m08_antelope.jpg,m08,antelope,4,bushbuck,0.5628505349159241
+2016 10 29 17 58 50_e08_antelope.jpg,e08,antelope,2,warthog,0.6808772087097168
+2016 08 30 23 45 54_h05_antelope.jpg,h05,antelope,3,impala,0.5082080960273743
+2016 10 27 21 34 08_e06_antelope.jpg,e06,antelope,2,warthog,0.9632545113563538
+EK008194_k06_antelope.jpg,k06,antelope,1,baboon,0.8685191869735718
+2016 10 22 18 29 09_d05_antelope.jpg,d05,antelope,4,bushbuck,0.9538431763648987
+EK009022_01_j03_antelope.jpg,j03,antelope,0,waterbuck,0.9781423211097717
+07220632_a10_antelope.jpg,a10,antelope,1,baboon,0.5992242693901062
+EK000966_e04_antelope.jpg,e04,antelope,1,baboon,0.9200968146324158
+2016 10 25 12 50 53_f03_antelope.jpg,f03,antelope,5,oribi,0.6404969096183777
+09110885_e10_antelope.jpg,e10,antelope,6,elephant,0.9983397722244263
+2016 08 17 21 50 09_i14_antelope.jpg,i14,antelope,4,bushbuck,0.32188159227371216
+EK002560_b07_antelope.jpg,b07,antelope,4,bushbuck,0.9027055501937866
+04280052_c08_antelope.jpg,c08,antelope,0,waterbuck,0.6075321435928345
+2016 10 22 00 05 55_e04_antelope.jpg,e04,antelope,0,waterbuck,0.997369647026062
+EK000967_02_h05_antelope.jpg,h05,antelope,3,impala,0.6048848032951355
+2016 07 29 10 31 34_k04_antelope.jpg,k04,antelope,2,warthog,0.8195828199386597
+EK001133_f07_antelope.jpg,f07,antelope,2,warthog,0.6670135855674744
+2016 08 15 20 30 54_e06_antelope.jpg,e06,antelope,2,warthog,0.8503445386886597
+06120217_f05_antelope.jpg,f05,antelope,2,warthog,0.8230469226837158
+2016 07 31 19 06 20_f11_antelope.jpg,f11,antelope,4,bushbuck,0.3477313816547394
+06060260_h03_antelope.jpg,h03,antelope,0,waterbuck,0.5183661580085754
+2016 10 30 22 47 15_j03_antelope.jpg,j03,antelope,6,elephant,0.7223445773124695
+08040403_g08_antelope.jpg,g08,antelope,3,impala,0.6777615547180176
+01140087_g12_antelope.jpg,g12,antelope,4,bushbuck,0.7318975925445557
+12020413_b07_antelope.jpg,b07,antelope,2,warthog,0.7657500505447388
+EK004668_03_f07_antelope.jpg,f07,antelope,4,bushbuck,0.7112794518470764
+2016 08 26 04 49 47_d07_antelope.jpg,d07,antelope,2,warthog,0.6036338210105896
+2016 10 21 08 33 18_h07_antelope.jpg,h07,antelope,2,warthog,0.667735755443573
+12020412_b07_antelope.jpg,b07,antelope,2,warthog,0.6727293729782104
+EK000477_h05_antelope.jpg,h05,antelope,0,waterbuck,0.4802989363670349
+EK001078_j13_antelope.jpg,j13,antelope,4,bushbuck,0.9213457703590393
+08040413_g08_antelope.jpg,g08,antelope,0,waterbuck,0.7116069197654724
+05020702_k12_antelope.jpg,k12,antelope,0,waterbuck,0.9978433847427368
+04210611_e10_antelope.jpg,e10,antelope,4,bushbuck,0.46816548705101013
+2016 07 28 17 29 29_g06_antelope.jpg,g06,antelope,2,warthog,0.9328910708427429
+EK000103_i08_antelope.jpg,i08,antelope,4,bushbuck,0.9966501593589783
+2016 07 22 08 14 44_j03_antelope.jpg,j03,antelope,1,baboon,0.3149843215942383
+12310659_l11_antelope.jpg,l11,antelope,6,elephant,0.6545708179473877
+A_EK008846_k06_antelope.jpg,k06,antelope,2,warthog,0.9332340955734253
+06210163_k08_antelope.jpg,k08,antelope,0,waterbuck,0.8033480048179626
+EK000913_j13_antelope.jpg,j13,antelope,0,waterbuck,0.2397293895483017
+09270949_e10_antelope.jpg,e10,antelope,0,waterbuck,0.9639846682548523
+EK005199_k06_antelope.jpg,k06,antelope,1,baboon,0.7082317471504211
+04150312_e10_antelope.jpg,e10,antelope,4,bushbuck,0.6959895491600037
+EK002832_f03_antelope.jpg,f03,antelope,8,nyala,0.7611568570137024
+03150117_j07_antelope.jpg,j07,antelope,4,bushbuck,0.6965445280075073
+EK001518_03_h05_antelope.jpg,h05,antelope,2,warthog,0.945099413394928
+2016 10 26 04 12 23_k08_antelope.jpg,k08,antelope,4,bushbuck,0.6974182724952698
+EK001628_f07_antelope.jpg,f07,antelope,4,bushbuck,0.9351404309272766
+C_EK002241_03_k06_antelope.jpg,k06,antelope,2,warthog,0.6965659856796265
+07180555_e10_antelope.jpg,e10,antelope,1,baboon,0.9400762915611267
+EK002217_02_h05_antelope.jpg,h05,antelope,2,warthog,0.8428685665130615
+2016 07 22 17 47 30_c06_antelope.jpg,c06,antelope,4,bushbuck,0.45405206084251404
+12140258_c08_antelope.jpg,c08,antelope,2,warthog,0.9618266820907593
+EK002760_h05_antelope.jpg,h05,antelope,0,waterbuck,0.9439123868942261
+2016 10 29 23 47 49_l05_antelope.jpg,l05,antelope,4,bushbuck,0.6382583379745483
+EK000063_f01_antelope.jpg,f01,antelope,5,oribi,0.7501937747001648
+10020823_c06_antelope.jpg,c06,antelope,4,bushbuck,0.8557448387145996
+07150805_e02_antelope.jpg,e02,antelope,5,oribi,0.30852240324020386
+2016 09 15 21 22 23_i08_antelope.jpg,i08,antelope,2,warthog,0.7469411492347717
+12090056_e02_antelope.jpg,e02,antelope,4,bushbuck,0.9753012657165527
+11230381_d07_antelope.jpg,d07,antelope,4,bushbuck,0.4798913300037384
+2016 10 14 19 46 33_k06_antelope.jpg,k06,antelope,2,warthog,0.9768674373626709
+2016 07 25 04 31 56_l05_antelope.jpg,l05,antelope,5,oribi,0.5725864768028259
+2016 10 26 17 48 32_e06_antelope.jpg,e06,antelope,2,warthog,0.9199374914169312
+10050097_d07_antelope.jpg,d07,antelope,4,bushbuck,0.5462928414344788
+2016 11 02 01 09 24_e06_antelope.jpg,e06,antelope,2,warthog,0.557266891002655
+06060643_b09_antelope.jpg,b09,antelope,1,baboon,0.5378519296646118
+EK004963_02_e04_antelope.jpg,e04,antelope,2,warthog,0.8439406752586365
+2016 10 17 02 04 48_h05_antelope.jpg,h05,antelope,3,impala,0.7699894309043884
+B_EK008216_02_k06_antelope.jpg,k06,antelope,2,warthog,0.5251685976982117
+EK001077_j13_antelope.jpg,j13,antelope,4,bushbuck,0.9658666849136353
+2016 08 11 19 11 23_e06_antelope.jpg,e06,antelope,2,warthog,0.9752721190452576
+EK006727_h05_antelope.jpg,h05,antelope,0,waterbuck,0.3986448645591736
+EK009170_01_f07_antelope.jpg,f07,antelope,0,waterbuck,0.5358166098594666
+10160983_h03_antelope.jpg,h03,antelope,0,waterbuck,0.47521278262138367
+EK007308_k06_antelope.jpg,k06,antelope,2,warthog,0.8196791410446167
+11100556_d07_antelope.jpg,d07,antelope,4,bushbuck,0.7484678030014038
+12180939_f05_antelope.jpg,f05,antelope,4,bushbuck,0.32720208168029785
+2016 08 21 05 29 42_j09_antelope.jpg,j09,antelope,7,genet,0.3046301007270813
+2016 10 22 01 28 35_k08_antelope.jpg,k08,antelope,0,waterbuck,0.7852389812469482
+2016 10 19 01 50 49_e06_antelope.jpg,e06,antelope,4,bushbuck,0.6624159216880798
+07300322_m10_antelope.jpg,m10,antelope,2,warthog,0.524235188961029
+2016 08 26 04 49 16_d07_antelope.jpg,d07,antelope,4,bushbuck,0.6695976853370667
+EK000327_f01_antelope.jpg,f01,antelope,0,waterbuck,0.6849117875099182
+EK009160_01_f03_antelope.jpg,f03,antelope,2,warthog,0.64690762758255
+2016 08 16 18 24 02_k06_antelope.jpg,k06,antelope,4,bushbuck,0.9804542660713196
+2016 08 31 00 59 30_l07_antelope.jpg,l07,antelope,4,bushbuck,0.9903970956802368
+2016 08 30 01 10 49_k06_antelope.jpg,k06,antelope,4,bushbuck,0.7192990779876709
+01140086_g12_antelope.jpg,g12,antelope,0,waterbuck,0.513764500617981
+2016 09 13 07 10 48_h03_antelope.jpg,h03,antelope,3,impala,0.6378003358840942
+EK004564_k06_antelope.jpg,k06,antelope,2,warthog,0.977543294429779
+EK000234_k06_antelope.jpg,k06,antelope,2,warthog,0.9557176232337952
+11080791_i12_antelope.jpg,i12,antelope,4,bushbuck,0.770756721496582
+05300768_h09_antelope.jpg,h09,antelope,4,bushbuck,0.6079831719398499
+2016 09 01 02 26 15_e06_antelope.jpg,e06,antelope,2,warthog,0.7557967901229858
+EK002106_03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.6884572505950928
+01150087_m08_antelope.jpg,m08,antelope,7,genet,0.39968743920326233
+05230737_e08_antelope.jpg,e08,antelope,2,warthog,0.6276150345802307
+2016 10 27 15 40 52_h07_antelope.jpg,h07,antelope,2,warthog,0.553771436214447
+11180349_i04_antelope.jpg,i04,antelope,0,waterbuck,0.6666563749313354
+11150314_a10_antelope.jpg,a10,antelope,4,bushbuck,0.4538411796092987
+12200733_d05_antelope.jpg,d05,antelope,2,warthog,0.978394627571106
+2016 09 20 03 10 51_e10_antelope.jpg,e10,antelope,2,warthog,0.835749626159668
+EK004024_f07_antelope.jpg,f07,antelope,1,baboon,0.4710013270378113
+EK005617_03_f07_antelope.jpg,f07,antelope,0,waterbuck,0.7773698568344116
+06120321_e08_antelope.jpg,e08,antelope,4,bushbuck,0.9878906011581421
+01260107_h03_antelope.jpg,h03,antelope,24,hippopotamus,0.7596967816352844
+EK001029_i08_antelope.jpg,i08,antelope,8,nyala,0.4876713752746582
+2016 07 08 01 03 35_e06_antelope.jpg,e06,antelope,2,warthog,0.977275013923645
+EK001876_j13_antelope.jpg,j13,antelope,0,waterbuck,0.3153051733970642
+2016 08 13 04 25 47_m10_antelope.jpg,m10,antelope,4,bushbuck,0.7509994506835938
+EK000883_e06_antelope.jpg,e06,antelope,4,bushbuck,0.9971404075622559
+04150313_e10_antelope.jpg,e10,antelope,4,bushbuck,0.698057234287262
+04200534_h03_antelope.jpg,h03,antelope,0,waterbuck,0.48629894852638245
+2016 07 21 10 37 17_m08_antelope.jpg,m08,antelope,0,waterbuck,0.9735084176063538
+EK000217_f03_antelope.jpg,f03,antelope,2,warthog,0.6009047031402588
+2016 07 16 20 32 21_h09_antelope.jpg,h09,antelope,2,warthog,0.8747212886810303
+12020411_b07_antelope.jpg,b07,antelope,2,warthog,0.5935072898864746
+2016 07 29 17 34 52_a10_antelope.jpg,a10,antelope,0,waterbuck,0.9480991959571838
+2016 08 23 21 33 13_a08_antelope.jpg,a08,antelope,12,mongoose_marsh,0.23430772125720978
+06120322_e08_antelope.jpg,e08,antelope,4,bushbuck,0.914254903793335
+07220797_f05_antelope.jpg,f05,antelope,2,warthog,0.6849346160888672
+2016 08 08 00 36 36_k10_antelope.jpg,k10,antelope,0,waterbuck,0.8204403519630432
+07220800_f05_antelope.jpg,f05,antelope,1,baboon,0.48940640687942505
+2016 08 23 21 33 12_a08_antelope.jpg,a08,antelope,0,waterbuck,0.985905110836029
+02090491_j11_antelope.jpg,j11,antelope,1,baboon,0.6503173112869263
+05310597_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9718086123466492
+02230427_h03_antelope.jpg,h03,antelope,4,bushbuck,0.9196683764457703
+12270813_d05_antelope.jpg,d05,antelope,1,baboon,0.9547119140625
+05010878_h03_antelope.jpg,h03,antelope,3,impala,0.23943234980106354
+04260483_d07_antelope.jpg,d07,antelope,4,bushbuck,0.48457765579223633
+2016 10 21 21 30 56_k06_antelope.jpg,k06,antelope,2,warthog,0.9958985447883606
+11280906_i04_antelope.jpg,i04,antelope,4,bushbuck,0.8979240655899048
+EK000378_b07_antelope.jpg,b07,antelope,2,warthog,0.5036568641662598
+2016 07 07 19 17 51_f01_antelope.jpg,f01,antelope,0,waterbuck,0.9525309801101685
+04130018_h03_antelope.jpg,h03,antelope,2,warthog,0.665965735912323
+01190305_g06_antelope.jpg,g06,antelope,6,elephant,0.4791509211063385
+2016 08 02 05 43 30_f11_antelope.jpg,f11,antelope,5,oribi,0.4591459631919861
+EK002476_j13_antelope.jpg,j13,antelope,7,genet,0.46384233236312866
+11120847_e02_antelope.jpg,e02,antelope,4,bushbuck,0.2729502022266388
+2016 07 10 23 40 53_a06_antelope.jpg,a06,antelope,4,bushbuck,0.27935025095939636
+EK004659_e04_antelope.jpg,e04,antelope,1,baboon,0.2540968358516693
+03040645_f01_antelope.jpg,f01,antelope,5,oribi,0.6606330275535583
+EK000075_f01_antelope.jpg,f01,antelope,2,warthog,0.5668315887451172
+EK001350_f01_antelope.jpg,f01,antelope,0,waterbuck,0.34520286321640015
+2016 07 20 17 55 27_l13_antelope.jpg,l13,antelope,4,bushbuck,0.8269924521446228
+09290221_a10_antelope.jpg,a10,antelope,1,baboon,0.6028810739517212
+B_EK005388_02_k06_antelope.jpg,k06,antelope,2,warthog,0.9229957461357117
+EK000701_e06_antelope.jpg,e06,antelope,2,warthog,0.9373238682746887
+02230958_h09_antelope.jpg,h09,antelope,6,elephant,0.9954407215118408
+05250539_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9991135001182556
+EK000941_i08_antelope.jpg,i08,antelope,4,bushbuck,0.8602079153060913
+EK000885_02_h05_antelope.jpg,h05,antelope,1,baboon,0.723747968673706
+2016 08 16 18 23 19_k06_antelope.jpg,k06,antelope,4,bushbuck,0.818038284778595
+05270573_b09_antelope.jpg,b09,antelope,0,waterbuck,0.9969912767410278
+01060699_g12_antelope.jpg,g12,antelope,4,bushbuck,0.8445547223091125
+EK000867_j13_antelope.jpg,j13,antelope,4,bushbuck,0.6658944487571716
+03150335_f01_antelope.jpg,f01,antelope,0,waterbuck,0.5772582292556763
+04100785_h03_antelope.jpg,h03,antelope,5,oribi,0.41012680530548096
+EK006728_h05_antelope.jpg,h05,antelope,23,buffalo,0.20248526334762573

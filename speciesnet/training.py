@@ -118,10 +118,7 @@ wandb.init(
         ],
 
         # Splitting
-        "holdout_sites": [
-            "d05","d03","g02","e02","e06","f05","i10","i04","i08",  # OG
-            "d07","b05","g08"                                       # additions
-        ],
+        "holdout_sites": ["d05","d03","g02","e02","e06","f05","i10","i04","i08","d07","b05","g08"],
         "split_mode": "instance",       # "instance" (NEW) or "sitewise" (OLD)
         "min_in_each": 1,
         "test_size": 0.30,
