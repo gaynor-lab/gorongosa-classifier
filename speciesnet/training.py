@@ -1,15 +1,41 @@
 #!/usr/bin/env python3
-# training.py
+"""
+training.py (ResNet18-only + incremental MegaDetector)
+
+Train a ResNet18-based image classifier for wildlife species classification and log results to W&B.
+
+Key behavior:
+- Always scan `image_dir` to build the CURRENT df (filename -> species + site).
+- If cached filtered CSV exists at `filtered_all_path`:
+    -> load it
+    -> detect NEW images not already in the cached filtered CSV
+    -> run MegaDetector ONLY on those NEW images
+    -> append passing rows to cached df
+    -> save updated cached df back to `filtered_all_path`
+- If cached filtered CSV does not exist:
+    -> run MegaDetector on ALL images
+    -> save to `filtered_all_path`
+
+Class selection:
+- config.num_classes can be an int (top-N in TRAIN) or "all" (all unique species in TRAIN).
+- config.include_species are appended if not already included.
+
+Assumptions:
+- build_df_from_folder(image_dir) returns columns: filename, species, site
+- SpeciesImageDataset expects df with filename/species/site
+- collate_keep_good may yield empty batches; we skip those safely.
+"""
 
 from __future__ import annotations
+
 import os
 import sys
 import gc
 import json
 from pathlib import Path
 import importlib.util
-from dataloader import SpeciesImageDataset, collate_keep_good
 from datetime import datetime
+
 import torch
 import torch.nn as nn
 import pandas as pd
@@ -20,37 +46,46 @@ from sklearn.metrics import classification_report, accuracy_score, confusion_mat
 from torch.utils.data import DataLoader
 import wandb
 
-# training.py (right after imports)
+from dataloader import SpeciesImageDataset, collate_keep_good
+from utilities import (
+    compute_allowed_species,
+    plot_confmat,
+    save_predictions_json,
+    is_good,
+    filter_bad_files,
+)
+from detector import filter_df_with_megadetector
+
+
+# ------------------------------------------------------------------------------
+# Performance toggles
+# ------------------------------------------------------------------------------
 torch.backends.cudnn.benchmark = True
 try:
     torch.set_float32_matmul_precision("high")  # PyTorch 2.x
 except Exception:
     pass
 
-# ────────────────────────────────────────────────────────────────────────────────
-# Project root & sys.path
-# training.py is in: .../Desktop/kaitlyn_catalyst/speciesnet/training.py
-# So PROJECT_ROOT is one level up: .../Desktop/kaitlyn_catalyst
-# ────────────────────────────────────────────────────────────────────────────────
+
+# ------------------------------------------------------------------------------
+# Project root & sys.path configuration
+# ------------------------------------------------------------------------------
 THIS_FILE = Path(__file__).resolve()
 PROJECT_ROOT = THIS_FILE.parents[1]  # .../Desktop/kaitlyn_catalyst
 
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-# ────────────────────────────────────────────────────────────────────────────────
-# Imports that depend on sys.path
-# ────────────────────────────────────────────────────────────────────────────────
-from speciesnet.classifier import SpeciesNetClassifier
-from model import AugmentedSpeciesNet
-from splitting import (    # ensure your splitting.py is under speciesnet/
-    build_df_from_folder,
-    split_train_val_holdout,          # supports mode="instance" or "sitewise"
-)
-from dataloader import SpeciesImageDataset
 
-# Try to import from ct_classifier as a proper package first.
-# If ct_classifier lacks __init__.py, we fall back to importlib.
+# ------------------------------------------------------------------------------
+# Imports that depend on sys.path
+# ------------------------------------------------------------------------------
+from splitting import (
+    build_df_from_folder,
+    split_train_val_holdout,
+)
+
+# Import ResNet model from ct_classifier (package if possible; fallback to file import).
 try:
     from ct_classifier.model import CustomResNet18
 except Exception:
@@ -59,53 +94,63 @@ except Exception:
         raise FileNotFoundError(f"Could not find ct_classifier/model.py at {CT_MODEL_PATH}")
     spec = importlib.util.spec_from_file_location("ct_model", CT_MODEL_PATH)
     ct_model = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
     spec.loader.exec_module(ct_model)
     CustomResNet18 = ct_model.CustomResNet18
 
-# ────────────────────────────────────────────────────────────────────────────────
+
+# ------------------------------------------------------------------------------
 # Paths
-# ────────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 BASE = Path("/mnt/sharedstorage/sabdelazim")
-csv_path        = BASE / "Desktop" / "kaitlyn_catalyst" / "notebooks" / "full_df_filtered.csv"
-speciesnet_dir  = BASE / "Desktop" / "kaitlyn_catalyst" / "speciesnet"
-image_dir       = BASE / "images" / "all_species_images"
-target_species_txt  = speciesnet_dir / "target_species_selected.txt"
-filtered_all_path   = speciesnet_dir / "filtered_all.csv"
-id2species_path     = speciesnet_dir / "id_to_species_full.json"
-speciesnet_dir.mkdir(parents=True, exist_ok=True)
 
-# Sanity checks
-for p, label in [(csv_path, "csv_path"), (image_dir, "image_dir")]:
-    if not p.exists():
-        raise FileNotFoundError(f"{label} not found: {p}")
+# Optional "raw" CSV (if present, used instead of scanning image_dir)
+csv_path = BASE / "Desktop" / "kaitlyn_catalyst" / "notebooks" / "full_df_filtered.csv"
 
-# Cast to str where needed
+# Directory for writing cached outputs (filtered CSV + predictions + checkpoints)
+run_dir = BASE / "Desktop" / "kaitlyn_catalyst" / "resnet_training"
+run_dir.mkdir(parents=True, exist_ok=True)
+
+# Images live here
+image_dir = BASE / "images" / "all_species_images"
+
+# Cached filtered dataframe (created if missing; incrementally updated if new images appear)
+filtered_all_path = run_dir / "full_df_filtered.csv"
+
+# Only image_dir is mandatory
+if not image_dir.exists():
+    raise FileNotFoundError(f"image_dir not found: {image_dir}")
+
+# csv_path is optional; do NOT raise
+if not csv_path.exists():
+    print(f"[warn] csv_path not found (optional): {csv_path}")
+    print(f"       Will either use cached filtered csv ({filtered_all_path}) or build+filter from image_dir.")
+
+# Convert to str where needed later
 csv_path = str(csv_path)
-speciesnet_dir = str(speciesnet_dir)
+run_dir = str(run_dir)
 image_dir = str(image_dir)
-target_species_txt = str(target_species_txt)
 filtered_all_path = str(filtered_all_path)
-id2species_path = str(id2species_path)
 
-# ────────────────────────────────────────────────────────────────────────────────
+
+# ------------------------------------------------------------------------------
 # W&B config
-# ────────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 wandb.init(
     project="Species-Classification",
     config={
         # Core
-        "backbone": "resnet18",         # "speciesnet" or "resnet18"
         "epochs": 10,
         "lr": 1e-4,
         "batch_size": 256,
         "label_smoothing": 0.0,
         "weight_decay": 0.0,
-        "dropout": 0.0,
 
         # Class selection
-        "num_classes": 10,              # take top-N from TRAIN
+        # - int: top-N most frequent species in TRAIN
+        # - "all": all unique species in TRAIN
+        "num_classes": "all",
         "include_species": [
-            # keep individual mongoose variants
             "nyala", "bushbuck",
             "reedbuck", "oribi",
             "civet", "genet",
@@ -118,107 +163,113 @@ wandb.init(
         ],
 
         # Splitting
-        "holdout_sites": ["d05","d03","g02","e02","e06","f05","i10","i04","i08","d07","b05","g08"],
-        "split_mode": "instance",       # "instance" (NEW) or "sitewise" (OLD)
+        "holdout_sites": ["d05", "d03", "g02", "e02", "e06", "f05", "i10", "i04", "i08", "d07", "b05", "g08"],
+        "split_mode": "instance",  # "instance" or "sitewise"
         "min_in_each": 1,
         "test_size": 0.30,
 
-        # Misc
-        "cache_filtered_all": False,
+        # Caching & filtering
+        "cache_filtered_all": True,
+        "use_megadetector_if_missing": True,
+        "megadetector_model": "MDV5A",  # or a local path
+        "megadetector_conf": 0.2,       # <-- increase this to be stricter
+        "megadetector_device": "cuda",  # "cuda" or "cpu"
 
         # Saving last-epoch predictions
         "save_probs_json": True,
         "upload_probs_artifact": True
     },
 )
+
 wandb.define_metric("epoch")
 wandb.define_metric("*", step_metric="epoch")
 config = wandb.config
-wandb.run.name = f"{config.backbone}_{config.split_mode}_N{config.num_classes}_ls{config.label_smoothing}"
+wandb.run.name = f"resnet18_{config.split_mode}_N{config.num_classes}_ls{config.label_smoothing}"
 
-# ────────────────────────────────────────────────────────────────────────────────
-# Helpers
-# ────────────────────────────────────────────────────────────────────────────────
-def compute_allowed_species(train_df: pd.DataFrame, top_n, include_list=None):
-    s = train_df["species"].astype(str).str.strip().str.lower()
-    top = s.value_counts().nlargest(int(top_n)).index.tolist() if top_n is not None else []
-    inc = [str(x).strip().lower() for x in (include_list or [])]
-    return top + [x for x in inc if x not in top]
 
-def plot_confmat(y_true, y_pred, class_names, normalize="true", title="Confusion Matrix"):
-    labels = np.arange(len(class_names))
-    cm = confusion_matrix(y_true, y_pred, labels=labels, normalize=normalize)
-    side = max(6, int(len(class_names) * 0.45))
-    fig, ax = plt.subplots(figsize=(side, side))
-    im = ax.imshow(cm, interpolation="nearest", aspect="auto")
-    fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
-    ax.set(xticks=labels, yticks=labels,
-           xticklabels=class_names, yticklabels=class_names,
-           xlabel="Predicted", ylabel="True", title=title)
-    for t in ax.get_xticklabels(): t.set_rotation(90)
-    if len(class_names) <= 30:
-        thresh = cm.max() / 2.0 if cm.size and np.isfinite(cm).any() else 0.5
-        for i in range(cm.shape[0]):
-            for j in range(cm.shape[1]):
-                val = cm[i, j]
-                txt = f"{val:.2f}" if normalize else f"{int(val)}"
-                ax.text(j, i, txt, ha="center", va="center",
-                        color="white" if val > thresh else "black", fontsize=7)
-    fig.tight_layout()
-    return fig
+# ------------------------------------------------------------------------------
+# Build CURRENT df + incremental MegaDetector filtering
+# ------------------------------------------------------------------------------
+print("[info] Scanning image_dir to find current images...")
+current_df = build_df_from_folder(image_dir)
 
-def save_predictions_json(path, split_name, class_names, rows):
-    payload = {
-        "split": split_name,
-        "class_names": class_names,
-        "num_classes": len(class_names),
-        "num_samples": len(rows),
-        "samples": rows
-    }
-    with open(path, "w") as f:
-        json.dump(payload, f, indent=2)
+if current_df is None or len(current_df) == 0:
+    raise RuntimeError("build_df_from_folder() returned an empty dataframe. Check filename pattern / image_dir.")
 
-# ────────────────────────────────────────────────────────────────────────────────
-# Load data (CSV preferred)
-# ────────────────────────────────────────────────────────────────────────────────
-if os.path.exists(csv_path):
-    full_df = pd.read_csv(csv_path)
-# else:
-#     print("csv_path not found; scanning folder as fallback…")
-    full_df = build_df_from_folder(image_dir)
+# Normalize + file sanity filtering
+for col in ("species", "site"):
+    if col not in current_df.columns:
+        raise ValueError(f"Expected column '{col}' in current_df but it is missing. Columns: {list(current_df.columns)}")
+    current_df[col] = current_df[col].astype(str).str.strip().str.lower()
 
-# If you aren't actively using detector filtering, just normalize and go
+if "filename" not in current_df.columns:
+    raise ValueError(f"Expected column 'filename' in current_df. Columns: {list(current_df.columns)}")
+
+current_df = filter_bad_files(current_df, image_dir)
+
+# If cached filtered exists, only run MD on NEW images
 if os.path.exists(filtered_all_path):
-    print("Using existing filtered df.")
+    print(f"[info] Using cached filtered CSV: {filtered_all_path}")
     filtered_all_df = pd.read_csv(filtered_all_path)
+
+    # Normalize cached df
+    for col in ("species", "site"):
+        if col in filtered_all_df.columns:
+            filtered_all_df[col] = filtered_all_df[col].astype(str).str.strip().str.lower()
+
+    # NEW images are those not already present in cached filtered df
+    seen = set(filtered_all_df["filename"].astype(str))
+    is_new = ~current_df["filename"].astype(str).isin(seen)
+    new_df = current_df[is_new].reset_index(drop=True)
+
+    print(f"[info] Cached kept images: {len(filtered_all_df)}")
+    print(f"[info] New images found: {len(new_df)}")
+
+    if len(new_df) > 0 and bool(config.use_megadetector_if_missing):
+        new_filtered = filter_df_with_megadetector(
+            new_df,
+            image_dir=image_dir,
+            conf_thresh=float(config.megadetector_conf),
+            model_name_or_path=str(config.megadetector_model),
+            device=str(config.megadetector_device),
+        )
+
+        filtered_all_df = pd.concat([filtered_all_df, new_filtered], ignore_index=True)
+        filtered_all_df = filtered_all_df.drop_duplicates(subset=["filename"]).reset_index(drop=True)
+
+        if bool(config.cache_filtered_all):
+            print(f"[info] Updating cached filtered CSV -> {filtered_all_path}")
+            filtered_all_df.to_csv(filtered_all_path, index=False)
+    else:
+        print("[info] No new images to run MegaDetector on (or MegaDetector disabled).")
+
 else:
-    filtered_all_df = full_df.copy()
+    print(f"[info] No cached filtered CSV. Running MegaDetector on ALL images ({len(current_df)}).")
+
+    if bool(config.use_megadetector_if_missing):
+        filtered_all_df = filter_df_with_megadetector(
+            current_df,
+            image_dir=image_dir,
+            conf_thresh=float(config.megadetector_conf),
+            model_name_or_path=str(config.megadetector_model),
+            device=str(config.megadetector_device),
+        )
+    else:
+        print("[warn] MegaDetector disabled; using current_df after file sanity filtering.")
+        filtered_all_df = current_df.copy()
+
     if bool(config.cache_filtered_all):
+        print(f"[info] Saving filtered CSV -> {filtered_all_path}")
         filtered_all_df.to_csv(filtered_all_path, index=False)
 
+# Final normalization (defensive)
 for col in ("species", "site"):
     filtered_all_df[col] = filtered_all_df[col].astype(str).str.strip().str.lower()
 
 
-def is_good(path):
-    try:
-        return os.path.getsize(path) > 0
-    except Exception:
-        return False
-
-def filter_bad_files(df, image_dir):
-    paths = df["filename"].apply(lambda f: os.path.join(image_dir, f))
-    mask = paths.apply(is_good)
-    bad = df[~mask]
-    good = df[mask].reset_index(drop=True)
-    print(f"[precheck] kept {len(good)} | dropped {len(bad)} bad/empty files")
-    return good
-
-filtered_all_df = filter_bad_files(filtered_all_df, image_dir)
-    
-# ────────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 # Split (instance or sitewise)
-# ────────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 train_df, val_df, holdout_df = split_train_val_holdout(
     filtered_all_df,
     site_col="site",
@@ -232,113 +283,75 @@ train_df, val_df, holdout_df = split_train_val_holdout(
 
 for _df in (train_df, val_df, holdout_df):
     _df["species"] = _df["species"].astype(str).str.strip().str.lower()
-    _df["site"]    = _df["site"].astype(str).str.strip().str.lower()
+    _df["site"] = _df["site"].astype(str).str.strip().str.lower()
 
-# ────────────────────────────────────────────────────────────────────────────────
-# Class list & datasets
-# ────────────────────────────────────────────────────────────────────────────────
+
+# ------------------------------------------------------------------------------
+# Class list & datasets (ResNet only)
+# ------------------------------------------------------------------------------
 allowed_species = compute_allowed_species(
     train_df,
-    int(config.num_classes),
+    config.num_classes,  # supports "all"
     include_list=list(config.include_species) if hasattr(config, "include_species") else None,
 )
 num_classes_eff = len(allowed_species)
 print("Classes:", allowed_species)
 print("Effective num_classes:", num_classes_eff)
 
-backbone = str(config.backbone).lower()
+model = CustomResNet18(num_classes=num_classes_eff).to(
+    torch.device("cuda" if torch.cuda.is_available() else "cpu")
+)
 
-if backbone == "speciesnet":
-    with open(id2species_path, "r") as f:
-        id_to_species = json.load(f)
+train_dataset = SpeciesImageDataset(
+    train_df, image_dir, classifier=None, backbone="resnet18",
+    top_n_species=None, include_species=allowed_species
+)
+val_dataset = SpeciesImageDataset(
+    val_df, image_dir, classifier=None, backbone="resnet18",
+    top_n_species=None, include_species=allowed_species
+)
+hold_dataset = SpeciesImageDataset(
+    holdout_df, image_dir, classifier=None, backbone="resnet18",
+    top_n_species=None, include_species=allowed_species
+)
 
-    short_to_tl = {}
-    for info in id_to_species.values():
-        short = info["short_name"].replace(" ", "_").strip().lower()
-        short_to_tl[short] = info["target_label"]
 
-    selected_labels = []
-    for s in allowed_species:
-        if s in short_to_tl:
-            selected_labels.append(short_to_tl[s])
-        else:
-            raise ValueError(f"Species '{s}' not in id_to_species_full.json mapping.")
-
-    with open(target_species_txt, "w") as f:
-        for label in selected_labels:
-            f.write(label + "\n")
-
-    classifier = SpeciesNetClassifier(
-        model_name=os.path.expanduser("~/.cache/kagglehub/models/google/speciesnet/pyTorch/v4.0.1a/1"),
-        target_species_txt=target_species_txt
-    )
-    original_outputs = len(classifier.labels)
-    target_labels = len(classifier.target_labels)
-
-    model = AugmentedSpeciesNet(
-        classifier.model,
-        original_outputs,
-        target_labels,
-        use_extra_head=True,
-        dropout=float(config.dropout),
-    ).to(torch.device("cuda" if torch.cuda.is_available() else "cpu"))
-    model.preprocess = classifier.preprocess
-
-    train_dataset = SpeciesImageDataset(train_df, image_dir, classifier=model, backbone="speciesnet",
-                                        top_n_species=None, include_species=allowed_species, return_meta=True)
-    val_dataset   = SpeciesImageDataset(val_df, image_dir, classifier=model, backbone="speciesnet",
-                                        top_n_species=None, include_species=allowed_species, return_meta=True)
-    hold_dataset  = SpeciesImageDataset(holdout_df, image_dir, classifier=model, backbone="speciesnet",
-                                        top_n_species=None, include_species=allowed_species, return_meta=True)
-
-elif backbone == "resnet18":
-    model = CustomResNet18(num_classes=num_classes_eff).to(
-        torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    )
-    train_dataset = SpeciesImageDataset(train_df, image_dir, classifier=None, backbone="resnet18",
-                                        top_n_species=None, include_species=allowed_species)
-    val_dataset   = SpeciesImageDataset(val_df, image_dir, classifier=None, backbone="resnet18",
-                                        top_n_species=None, include_species=allowed_species)
-    hold_dataset  = SpeciesImageDataset(holdout_df, image_dir, classifier=None, backbone="resnet18",
-                                        top_n_species=None, include_species=allowed_species)
-else:
-    raise ValueError("config.backbone must be 'speciesnet' or 'resnet18'")
-
-# ────────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 # Loss/optim/loaders
-# ────────────────────────────────────────────────────────────────────────────────
-device = torch.device("cuda" if torch.cuda.is_available() else
-                      "mps" if torch.backends.mps.is_available() else "cpu")
+# ------------------------------------------------------------------------------
+device = torch.device(
+    "cuda" if torch.cuda.is_available()
+    else "mps" if torch.backends.mps.is_available()
+    else "cpu"
+)
+
 criterion = nn.CrossEntropyLoss(label_smoothing=float(config.label_smoothing)).to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=float(config.lr), weight_decay=float(config.weight_decay))
 
-pin = torch.cuda.is_available()
-# training.py (where you build loaders)
-
 common_loader_kw = dict(
     batch_size=int(config.batch_size),
-    pin_memory=True,                # pinned host -> faster H2D
-    num_workers=8,                  # try 4–8; tune by CPU cores / disk
-    persistent_workers=True,        # keep workers alive
-    prefetch_factor=4               # each worker prefetches N batches
+    pin_memory=True,
+    num_workers=8,
+    persistent_workers=True,
+    prefetch_factor=4
 )
 
-train_loader = DataLoader(train_dataset, shuffle=True,  collate_fn=collate_keep_good, **common_loader_kw)
-val_loader   = DataLoader(val_dataset,   shuffle=False, collate_fn=collate_keep_good, **common_loader_kw)
-hold_loader  = DataLoader(hold_dataset,  shuffle=False, collate_fn=collate_keep_good, **common_loader_kw)
-
+train_loader = DataLoader(train_dataset, shuffle=True, collate_fn=collate_keep_good, **common_loader_kw)
+val_loader = DataLoader(val_dataset, shuffle=False, collate_fn=collate_keep_good, **common_loader_kw)
+hold_loader = DataLoader(hold_dataset, shuffle=False, collate_fn=collate_keep_good, **common_loader_kw)
 
 with torch.no_grad():
     dummy = torch.randn(2, 3, 224, 224).to(device)
     out = model(dummy)
     assert out.shape[1] == len(allowed_species), f"Model head {out.shape[1]} != classes {len(allowed_species)}"
 
-# ────────────────────────────────────────────────────────────────────────────────
+
+# ------------------------------------------------------------------------------
 # Train (record LAST epoch) + save probabilities, skipping empty batches
-# ────────────────────────────────────────────────────────────────────────────────
+# ------------------------------------------------------------------------------
 last_train_preds, last_train_trues = [], []
-last_val_preds,   last_val_trues   = [], []
-last_hold_preds,  last_hold_trues  = [], []
+last_val_preds, last_val_trues = [], []
+last_hold_preds, last_hold_trues = [], []
 
 train_prob_rows, val_prob_rows, hold_prob_rows = [], [], []
 num_epochs = int(config.epochs)
@@ -353,12 +366,11 @@ for epoch in range(num_epochs):
     train_preds, train_trues = [], []
 
     for x_batch, y_batch, names in tqdm(train_loader, desc="Training"):
-        # Skip empty batches produced by collate_keep_good
         if x_batch.numel() == 0:
             continue
 
         x_batch, y_batch = x_batch.to(device), y_batch.to(device)
-        optimizer.zero_grad()
+        optimizer.zero_grad(set_to_none=True)
         outputs = model(x_batch)
         loss = criterion(outputs, y_batch)
         loss.backward()
@@ -368,11 +380,10 @@ for epoch in range(num_epochs):
 
         preds = torch.argmax(outputs, dim=1)
 
-        # (Optional) collect probabilities on last epoch
         if is_last and bool(config.save_probs_json):
             probs = torch.softmax(outputs, dim=1).detach().cpu().numpy()
-            y_np  = y_batch.detach().cpu().numpy()
-            p_np  = preds.detach().cpu().numpy()
+            y_np = y_batch.detach().cpu().numpy()
+            p_np = preds.detach().cpu().numpy()
             for i in range(len(y_np)):
                 train_prob_rows.append({
                     "filename": str(names[i]),
@@ -397,7 +408,6 @@ for epoch in range(num_epochs):
     val_preds, val_trues = [], []
     with torch.no_grad():
         for x_batch, y_batch, names in tqdm(val_loader, desc="Validating"):
-            # Skip empty batches
             if x_batch.numel() == 0:
                 continue
 
@@ -410,8 +420,8 @@ for epoch in range(num_epochs):
 
             if is_last and bool(config.save_probs_json):
                 probs = torch.softmax(outputs, dim=1).cpu().numpy()
-                y_np  = y_batch.cpu().numpy()
-                p_np  = preds.cpu().numpy()
+                y_np = y_batch.cpu().numpy()
+                p_np = preds.cpu().numpy()
                 for i in range(len(y_np)):
                     val_prob_rows.append({
                         "filename": str(names[i]),
@@ -435,7 +445,6 @@ for epoch in range(num_epochs):
     hold_preds, hold_trues = [], []
     with torch.no_grad():
         for x_batch, y_batch, names in tqdm(hold_loader, desc="Holdout"):
-            # Skip empty batches
             if x_batch.numel() == 0:
                 continue
 
@@ -448,8 +457,8 @@ for epoch in range(num_epochs):
 
             if is_last and bool(config.save_probs_json):
                 probs = torch.softmax(outputs, dim=1).cpu().numpy()
-                y_np  = y_batch.cpu().numpy()
-                p_np  = preds.cpu().numpy()
+                y_np = y_batch.cpu().numpy()
+                p_np = preds.cpu().numpy()
                 for i in range(len(y_np)):
                     hold_prob_rows.append({
                         "filename": str(names[i]),
@@ -470,21 +479,35 @@ for epoch in range(num_epochs):
 
     # Keep LAST epoch’s predictions
     last_train_preds, last_train_trues = train_preds, train_trues
-    last_val_preds,   last_val_trues   = val_preds,   val_trues
-    last_hold_preds,  last_hold_trues  = hold_preds,  hold_trues
+    last_val_preds, last_val_trues = val_preds, val_trues
+    last_hold_preds, last_hold_trues = hold_preds, hold_trues
 
-    # Reports + logging
-    train_report = classification_report(train_trues, train_preds, target_names=allowed_species,
-                                         labels=list(range(len(allowed_species))), output_dict=True)
-    val_report   = classification_report(val_trues,   val_preds,   target_names=allowed_species,
-                                         labels=list(range(len(allowed_species))), output_dict=True)
-    hold_report  = classification_report(hold_trues,  hold_preds,  target_names=allowed_species,
-                                         labels=list(range(len(allowed_species))), output_dict=True)
+    train_report = classification_report(
+        train_trues, train_preds,
+        target_names=allowed_species,
+        labels=list(range(len(allowed_species))),
+        output_dict=True,
+        zero_division=0
+    )
+    val_report = classification_report(
+        val_trues, val_preds,
+        target_names=allowed_species,
+        labels=list(range(len(allowed_species))),
+        output_dict=True,
+        zero_division=0
+    )
+    hold_report = classification_report(
+        hold_trues, hold_preds,
+        target_names=allowed_species,
+        labels=list(range(len(allowed_species))),
+        output_dict=True,
+        zero_division=0
+    )
 
     wandb.log({
         "epoch": epoch + 1,
         "train/avg_loss": avg_train_loss, "train/accuracy": train_acc,
-        "val/avg_loss":   avg_val_loss,   "val/accuracy":   val_acc,
+        "val/avg_loss": avg_val_loss, "val/accuracy": val_acc,
         "holdout/avg_loss": avg_hold_loss, "holdout/accuracy": hold_acc,
     })
 
@@ -493,8 +516,8 @@ for epoch in range(num_epochs):
             if cname in report:
                 wandb.log({
                     f"{cname}/{split_name}_precision": report[cname]["precision"],
-                    f"{cname}/{split_name}_recall":    report[cname]["recall"],
-                    f"{cname}/{split_name}_f1":        report[cname]["f1-score"],
+                    f"{cname}/{split_name}_recall": report[cname]["recall"],
+                    f"{cname}/{split_name}_f1": report[cname]["f1-score"],
                 }, step=epoch + 1)
 
     gc.collect()
@@ -504,61 +527,68 @@ for epoch in range(num_epochs):
     print(f"[Epoch {epoch+1}] train_acc={train_acc:.4f} val_acc={val_acc:.4f} holdout_acc={hold_acc:.4f}")
 
 
+# ------------------------------------------------------------------------------
 # Heatmaps (last epoch)
+# ------------------------------------------------------------------------------
 fig_tr = plot_confmat(last_train_trues, last_train_preds, allowed_species, normalize="true",
                       title="Train Confusion Matrix (row-normalized)")
-fig_va = plot_confmat(last_val_trues,   last_val_preds,   allowed_species, normalize="true",
+fig_va = plot_confmat(last_val_trues, last_val_preds, allowed_species, normalize="true",
                       title="Validation Confusion Matrix (row-normalized)")
-fig_ho = plot_confmat(last_hold_trues,  last_hold_preds,  allowed_species, normalize="true",
+fig_ho = plot_confmat(last_hold_trues, last_hold_preds, allowed_species, normalize="true",
                       title="Holdout Confusion Matrix (row-normalized)")
 
 wandb.log({
-    "last_train/confusion_matrix_heatmap":  wandb.Image(fig_tr),
-    "last_val/confusion_matrix_heatmap":    wandb.Image(fig_va),
+    "last_train/confusion_matrix_heatmap": wandb.Image(fig_tr),
+    "last_val/confusion_matrix_heatmap": wandb.Image(fig_va),
     "last_holdout/confusion_matrix_heatmap": wandb.Image(fig_ho),
 })
-plt.close(fig_tr); plt.close(fig_va); plt.close(fig_ho)
+plt.close(fig_tr)
+plt.close(fig_va)
+plt.close(fig_ho)
 
+
+# ------------------------------------------------------------------------------
 # Save last-epoch probabilities to JSON + optional W&B artifact
+# ------------------------------------------------------------------------------
 saved_files = []
 if bool(config.save_probs_json):
-    train_json = os.path.join(speciesnet_dir, "last_epoch_predictions_train.json")
-    val_json   = os.path.join(speciesnet_dir, "last_epoch_predictions_valid.json")
-    hold_json  = os.path.join(speciesnet_dir, "last_epoch_predictions_holdout.json")
+    train_json = os.path.join(run_dir, "last_epoch_predictions_train.json")
+    val_json = os.path.join(run_dir, "last_epoch_predictions_valid.json")
+    hold_json = os.path.join(run_dir, "last_epoch_predictions_holdout.json")
 
-    save_predictions_json(train_json, "train",   allowed_species, train_prob_rows)
-    save_predictions_json(val_json,   "valid",   allowed_species, val_prob_rows)
-    save_predictions_json(hold_json,  "holdout", allowed_species, hold_prob_rows)
+    save_predictions_json(train_json, "train", allowed_species, train_prob_rows)
+    save_predictions_json(val_json, "valid", allowed_species, val_prob_rows)
+    save_predictions_json(hold_json, "holdout", allowed_species, hold_prob_rows)
 
     saved_files = [train_json, val_json, hold_json]
     print("Saved last-epoch prediction JSONs:")
-    for p in saved_files: print("  -", p)
+    for p in saved_files:
+        print("  -", p)
 
     if bool(config.upload_probs_artifact):
         art = wandb.Artifact("last_epoch_predictions", type="predictions")
-        for p in saved_files: art.add_file(p)
+        for p in saved_files:
+            art.add_file(p)
         wandb.log_artifact(art)
 
-        
-# ────────────────────────────────────────────────────────────────────────────────
-# Save LAST model (safest: state_dict pickle)
-# ────────────────────────────────────────────────────────────────────────────────
 
-ckpt_dir = Path(speciesnet_dir)
+# ------------------------------------------------------------------------------
+# Save LAST model checkpoint (state_dict)
+# ------------------------------------------------------------------------------
+ckpt_dir = Path(run_dir)
 ckpt_dir.mkdir(parents=True, exist_ok=True)
 
 stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-last_ckpt = ckpt_dir / f"last_model_state_{config.backbone}_{stamp}.pkl"
+last_ckpt = ckpt_dir / f"last_model_state_resnet18_{stamp}.pkl"
 
 payload = {
-    "epoch": num_epochs,                      # last epoch index (1-based in your logs)
-    "model_state": model.state_dict(),        # weights only (recommended)
-    "optimizer_state": optimizer.state_dict(),# optional; useful if you resume
-    "class_names": allowed_species,           # to map indices later
-    "config": dict(config),                   # for reproducibility
+    "epoch": num_epochs,
+    "model_state": model.state_dict(),
+    "optimizer_state": optimizer.state_dict(),
+    "class_names": allowed_species,
+    "config": dict(config),
 }
 torch.save(payload, last_ckpt)
 print(f"[save] Wrote last model state to: {last_ckpt}")
-        
-        
+
 wandb.finish()
