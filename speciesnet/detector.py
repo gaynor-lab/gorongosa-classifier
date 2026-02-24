@@ -1,14 +1,8 @@
-#!/usr/bin/env python3
-# detector.py
-
-from __future__ import annotations
-
-import os
-from pathlib import Path
 import pandas as pd
+from pathlib import Path
+import os
 from tqdm import tqdm
 from PIL import Image
-
 
 def _clip(v: int, lo: int, hi: int) -> int:
     return max(lo, min(v, hi))
@@ -29,6 +23,7 @@ def _crop_with_padding(img: Image.Image, bbox, pad_frac: float = 0.10) -> Image.
 
     bw = max(1, x2 - x1)
     bh = max(1, y2 - y1)
+
     pad_x = int(round(bw * pad_frac))
     pad_y = int(round(bh * pad_frac))
 
@@ -39,8 +34,8 @@ def _crop_with_padding(img: Image.Image, bbox, pad_frac: float = 0.10) -> Image.
 
     if x2 <= x1 or y2 <= y1:
         return img
-    return img.crop((x1, y1, x2, y2))
 
+    return img.crop((x1, y1, x2, y2))
 
 def filter_df_with_megadetector_and_crop(
     df: pd.DataFrame,
@@ -53,23 +48,17 @@ def filter_df_with_megadetector_and_crop(
     pad_frac: float = 0.10,
     save_format: str = "jpg",
     jpeg_quality: int = 95,
-) -> pd.DataFrame:
+) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
-    Run MegaDetector, keep images with >=1 detection above conf_thresh,
-    save best bbox + crop image, and return df with crop filenames.
-
-    Output columns added:
-      - filename_crop
-      - det_conf
-      - det_category
-      - bbox  (normalized [x,y,w,h])
+    Returns:
+      kept_df: rows with crops + bbox info
+      dropped_df: rows that were not kept, with drop_reason
     """
     try:
         from megadetector.detection.run_detector_batch import load_and_run_detector_batch
     except Exception as e:
         raise RuntimeError(
             "MegaDetector import failed. Expected MegaDetector v10.x.\n"
-            "Try: pip install megadetector\n"
             f"Original error: {e}"
         )
 
@@ -81,11 +70,6 @@ def filter_df_with_megadetector_and_crop(
 
     image_paths = [os.path.join(image_dir, str(f)) for f in df["filename"].tolist()]
 
-    print(f"[megadetector] running on {len(image_paths)} images, thr={conf_thresh}, animals_only={animals_only}")
-    print(f"[megadetector] model: {model_name_or_path}")
-
-    # NOTE: device selection is handled internally by MD/yolov5;
-    # you already see it picking cuda:0 in logs.
     results = load_and_run_detector_batch(
         model_file=model_name_or_path,
         image_file_names=image_paths,
@@ -94,49 +78,67 @@ def filter_df_with_megadetector_and_crop(
         batch_size=1,
     )
 
-    # map absolute path -> original row dict
-    row_by_path = {os.path.join(image_dir, str(r["filename"])): r for _, r in df.iterrows()}
+    row_by_path = {os.path.join(image_dir, str(r["filename"])): r.to_dict() for _, r in df.iterrows()}
 
-    kept = []
+    kept, dropped = [], []
+
     for r in tqdm(results, desc="Cropping + saving"):
         fpath = r.get("file")
         if not fpath:
-            continue
-
-        dets = r.get("detections", []) or []
-        dets = [d for d in dets if float(d.get("conf", 0.0)) >= conf_thresh]
-
-        if animals_only:
-            dets = [d for d in dets if str(d.get("category", "")) == "1"]
-
-        if not dets:
-            continue
-
-        best = max(dets, key=lambda d: float(d.get("conf", 0.0)))
-        bbox = best.get("bbox")
-        if bbox is None:
+            dropped.append({"filename": None, "drop_reason": "missing_result_file"})
             continue
 
         base = row_by_path.get(fpath)
         if base is None:
-            # fallback: match by filename
+            # fallback: match by filename only
             fname = os.path.basename(fpath)
             m = df[df["filename"].astype(str) == fname]
             if len(m) == 0:
+                dropped.append({"filename": fname, "drop_reason": "no_matching_row_in_df"})
                 continue
             base = m.iloc[0].to_dict()
-        else:
-            base = dict(base)
+
+        dets_all = r.get("detections", []) or []
+        if not dets_all:
+            dropped.append({**base, "drop_reason": "no_detections"})
+            continue
+
+        dets_thr = [d for d in dets_all if float(d.get("conf", 0.0)) >= conf_thresh]
+        if not dets_thr:
+            dropped.append({
+                **base,
+                "drop_reason": "all_below_threshold",
+                "max_conf": max((float(d.get("conf", 0.0)) for d in dets_all), default=0.0),
+            })
+            continue
+
+        dets_use = dets_thr
+        if animals_only:
+            dets_use = [d for d in dets_thr if str(d.get("category", "")) == "1"]
+            if not dets_use:
+                dropped.append({
+                    **base,
+                    "drop_reason": "no_animal_detections",
+                    "max_conf": max((float(d.get("conf", 0.0)) for d in dets_thr), default=0.0),
+                    "cats": ",".join(sorted({str(d.get("category", "")) for d in dets_thr})),
+                })
+                continue
+
+        best = max(dets_use, key=lambda d: float(d.get("conf", 0.0)))
+        bbox = best.get("bbox")
+        if bbox is None:
+            dropped.append({**base, "drop_reason": "missing_bbox"})
+            continue
 
         # load & crop
         try:
             img = Image.open(fpath).convert("RGB")
         except Exception:
+            dropped.append({**base, "drop_reason": "image_open_failed"})
             continue
 
         crop = _crop_with_padding(img, bbox, pad_frac=pad_frac)
 
-        # save cropped
         orig_name = os.path.basename(fpath)
         stem = os.path.splitext(orig_name)[0]
         crop_name = f"{stem}_crop.{save_format.lower()}"
@@ -148,6 +150,7 @@ def filter_df_with_megadetector_and_crop(
             else:
                 crop.save(crop_fpath)
         except Exception:
+            dropped.append({**base, "drop_reason": "crop_save_failed"})
             continue
 
         base["filename_crop"] = crop_name
@@ -156,6 +159,10 @@ def filter_df_with_megadetector_and_crop(
         base["bbox"] = bbox
         kept.append(base)
 
-    out_df = pd.DataFrame(kept).reset_index(drop=True)
-    print(f"[megadetector] kept+crops saved: {len(out_df)} / {len(df)}")
-    return out_df
+    kept_df = pd.DataFrame(kept).reset_index(drop=True)
+    dropped_df = pd.DataFrame(dropped).reset_index(drop=True)
+
+    print(f"[megadetector] kept: {len(kept_df)} / {len(df)}")
+    print(f"[megadetector] dropped: {len(dropped_df)} / {len(df)}")
+
+    return kept_df, dropped_df

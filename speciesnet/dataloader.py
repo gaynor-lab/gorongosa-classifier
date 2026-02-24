@@ -47,7 +47,7 @@ class SpeciesImageDataset(Dataset):
         df["ground_truth_index"] = df["species"].map(self.class_to_idx).astype(int)
 
         # Pre-cache columns to avoid df.iloc (noticeably faster)
-        self._filenames = df["filename"].tolist()
+        self._filenames = df["filename_crop"].tolist()
         self._labels = df["ground_truth_index"].tolist()
         # Optional: fast bbox access if present
         self._bboxes = df["bbox"].tolist() if "bbox" in df.columns else None

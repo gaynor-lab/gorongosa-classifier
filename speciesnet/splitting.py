@@ -48,29 +48,6 @@ def build_df_from_folder(image_dir: str) -> pd.DataFrame:
                 rows.append({"filename": fname, "species": species, "site": site})
     return pd.DataFrame(rows)
 
-
-# def filter_df_with_detections(df: pd.DataFrame, image_dir: str, detector: SpeciesNetDetector) -> pd.DataFrame:
-#     """
-#     Example stub if you want to keep detector-based filtering.
-#     Keeps rows that have at least one detection; also attaches 'bbox' for the first detection.
-#     """
-#     records = []
-#     for _, row in df.iterrows():
-#         file_path = os.path.join(image_dir, row["filename"])
-#         try:
-#             img = Image.open(file_path).convert("RGB")
-#         except Exception:
-#             continue
-#         pre = detector.preprocess(img)
-#         result = detector.predict(filepath=file_path, img=pre)
-#         dets = result.get("detections", [])
-#         if dets:
-#             r = row.to_dict()
-#             r["bbox"] = dets[0]["bbox"]  # [xmin, ymin, w, h]
-#             records.append(r)
-#     return pd.DataFrame(records)
-
-
 # -------- Core splitter with two modes --------
 
 SplitMode = Literal["instance", "sitewise"]

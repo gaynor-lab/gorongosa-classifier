@@ -154,16 +154,40 @@ def main():
         for r in results:
             print(f"{r['label']:<25} {r['probability']:.4f}")
 
-    # ---------------- Folder ----------------
+        # ---------------- Folder ----------------
     if args.folder:
         folder = Path(args.folder)
         exts = {".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff", ".webp"}
 
-        for p in folder.iterdir():
+        print(f"[INFO] Running inference on folder: {folder}")
+
+        for p in sorted(folder.iterdir()):
             if p.suffix.lower() not in exts:
                 continue
 
-            results = predict_image(model, class_names, p)
+            try:
+                results = predict_image(model, class_names, p)
+            except Exception as e:
+                print(f"[WARN] Failed on {p.name}: {e}")
+                continue
+
             top1 = results[0]
 
             rows.append({
+                "filename": p.name,
+                "pred_label": top1["label"],
+                "pred_prob": top1["probability"],
+            })
+
+            print(f"{p.name:<40} {top1['label']:<25} {top1['probability']:.4f}")
+
+    # ---------------- Save CSV ----------------
+    if args.output:
+        out_path = Path(args.output)
+        pd.DataFrame(rows).to_csv(out_path, index=False)
+        print(f"\n[INFO] Saved predictions to: {out_path}")
+
+
+if __name__ == "__main__":
+    main()
+
