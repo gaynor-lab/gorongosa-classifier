@@ -277,7 +277,7 @@ else:
     print(f"[info] No cached filtered CSV. Running MegaDetector on ALL images ({len(current_df)}).")
 
     if bool(config.use_megadetector_if_missing):
-        filtered_all_df = filter_df_with_megadetector_and_crop(
+        filtered_all_df, dropped_df = filter_df_with_megadetector_and_crop(
             df=current_df,
             image_dir=image_dir,
             out_dir=cropped_image_dir,

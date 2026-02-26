@@ -1,18 +1,23 @@
-import pandas as pd
-from pathlib import Path
+from __future__ import annotations
+
 import os
+import json
+from pathlib import Path
+from typing import Tuple, Optional, List
+
+import pandas as pd
 from tqdm import tqdm
 from PIL import Image
 
+
+# -----------------------------------------------------------------------------
+# Geometry helpers
+# -----------------------------------------------------------------------------
 def _clip(v: int, lo: int, hi: int) -> int:
     return max(lo, min(v, hi))
 
 
 def _crop_with_padding(img: Image.Image, bbox, pad_frac: float = 0.10) -> Image.Image:
-    """
-    MegaDetector bbox is normalized [x, y, w, h] in [0,1].
-    Convert to pixel coords, apply padding, clip, crop.
-    """
     W, H = img.size
     x, y, w, h = bbox
 
@@ -23,7 +28,6 @@ def _crop_with_padding(img: Image.Image, bbox, pad_frac: float = 0.10) -> Image.
 
     bw = max(1, x2 - x1)
     bh = max(1, y2 - y1)
-
     pad_x = int(round(bw * pad_frac))
     pad_y = int(round(bh * pad_frac))
 
@@ -37,23 +41,35 @@ def _crop_with_padding(img: Image.Image, bbox, pad_frac: float = 0.10) -> Image.
 
     return img.crop((x1, y1, x2, y2))
 
+
+# -----------------------------------------------------------------------------
+# MegaDetector (multi-detection version)
+# -----------------------------------------------------------------------------
 def filter_df_with_megadetector_and_crop(
     df: pd.DataFrame,
     image_dir: str,
     out_dir: str,
     conf_thresh: float,
     model_name_or_path: str,
-    device: str = "cuda",
+    device: str = "cuda",              # kept for API compatibility
     animals_only: bool = True,
     pad_frac: float = 0.10,
     save_format: str = "jpg",
     jpeg_quality: int = 95,
-) -> tuple[pd.DataFrame, pd.DataFrame]:
+    max_crops_per_image: Optional[int] = None,
+) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
+    Multi-animal version.
+
+    For each image:
+      - Keep ALL detections >= conf_thresh (optionally animals-only)
+      - Save one crop per bbox
+      - Store bbox/conf/category/crop filenames as JSON lists
+
     Returns:
-      kept_df: rows with crops + bbox info
-      dropped_df: rows that were not kept, with drop_reason
+      kept_df, dropped_df
     """
+
     try:
         from megadetector.detection.run_detector_batch import load_and_run_detector_batch
     except Exception as e:
@@ -70,6 +86,10 @@ def filter_df_with_megadetector_and_crop(
 
     image_paths = [os.path.join(image_dir, str(f)) for f in df["filename"].tolist()]
 
+    print(f"[megadetector] running on {len(image_paths)} images")
+    print(f"[megadetector] threshold={conf_thresh}, animals_only={animals_only}, device={device}")
+    print(f"[megadetector] model: {model_name_or_path}")
+
     results = load_and_run_detector_batch(
         model_file=model_name_or_path,
         image_file_names=image_paths,
@@ -78,7 +98,10 @@ def filter_df_with_megadetector_and_crop(
         batch_size=1,
     )
 
-    row_by_path = {os.path.join(image_dir, str(r["filename"])): r.to_dict() for _, r in df.iterrows()}
+    row_by_path = {
+        os.path.join(image_dir, str(r["filename"])): r.to_dict()
+        for _, r in df.iterrows()
+    }
 
     kept, dropped = [], []
 
@@ -90,7 +113,6 @@ def filter_df_with_megadetector_and_crop(
 
         base = row_by_path.get(fpath)
         if base is None:
-            # fallback: match by filename only
             fname = os.path.basename(fpath)
             m = df[df["filename"].astype(str) == fname]
             if len(m) == 0:
@@ -103,6 +125,7 @@ def filter_df_with_megadetector_and_crop(
             dropped.append({**base, "drop_reason": "no_detections"})
             continue
 
+        # threshold filter
         dets_thr = [d for d in dets_all if float(d.get("conf", 0.0)) >= conf_thresh]
         if not dets_thr:
             dropped.append({
@@ -112,6 +135,7 @@ def filter_df_with_megadetector_and_crop(
             })
             continue
 
+        # animals-only filter
         dets_use = dets_thr
         if animals_only:
             dets_use = [d for d in dets_thr if str(d.get("category", "")) == "1"]
@@ -120,43 +144,66 @@ def filter_df_with_megadetector_and_crop(
                     **base,
                     "drop_reason": "no_animal_detections",
                     "max_conf": max((float(d.get("conf", 0.0)) for d in dets_thr), default=0.0),
-                    "cats": ",".join(sorted({str(d.get("category", "")) for d in dets_thr})),
                 })
                 continue
 
-        best = max(dets_use, key=lambda d: float(d.get("conf", 0.0)))
-        bbox = best.get("bbox")
-        if bbox is None:
-            dropped.append({**base, "drop_reason": "missing_bbox"})
-            continue
+        # sort by confidence
+        dets_use = sorted(dets_use, key=lambda d: float(d.get("conf", 0.0)), reverse=True)
+        if max_crops_per_image is not None:
+            dets_use = dets_use[:int(max_crops_per_image)]
 
-        # load & crop
         try:
             img = Image.open(fpath).convert("RGB")
         except Exception:
             dropped.append({**base, "drop_reason": "image_open_failed"})
             continue
 
-        crop = _crop_with_padding(img, bbox, pad_frac=pad_frac)
-
         orig_name = os.path.basename(fpath)
         stem = os.path.splitext(orig_name)[0]
-        crop_name = f"{stem}_crop.{save_format.lower()}"
-        crop_fpath = out_path / crop_name
 
-        try:
-            if save_format.lower() in ("jpg", "jpeg"):
-                crop.save(crop_fpath, quality=jpeg_quality)
-            else:
-                crop.save(crop_fpath)
-        except Exception:
-            dropped.append({**base, "drop_reason": "crop_save_failed"})
+        crop_files: List[str] = []
+        bboxes: List[list] = []
+        det_confs: List[float] = []
+        det_cats: List[str] = []
+
+        for j, det in enumerate(dets_use):
+            bbox = det.get("bbox")
+            if bbox is None:
+                continue
+
+            crop = _crop_with_padding(img, bbox, pad_frac=pad_frac)
+            crop_name = f"{stem}_crop{j}.{save_format.lower()}"
+            crop_path = out_path / crop_name
+
+            try:
+                if save_format.lower() in ("jpg", "jpeg"):
+                    crop.save(crop_path, quality=jpeg_quality)
+                else:
+                    crop.save(crop_path)
+            except Exception:
+                continue
+
+            crop_files.append(crop_name)
+            bboxes.append(list(bbox))
+            det_confs.append(float(det.get("conf", 0.0)))
+            det_cats.append(str(det.get("category", "")))
+
+        if not crop_files:
+            dropped.append({**base, "drop_reason": "no_crops_saved"})
             continue
 
-        base["filename_crop"] = crop_name
-        base["det_conf"] = float(best.get("conf", 0.0))
-        base["det_category"] = best.get("category", None)
-        base["bbox"] = bbox
+        base["n_animals"] = len(crop_files)
+        base["filename_crops"] = json.dumps(crop_files)
+        base["bboxes"] = json.dumps(bboxes)
+        base["det_confs"] = json.dumps(det_confs)
+        base["det_categories"] = json.dumps(det_cats)
+
+        # backward compatibility (use first crop as primary)
+        base["filename_crop"] = crop_files[0]
+        base["bbox"] = bboxes[0]
+        base["det_conf"] = det_confs[0]
+        base["det_category"] = det_cats[0]
+
         kept.append(base)
 
     kept_df = pd.DataFrame(kept).reset_index(drop=True)
