@@ -58,7 +58,6 @@ class SpeciesImageDataset(Dataset):
             T.Resize(
                 (self.size, self.size),
                 interpolation=InterpolationMode.BILINEAR,
-                antialias=False,
             ),
             T.ToTensor(),
             T.Normalize(
@@ -117,7 +116,6 @@ class SpeciesImageDataset(Dataset):
                     img,
                     [self.size, self.size],
                     interpolation=InterpolationMode.BILINEAR,
-                    antialias=False,
                 )
                 img = img.float().div_(255.0)
                 img = T.functional.normalize(

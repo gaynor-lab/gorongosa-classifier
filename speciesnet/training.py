@@ -367,27 +367,21 @@ model = CustomResNet18(num_classes=num_classes_eff).to(
 train_dataset = SpeciesImageDataset(
     train_df,
     train_image_root,
-    classifier=None,
     backbone="resnet18",
-    top_n_species=None,
     include_species=allowed_species,
 )
 
 val_dataset = SpeciesImageDataset(
     val_df,
     train_image_root,
-    classifier=None,
     backbone="resnet18",
-    top_n_species=None,
     include_species=allowed_species,
 )
 
 hold_dataset = SpeciesImageDataset(
     holdout_df,
     train_image_root,
-    classifier=None,
     backbone="resnet18",
-    top_n_species=None,
     include_species=allowed_species,
 )
 # ------------------------------------------------------------------------------
