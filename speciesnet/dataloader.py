@@ -1,6 +1,5 @@
 from typing import Optional, List
 import os
-import json
 from PIL import Image, UnidentifiedImageError, ImageFile
 
 import torch
@@ -18,9 +17,7 @@ class SpeciesImageDataset(Dataset):
         self,
         df,
         image_dir,
-        classifier=None,
         backbone: str = "resnet18",
-        top_n_species: Optional[int] = None,
         include_species: Optional[List[str]] = None,
         augment: bool = True,
         use_color_jitter: bool = False,
@@ -28,17 +25,16 @@ class SpeciesImageDataset(Dataset):
         size: int = 224,
     ):
         self.image_dir = image_dir
-        self.classifier = classifier
         self.backbone = str(backbone).lower()
         self.read_backend = read_backend
         self.size = int(size)
 
+        if self.backbone != "resnet18":
+            raise ValueError("This dataloader only supports backbone='resnet18'")
+
         df = df.reset_index(drop=True).copy()
         df["species"] = df["species"].astype(str).str.strip().str.lower()
 
-        # ------------------------------------------------------------
-        # Species filtering
-        # ------------------------------------------------------------
         if include_species is not None:
             classes = [s.strip().lower() for s in include_species]
             df = df[df["species"].isin(classes)].reset_index(drop=True)
@@ -49,89 +45,42 @@ class SpeciesImageDataset(Dataset):
         self.class_to_idx = {s: i for i, s in enumerate(self.classes)}
         df["ground_truth_index"] = df["species"].map(self.class_to_idx).astype(int)
 
-        # ------------------------------------------------------------
-        # Handle filename_crops + bboxes together
-        # ------------------------------------------------------------
-        df_expanded = df.copy()
+        if "filename_crop" not in df.columns:
+            raise ValueError("DataFrame must contain 'filename_crop'")
 
-        if "filename_crops" in df_expanded.columns:
-            df_expanded["filename_crops"] = df_expanded["filename_crops"].apply(
-                lambda x: json.loads(x) if isinstance(x, str) else x
-            )
+        df = df[df["filename_crop"].notna()].reset_index(drop=True)
 
-        if "bboxes" in df_expanded.columns:
-            df_expanded["bboxes"] = df_expanded["bboxes"].apply(
-                lambda x: json.loads(x) if isinstance(x, str) else x
-            )
-
-        cols_to_explode = []
-        if "filename_crops" in df_expanded.columns:
-            cols_to_explode.append("filename_crops")
-        if "bboxes" in df_expanded.columns:
-            cols_to_explode.append("bboxes")
-
-        if cols_to_explode:
-            df_expanded = df_expanded.explode(cols_to_explode).reset_index(drop=True)
-
-        if "filename_crops" in df_expanded.columns:
-            df_expanded["filename_crop"] = df_expanded["filename_crops"]
-
-        if "bboxes" in df_expanded.columns:
-            df_expanded["bbox"] = df_expanded["bboxes"]
-
-        # remove rows without crop filenames
-        df_expanded = df_expanded[df_expanded["filename_crop"].notna()].reset_index(drop=True)
-
-        df = df_expanded
-
-        # ------------------------------------------------------------
-        # Cache filenames and labels
-        # ------------------------------------------------------------
         self._filenames = df["filename_crop"].astype(str).tolist()
         self._labels = df["ground_truth_index"].tolist()
+        self._bboxes = df["bbox"].tolist() if "bbox" in df.columns else None
 
-        # ------------------------------------------------------------
-        # Image transforms
-        # ------------------------------------------------------------
-        if self.backbone == "resnet18":
+        base = [
+            T.Resize(
+                (self.size, self.size),
+                interpolation=InterpolationMode.BILINEAR,
+                antialias=False,
+            ),
+            T.ToTensor(),
+            T.Normalize(
+                mean=[0.485, 0.456, 0.406],
+                std=[0.229, 0.224, 0.225],
+            ),
+        ]
 
-            base = [
-                T.Resize(
-                    (self.size, self.size),
-                    interpolation=InterpolationMode.BILINEAR,
-                    antialias=False,
-                ),
-                T.ToTensor(),
-                T.Normalize(
-                    mean=[0.485, 0.456, 0.406],
-                    std=[0.229, 0.224, 0.225],
-                ),
-            ]
+        aug = [
+            T.RandomHorizontalFlip(),
+            T.RandomRotation(10),
+        ]
 
-            aug = [
-                T.RandomHorizontalFlip(),
-                T.RandomRotation(10),
-            ]
+        if use_color_jitter:
+            aug.append(T.ColorJitter(brightness=0.1, contrast=0.1))
 
-            if use_color_jitter:
-                aug.append(T.ColorJitter(brightness=0.1, contrast=0.1))
-
-            self.transform = T.Compose((aug + base) if augment else base)
-
-        elif self.backbone == "speciesnet":
-            self.transform = None
-
-        else:
-            raise ValueError("backbone must be 'resnet18' or 'speciesnet'")
+        self.transform = T.Compose((aug + base) if augment else base)
 
     def __len__(self):
         return len(self._filenames)
 
-    # ------------------------------------------------------------
-    # Image loaders
-    # ------------------------------------------------------------
     def _load_image_pil(self, path: str):
-
         if not os.path.exists(path) or os.path.getsize(path) == 0:
             raise UnidentifiedImageError(f"Missing/zero-byte: {path}")
 
@@ -141,7 +90,6 @@ class SpeciesImageDataset(Dataset):
             raise UnidentifiedImageError(f"Unreadable: {path} ({e})")
 
     def _load_image_torch(self, path: str):
-
         if not os.path.exists(path) or os.path.getsize(path) == 0:
             raise UnidentifiedImageError(f"Missing/zero-byte: {path}")
 
@@ -157,67 +105,47 @@ class SpeciesImageDataset(Dataset):
         except Exception as e:
             raise UnidentifiedImageError(f"Unreadable: {path} ({e})")
 
-    # ------------------------------------------------------------
-    # Dataset getter
-    # ------------------------------------------------------------
-    def __getitem__(self, idx):
-
+    def __getitem__(self, idx: int):
         fname = self._filenames[idx]
         label = int(self._labels[idx])
         path = os.path.join(self.image_dir, fname)
 
         try:
+            if self.read_backend == "torch":
+                img = self._load_image_torch(path)
+                img = T.functional.resize(
+                    img,
+                    [self.size, self.size],
+                    interpolation=InterpolationMode.BILINEAR,
+                    antialias=False,
+                )
+                img = img.float().div_(255.0)
+                img = T.functional.normalize(
+                    img,
+                    [0.485, 0.456, 0.406],
+                    [0.229, 0.224, 0.225],
+                )
+                return img, label, fname
 
-            if self.backbone == "resnet18":
-
-                if self.read_backend == "torch":
-
-                    img = self._load_image_torch(path)
-
-                    img = T.functional.resize(
-                        img,
-                        [self.size, self.size],
-                        interpolation=InterpolationMode.BILINEAR,
-                        antialias=False,
-                    )
-
-                    img = img.float().div_(255.0)
-
-                    img = T.functional.normalize(
-                        img,
-                        [0.485, 0.456, 0.406],
-                        [0.229, 0.224, 0.225],
-                    )
-
-                    return img, label, fname
-
-                else:
-
-                    img = self._load_image_pil(path)
-                    img = self.transform(img)
-
-                    return img, label, fname
-
-            # --------------------------------------------------------
-            # SpeciesNet branch
-            # --------------------------------------------------------
-            if self.classifier is None or not hasattr(self.classifier, "preprocess"):
-                raise RuntimeError("SpeciesNet backbone requires classifier.preprocess")
-
-            pre = self.classifier.preprocess(self._load_image_pil(path))
-            arr = torch.as_tensor(pre.arr).permute(2, 0, 1).float().div_(255.0)
-
-            return arr, label, fname
+            img = self._load_image_pil(path)
+            img = self.transform(img)
+            return img, label, fname
 
         except UnidentifiedImageError:
             return None
 
 
-# ------------------------------------------------------------
-# Custom collate
-# ------------------------------------------------------------
 def collate_keep_good(batch):
+    """
+    Supports items of shape:
+      (img, label)                or
+      (img, label, filename)
 
+    - Drops None items (bad/corrupt samples).
+    - Converts uint8 -> float32/255 only when needed.
+    - Ensures 4D NCHW float32 contiguous batch.
+    - Returns filenames list if provided, else [].
+    """
     good = [b for b in batch if b is not None]
 
     if not good:
@@ -232,7 +160,6 @@ def collate_keep_good(batch):
     processed_imgs = []
 
     for img in imgs:
-
         if not torch.is_tensor(img):
             raise TypeError(f"Expected torch.Tensor, got {type(img)}")
 
@@ -241,7 +168,6 @@ def collate_keep_good(batch):
 
         if img.dtype == torch.uint8:
             img = img.float().div_(255.0)
-
         elif not img.is_floating_point():
             img = img.float()
 

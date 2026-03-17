@@ -87,3 +87,56 @@ def filter_bad_files(df, image_dir):
     good = df[mask].reset_index(drop=True)
     print(f"[precheck] kept {len(good)} | dropped {len(bad)} bad/empty files")
     return good
+
+
+def expand_to_crop_level(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Expand one-row-per-original-image dataframe into one-row-per-crop dataframe.
+
+    Expected input columns:
+      - filename_crops: JSON string list or Python list of crop filenames
+      - optionally bboxes: JSON string list or Python list of bounding boxes
+
+    Output:
+      - one row per crop
+      - creates filename_crop
+      - if bboxes exists, creates bbox aligned with filename_crop
+      - drops filename_crops / bboxes list columns after expansion
+    """
+    df_expanded = df.copy()
+
+    if "filename_crops" not in df_expanded.columns and "filename_crop" not in df_expanded.columns:
+        raise ValueError("DataFrame must contain either 'filename_crops' or 'filename_crop'")
+
+    if "filename_crops" in df_expanded.columns:
+        df_expanded["filename_crops"] = df_expanded["filename_crops"].apply(
+            lambda x: json.loads(x) if isinstance(x, str) else x
+        )
+
+    if "bboxes" in df_expanded.columns:
+        df_expanded["bboxes"] = df_expanded["bboxes"].apply(
+            lambda x: json.loads(x) if isinstance(x, str) else x
+        )
+
+    cols_to_explode = []
+    if "filename_crops" in df_expanded.columns:
+        cols_to_explode.append("filename_crops")
+    if "bboxes" in df_expanded.columns:
+        cols_to_explode.append("bboxes")
+
+    if cols_to_explode:
+        df_expanded = df_expanded.explode(cols_to_explode).reset_index(drop=True)
+
+    if "filename_crops" in df_expanded.columns:
+        df_expanded["filename_crop"] = df_expanded["filename_crops"]
+
+    if "bboxes" in df_expanded.columns:
+        df_expanded["bbox"] = df_expanded["bboxes"]
+
+    df_expanded = df_expanded[df_expanded["filename_crop"].notna()].reset_index(drop=True)
+
+    for col in ["filename_crops", "bboxes"]:
+        if col in df_expanded.columns:
+            df_expanded = df_expanded.drop(columns=col)
+
+    return df_expanded

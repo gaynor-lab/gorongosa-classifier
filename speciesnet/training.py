@@ -50,6 +50,7 @@ from utilities import (
     plot_confmat,
     save_predictions_json,
     filter_bad_files,
+    expand_to_crop_level,
 )
 from detector import filter_df_with_megadetector_and_crop
 
@@ -310,12 +311,16 @@ for col in ("species", "site"):
 # ------------------------------------------------------------------------------
 train_image_root = cropped_image_dir
 
+expanded_df = expand_to_crop_level(filtered_all_df)
+
+print(f"[info] Original kept rows: {len(filtered_all_df)}")
+print(f"[info] Expanded crop rows: {len(expanded_df)}")
 
 # ------------------------------------------------------------------------------
 # Split
 # ------------------------------------------------------------------------------
 train_df, val_df, holdout_df = split_train_val_holdout(
-    filtered_all_df,
+    expanded_df,
     site_col="site",
     species_col="species",
     holdout_sites=list(config.holdout_sites),

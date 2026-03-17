@@ -1,22 +1,27 @@
-FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
+FROM python:3.11-slim
 
-RUN apt-get update && apt-get install -y \
-    python3 \
-    python3-pip \
+# System deps (opencv, pillow, etc.)
+RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
-    wget \
     ffmpeg \
     libgl1 \
     libglib2.0-0 \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-COPY requirements.txt .
+# Copy requirements first for caching
+COPY requirements.txt /app/requirements.txt
 
-RUN pip3 install --upgrade pip && \
-    pip3 install -r requirements.txt
+RUN python -m pip install --upgrade pip setuptools wheel
 
-COPY . .
+# Install PyTorch (CPU by default; GPU handled separately)
+RUN python -m pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu
 
-CMD ["bash"]
+RUN python -m pip install --no-cache-dir -r requirements.txt
+
+# Copy repo
+COPY . /app
+
+CMD ["python", "-c", "print('Container ready')"]
