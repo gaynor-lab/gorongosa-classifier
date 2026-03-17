@@ -1,39 +1,29 @@
 #!/usr/bin/env python3
 """
-training.py (ResNet18-only + incremental MegaDetector + cropping + early stopping)
+training.py
 
-Train a ResNet18-based image classifier for wildlife species classification and log results to W&B.
+ResNet18-only training script with:
+- incremental MegaDetector processing
+- persistent kept + dropped caches
+- crop-based training
+- early stopping on validation loss
 
-Key behavior:
-- Always scan `image_dir` to build the CURRENT df (filename -> species + site).
-- If cached filtered CSV exists at `filtered_all_path`:
-    -> load it
-    -> detect NEW images not already in the cached filtered CSV
-    -> run MegaDetector ONLY on those NEW images (save crops + bboxes)
-    -> append passing rows to cached df
-    -> save updated cached df back to `filtered_all_path`
-- If cached filtered CSV does not exist:
-    -> run MegaDetector on ALL images (save crops + bboxes)
-    -> save to `filtered_all_path`
+Behavior:
+- Scan raw image_dir to build current_df
+- If kept/dropped caches exist:
+    - skip images already present in either cache
+    - run MegaDetector only on truly new images
+    - append new kept rows to full_df_filtered.csv
+    - append new dropped rows to megadetector_dropped.csv
+- If caches do not exist:
+    - run MegaDetector on all images
+    - save kept/dropped caches
 
-Crops:
-- Cropped images are saved to `cropped_image_dir`.
-- Training uses cropped images (by switching the dataset image_dir to cropped_image_dir).
-
-Class selection:
-- config.num_classes can be an int (top-N in TRAIN) or "all" (all unique species in TRAIN).
-- config.include_species are appended if not already included.
-
-Early stopping:
-- Uses validation loss (avg_val_loss).
-- Stops when val loss fails to improve for `early_stop_patience` epochs.
-
-Assumptions:
-- build_df_from_folder(image_dir) returns columns: filename, species, site
-- filter_df_with_megadetector_and_crop(...) returns a df including filename/species/site AND a column
-  'cropped_filename' (or similar) that points to the saved crop. If it does NOT, see notes below.
-- SpeciesImageDataset expects df with filename/species/site; we will point it at cropped_image_dir.
-- collate_keep_good may yield empty batches; we skip those safely.
+Assumes:
+- build_df_from_folder(image_dir) -> columns: filename, species, site
+- detector.filter_df_with_megadetector_and_crop(...) returns (kept_df, dropped_df)
+- kept_df includes at least: filename, species, site, filename_crops and/or filename_crop
+- SpeciesImageDataset handles filename_crops by exploding to one row per crop
 """
 
 from __future__ import annotations
@@ -41,18 +31,16 @@ from __future__ import annotations
 import os
 import sys
 import gc
-import json
-from pathlib import Path
 import importlib.util
+from pathlib import Path
 from datetime import datetime
 
 import torch
 import torch.nn as nn
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
+from sklearn.metrics import classification_report, accuracy_score
 from torch.utils.data import DataLoader
 import wandb
 
@@ -61,7 +49,6 @@ from utilities import (
     compute_allowed_species,
     plot_confmat,
     save_predictions_json,
-    is_good,
     filter_bad_files,
 )
 from detector import filter_df_with_megadetector_and_crop
@@ -72,7 +59,7 @@ from detector import filter_df_with_megadetector_and_crop
 # ------------------------------------------------------------------------------
 torch.backends.cudnn.benchmark = True
 try:
-    torch.set_float32_matmul_precision("high")  # PyTorch 2.x
+    torch.set_float32_matmul_precision("high")
 except Exception:
     pass
 
@@ -81,7 +68,7 @@ except Exception:
 # Project root & sys.path configuration
 # ------------------------------------------------------------------------------
 THIS_FILE = Path(__file__).resolve()
-PROJECT_ROOT = THIS_FILE.parents[1]  # .../Desktop/kaitlyn_catalyst
+PROJECT_ROOT = THIS_FILE.parents[1]
 
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
@@ -90,12 +77,8 @@ if str(PROJECT_ROOT) not in sys.path:
 # ------------------------------------------------------------------------------
 # Imports that depend on sys.path
 # ------------------------------------------------------------------------------
-from splitting import (
-    build_df_from_folder,
-    split_train_val_holdout,
-)
+from splitting import build_df_from_folder, split_train_val_holdout
 
-# Import ResNet model from ct_classifier (package if possible; fallback to file import).
 try:
     from ct_classifier.model import CustomResNet18
 except Exception:
@@ -114,29 +97,25 @@ except Exception:
 # ------------------------------------------------------------------------------
 BASE = Path("/mnt/sharedstorage/sabdelazim")
 
-# Directory for writing cached outputs (filtered CSV + predictions + checkpoints)
 run_dir = BASE / "Desktop" / "kaitlyn_catalyst" / "resnet_training"
 run_dir.mkdir(parents=True, exist_ok=True)
 
-# Images live here (raw)
 image_dir = BASE / "images" / "all_species_images"
 
-# Cropped images live here (created/updated by MegaDetector)
 cropped_image_dir = run_dir / "crops"
 cropped_image_dir.mkdir(parents=True, exist_ok=True)
 
-# Cached filtered dataframe (created if missing; incrementally updated if new images appear)
 filtered_all_path = run_dir / "full_df_filtered.csv"
+dropped_all_path = run_dir / "megadetector_dropped.csv"
 
-# Only image_dir is mandatory
 if not image_dir.exists():
     raise FileNotFoundError(f"image_dir not found: {image_dir}")
 
-# Convert to str where needed later
 run_dir = str(run_dir)
 image_dir = str(image_dir)
 cropped_image_dir = str(cropped_image_dir)
 filtered_all_path = str(filtered_all_path)
+dropped_all_path = str(dropped_all_path)
 
 
 # ------------------------------------------------------------------------------
@@ -153,20 +132,8 @@ wandb.init(
         "weight_decay": 0.0,
 
         # Class selection
-        # - int: top-N most frequent species in TRAIN
-        # - "all": all unique species in TRAIN
-        "num_classes": "all",
-        "include_species": [
-            "nyala", "bushbuck",
-            "reedbuck", "oribi",
-            "civet", "genet",
-            "mongoose_marsh", "mongoose_white_tailed", "mongoose_slender",
-            "mongoose_banded", "mongoose_bushy_tailed", "mongoose_large_grey", "mongoose_dwarf",
-            "bushpig", "warthog",
-            "duiker_common", "duiker_red", "duiker",
-            "buffalo", "wildebeest", "hippopotamus",
-            "hartebeest", "eland", "pangolin"
-        ],
+        "num_classes": "all",  # int or "all"
+        "include_species": [],
 
         # Splitting
         "holdout_sites": ["d05", "d03", "g02", "e02", "e06", "f05", "i10", "i04", "i08", "d07", "b05", "g08"],
@@ -174,14 +141,12 @@ wandb.init(
         "min_in_each": 1,
         "test_size": 0.30,
 
-        # Caching & filtering
+        # MegaDetector / crop controls
         "cache_filtered_all": True,
         "use_megadetector_if_missing": True,
-        "megadetector_model": "MDV5A",  # or a local path
-        "megadetector_conf": 0.2,       # increase to be stricter
-        "megadetector_device": "cuda",  # "cuda" or "cpu"
-
-        # Crop controls (passed to detector function)
+        "megadetector_model": "MDV5A",
+        "megadetector_conf": 0.2,
+        "megadetector_device": "cuda",
         "animals_only": True,
         "pad_frac": 0.10,
         "save_format": "jpg",
@@ -192,9 +157,9 @@ wandb.init(
         "early_stop_patience": 3,
         "early_stop_min_delta": 1e-4,
 
-        # Saving last-epoch predictions
+        # Prediction jsons
         "save_probs_json": True,
-        "upload_probs_artifact": True
+        "upload_probs_artifact": True,
     },
 )
 
@@ -205,7 +170,7 @@ wandb.run.name = f"resnet18_{config.split_mode}_N{config.num_classes}_ls{config.
 
 
 # ------------------------------------------------------------------------------
-# Build CURRENT df + incremental MegaDetector filtering
+# Build CURRENT df from raw images
 # ------------------------------------------------------------------------------
 print("[info] Scanning image_dir to find current images...")
 current_df = build_df_from_folder(image_dir)
@@ -213,7 +178,6 @@ current_df = build_df_from_folder(image_dir)
 if current_df is None or len(current_df) == 0:
     raise RuntimeError("build_df_from_folder() returned an empty dataframe. Check filename pattern / image_dir.")
 
-# Normalize + file sanity filtering
 for col in ("species", "site"):
     if col not in current_df.columns:
         raise ValueError(f"Expected column '{col}' in current_df but it is missing. Columns: {list(current_df.columns)}")
@@ -224,12 +188,15 @@ if "filename" not in current_df.columns:
 
 current_df = filter_bad_files(current_df, image_dir)
 
-# If cached filtered exists, only run MD on NEW images
+
+# ------------------------------------------------------------------------------
+# Incremental MegaDetector filtering:
+# skip images already in KEPT or DROPPED caches
+# ------------------------------------------------------------------------------
 if os.path.exists(filtered_all_path):
     print(f"[info] Using cached filtered CSV: {filtered_all_path}")
     filtered_all_df = pd.read_csv(filtered_all_path)
 
-    # Normalize cached df
     for col in ("species", "site"):
         if col in filtered_all_df.columns:
             filtered_all_df[col] = filtered_all_df[col].astype(str).str.strip().str.lower()
@@ -237,11 +204,32 @@ if os.path.exists(filtered_all_path):
     if "filename" not in filtered_all_df.columns:
         raise ValueError(f"Cached filtered CSV is missing 'filename' column: {filtered_all_path}")
 
-    seen = set(filtered_all_df["filename"].astype(str))
-    is_new = ~current_df["filename"].astype(str).isin(seen)
+    # load dropped cache if present
+    if os.path.exists(dropped_all_path):
+        dropped_all_df = pd.read_csv(dropped_all_path)
+        if "filename" in dropped_all_df.columns:
+            dropped_seen = set(dropped_all_df["filename"].astype(str).str.strip().str.lower())
+        else:
+            dropped_seen = set()
+    else:
+        dropped_all_df = pd.DataFrame()
+        dropped_seen = set()
+
+    kept_seen = set(filtered_all_df["filename"].astype(str).str.strip().str.lower())
+    current_names = current_df["filename"].astype(str).str.strip().str.lower()
+
+    seen = kept_seen | dropped_seen
+
+    print(f"[debug] current_df rows: {len(current_df)}")
+    print(f"[debug] kept_seen: {len(kept_seen)}")
+    print(f"[debug] dropped_seen: {len(dropped_seen)}")
+    print(f"[debug] total seen: {len(seen)}")
+
+    is_new = ~current_names.isin(seen)
     new_df = current_df[is_new].reset_index(drop=True)
 
     print(f"[info] Cached kept images: {len(filtered_all_df)}")
+    print(f"[info] Cached dropped images: {len(dropped_seen)}")
     print(f"[info] New images found: {len(new_df)}")
 
     if len(new_df) > 0 and bool(config.use_megadetector_if_missing):
@@ -258,14 +246,24 @@ if os.path.exists(filtered_all_path):
             jpeg_quality=int(config.jpeg_quality),
         )
 
-        # append kept to cache
+        # append new kept
         filtered_all_df = pd.concat([filtered_all_df, new_kept], ignore_index=True)
         filtered_all_df = filtered_all_df.drop_duplicates(subset=["filename"]).reset_index(drop=True)
 
-        # save dropped for inspection
-        dropped_path = Path(run_dir) / "megadetector_dropped_new.csv"
-        new_dropped.to_csv(dropped_path, index=False)
-        print("[info] wrote dropped list ->", dropped_path)
+        # append new dropped
+        if len(new_dropped) > 0:
+            if os.path.exists(dropped_all_path):
+                old_dropped = pd.read_csv(dropped_all_path)
+                dropped_all_df = pd.concat([old_dropped, new_dropped], ignore_index=True)
+            else:
+                dropped_all_df = new_dropped.copy()
+
+            if "filename" in dropped_all_df.columns:
+                dropped_all_df["filename"] = dropped_all_df["filename"].astype(str).str.strip().str.lower()
+                dropped_all_df = dropped_all_df.drop_duplicates(subset=["filename"]).reset_index(drop=True)
+
+            print(f"[info] Updating cached dropped CSV -> {dropped_all_path}")
+            dropped_all_df.to_csv(dropped_all_path, index=False)
 
         if bool(config.cache_filtered_all):
             print(f"[info] Updating cached filtered CSV -> {filtered_all_path}")
@@ -292,33 +290,29 @@ else:
     else:
         print("[warn] MegaDetector disabled; using current_df after file sanity filtering.")
         filtered_all_df = current_df.copy()
+        dropped_df = pd.DataFrame()
 
     if bool(config.cache_filtered_all):
         print(f"[info] Saving filtered CSV -> {filtered_all_path}")
         filtered_all_df.to_csv(filtered_all_path, index=False)
 
-# Final normalization (defensive)
+        print(f"[info] Saving dropped CSV -> {dropped_all_path}")
+        dropped_df.to_csv(dropped_all_path, index=False)
+
+# Final normalization
 for col in ("species", "site"):
     if col in filtered_all_df.columns:
         filtered_all_df[col] = filtered_all_df[col].astype(str).str.strip().str.lower()
 
 
 # ------------------------------------------------------------------------------
-# IMPORTANT: TRAINING ON CROPS
+# Train on crops
 # ------------------------------------------------------------------------------
-# We assume that the detector created crops in cropped_image_dir with the SAME filenames
-# as original (or else your dataset needs to use a different column).
-#
-# If your detector saves crops under a different filename, then you MUST:
-# - either overwrite df["filename"] to point to the crop filenames
-# - or modify SpeciesImageDataset to read df["cropped_filename"]
-#
-# For now we point the dataset to cropped_image_dir and keep df["filename"] unchanged.
 train_image_root = cropped_image_dir
 
 
 # ------------------------------------------------------------------------------
-# Split (instance or sitewise)
+# Split
 # ------------------------------------------------------------------------------
 train_df, val_df, holdout_df = split_train_val_holdout(
     filtered_all_df,
@@ -337,9 +331,8 @@ for _df in (train_df, val_df, holdout_df):
 
 
 # ------------------------------------------------------------------------------
-# Class list & datasets (ResNet only)
+# Class list & datasets
 # ------------------------------------------------------------------------------
-# If num_classes == "all", ignore include_species
 include_list = None
 if not (isinstance(config.num_classes, str) and config.num_classes.lower() == "all"):
     include_list = list(config.include_species) if hasattr(config, "include_species") else None
@@ -349,6 +342,15 @@ allowed_species = compute_allowed_species(
     config.num_classes,
     include_list=include_list,
 )
+
+# ------------------------------------------------------------------------------
+# Debug: count crop images in folder
+# ------------------------------------------------------------------------------
+print("\n[info] Counting images in crops directory...")
+num_crop_images = len(list(Path(cropped_image_dir).glob("*.jpg")))
+print(f"[info] Total crop images in folder: {num_crop_images}")
+
+
 num_classes_eff = len(allowed_species)
 print("Classes:", allowed_species)
 print("Effective num_classes:", num_classes_eff)
@@ -358,21 +360,44 @@ model = CustomResNet18(num_classes=num_classes_eff).to(
 )
 
 train_dataset = SpeciesImageDataset(
-    train_df, train_image_root, classifier=None, backbone="resnet18",
-    top_n_species=None, include_species=allowed_species
-)
-val_dataset = SpeciesImageDataset(
-    val_df, train_image_root, classifier=None, backbone="resnet18",
-    top_n_species=None, include_species=allowed_species
-)
-hold_dataset = SpeciesImageDataset(
-    holdout_df, train_image_root, classifier=None, backbone="resnet18",
-    top_n_species=None, include_species=allowed_species
+    train_df,
+    train_image_root,
+    classifier=None,
+    backbone="resnet18",
+    top_n_species=None,
+    include_species=allowed_species,
 )
 
+val_dataset = SpeciesImageDataset(
+    val_df,
+    train_image_root,
+    classifier=None,
+    backbone="resnet18",
+    top_n_species=None,
+    include_species=allowed_species,
+)
+
+hold_dataset = SpeciesImageDataset(
+    holdout_df,
+    train_image_root,
+    classifier=None,
+    backbone="resnet18",
+    top_n_species=None,
+    include_species=allowed_species,
+)
+# ------------------------------------------------------------------------------
+# Debug: dataset sizes
+# ------------------------------------------------------------------------------
+print("\n[dataset stats]")
+print(f"Train dataset size: {len(train_dataset)}")
+print(f"Validation dataset size: {len(val_dataset)}")
+print(f"Holdout dataset size: {len(hold_dataset)}")
+
+total_training_samples = len(train_dataset) + len(val_dataset) + len(hold_dataset)
+print(f"Total samples used for training pipeline: {total_training_samples}")
 
 # ------------------------------------------------------------------------------
-# Loss/optim/loaders
+# Loss / optimizer / loaders
 # ------------------------------------------------------------------------------
 device = torch.device(
     "cuda" if torch.cuda.is_available()
@@ -381,14 +406,18 @@ device = torch.device(
 )
 
 criterion = nn.CrossEntropyLoss(label_smoothing=float(config.label_smoothing)).to(device)
-optimizer = torch.optim.Adam(model.parameters(), lr=float(config.lr), weight_decay=float(config.weight_decay))
+optimizer = torch.optim.Adam(
+    model.parameters(),
+    lr=float(config.lr),
+    weight_decay=float(config.weight_decay),
+)
 
 common_loader_kw = dict(
     batch_size=int(config.batch_size),
     pin_memory=True,
     num_workers=8,
     persistent_workers=True,
-    prefetch_factor=4
+    prefetch_factor=4,
 )
 
 train_loader = DataLoader(train_dataset, shuffle=True, collate_fn=collate_keep_good, **common_loader_kw)
@@ -410,7 +439,7 @@ best_ckpt_path = Path(run_dir) / "best_model_state_resnet18.pkl"
 
 
 # ------------------------------------------------------------------------------
-# Train + save probabilities (we collect probs for the LAST epoch that actually runs)
+# Train
 # ------------------------------------------------------------------------------
 last_train_preds, last_train_trues = [], []
 last_val_preds, last_val_trues = [], []
@@ -419,17 +448,13 @@ last_hold_preds, last_hold_trues = [], []
 train_prob_rows, val_prob_rows, hold_prob_rows = [], [], []
 
 num_epochs = int(config.epochs)
-ran_epochs = 0  # how many epochs actually ran (handles early stop)
+ran_epochs = 0
 
 for epoch in range(num_epochs):
     ran_epochs = epoch + 1
     print(f"Epoch {epoch + 1}/{num_epochs}")
 
-    # is_last means "this is the final epoch we intended", but early stop can end sooner.
-    # We'll handle the "save_probs_json" at the end by checking if (epoch == ran_epochs-1) after loop.
-    is_last_intended = (epoch == num_epochs - 1)
-
-    # ==================== TRAIN ====================
+    # ---------------- TRAIN ----------------
     model.train()
     train_loss = 0.0
     train_preds, train_trues = [], []
@@ -445,12 +470,10 @@ for epoch in range(num_epochs):
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
-        train_loss += loss.item()
 
+        train_loss += loss.item()
         preds = torch.argmax(outputs, dim=1)
 
-        # We don't know final epoch if early stopping triggers later,
-        # so we only collect "last epoch probs" after early stop decision by caching the rows each epoch.
         train_preds.extend(preds.detach().cpu().numpy())
         train_trues.extend(y_batch.detach().cpu().numpy())
 
@@ -459,10 +482,11 @@ for epoch in range(num_epochs):
     avg_train_loss = train_loss / max(1, len(train_loader))
     train_acc = accuracy_score(train_trues, train_preds)
 
-    # ==================== VALIDATE ====================
+    # ---------------- VALID ----------------
     model.eval()
     val_loss = 0.0
     val_preds, val_trues = [], []
+
     with torch.no_grad():
         for x_batch, y_batch, names in tqdm(val_loader, desc="Validating"):
             if x_batch.numel() == 0:
@@ -472,8 +496,8 @@ for epoch in range(num_epochs):
             outputs = model(x_batch)
             loss = criterion(outputs, y_batch)
             val_loss += loss.item()
-            preds = torch.argmax(outputs, dim=1)
 
+            preds = torch.argmax(outputs, dim=1)
             val_preds.extend(preds.detach().cpu().numpy())
             val_trues.extend(y_batch.detach().cpu().numpy())
 
@@ -482,9 +506,10 @@ for epoch in range(num_epochs):
     avg_val_loss = val_loss / max(1, len(val_loader))
     val_acc = accuracy_score(val_trues, val_preds)
 
-    # ==================== HOLDOUT ====================
+    # ---------------- HOLDOUT ----------------
     hold_loss = 0.0
     hold_preds, hold_trues = [], []
+
     with torch.no_grad():
         for x_batch, y_batch, names in tqdm(hold_loader, desc="Holdout"):
             if x_batch.numel() == 0:
@@ -494,8 +519,8 @@ for epoch in range(num_epochs):
             outputs = model(x_batch)
             loss = criterion(outputs, y_batch)
             hold_loss += loss.item()
-            preds = torch.argmax(outputs, dim=1)
 
+            preds = torch.argmax(outputs, dim=1)
             hold_preds.extend(preds.detach().cpu().numpy())
             hold_trues.extend(y_batch.detach().cpu().numpy())
 
@@ -504,39 +529,41 @@ for epoch in range(num_epochs):
     avg_hold_loss = hold_loss / max(1, len(hold_loader))
     hold_acc = accuracy_score(hold_trues, hold_preds)
 
-    # Keep epoch’s predictions (these become "last epoch" if we stop now)
+    # Keep current epoch predictions
     last_train_preds, last_train_trues = train_preds, train_trues
     last_val_preds, last_val_trues = val_preds, val_trues
     last_hold_preds, last_hold_trues = hold_preds, hold_trues
 
-    # Reports + logging
     train_report = classification_report(
         train_trues, train_preds,
         target_names=allowed_species,
         labels=list(range(len(allowed_species))),
         output_dict=True,
-        zero_division=0
+        zero_division=0,
     )
     val_report = classification_report(
         val_trues, val_preds,
         target_names=allowed_species,
         labels=list(range(len(allowed_species))),
         output_dict=True,
-        zero_division=0
+        zero_division=0,
     )
     hold_report = classification_report(
         hold_trues, hold_preds,
         target_names=allowed_species,
         labels=list(range(len(allowed_species))),
         output_dict=True,
-        zero_division=0
+        zero_division=0,
     )
 
     wandb.log({
         "epoch": epoch + 1,
-        "train/avg_loss": avg_train_loss, "train/accuracy": train_acc,
-        "val/avg_loss": avg_val_loss, "val/accuracy": val_acc,
-        "holdout/avg_loss": avg_hold_loss, "holdout/accuracy": hold_acc,
+        "train/avg_loss": avg_train_loss,
+        "train/accuracy": train_acc,
+        "val/avg_loss": avg_val_loss,
+        "val/accuracy": val_acc,
+        "holdout/avg_loss": avg_hold_loss,
+        "holdout/accuracy": hold_acc,
     })
 
     for split_name, report in [("train", train_report), ("val", val_report), ("holdout", hold_report)]:
@@ -554,7 +581,7 @@ for epoch in range(num_epochs):
 
     print(f"[Epoch {epoch+1}] train_acc={train_acc:.4f} val_acc={val_acc:.4f} holdout_acc={hold_acc:.4f}")
 
-    # ==================== EARLY STOPPING (based on val loss) ====================
+    # ---------------- EARLY STOPPING ----------------
     if bool(config.early_stop):
         improved = (best_val_loss - avg_val_loss) > float(config.early_stop_min_delta)
 
@@ -573,7 +600,6 @@ for epoch in range(num_epochs):
             torch.save(payload_best, best_ckpt_path)
             print(f"[early_stop] ✅ New best val_loss={best_val_loss:.6f}. Saved -> {best_ckpt_path}")
             wandb.log({"best/val_loss": best_val_loss}, step=epoch + 1)
-
         else:
             bad_epochs += 1
             print(f"[early_stop] No improvement in val_loss. bad_epochs={bad_epochs}/{config.early_stop_patience}")
@@ -583,38 +609,34 @@ for epoch in range(num_epochs):
 
 
 # ------------------------------------------------------------------------------
-# Save "last epoch" probabilities (the last epoch that actually ran)
+# Heatmaps
 # ------------------------------------------------------------------------------
-# NOTE: We need to re-run one pass to collect probabilities if you want per-sample probs.
-# To keep this script simple/fast, we will only save predictions/probs for the HOLDOUT set here.
-# If you want train/val probs too, tell me and I'll add them (it will take longer).
-#
-# If you already have code elsewhere saving probs during the epoch, we can re-add that.
-# ------------------------------------------------------------------------------
-# (Keeping your original JSON saving functions; leaving rows empty unless you add collection passes.)
-
-# ------------------------------------------------------------------------------
-# Heatmaps (last epoch)
-# ------------------------------------------------------------------------------
-fig_tr = plot_confmat(last_train_trues, last_train_preds, allowed_species, normalize="true",
-                      title="Train Confusion Matrix (row-normalized)")
-fig_va = plot_confmat(last_val_trues, last_val_preds, allowed_species, normalize="true",
-                      title="Validation Confusion Matrix (row-normalized)")
-fig_ho = plot_confmat(last_hold_trues, last_hold_preds, allowed_species, normalize="true",
-                      title="Holdout Confusion Matrix (row-normalized)")
+fig_tr = plot_confmat(
+    last_train_trues, last_train_preds, allowed_species,
+    normalize="true", title="Train Confusion Matrix (row-normalized)"
+)
+fig_va = plot_confmat(
+    last_val_trues, last_val_preds, allowed_species,
+    normalize="true", title="Validation Confusion Matrix (row-normalized)"
+)
+fig_ho = plot_confmat(
+    last_hold_trues, last_hold_preds, allowed_species,
+    normalize="true", title="Holdout Confusion Matrix (row-normalized)"
+)
 
 wandb.log({
     "last_train/confusion_matrix_heatmap": wandb.Image(fig_tr),
     "last_val/confusion_matrix_heatmap": wandb.Image(fig_va),
     "last_holdout/confusion_matrix_heatmap": wandb.Image(fig_ho),
 })
+
 plt.close(fig_tr)
 plt.close(fig_va)
 plt.close(fig_ho)
 
 
 # ------------------------------------------------------------------------------
-# Save last-epoch probabilities to JSON + optional W&B artifact
+# Save prediction JSONs
 # ------------------------------------------------------------------------------
 saved_files = []
 if bool(config.save_probs_json):
@@ -639,7 +661,7 @@ if bool(config.save_probs_json):
 
 
 # ------------------------------------------------------------------------------
-# Save LAST model checkpoint (state_dict) - last epoch that ran
+# Save final checkpoint
 # ------------------------------------------------------------------------------
 ckpt_dir = Path(run_dir)
 ckpt_dir.mkdir(parents=True, exist_ok=True)

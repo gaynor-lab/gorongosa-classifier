@@ -11,9 +11,6 @@ import numpy as np
 import pandas as pd
 from PIL import Image
 
-# Optional: detector-based filtering support (only if you use it from training)
-# from speciesnet.detector import SpeciesNetDetector
-
 
 # -------- Filename parsing & folder scan (optional helpers) --------
 
