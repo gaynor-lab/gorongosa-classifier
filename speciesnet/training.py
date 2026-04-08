@@ -437,6 +437,25 @@ bad_epochs = 0
 best_ckpt_path = Path(run_dir) / "best_model_state_resnet18.pkl"
 
 
+def append_prediction_rows(row_list, names, y_batch, probs, preds, class_names):
+    y_np = y_batch.detach().cpu().numpy()
+    probs_np = probs.detach().cpu().numpy()
+    preds_np = preds.detach().cpu().numpy()
+
+    for name, true_idx, pred_idx, prob_vec in zip(names, y_np, preds_np, probs_np):
+        true_idx = int(true_idx)
+        pred_idx = int(pred_idx)
+
+        row_list.append({
+            "filename": str(name),
+            "true_idx": true_idx,
+            "pred_idx": pred_idx,
+            "true_label": class_names[true_idx],
+            "pred_label": class_names[pred_idx],
+            "probs": prob_vec.tolist(),
+        })
+
+
 # ------------------------------------------------------------------------------
 # Train
 # ------------------------------------------------------------------------------
@@ -444,14 +463,14 @@ last_train_preds, last_train_trues = [], []
 last_val_preds, last_val_trues = [], []
 last_hold_preds, last_hold_trues = [], []
 
-train_prob_rows, val_prob_rows, hold_prob_rows = [], [], []
-
 num_epochs = int(config.epochs)
 ran_epochs = 0
 
 for epoch in range(num_epochs):
     ran_epochs = epoch + 1
     print(f"Epoch {epoch + 1}/{num_epochs}")
+
+    train_prob_rows, val_prob_rows, hold_prob_rows = [], [], []
 
     # ---------------- TRAIN ----------------
     model.train()
@@ -470,13 +489,23 @@ for epoch in range(num_epochs):
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
 
-        train_loss += loss.item()
-        preds = torch.argmax(outputs, dim=1)
+        probs = torch.softmax(outputs, dim=1)
+        preds = torch.argmax(probs, dim=1)
 
+        train_loss += loss.item()
         train_preds.extend(preds.detach().cpu().numpy())
         train_trues.extend(y_batch.detach().cpu().numpy())
 
-        del x_batch, y_batch, outputs, preds
+        append_prediction_rows(
+            train_prob_rows,
+            names,
+            y_batch,
+            probs,
+            preds,
+            allowed_species,
+        )
+
+        del x_batch, y_batch, outputs, probs, preds
 
     avg_train_loss = train_loss / max(1, len(train_loader))
     train_acc = accuracy_score(train_trues, train_preds)
@@ -494,13 +523,24 @@ for epoch in range(num_epochs):
             x_batch, y_batch = x_batch.to(device), y_batch.to(device)
             outputs = model(x_batch)
             loss = criterion(outputs, y_batch)
-            val_loss += loss.item()
 
-            preds = torch.argmax(outputs, dim=1)
+            probs = torch.softmax(outputs, dim=1)
+            preds = torch.argmax(probs, dim=1)
+
+            val_loss += loss.item()
             val_preds.extend(preds.detach().cpu().numpy())
             val_trues.extend(y_batch.detach().cpu().numpy())
 
-            del x_batch, y_batch, outputs, preds
+            append_prediction_rows(
+                val_prob_rows,
+                names,
+                y_batch,
+                probs,
+                preds,
+                allowed_species,
+            )
+
+            del x_batch, y_batch, outputs, probs, preds
 
     avg_val_loss = val_loss / max(1, len(val_loader))
     val_acc = accuracy_score(val_trues, val_preds)
@@ -517,13 +557,24 @@ for epoch in range(num_epochs):
             x_batch, y_batch = x_batch.to(device), y_batch.to(device)
             outputs = model(x_batch)
             loss = criterion(outputs, y_batch)
-            hold_loss += loss.item()
 
-            preds = torch.argmax(outputs, dim=1)
+            probs = torch.softmax(outputs, dim=1)
+            preds = torch.argmax(probs, dim=1)
+
+            hold_loss += loss.item()
             hold_preds.extend(preds.detach().cpu().numpy())
             hold_trues.extend(y_batch.detach().cpu().numpy())
 
-            del x_batch, y_batch, outputs, preds
+            append_prediction_rows(
+                hold_prob_rows,
+                names,
+                y_batch,
+                probs,
+                preds,
+                allowed_species,
+            )
+
+            del x_batch, y_batch, outputs, probs, preds
 
     avg_hold_loss = hold_loss / max(1, len(hold_loader))
     hold_acc = accuracy_score(hold_trues, hold_preds)
