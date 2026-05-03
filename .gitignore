@@ -33,3 +33,9 @@ notebooks/graphs/
 speciesnet/last_epoch_predictions_*.json
 speciesnet/last_model_state_*.pkl
 *WLD_S6_report_species*.csv
+
+classifier/last_epoch_prediction_*.json
+classifier/last_model_state_*.pkl
+
+notebooks/archive_jsons/
+notebooks/raw
