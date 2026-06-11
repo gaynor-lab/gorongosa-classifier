@@ -26,8 +26,8 @@ When you run training.py, the script always scans the image folder. If a cached 
 📁 Expected Directory Structure
 
 ```text
-kaitlyn_catalyst/
-├── speciesnet/
+gorongosa-classifier/
+├── classifier/
 │   ├── training.py
 │   ├── inference.py
 │   ├── splitting.py
