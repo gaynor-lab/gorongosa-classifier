@@ -342,6 +342,11 @@ def main():
         help="Pixels of padding around each detection box. (default: 32)")
     parser.add_argument("--save_md_json", action="store_true",
         help="Save MD results JSON to output_dir for reuse later.")
+    parser.add_argument("--no_crops", action="store_true",
+        help="Run MegaDetector and save md_results.json only — skip cropping. "
+             "Use this to produce the JSON 'recipe' for sample_then_crop.py, "
+             "which subsamples first and crops only the keepers. Implies "
+             "--save_md_json.")
     parser.add_argument("--debug", action="store_true",
         help="Print every file the scanner considers, to diagnose path issues.")
 
@@ -372,8 +377,18 @@ def main():
             model_name=args.md_model or "MDV5A",
             threshold=args.threshold,
         )
-        if args.save_md_json:
+        if args.save_md_json or args.no_crops:
             save_md_json(md_results, args.output_dir)
+
+    if args.no_crops:
+        n_dets = sum(len(v) for v in md_results.values())
+        print(f"\n--no_crops: skipping crop step. "
+              f"{n_dets} detections across {len(md_results)} images.")
+        print(f"Next: python sample_then_crop.py "
+              f"--md_json {args.output_dir}/md_results.json "
+              f"--input_dir {args.input_dir} "
+              f"--output_dir <crops_dir> --target_total <N>")
+        return
 
     # 3. Filter
     print(f"\n[3/4] Filtering detections ...")
