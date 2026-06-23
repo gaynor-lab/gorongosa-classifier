@@ -41,17 +41,69 @@ import argparse
 import random
 import sys
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
+from PIL import Image
 from tqdm import tqdm
 
 from generate_blank_crops import (
     discover_images,
     load_md_json,
     build_detection_list,
-    crop_and_save,
+    bbox_to_pixels,
+    make_filename,
 )
 from randomize_blank_crops import proportional_allocation
+
+
+def crop_image_group(image_path, items, output_dir, padding):
+    """Process all sampled crops from a single source image.
+
+    items: list of (detection_dict, crop_idx) tuples — all share the same
+    source image path, so we open the file once and crop multiple times.
+
+    Skips crops whose output files already exist (resume support).
+
+    Returns (per_site_on_disk: dict, failed: int).
+    `per_site_on_disk` counts both pre-existing files and newly written ones,
+    so the caller's final tally matches what's actually on disk.
+    """
+    per_site_on_disk = defaultdict(int)
+    failed = 0
+
+    todo = []
+    for det, crop_idx in items:
+        site_dir = output_dir / det["site"]
+        out_path = site_dir / make_filename(det, crop_idx)
+        if out_path.exists():
+            per_site_on_disk[det["site"]] += 1
+        else:
+            todo.append((det, site_dir, out_path))
+
+    if not todo:
+        return per_site_on_disk, 0
+
+    try:
+        img = Image.open(image_path).convert("RGB")
+    except Exception:
+        return per_site_on_disk, len(todo)
+
+    w, h = img.size
+    for det, site_dir, out_path in todo:
+        try:
+            left, top, right, bottom = bbox_to_pixels(det["bbox"], w, h)
+            left   = max(0, left   - padding)
+            top    = max(0, top    - padding)
+            right  = min(w, right  + padding)
+            bottom = min(h, bottom + padding)
+            site_dir.mkdir(parents=True, exist_ok=True)
+            img.crop((left, top, right, bottom)).save(out_path, "JPEG", quality=10)
+            per_site_on_disk[det["site"]] += 1
+        except Exception:
+            failed += 1
+
+    return per_site_on_disk, failed
 
 
 def group_by_site(detections):
@@ -119,6 +171,10 @@ def main():
         help="Pixels of padding around each detection box. (default: 32)")
     parser.add_argument("--seed", type=int, default=42,
         help="Random seed for reproducible sampling. (default: 42)")
+    parser.add_argument("--workers", type=int, default=8,
+        help="Number of parallel cropping threads. PIL releases the GIL "
+             "during JPEG ops, so this scales well for I/O-bound runs. "
+             "(default: 8)")
     parser.add_argument("--dry_run", action="store_true",
         help="Print the allocation plan without cropping anything.")
     parser.add_argument("--debug", action="store_true",
@@ -162,30 +218,47 @@ def main():
     selected = sample_detections(by_site, allocation, seed=args.seed)
     print(f"\n  Sampled {len(selected)} detections.")
 
-    # 4. Crop only the keepers.
+    # 4. Crop only the keepers — grouped per source image, threaded, resumable.
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"\n[4/4] Cropping to: {output_dir}/<site>/")
-    failed           = 0
-    per_site         = defaultdict(int)
+    # Walk `selected` serially to assign deterministic per-site crop indices
+    # (so resume picks the same filenames), then bucket by source image path
+    # so each image only gets opened once even when it has many detections.
     crop_idx_by_site = defaultdict(int)
+    groups = defaultdict(list)
+    for det in selected:
+        crop_idx_by_site[det["site"]] += 1
+        groups[str(det["path"])].append((det, crop_idx_by_site[det["site"]]))
 
-    for det in tqdm(selected):
-        site = det["site"]
-        crop_idx_by_site[site] += 1
-        try:
-            crop_and_save(det,
-                          crop_idx=crop_idx_by_site[site],
-                          output_dir=output_dir,
-                          padding=args.padding)
-            per_site[site] += 1
-        except Exception as e:
-            print(f"  Warning: failed on {det['path'].name}: {e}")
-            failed += 1
+    total_planned   = len(selected)
+    n_unique_images = len(groups)
+    print(f"\n[4/4] Cropping {total_planned} detections from "
+          f"{n_unique_images} source images to: {output_dir}/<site>/")
+    print(f"  Threads: {args.workers}. Existing crops are skipped (resumable).")
 
-    total_saved = sum(per_site.values())
-    print(f"\nDone. Wrote {total_saved} crops ({failed} failed).")
+    per_site = defaultdict(int)
+    failed   = 0
+
+    with ThreadPoolExecutor(max_workers=args.workers) as ex:
+        futures = {
+            ex.submit(crop_image_group, Path(path), items,
+                      output_dir, args.padding): len(items)
+            for path, items in groups.items()
+        }
+        with tqdm(total=total_planned) as pbar:
+            for fut in as_completed(futures):
+                try:
+                    per_site_on_disk, f = fut.result()
+                    for site, n in per_site_on_disk.items():
+                        per_site[site] += n
+                    failed += f
+                except Exception:
+                    pass
+                pbar.update(futures[fut])
+
+    total_on_disk = sum(per_site.values())
+    print(f"\nDone. {total_on_disk} crops on disk ({failed} failed).")
     print(f"\nCrops per site:")
     for site, n in sorted(per_site.items()):
         print(f"  {site:30s}  {n:5d}")
