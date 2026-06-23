@@ -184,22 +184,34 @@ def run_megadetector(image_records, model_name="MDV5A", threshold=0.05):
 
 
 def load_md_json(json_path, threshold):
-    """Load a pre-run MegaDetector results JSON, filtering by threshold."""
+    """Load a pre-run MegaDetector results JSON, filtering by threshold.
+
+    Accepts two formats:
+      - Flat dict {path: [detections]} (what save_md_json writes)
+      - MD-standard {"images": [{"file": path, "detections": [...]}]}
+    """
     print(f"  Loading MD results from {json_path} ...")
     with open(json_path) as f:
         data = json.load(f)
-    results = {}
-    for entry in data.get("images", []):
-        key = entry["file"]
-        results[key] = [
+
+    def _filter(dets):
+        return [
             {
                 "bbox":     d["bbox"],
                 "conf":     d["conf"],
                 "category": str(d.get("category", "1")),
             }
-            for d in (entry.get("detections") or [])
+            for d in (dets or [])
             if d["conf"] >= threshold
         ]
+
+    results = {}
+    if isinstance(data, dict) and "images" in data:
+        for entry in data["images"]:
+            results[entry["file"]] = _filter(entry.get("detections"))
+    else:
+        for path, dets in data.items():
+            results[path] = _filter(dets)
     return results
 
 
