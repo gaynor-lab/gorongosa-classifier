@@ -8,7 +8,12 @@ STEP 1 — generate_review_crops
     and adds 100px of original-image context around each one for easier
     human review. Saves these padded crops into a review folder organised
     by species.
- 
+
+    Filenames are prefixed with the MegaDetector confidence
+    (e.g. conf_0p813_IMG_1234_crop0.jpg) so file-by-name sort in any image
+    viewer orders crops by how animal-shaped MD thought they were. Reverse
+    the sort to see the most-likely-real first — start your review there.
+
     Human then opens the review folder, deletes any crop that does not
     contain a real animal, and runs Step 2.
  
@@ -45,15 +50,35 @@ Dependencies:
 """
  
 from __future__ import annotations
- 
+
 import argparse
 import json
 import os
+import re
 from pathlib import Path
- 
+
 import pandas as pd
 from PIL import Image
 from tqdm import tqdm
+
+
+CONF_PREFIX_RE = re.compile(r"^conf_0p\d{3}_")
+
+
+def _conf_prefix(conf) -> str:
+    """0.813 -> 'conf_0p813_'. Always 3 decimals so filenames lex-sort
+    in confidence order (toggle reverse in your image viewer for desc)."""
+    try:
+        c = float(conf)
+    except (TypeError, ValueError):
+        c = 0.0
+    return f"conf_{c:.3f}_".replace(".", "p")
+
+
+def _strip_conf_prefix(name: str) -> str:
+    """'conf_0p813_IMG_1234_crop0.jpg' -> 'IMG_1234_crop0.jpg'.
+    Returns name unchanged if no prefix is present."""
+    return CONF_PREFIX_RE.sub("", name)
  
  
 # ──────────────────────────────────────────────────────────────
@@ -166,35 +191,42 @@ def generate_review_crops(
  
     for _, row in tqdm(df.iterrows(), total=len(df), desc="Generating review crops"):
         src_path = Path(image_dir) / str(row["filename"])
- 
+
         if not src_path.exists():
             print(f"  Warning: source image not found: {src_path}")
             failed += 1
             continue
- 
+
         try:
             bboxes      = json.loads(row["bboxes"])
             crop_names  = json.loads(row["filename_crops"])
+            det_confs   = json.loads(row.get("det_confs", "[]") or "[]")
             species     = str(row.get("species", "unknown")).strip().lower()
         except Exception as e:
             print(f"  Warning: could not parse row for {row['filename']}: {e}")
             failed += 1
             continue
- 
+
         try:
             img = Image.open(src_path).convert("RGB")
         except Exception as e:
             print(f"  Warning: could not open {src_path}: {e}")
             failed += 1
             continue
- 
+
         species_dir = review_path / species
         species_dir.mkdir(parents=True, exist_ok=True)
- 
-        for bbox, crop_name in zip(bboxes, crop_names):
+
+        # Pad det_confs to match crop_names if missing/short, so we can still
+        # save crops without crashing — they just get conf_0p000_ as a prefix.
+        if len(det_confs) < len(crop_names):
+            det_confs = list(det_confs) + [0.0] * (len(crop_names) - len(det_confs))
+
+        for bbox, crop_name, conf in zip(bboxes, crop_names, det_confs):
             try:
                 review_crop = _crop_with_px_padding(img, bbox, padding_px=padding_px)
-                out_path    = species_dir / crop_name
+                out_name    = _conf_prefix(conf) + crop_name
+                out_path    = species_dir / out_name
                 review_crop.save(out_path, quality=jpeg_quality)
                 saved += 1
             except Exception as e:
@@ -245,14 +277,16 @@ def recrop_after_review(
     df = pd.read_csv(filtered_csv)
     print(f"[step2] Loaded {len(df)} rows from {filtered_csv}")
  
-    # Collect all crop names that survived human review
-    # review_dir/<species>/<crop_name>.jpg
+    # Collect all crop names that survived human review.
+    # review_dir/<species>/<crop_name>.jpg — files written by `generate` have
+    # a conf_0pXXX_ prefix so they sort by confidence in image viewers; strip
+    # it here so we can match back to the CSV's filename_crops column.
     survivors: set[str] = set()
     review_path = Path(review_dir)
     for f in review_path.rglob("*"):
         if f.is_file() and f.suffix.lower() in {".jpg", ".jpeg", ".png"}:
-            survivors.add(f.name)
- 
+            survivors.add(_strip_conf_prefix(f.name))
+
     print(f"[step2] Crops surviving review: {len(survivors)}")
  
     if len(survivors) == 0:
