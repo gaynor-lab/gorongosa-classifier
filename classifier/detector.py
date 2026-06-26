@@ -57,13 +57,14 @@ def filter_df_with_megadetector_and_crop(
     save_format: str = "jpg",
     jpeg_quality: int = 95,
     max_crops_per_image: Optional[int] = None,
+    save_crops: bool = True,
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
     Multi-animal version.
 
     For each image:
       - Keep ALL detections >= conf_thresh (optionally animals-only)
-      - Save one crop per bbox
+      - Save one crop per bbox (optional)
       - Store bbox/conf/category/crop filenames as JSON lists
 
     Returns:
@@ -82,13 +83,15 @@ def filter_df_with_megadetector_and_crop(
         raise ValueError("df must contain a 'filename' column")
 
     out_path = Path(out_dir)
-    out_path.mkdir(parents=True, exist_ok=True)
+    if save_crops:
+        out_path.mkdir(parents=True, exist_ok=True)
 
     image_paths = [os.path.join(image_dir, str(f)) for f in df["filename"].tolist()]
 
     print(f"[megadetector] running on {len(image_paths)} images")
     print(f"[megadetector] threshold={conf_thresh}, animals_only={animals_only}, device={device}")
     print(f"[megadetector] model: {model_name_or_path}")
+    print(f"[megadetector] save_crops={save_crops}")
 
     results = load_and_run_detector_batch(
         model_file=model_name_or_path,
@@ -105,7 +108,7 @@ def filter_df_with_megadetector_and_crop(
 
     kept, dropped = [], []
 
-    for r in tqdm(results, desc="Cropping + saving"):
+    for r in tqdm(results, desc="Processing detections"):
         fpath = r.get("file")
         if not fpath:
             dropped.append({"filename": None, "drop_reason": "missing_result_file"})
@@ -152,11 +155,13 @@ def filter_df_with_megadetector_and_crop(
         if max_crops_per_image is not None:
             dets_use = dets_use[:int(max_crops_per_image)]
 
-        try:
-            img = Image.open(fpath).convert("RGB")
-        except Exception:
-            dropped.append({**base, "drop_reason": "image_open_failed"})
-            continue
+        img = None
+        if save_crops:
+            try:
+                img = Image.open(fpath).convert("RGB")
+            except Exception:
+                dropped.append({**base, "drop_reason": "image_open_failed"})
+                continue
 
         orig_name = os.path.basename(fpath)
         stem = os.path.splitext(orig_name)[0]
@@ -171,17 +176,19 @@ def filter_df_with_megadetector_and_crop(
             if bbox is None:
                 continue
 
-            crop = _crop_with_padding(img, bbox, pad_frac=pad_frac)
             crop_name = f"{stem}_crop{j}.{save_format.lower()}"
-            crop_path = out_path / crop_name
 
-            try:
-                if save_format.lower() in ("jpg", "jpeg"):
-                    crop.save(crop_path, quality=jpeg_quality)
-                else:
-                    crop.save(crop_path)
-            except Exception:
-                continue
+            if save_crops:
+                crop = _crop_with_padding(img, bbox, pad_frac=pad_frac)
+                crop_path = out_path / crop_name
+
+                try:
+                    if save_format.lower() in ("jpg", "jpeg"):
+                        crop.save(crop_path, quality=jpeg_quality)
+                    else:
+                        crop.save(crop_path)
+                except Exception:
+                    continue
 
             crop_files.append(crop_name)
             bboxes.append(list(bbox))
@@ -189,7 +196,7 @@ def filter_df_with_megadetector_and_crop(
             det_cats.append(str(det.get("category", "")))
 
         if not crop_files:
-            dropped.append({**base, "drop_reason": "no_crops_saved"})
+            dropped.append({**base, "drop_reason": "no_valid_detections"})
             continue
 
         base["n_animals"] = len(crop_files)
