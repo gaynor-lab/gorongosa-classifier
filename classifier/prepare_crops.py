@@ -1,13 +1,8 @@
 #!/usr/bin/env python3
 """
 prepare_crops.py
-
-Prepare MegaDetector crops without training the ResNet model.
-
-This script:
 - scans raw images
-- runs MegaDetector incrementally
-- saves crop images
+- runs MegaDetector incrementally 
 - saves full_df_filtered.csv
 - saves megadetector_dropped.csv
 
@@ -44,15 +39,12 @@ from splitting import build_df_from_folder
 # ------------------------------------------------------------------------------
 # Paths
 # ------------------------------------------------------------------------------
-BASE = Path("/mnt/sharedstorage/sabdelazim")
+BASE = Path("/scratch/st-kgaynor-1/gorongosa_classifier")
 
-run_dir = BASE / "Desktop" / "kaitlyn_catalyst" / "resnet_training"
+run_dir = BASE / "processing" / "resnet_training"
 run_dir.mkdir(parents=True, exist_ok=True)
 
-image_dir = BASE / "images" / "all_species_images"
-
-cropped_image_dir = run_dir / "crops"
-cropped_image_dir.mkdir(parents=True, exist_ok=True)
+image_dir = Path("/arc/project/st-kgaynor-1/gorongosa_classifier/training_data")
 
 filtered_all_path = run_dir / "full_df_filtered.csv"
 dropped_all_path = run_dir / "megadetector_dropped.csv"
@@ -62,7 +54,6 @@ if not image_dir.exists():
 
 run_dir = str(run_dir)
 image_dir = str(image_dir)
-cropped_image_dir = str(cropped_image_dir)
 filtered_all_path = str(filtered_all_path)
 dropped_all_path = str(dropped_all_path)
 
@@ -150,7 +141,7 @@ if os.path.exists(filtered_all_path):
         new_kept, new_dropped = filter_df_with_megadetector_and_crop(
             df=new_df,
             image_dir=image_dir,
-            out_dir=cropped_image_dir,
+            out_dir=run_dir,
             conf_thresh=float(config["megadetector_conf"]),
             model_name_or_path=str(config["megadetector_model"]),
             device=str(config["megadetector_device"]),
@@ -158,6 +149,7 @@ if os.path.exists(filtered_all_path):
             pad_frac=float(config["pad_frac"]),
             save_format=str(config["save_format"]),
             jpeg_quality=int(config["jpeg_quality"]),
+            save_crops=False,
         )
 
         # append new kept
@@ -192,7 +184,7 @@ else:
         filtered_all_df, dropped_df = filter_df_with_megadetector_and_crop(
             df=current_df,
             image_dir=image_dir,
-            out_dir=cropped_image_dir,
+            out_dir=run_dir,
             conf_thresh=float(config["megadetector_conf"]),
             model_name_or_path=str(config["megadetector_model"]),
             device=str(config["megadetector_device"]),
@@ -200,6 +192,7 @@ else:
             pad_frac=float(config["pad_frac"]),
             save_format=str(config["save_format"]),
             jpeg_quality=int(config["jpeg_quality"]),
+            save_crops=False,
         )
     else:
         print("[warn] MegaDetector disabled; using current_df after file sanity filtering.")
@@ -222,6 +215,5 @@ for col in ("species", "site"):
         filtered_all_df[col] = filtered_all_df[col].astype(str).str.strip().str.lower()
 
 print("[done] Prepared MegaDetector crops and CSVs.")
-print(f"[done] Crops directory: {cropped_image_dir}")
 print(f"[done] Filtered CSV: {filtered_all_path}")
 print(f"[done] Dropped CSV: {dropped_all_path}")
