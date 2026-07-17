@@ -9,16 +9,24 @@ This script assumes crops already exist and a CSV is provided with:
 - species label
 - site
 
+For ghost photos, use:
+  species = ghost
+  source = ghost
+  site = site folder name, e.g. A06 -> a06
+
 Expected inputs:
   --input_csv
-  --crop_dir
+  --crop_dir optional if CSV uses absolute paths
   --output_dir
 
 Example:
   python classifier/train_classifier.py \
     --input_csv /scratch/st-kgaynor-1/$USER/gorongosa_classifier/processing/resnet_training/combined_training_data.csv \
-    --crop_dir /scratch/st-kgaynor-1/$USER/gorongosa_classifier/processing/resnet_training/all_training_crops \
-    --output_dir /scratch/st-kgaynor-1/$USER/gorongosa_classifier/processing/resnet_training/model_outputs/test_run
+    --output_dir /scratch/st-kgaynor-1/$USER/gorongosa_classifier/processing/resnet_training/model_outputs/test_run \
+    --check_files
+
+If crop_path values are relative filenames instead of full paths, also provide:
+  --crop_dir /path/to/crop_folder
 """
 
 from __future__ import annotations
@@ -40,11 +48,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import torch
 import torch.nn as nn
-from PIL import Image
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-from sklearn.model_selection import train_test_split
-from torch.utils.data import DataLoader, Dataset
-from torchvision import transforms
+from torch.utils.data import DataLoader
+from dataloader import SpeciesImageDataset, collate_keep_good
 from tqdm import tqdm
 
 
@@ -59,6 +65,7 @@ for p in [CLASSIFIER_DIR, PROJECT_ROOT]:
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
 
+from splitting import split_train_val_holdout
 
 def load_custom_resnet18():
     """
@@ -96,11 +103,11 @@ def parse_crop_list(value):
     - a Python/JSON-like list string, e.g. "['a.jpg', 'b.jpg']"
     - a semicolon/comma-separated string
     """
-    if pd.isna(value):
-        return []
-
     if isinstance(value, list):
         return [str(x) for x in value]
+
+    if pd.isna(value):
+        return []
 
     text = str(value).strip()
     if text == "":
@@ -198,6 +205,19 @@ def build_training_dataframe(
 
             if "filename" in df.columns:
                 new_row["original_filename"] = str(row["filename"])
+
+            optional_cols = {
+                "bbox": ["bbox", "bboxes"],
+                "confidence": ["confidence", "det_conf", "det_confs"],
+                "review_status": ["review_status"],
+            }
+
+            for out_col, candidate_cols in optional_cols.items():
+                for col in candidate_cols:
+                    if col in df.columns:
+                        value = row[col]
+                        new_row[out_col] = "" if pd.isna(value) else str(value)
+                        break
 
             rows.append(new_row)
 
@@ -362,40 +382,6 @@ def append_prediction_rows(
 
 
 # ------------------------------------------------------------------------------
-# Dataset
-# ------------------------------------------------------------------------------
-class CropDataset(Dataset):
-    def __init__(
-        self,
-        df: pd.DataFrame,
-        crop_dir: Path | None,
-        species_to_idx: dict[str, int],
-        transform,
-    ):
-        self.df = df.reset_index(drop=True)
-        self.crop_dir = crop_dir
-        self.species_to_idx = species_to_idx
-        self.transform = transform
-
-    def __len__(self):
-        return len(self.df)
-
-    def __getitem__(self, idx):
-        row = self.df.iloc[idx]
-
-        img_path = resolve_crop_path(row["crop_path"], self.crop_dir)
-        species = row["species"]
-
-        with Image.open(img_path) as img:
-            img = img.convert("RGB")
-
-        x = self.transform(img)
-        y = self.species_to_idx[species]
-
-        return x, y, str(img_path)
-
-
-# ------------------------------------------------------------------------------
 # Train / eval loops
 # ------------------------------------------------------------------------------
 def run_eval(model, loader, criterion, device, class_names, desc):
@@ -408,6 +394,9 @@ def run_eval(model, loader, criterion, device, class_names, desc):
 
     with torch.no_grad():
         for x_batch, y_batch, names in tqdm(loader, desc=desc):
+            if x_batch.numel() == 0:
+                continue
+
             x_batch = x_batch.to(device)
             y_batch = y_batch.to(device)
 
@@ -446,7 +435,7 @@ def main():
 
     # Inputs / outputs
     parser.add_argument("--input_csv", required=True, help="CSV with crop image column, species, and site.")
-    parser.add_argument("--crop_dir", required=True, help="Folder containing crop images.")
+    parser.add_argument("--crop_dir", default="", help="Folder containing crop images, used only when image paths in the CSV are relative.",)
     parser.add_argument("--output_dir", required=True, help="Folder for model outputs.")
 
     # CSV columns
@@ -461,8 +450,10 @@ def main():
         default="d05,d03,g02,e02,e06,f05,i10,i04,i08,d07,b05,g08",
         help="Comma-separated site names to reserve as holdout.",
     )
-    parser.add_argument("--val_size", type=float, default=0.30)
+    parser.add_argument("--test_size", type=float, default=0.30)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--split_mode", default="instance", choices=["instance", "sitewise"])
+    parser.add_argument("--min_in_each", type=int, default=1)
 
     # Classes
     parser.add_argument("--num_classes", default="all", help='"all" or an integer.')
@@ -489,7 +480,7 @@ def main():
     args = parser.parse_args()
 
     input_csv = Path(args.input_csv)
-    crop_dir = Path(args.crop_dir)
+    crop_dir = Path(args.crop_dir) if args.crop_dir else None
     output_dir = Path(args.output_dir)
 
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -505,7 +496,7 @@ def main():
     if not input_csv.exists():
         raise FileNotFoundError(f"input_csv not found: {input_csv}")
 
-    if not crop_dir.exists():
+    if crop_dir is not None and not crop_dir.exists():
         raise FileNotFoundError(f"crop_dir not found: {crop_dir}")
 
     # Performance toggles
@@ -542,31 +533,22 @@ def main():
     # --------------------------------------------------------------------------
     # Split train / val / holdout
     # --------------------------------------------------------------------------
-    holdout_sites = set(parse_comma_list(args.holdout_sites))
+    holdout_sites = parse_comma_list(args.holdout_sites)
 
-    if holdout_sites:
-        holdout_df = df[df["site"].isin(holdout_sites)].copy()
-        train_val_df = df[~df["site"].isin(holdout_sites)].copy()
-    else:
-        holdout_df = pd.DataFrame(columns=df.columns)
-        train_val_df = df.copy()
-
-    if len(train_val_df) == 0:
-        raise RuntimeError("No train/validation rows left after removing holdout sites.")
-
-    species_counts = train_val_df["species"].value_counts()
-    can_stratify = species_counts.min() >= 2 and len(species_counts) > 1
-    stratify = train_val_df["species"] if can_stratify else None
-
-    if not can_stratify:
-        print("[warn] Stratified split not possible. Using regular random split.")
-
-    train_df, val_df = train_test_split(
-        train_val_df,
-        test_size=args.val_size,
-        random_state=args.seed,
-        stratify=stratify,
+    train_df, val_df, holdout_df = split_train_val_holdout(
+        df,
+        site_col="site",
+        species_col="species",
+        holdout_sites=holdout_sites,
+        test_size=float(args.test_size),
+        random_state=int(args.seed),
+        min_in_each=int(args.min_in_each),
+        mode=str(args.split_mode),
     )
+
+    for split_df in (train_df, val_df, holdout_df):
+        split_df["species"] = split_df["species"].astype(str).str.strip().str.lower()
+        split_df["site"] = split_df["site"].astype(str).str.strip().str.lower()
 
     include_species = parse_comma_list(args.include_species)
     allowed_species = choose_allowed_species(
@@ -627,37 +609,46 @@ def main():
     # --------------------------------------------------------------------------
     # Dataset / loaders
     # --------------------------------------------------------------------------
-    train_transform = transforms.Compose(
-        [
-            transforms.Resize((224, 224)),
-            transforms.RandomHorizontalFlip(),
-            transforms.ToTensor(),
-            transforms.Normalize(
-                mean=[0.485, 0.456, 0.406],
-                std=[0.229, 0.224, 0.225],
-            ),
-        ]
+    def prepare_dataset_df(split_df: pd.DataFrame) -> pd.DataFrame:
+        out = split_df.copy()
+
+        # SpeciesImageDataset expects filename_crop.
+        # In the new combined CSV, crop_path may be an absolute path or a relative filename.
+        out["filename_crop"] = out["crop_path"].astype(str)
+
+        return out.reset_index(drop=True)
+
+    dataset_image_dir = str(crop_dir) if crop_dir is not None else ""
+
+    train_dataset = SpeciesImageDataset(
+        prepare_dataset_df(train_df),
+        image_dir=dataset_image_dir,
+        backbone="resnet18",
+        include_species=allowed_species,
+        augment=True,
     )
 
-    eval_transform = transforms.Compose(
-        [
-            transforms.Resize((224, 224)),
-            transforms.ToTensor(),
-            transforms.Normalize(
-                mean=[0.485, 0.456, 0.406],
-                std=[0.229, 0.224, 0.225],
-            ),
-        ]
+    val_dataset = SpeciesImageDataset(
+        prepare_dataset_df(val_df),
+        image_dir=dataset_image_dir,
+        backbone="resnet18",
+        include_species=allowed_species,
+        augment=False,
     )
 
-    train_dataset = CropDataset(train_df, crop_dir, species_to_idx, train_transform)
-    val_dataset = CropDataset(val_df, crop_dir, species_to_idx, eval_transform)
-    holdout_dataset = CropDataset(holdout_df, crop_dir, species_to_idx, eval_transform)
+    holdout_dataset = SpeciesImageDataset(
+        prepare_dataset_df(holdout_df),
+        image_dir=dataset_image_dir,
+        backbone="resnet18",
+        include_species=allowed_species,
+        augment=False,
+    )
 
     loader_kwargs = {
         "batch_size": args.batch_size,
         "num_workers": args.num_workers,
         "pin_memory": torch.cuda.is_available(),
+        "collate_fn": collate_keep_good,
     }
 
     train_loader = DataLoader(train_dataset, shuffle=True, **loader_kwargs)
@@ -729,6 +720,9 @@ def main():
         train_rows = []
 
         for x_batch, y_batch, names in tqdm(train_loader, desc="Training"):
+            if x_batch.numel() == 0:
+                continue
+
             x_batch = x_batch.to(device)
             y_batch = y_batch.to(device)
 
