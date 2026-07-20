@@ -10,7 +10,7 @@ This script assumes crops already exist and a CSV is provided with:
 - site
 
 For ghost photos, use:
-  species = ghost
+  species = background
   source = ghost
   site = site folder name, e.g. A06 -> a06
 
@@ -20,8 +20,12 @@ Expected inputs:
   --output_dir
 
 Example:
-  python classifier/train_classifier.py \
-    --input_csv /scratch/st-kgaynor-1/$USER/gorongosa_classifier/processing/resnet_training/combined_training_data.csv \
+
+    python classifier/train_classifier.py \
+    --input_csv \
+        reviewed_training.csv \
+        ghost_training.csv \
+        traptagger_training.csv \
     --output_dir /scratch/st-kgaynor-1/$USER/gorongosa_classifier/processing/resnet_training/model_outputs/test_run \
     --check_files
 
@@ -179,6 +183,9 @@ def build_training_dataframe(
     for _, row in df.iterrows():
         species = str(row[species_col]).strip().lower()
         site = str(row[site_col]).strip().lower()
+
+        if species == "ghost":
+            species = "background"
 
         if species in ["", "nan", "none"]:
             continue
@@ -434,7 +441,7 @@ def main():
     )
 
     # Inputs / outputs
-    parser.add_argument("--input_csv", required=True, help="CSV with crop image column, species, and site.")
+    parser.add_argument("--input_csv", nargs="+", required=True, help="One or more CSV files with crop image column, species, and site.",)
     parser.add_argument("--crop_dir", default="", help="Folder containing crop images, used only when image paths in the CSV are relative.",)
     parser.add_argument("--output_dir", required=True, help="Folder for model outputs.")
 
@@ -479,7 +486,7 @@ def main():
 
     args = parser.parse_args()
 
-    input_csv = Path(args.input_csv)
+    input_csvs = [Path(path) for path in args.input_csv]
     crop_dir = Path(args.crop_dir) if args.crop_dir else None
     output_dir = Path(args.output_dir)
 
@@ -492,9 +499,12 @@ def main():
 
     for d in [checkpoints_dir, predictions_dir, plots_dir, reports_dir, splits_dir]:
         d.mkdir(parents=True, exist_ok=True)
+    
+    missing_csvs = [path for path in input_csvs if not path.exists()]
 
-    if not input_csv.exists():
-        raise FileNotFoundError(f"input_csv not found: {input_csv}")
+    if missing_csvs:
+        missing_text = "\n".join(str(path) for path in missing_csvs)
+        raise FileNotFoundError(f"Input CSV files not found:\n{missing_text}")
 
     if crop_dir is not None and not crop_dir.exists():
         raise FileNotFoundError(f"crop_dir not found: {crop_dir}")
@@ -513,13 +523,29 @@ def main():
     # --------------------------------------------------------------------------
     image_col = args.image_col.strip() if args.image_col.strip() else None
 
-    df = build_training_dataframe(
-        input_csv=input_csv,
-        image_col=image_col,
-        species_col=args.species_col,
-        site_col=args.site_col,
-        source_col=args.source_col,
-    )
+    input_dfs = []
+
+    for input_csv in input_csvs:
+        print(f"[info] Loading input CSV: {input_csv}")
+
+        input_df = build_training_dataframe(
+            input_csv=input_csv,
+            image_col=image_col,
+            species_col=args.species_col,
+            site_col=args.site_col,
+            source_col=args.source_col,
+        )
+
+        input_dfs.append(input_df)
+
+    df = pd.concat(input_dfs, ignore_index=True)
+
+    duplicate_count = int(df.duplicated(subset=["crop_path"]).sum())
+    if duplicate_count > 0:
+        print(
+            f"[warn] Found {duplicate_count} duplicate crop_path rows "
+            "across input CSVs."
+        )
 
     print("[info] Loaded crop rows:", len(df))
     print("[info] Species count:", df["species"].nunique())
