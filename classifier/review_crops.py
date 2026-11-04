@@ -134,6 +134,7 @@ def generate_review_crops(
     review_dir: str,
     padding_px: int = 100,
     jpeg_quality: int = 95,
+    batch_size: int = 2000,
 ):
     """
     For every crop in full_df_filtered.csv, go back to the original image,
@@ -151,6 +152,7 @@ def generate_review_crops(
  
     df = pd.read_csv(filtered_csv)
     print(f"[step1] Loaded {len(df)} rows from {filtered_csv}")
+    print(f"[step1] Saving review crops in batches of ~{batch_size} crops")
  
     required = {"filename", "bboxes", "filename_crops"}
     missing  = required - set(df.columns)
@@ -188,11 +190,13 @@ def generate_review_crops(
             failed += 1
             continue
  
-        species_dir = review_path / species
-        species_dir.mkdir(parents=True, exist_ok=True)
- 
         for bbox, crop_name in zip(bboxes, crop_names):
             try:
+                batch_idx = (saved // batch_size) + 1 if batch_size and batch_size > 0 else 1
+                batch_dir = review_path / f"batch_{batch_idx:03d}"
+                species_dir = batch_dir / species
+                species_dir.mkdir(parents=True, exist_ok=True)
+
                 review_crop = _crop_with_px_padding(img, bbox, padding_px=padding_px)
                 out_path    = species_dir / crop_name
                 review_crop.save(out_path, quality=jpeg_quality)
@@ -387,6 +391,9 @@ def main():
              "(default: 100)")
     p1.add_argument("--jpeg_quality", type=int, default=95,
         help="JPEG quality for saved crops. (default: 95)")
+    p1.add_argument("--batch_size", type=int, default=2000,
+        help="Approximate number of review crops per batch folder. "
+             "(default: 2000)")
  
     # ── Step 2 ──────────────────────────────────────────────
     p2 = subparsers.add_parser(
@@ -419,6 +426,7 @@ def main():
             review_dir=args.review_dir,
             padding_px=args.padding_px,
             jpeg_quality=args.jpeg_quality,
+            batch_size=args.batch_size,
         )
     elif args.command == "recrop":
         recrop_after_review(

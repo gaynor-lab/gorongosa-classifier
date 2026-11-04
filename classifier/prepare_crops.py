@@ -39,7 +39,7 @@ from splitting import build_df_from_folder
 # ------------------------------------------------------------------------------
 # Paths
 # ------------------------------------------------------------------------------
-BASE = Path("/scratch/st-kgaynor-1/gorongosa_classifier")
+BASE = Path("/scratch/st-kgaynor-1/mtogator/gorongosa_classifier")
 
 run_dir = BASE / "processing" / "resnet_training"
 run_dir.mkdir(parents=True, exist_ok=True)
@@ -64,7 +64,7 @@ dropped_all_path = str(dropped_all_path)
 config = {
     "cache_filtered_all": True,
     "use_megadetector_if_missing": True,
-    "megadetector_model": "MDV5A",
+    "megadetector_model": "/scratch/st-kgaynor-1/mtogator/gorongosa_classifier/models/md_v5a.0.1.pt",
     "megadetector_conf": 0.2,
     "megadetector_device": "cuda",
     "animals_only": True,
