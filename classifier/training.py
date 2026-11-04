@@ -81,11 +81,11 @@ if str(PROJECT_ROOT) not in sys.path:
 from splitting import build_df_from_folder, split_train_val_holdout
 
 try:
-    from ct_classifier.model import CustomResNet18
+    from model import CustomResNet18
 except Exception:
-    CT_MODEL_PATH = PROJECT_ROOT / "ct_classifier" / "model.py"
+    CT_MODEL_PATH = PROJECT_ROOT / "model.py"
     if not CT_MODEL_PATH.exists():
-        raise FileNotFoundError(f"Could not find ct_classifier/model.py at {CT_MODEL_PATH}")
+        raise FileNotFoundError(f"Could not find model.py at {CT_MODEL_PATH}")
     spec = importlib.util.spec_from_file_location("ct_model", CT_MODEL_PATH)
     ct_model = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
