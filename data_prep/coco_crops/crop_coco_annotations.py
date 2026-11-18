@@ -32,6 +32,7 @@ REMAPPED_CLASSES = {
     "marsh mongoose": "mongoose_marsh",
     "slender mongoose": "mongoose_slender",
     "white-tailed mongoose": "mongoose_white_tailed",
+    "bushy-tailed mongoose": "mongoose_bushy_tailed",
     "rat" : "rodent",
     "sable": "sable_antelope",
     "samango monkey": "samango_monkey",
