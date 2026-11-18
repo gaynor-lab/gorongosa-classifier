@@ -1,9 +1,12 @@
-#Summarize data by species, site, day/night
+#Summarize training/test data by species, site, day/night
 
 library(tidyverse)
 
 
-# Read in data ------------------------------------------------------------
+
+# Summarize day/night -----------------------------------------------------
+
+## Read in output from 'parse_nighttime' script ----------------------------
 data <- read_csv('/Users/caraappel/Documents/_UBC/gorongosa_classifier/nighttime_110226_partial.csv',
                  col_types = cols(error = col_character()))
   problems(data)
@@ -15,8 +18,6 @@ data <- read_csv('/Users/caraappel/Documents/_UBC/gorongosa_classifier/nighttime
 #Remove that row
 data <- data %>% 
   filter(is.na(error))
-
-
 
 # Parse -------------------------------------------------------------------
 data_parsed <- data %>% 
@@ -55,9 +56,7 @@ data_parsed <- data_parsed %>%
 sort(unique(data_parsed$species, useNA = 'a'))
 View(data_parsed %>% filter(is.na(species))) #good, none without species
 
-
-# Summarize grayscale ------------------------------------------------------
-
+# Summarize nighttime ------------------------------------------------------
 hist(data_parsed$gray_scale_fraction)
 
 #Use a cutoff of 0.5
@@ -74,9 +73,7 @@ data_parsed %>%
   #Others are over-exposed or odd-colored
   #I imagine lots of these will be removed after QCing the crops -- check again
 
-
 # Summarize species/site/night --------------------------------------------
-
 summary <- data_parsed %>% 
   group_by(species) %>% 
   summarise(n_images = n(),
@@ -87,5 +84,8 @@ summary <- data_parsed %>%
 summary %>% print(n = 50)
 
 #remember this is before splits, so the distributions in train/test will look different
+
+
+# Summarize by species/split ----------------------------------------------
 
 
