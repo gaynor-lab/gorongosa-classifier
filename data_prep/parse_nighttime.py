@@ -4,7 +4,7 @@ Compute the grayscale pixel fraction for an image, or for every image in a folde
 using MegaDetector's gray_scale_fraction (a rough night-time/IR image indicator).
 
 Usage:
-    python run_gray_scale_fraction.py <image_or_folder> <output.csv> [--crop-top 0.1] [--crop-bottom 0.1]
+    python parse_nighttime.py <image_or_folder> <output.csv> [--crop-top 0.1] [--crop-bottom 0.1]
 
 If <output.csv> already exists, images already listed in it are skipped and new
 results are appended, so an interrupted run can be resumed by running it again.
